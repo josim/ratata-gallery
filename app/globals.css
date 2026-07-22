@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* DESIGN.md §3.1 — light-only paper/ink system. No dark theme. */
+:root {
+  /* Surfaces */
+  --paper: #fbfaf8;
+  --paper-sunk: #f4f2ec;
+  --card: #ffffff;
+
+  /* Ink (text) */
+  --ink: #1a1918;
+  --ink-secondary: #55524d;
+  --ink-muted: #767169;
+
+  /* Lines */
+  --hairline: #e4e0d9;
+  --control-line: #948c7e;
+
+  /* Accent */
+  --accent: #a5372a;
+  --accent-hover: #8a2c21;
+  --accent-tint: #f5e7e4;
+
+  /* Role hues */
+  --role-curated: #a5372a;
+  --role-booth: #3e5c50;
+  --role-tech: #2e4a6b;
+  --role-platform: #6b4a7a;
+
+  --role-curated-tint: #f5e7e4;
+  --role-booth-tint: #e6ede9;
+  --role-tech-tint: #e5eaf1;
+  --role-platform-tint: #ece6f0;
+
+  --focus-ring: var(--accent);
+  --measure: 68ch;
+}
+
+body {
+  color: var(--ink);
+  background: var(--paper);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Visible focus states everywhere (DESIGN.md §5.6, accessibility). */
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}

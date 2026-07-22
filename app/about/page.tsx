@@ -1,0 +1,25 @@
+import type { Metadata } from "next";
+import { strings } from "@/lib/strings";
+import PageHero from "@/components/PageHero";
+
+export const metadata: Metadata = {
+  title: `${strings.site.name} — ${strings.about.heading}`,
+  description: strings.about.body,
+};
+
+export default function AboutPage() {
+  return (
+    <div>
+      <PageHero title={strings.about.heading} intro={strings.about.body} />
+
+      <section>
+        <h2 className="mb-3 font-serif text-title-s font-medium text-ink">
+          {strings.about.contactHeading}
+        </h2>
+        <p className="max-w-measure text-body text-ink-secondary">
+          {strings.about.contactBody}
+        </p>
+      </section>
+    </div>
+  );
+}
