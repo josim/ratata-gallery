@@ -21,6 +21,7 @@ export type ProjectFrontmatter = {
   category: ProjectCategory;
   role: ProjectRole;
   featured?: boolean;
+  artists?: string[];
   images?: string[];
   links?: ProjectLink[];
 };

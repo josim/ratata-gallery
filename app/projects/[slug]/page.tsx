@@ -51,6 +51,16 @@ export default function ProjectPage({
       </div>
 
       <div className="mt-16 space-y-16">
+        {(project.artists?.length ?? 0) > 0 && (
+          <section className="space-y-4">
+            <h2 className="font-serif text-title-s font-medium text-ink">
+              {strings.project.artistsHeading}
+            </h2>
+            <p className="max-w-measure text-body text-ink">
+              {project.artists!.join(" · ")}
+            </p>
+          </section>
+        )}
         <Gallery images={project.images ?? []} title={project.title} />
         <LinksList links={project.links ?? []} />
       </div>

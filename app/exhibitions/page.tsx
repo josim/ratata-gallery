@@ -18,7 +18,7 @@ export default function ExhibitionsPage() {
         eyebrow={strings.pages.exhibitions.eyebrow}
         title={strings.pages.exhibitions.heading}
       />
-      <ArchiveList projects={projects} />
+      <ArchiveList projects={projects} defaultView="grid" />
     </div>
   );
 }
