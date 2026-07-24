@@ -24,6 +24,8 @@ export const strings = {
   footer: {
     impressum: "Impressum",
     datenschutz: "Datenschutz",
+    youtube: "YouTube",
+    youtubeUrl: "https://www.youtube.com/@ratata_artcode",
     copyright: `© ${new Date().getFullYear()} ratata · Frankfurt am Main`,
   },
   home: {

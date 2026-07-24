@@ -51,6 +51,14 @@ export default function Footer() {
           >
             {strings.tezcon.contactEmail}
           </a>
+          <a
+            href={strings.footer.youtubeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-ink-secondary underline-offset-4 hover:underline"
+          >
+            {strings.footer.youtube}
+          </a>
         </div>
       </div>
 
