@@ -19,7 +19,7 @@ function paramToRole(value: string, roles: ProjectRole[]) {
 
 export default function ArchiveList({
   projects,
-  defaultView = "index",
+  defaultView = "grid",
 }: {
   projects: Project[];
   defaultView?: View;

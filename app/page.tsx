@@ -1,10 +1,11 @@
 import Link from "next/link";
-import { getFeaturedProjects } from "@/lib/projects";
+import { getFeaturedProjects, getProjectsByCategory } from "@/lib/projects";
 import { strings } from "@/lib/strings";
 import ProjectCard from "@/components/ProjectCard";
 
 export default function HomePage() {
   const featured = getFeaturedProjects().slice(0, 4);
+  const exhibitions = getProjectsByCategory("exhibition");
 
   return (
     <div className="space-y-16 md:space-y-24">
@@ -30,6 +31,25 @@ export default function HomePage() {
             ))}
           </div>
         )}
+      </section>
+
+      <section className="border-t border-line pt-16 md:pt-24">
+        <div className="mb-8 flex items-baseline justify-between gap-4">
+          <h2 className="font-serif text-title-m font-medium text-ink">
+            {strings.home.exhibitionsHeading}
+          </h2>
+          <Link
+            href="/exhibitions"
+            className="text-body text-accent underline decoration-1 underline-offset-[0.15em] hover:text-accent-hover hover:decoration-2"
+          >
+            {strings.home.exhibitionsLink} <span aria-hidden="true">→</span>
+          </Link>
+        </div>
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-6">
+          {exhibitions.map((project) => (
+            <ProjectCard key={project.slug} project={project} />
+          ))}
+        </div>
       </section>
 
       <section className="border-t border-line pt-16 md:pt-24">

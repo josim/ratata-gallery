@@ -33,6 +33,8 @@ export const strings = {
     missionBody:
       "TODO: Replace with the ratata gallery mission statement — who we are, what we do, and why.",
     featuredHeading: "Featured Projects",
+    exhibitionsHeading: "Exhibitions",
+    exhibitionsLink: "All exhibitions",
     tezconHeading: "Tezcon Europe",
     tezconTeaser: "Tezcon Europe — coming to Frankfurt.",
     tezconLink: "Learn more",
