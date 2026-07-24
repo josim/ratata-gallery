@@ -65,22 +65,18 @@ export default function Gallery({
   const [lead, ...rest] = images;
 
   return (
-    <section className="space-y-4">
-      <h2 className="font-serif text-title-s font-medium text-ink">
-        {strings.project.galleryHeading}
-      </h2>
-
+    <div className="space-y-4">
       <div className="border border-line bg-card">
         {isVideo(lead) ? (
           <GalleryVideo src={lead} />
         ) : (
-          <div className="relative aspect-[3/2] max-h-[80vh] w-full">
+          <div className="relative aspect-[4/3] w-full">
             <Image
               src={lead}
               alt={title}
               fill
               priority
-              sizes="(min-width: 1440px) 1440px, 100vw"
+              sizes="(min-width: 1024px) 40vw, 100vw"
               className="object-contain"
             />
           </div>
@@ -88,7 +84,7 @@ export default function Gallery({
       </div>
 
       {rest.length > 0 && (
-        <div className="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-4">
+        <div className="grid grid-cols-2 gap-4">
           {rest.map((src) =>
             isVideo(src) ? (
               <div key={src} className="border border-line">
@@ -101,7 +97,7 @@ export default function Gallery({
                   alt={title}
                   fill
                   loading="lazy"
-                  sizes="(min-width: 768px) 33vw, 100vw"
+                  sizes="(min-width: 1024px) 20vw, 50vw"
                   className="object-cover"
                 />
               </div>
@@ -109,6 +105,6 @@ export default function Gallery({
           )}
         </div>
       )}
-    </section>
+    </div>
   );
 }

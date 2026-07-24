@@ -50,9 +50,10 @@ export const strings = {
     columnRole: "Role",
   },
   project: {
-    artistsHeading: "Artists",
+    factDates: "Dates",
+    factVenue: "Venue",
+    factArtists: "Artists",
     linksHeading: "Links & Press",
-    galleryHeading: "Gallery",
     indexPlateLinks: "LINKS & PRESS",
     playLabel: "Play",
   },
