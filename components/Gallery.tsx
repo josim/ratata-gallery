@@ -53,58 +53,131 @@ function GalleryVideo({ src }: { src: string }) {
   );
 }
 
-export default function Gallery({
+export type GalleryImage = {
+  src: string;
+  width?: number;
+  height?: number;
+};
+
+// A single image renders as a catalogue plate: natural aspect ratio,
+// height-capped, uncropped, the hairline frame hugging the image.
+function Plate({ image, title }: { image: GalleryImage; title: string }) {
+  if (isVideo(image.src)) {
+    return (
+      <div className="border border-line bg-card">
+        <GalleryVideo src={image.src} />
+      </div>
+    );
+  }
+
+  if (image.width && image.height) {
+    return (
+      <div className="w-fit max-w-full border border-line bg-card">
+        <Image
+          src={image.src}
+          alt={title}
+          width={image.width}
+          height={image.height}
+          priority
+          sizes="(min-width: 1200px) 760px, 100vw"
+          className="h-auto max-h-[70vh] w-auto max-w-full"
+        />
+      </div>
+    );
+  }
+
+  return (
+    <div className="border border-line bg-card">
+      <div className="relative aspect-[3/2] w-full">
+        <Image
+          src={image.src}
+          alt={title}
+          fill
+          priority
+          sizes="(min-width: 1200px) 760px, 100vw"
+          className="object-contain"
+        />
+      </div>
+    </div>
+  );
+}
+
+// DESIGN.md §5.7 — multiple images become a quiet slide viewer: a stable
+// matted stage plus a row of thumbnail plates beneath it. No motion beyond
+// a 150ms opacity step; keyboard operable via the thumbnail buttons.
+export default function GalleryCarousel({
   images,
   title,
 }: {
-  images: string[];
+  images: GalleryImage[];
   title: string;
 }) {
-  if (!images.length) return null;
+  const [current, setCurrent] = useState(0);
 
-  const [lead, ...rest] = images;
+  if (!images.length) return null;
+  if (images.length === 1) return <Plate image={images[0]} title={title} />;
+
+  const active = images[Math.min(current, images.length - 1)];
 
   return (
-    <div className="space-y-4">
+    <figure className="space-y-3">
       <div className="border border-line bg-card">
-        {isVideo(lead) ? (
-          <GalleryVideo src={lead} />
+        {isVideo(active.src) ? (
+          <GalleryVideo src={active.src} />
         ) : (
-          <div className="relative aspect-[4/3] w-full">
+          <div className="relative aspect-[3/2] max-h-[70vh] w-full">
             <Image
-              src={lead}
-              alt={title}
+              key={active.src}
+              src={active.src}
+              alt={`${title}, image ${current + 1} of ${images.length}`}
               fill
-              priority
-              sizes="(min-width: 1024px) 40vw, 100vw"
+              priority={current === 0}
+              sizes="(min-width: 1200px) 760px, 100vw"
               className="object-contain"
             />
           </div>
         )}
       </div>
 
-      {rest.length > 0 && (
-        <div className="grid grid-cols-2 gap-4">
-          {rest.map((src) =>
-            isVideo(src) ? (
-              <div key={src} className="border border-line">
-                <GalleryVideo src={src} />
-              </div>
-            ) : (
-              <div key={src} className="relative aspect-[4/3] w-full border border-line bg-card">
+      <div className="flex items-start justify-between gap-4">
+        <div className="flex flex-wrap gap-2" role="group" aria-label={title}>
+          {images.map((image, i) => (
+            <button
+              key={image.src}
+              type="button"
+              onClick={() => setCurrent(i)}
+              aria-label={`${title}, image ${i + 1} of ${images.length}`}
+              aria-current={i === current}
+              className={`relative h-14 w-[4.667rem] shrink-0 border bg-card transition-colors duration-150 ${
+                i === current
+                  ? "border-ink"
+                  : "border-line hover:border-ink-muted"
+              }`}
+            >
+              {isVideo(image.src) ? (
+                <span className="flex h-full items-center justify-center text-meta uppercase text-ink-muted">
+                  {strings.project.playLabel}
+                </span>
+              ) : (
                 <Image
-                  src={src}
-                  alt={title}
+                  src={image.src}
+                  alt=""
                   fill
                   loading="lazy"
-                  sizes="(min-width: 1024px) 20vw, 50vw"
-                  className="object-cover"
+                  sizes="75px"
+                  className={`object-cover transition-opacity duration-150 ${
+                    i === current ? "opacity-100" : "opacity-70 hover:opacity-100"
+                  }`}
                 />
-              </div>
-            )
-          )}
+              )}
+            </button>
+          ))}
         </div>
-      )}
-    </div>
+
+        <figcaption className="whitespace-nowrap pt-1 text-meta uppercase tabular-nums text-ink-muted">
+          {current + 1} / {images.length}
+        </figcaption>
+      </div>
+    </figure>
   );
 }
