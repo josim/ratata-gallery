@@ -6,16 +6,16 @@
 export const strings = {
   site: {
     name: "ratata gallery",
-    tagline: "ratata gallery — TODO: one-line mission statement",
+    // PROVISIONAL COPY — used in the footer and as the site meta description.
+    tagline:
+      "Gallery and artist collective for digital art — Frankfurt am Main.",
     wordmark: "ratata",
     wordmarkSuffix: ".gallery",
   },
   nav: {
     home: "Home",
     exhibitions: "Exhibitions",
-    fairsEvents: "Fairs & Events",
-    techProductions: "Tech Productions",
-    platforms: "Platforms",
+    production: "Production",
     tezconEurope: "Tezcon Europe",
     about: "About",
     langEn: "EN",
@@ -29,12 +29,19 @@ export const strings = {
     copyright: `© ${new Date().getFullYear()} ratata · Frankfurt am Main`,
   },
   home: {
-    missionHeading: "TODO: Mission statement",
+    // PROVISIONAL COPY — drafted from the archive, pending the client's own
+    // wording. Every claim below is backed by a project in content/projects.
+    eyebrow: "Gallery & Collective · Frankfurt am Main",
+    missionHeading: "Digital art, shown in real rooms.",
     missionBody:
-      "TODO: Replace with the ratata gallery mission statement — who we are, what we do, and why.",
-    featuredHeading: "Featured Projects",
-    exhibitionsHeading: "Exhibitions",
-    exhibitionsLink: "All exhibitions",
+      "ratata is a gallery and artist collective based in Frankfurt am Main. Since 2021 we have curated exhibitions, operated official NFT booths at international art fairs, and built the minting and display technology behind them.",
+    leadEyebrow: "From the archive",
+    leadLink: "View project",
+    viewAll: "View all",
+    worksEyebrow: "Works exhibited",
+    worksCountSuffix: "Works",
+    worksLink: "View all works",
+    tezconEyebrow: "Upcoming",
     tezconHeading: "Tezcon Europe",
     tezconTeaser: "Tezcon Europe — coming to Frankfurt.",
     tezconLink: "Learn more",
@@ -46,6 +53,7 @@ export const strings = {
     viewGrid: "Grid",
     viewIndex: "Index",
     resultsSuffix: "PROJECTS",
+    resultsSuffixOne: "PROJECT",
     columnYear: "Year",
     columnTitle: "Title",
     columnVenue: "Venue / City",
@@ -73,9 +81,7 @@ export const strings = {
   },
   categories: {
     exhibition: "Exhibition",
-    fair: "Fair",
-    tech: "Tech",
-    platform: "Platform",
+    production: "Production",
   },
   roles: {
     Curated: "Curated",
@@ -89,20 +95,11 @@ export const strings = {
       heading: "Exhibitions",
       description: "ratata gallery — curated exhibitions.",
     },
-    fairsEvents: {
-      eyebrow: "Fairs & Events Archive",
-      heading: "Fairs & Events",
-      description: "ratata gallery — fairs and events.",
-    },
-    techProductions: {
-      eyebrow: "Tech Productions Archive",
-      heading: "Tech Productions",
-      description: "ratata gallery — tech productions.",
-    },
-    platforms: {
-      eyebrow: "Platform Archive",
-      heading: "Platforms",
-      description: "ratata gallery — platforms.",
+    production: {
+      eyebrow: "Production Archive",
+      heading: "Production",
+      description:
+        "ratata gallery — fairs, events, tech productions, and platforms.",
     },
   },
   legal: {

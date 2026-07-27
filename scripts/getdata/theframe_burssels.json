@@ -1,0 +1,3331 @@
+{
+  "data": {
+    "token": [
+      {
+        "artifact_uri": "ipfs://QmVkWvPW1jTstKa9EkgL7nJwPw7QryxCPYaxFQWtJFugf8",
+        "description": "\"For the eye sees not itself, but by reflection\"",
+        "dimensions": {
+          "display": {
+            "mime": "image/png",
+            "size": 3610560,
+            "dimensions": {
+              "width": 2780,
+              "height": 1568
+            }
+          },
+          "resized": {
+            "social": {
+              "width": 1200,
+              "height": 677
+            },
+            "source": "display",
+            "thumb288": {
+              "width": 288,
+              "height": 162
+            },
+            "thumb400": {
+              "width": 400,
+              "height": 226
+            }
+          },
+          "artifact": {
+            "mime": "video/mp4",
+            "size": 90210695,
+            "dimensions": {
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          "thumbnail": {
+            "mime": "image/png",
+            "size": 59805,
+            "dimensions": {
+              "width": 400,
+              "height": 225
+            }
+          }
+        },
+        "display_uri": "ipfs://QmaxUwr1S8Sw59FAcA34fxJjKGf4Bkui7bt9Z4AauX735B",
+        "extra": [
+          {
+            "uri": "ipfs://QmaxUwr1S8Sw59FAcA34fxJjKGf4Bkui7bt9Z4AauX735B",
+            "file_name": "display.png",
+            "file_size": 18987,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "800x800"
+            }
+          },
+          {
+            "uri": "ipfs://QmVkWvPW1jTstKa9EkgL7nJwPw7QryxCPYaxFQWtJFugf8",
+            "file_name": "artifact.mp4",
+            "file_size": 90210695,
+            "mime_type": "video/mp4",
+            "dimensions": {
+              "unit": "px",
+              "value": "1920x1080"
+            }
+          },
+          {
+            "uri": "ipfs://QmPytiXDjQytJScnGBWwCG9viTeLcLDrj17xV44THwqLf2",
+            "file_name": "thumbnail.png",
+            "file_size": 6180,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "400x400"
+            }
+          }
+        ],
+        "metadata": "ipfs://QmZUpjPAUjcg9id2eL7meDTTrrVoY93q9S7LBCxNkd5LfT",
+        "mime": "video/mp4",
+        "name": "Ocellus",
+        "rights": "No License. All rights reserved.",
+        "rights_uri": null,
+        "supply": 36,
+        "symbol": "THEFRAME",
+        "thumbnail_uri": "ipfs://QmPytiXDjQytJScnGBWwCG9viTeLcLDrj17xV44THwqLf2",
+        "timestamp": "2024-07-11T08:27:00+00:00",
+        "creators": [
+          {
+            "creator_address": "tz1WpWhotvDW3KiiuCHYjSrC9WzHN3p9QyWu",
+            "holder": {
+              "alias": "Düzen"
+            }
+          }
+        ]
+      },
+      {
+        "artifact_uri": "ipfs://QmQ3cBGTV6C7NoR7fUStZeCWDEdb7RpacDiMCrWJM4uCXk",
+        "description": "Animated GIF - 2024 - 1920 x 1080 Pixels - Special drop for \"The Frame\" - Brussels, July 2024",
+        "dimensions": {
+          "display": {
+            "mime": "image/gif",
+            "size": 17672036,
+            "dimensions": {
+              "width": 800,
+              "height": 450
+            }
+          },
+          "resized": {
+            "social": {
+              "width": 1200,
+              "height": 675
+            },
+            "source": "artifact",
+            "thumb288": {
+              "width": 288,
+              "height": 162
+            },
+            "thumb400": {
+              "width": 400,
+              "height": 225
+            }
+          },
+          "artifact": {
+            "mime": "image/gif",
+            "size": 16438820,
+            "dimensions": {
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          "thumbnail": {
+            "mime": "image/gif",
+            "size": 4394136,
+            "dimensions": {
+              "width": 400,
+              "height": 225
+            }
+          }
+        },
+        "display_uri": "ipfs://Qmdqp6Z8KRzdV5kQ6HiV58vSWeftk9tZuwTjmBbCTxp4oD",
+        "extra": [
+          {
+            "uri": "ipfs://Qmdqp6Z8KRzdV5kQ6HiV58vSWeftk9tZuwTjmBbCTxp4oD",
+            "file_name": "display.png",
+            "file_size": 18987,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "800x800"
+            }
+          },
+          {
+            "uri": "ipfs://QmQ3cBGTV6C7NoR7fUStZeCWDEdb7RpacDiMCrWJM4uCXk",
+            "file_name": "artifact.gif",
+            "file_size": 16438820,
+            "mime_type": "image/gif",
+            "dimensions": {
+              "unit": "px",
+              "value": "1920x1080"
+            }
+          },
+          {
+            "uri": "ipfs://QmcQSD53BLfYRJPu5jHSR5tH6MNSSjvYbwMh6tHxphNiFi",
+            "file_name": "thumbnail.png",
+            "file_size": 6180,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "400x400"
+            }
+          }
+        ],
+        "metadata": "ipfs://QmRxNZeNFZKcCVXiy9kXCtLw49AdrQhk1bgcDq61PVSGhQ",
+        "mime": "image/gif",
+        "name": "Cuz I Love You",
+        "rights": "No License. All rights reserved.",
+        "rights_uri": null,
+        "supply": 27,
+        "symbol": "THEFRAME",
+        "thumbnail_uri": "ipfs://QmcQSD53BLfYRJPu5jHSR5tH6MNSSjvYbwMh6tHxphNiFi",
+        "timestamp": "2024-07-11T12:25:15+00:00",
+        "creators": [
+          {
+            "creator_address": "tz1WGkVWkdBZnSHRTkL53c2JLfYi5TLtSELB",
+            "holder": {
+              "alias": "tiegenhof"
+            }
+          }
+        ]
+      },
+      {
+        "artifact_uri": "ipfs://QmaxTXt3JQphTD8MpE184UitNRoCSkYhp3AwHxJassbUjo",
+        "description": "AI generated photo - edited - 1920 x 1080 - Special drop for \"The Frame\" - Brussels - July 2024",
+        "dimensions": {
+          "display": {
+            "mime": "image/png",
+            "size": 88773,
+            "dimensions": {
+              "width": 800,
+              "height": 450
+            }
+          },
+          "resized": {
+            "social": {
+              "width": 1200,
+              "height": 675
+            },
+            "source": "display",
+            "thumb288": {
+              "width": 288,
+              "height": 162
+            },
+            "thumb400": {
+              "width": 400,
+              "height": 225
+            }
+          },
+          "artifact": {
+            "mime": "image/png",
+            "size": 2460656,
+            "dimensions": {
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          "thumbnail": {
+            "mime": "image/png",
+            "size": 23290,
+            "dimensions": {
+              "width": 400,
+              "height": 225
+            }
+          }
+        },
+        "display_uri": "ipfs://QmPYGsEVCQQkoTgExavKQgrs3tZvSTQaNEnUnbMP6aZ3tF",
+        "extra": [
+          {
+            "uri": "ipfs://QmPYGsEVCQQkoTgExavKQgrs3tZvSTQaNEnUnbMP6aZ3tF",
+            "file_name": "display.png",
+            "file_size": 18987,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "800x800"
+            }
+          },
+          {
+            "uri": "ipfs://QmaxTXt3JQphTD8MpE184UitNRoCSkYhp3AwHxJassbUjo",
+            "file_name": "artifact.png",
+            "file_size": 2460656,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "1920x1080"
+            }
+          },
+          {
+            "uri": "ipfs://QmW49vwHKwj6SgawkiPPhihPMnsxR9d3zZtqkeDhMs52Fz",
+            "file_name": "thumbnail.png",
+            "file_size": 6180,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "400x400"
+            }
+          }
+        ],
+        "metadata": "ipfs://QmQSge31sFZ6yxqQCaVgoPEaeWo98QYv7uvniG8eg7YmoC",
+        "mime": "image/png",
+        "name": "X (II)",
+        "rights": "No License. All rights reserved.",
+        "rights_uri": null,
+        "supply": 6,
+        "symbol": "THEFRAME",
+        "thumbnail_uri": "ipfs://QmW49vwHKwj6SgawkiPPhihPMnsxR9d3zZtqkeDhMs52Fz",
+        "timestamp": "2024-07-11T11:53:55+00:00",
+        "creators": [
+          {
+            "creator_address": "tz1VATouwSB7gwfs6Wg7QxVBRx4X32qzFpdj",
+            "holder": {
+              "alias": "Jürg Kobel"
+            }
+          }
+        ]
+      },
+      {
+        "artifact_uri": "ipfs://QmeXxYyiQtJSPBijnQnFTTa633WCgTjLYdzEa8GKa6nzSE",
+        "description": "Hand-painted canvas, scanned and converted to digitally enhanced still.\n\nOrfhlaith Egan, Galway and Berlin, 2024.",
+        "dimensions": {
+          "display": {
+            "mime": "image/png",
+            "size": 280733,
+            "dimensions": {
+              "width": 800,
+              "height": 450
+            }
+          },
+          "resized": {
+            "social": {
+              "width": 1200,
+              "height": 675
+            },
+            "source": "display",
+            "thumb288": {
+              "width": 288,
+              "height": 162
+            },
+            "thumb400": {
+              "width": 400,
+              "height": 225
+            }
+          },
+          "artifact": {
+            "mime": "image/png",
+            "size": 4882487,
+            "dimensions": {
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          "thumbnail": {
+            "mime": "image/png",
+            "size": 72482,
+            "dimensions": {
+              "width": 400,
+              "height": 225
+            }
+          }
+        },
+        "display_uri": "ipfs://QmPeGHE5kzQtvjFphTM6f2JB18MrcZPW4kqkFHZn1Q4XUs",
+        "extra": [
+          {
+            "uri": "ipfs://QmPeGHE5kzQtvjFphTM6f2JB18MrcZPW4kqkFHZn1Q4XUs",
+            "file_name": "display.png",
+            "file_size": 18987,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "800x800"
+            }
+          },
+          {
+            "uri": "ipfs://QmeXxYyiQtJSPBijnQnFTTa633WCgTjLYdzEa8GKa6nzSE",
+            "file_name": "artifact.png",
+            "file_size": 4882487,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "1920x1080"
+            }
+          },
+          {
+            "uri": "ipfs://Qmb69KvhxbcczEtTUCDhSPnHNNHTS4v34woXyDr9A1LbAU",
+            "file_name": "thumbnail.png",
+            "file_size": 6180,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "400x400"
+            }
+          }
+        ],
+        "metadata": "ipfs://QmarJXqUNJ8m4NPf7gJCRBgX4j9GnWBUUSq8yHT1AtDjrg",
+        "mime": "image/png",
+        "name": "Orange Haze",
+        "rights": "No License. All rights reserved.",
+        "rights_uri": null,
+        "supply": 22,
+        "symbol": "THEFRAME",
+        "thumbnail_uri": "ipfs://Qmb69KvhxbcczEtTUCDhSPnHNNHTS4v34woXyDr9A1LbAU",
+        "timestamp": "2024-07-11T13:39:25+00:00",
+        "creators": [
+          {
+            "creator_address": "tz1ViMzA17dRAZpCopuckBHdphMua26YDVgN",
+            "holder": {
+              "alias": "Orfhlaith Egan"
+            }
+          }
+        ]
+      },
+      {
+        "artifact_uri": "ipfs://QmNSfH9YRTiBWqJuWpG5R12nVqvbW8vWNqJX1CCWXRc5Mr",
+        "description": "This is a piece in gratitude to all the photojournalists who often risk their lives to tell us stories with images that often no one wants to see in person.\n\nThe Frame is an Exhibition within an Exhibition, by HOXID.\n\nThis artwork is part of 'The Frame' (Brussels) collection and will be free to mint and exhibited on TezDev from July 11th, on Brussels, Belgium. \n\nby JPBilowus\nJuly 2024",
+        "dimensions": {
+          "display": {
+            "mime": "image/jpeg",
+            "size": 70434,
+            "dimensions": {
+              "width": 800,
+              "height": 450
+            }
+          },
+          "resized": {
+            "social": {
+              "width": 1200,
+              "height": 675
+            },
+            "source": "display",
+            "thumb288": {
+              "width": 288,
+              "height": 162
+            },
+            "thumb400": {
+              "width": 400,
+              "height": 225
+            }
+          },
+          "artifact": {
+            "mime": "image/png",
+            "size": 2594627,
+            "dimensions": {
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          "thumbnail": {
+            "mime": "image/jpeg",
+            "size": 19689,
+            "dimensions": {
+              "width": 400,
+              "height": 225
+            }
+          }
+        },
+        "display_uri": "ipfs://QmatCWSyjne3XPtbDUepgx5MTD53HDpxYb1HHQ2rU95QP5",
+        "extra": [
+          {
+            "uri": "ipfs://QmatCWSyjne3XPtbDUepgx5MTD53HDpxYb1HHQ2rU95QP5",
+            "file_name": "display.png",
+            "file_size": 18987,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "800x800"
+            }
+          },
+          {
+            "uri": "ipfs://QmNSfH9YRTiBWqJuWpG5R12nVqvbW8vWNqJX1CCWXRc5Mr",
+            "file_name": "artifact.png",
+            "file_size": 2594627,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "1920x1080"
+            }
+          },
+          {
+            "uri": "ipfs://QmapCMTTrQGrmo4vZ53uEobXibXza5kzPNviQNBhujwLLo",
+            "file_name": "thumbnail.png",
+            "file_size": 6180,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "400x400"
+            }
+          }
+        ],
+        "metadata": "ipfs://QmRbRiRHCYbVMss2MdgV231jPzmz5nPLYV14u33WxUWKdJ",
+        "mime": "image/png",
+        "name": "[PRESS]",
+        "rights": "No License. All rights reserved.",
+        "rights_uri": null,
+        "supply": 46,
+        "symbol": "THEFRAME",
+        "thumbnail_uri": "ipfs://QmapCMTTrQGrmo4vZ53uEobXibXza5kzPNviQNBhujwLLo",
+        "timestamp": "2024-07-11T15:38:35+00:00",
+        "creators": [
+          {
+            "creator_address": "tz1VqgH77aQjXEoXLgA26jkzMidPGAvXFwK2",
+            "holder": {
+              "alias": "JPBilowus"
+            }
+          }
+        ]
+      },
+      {
+        "artifact_uri": "ipfs://QmSfRrMkbgSbeHKUijxJgttpwhNa2jH2HjLCcQq2VTssP7",
+        "description": "[Digital drawing created with Paint on my shitty, old laptop. Still fun, though!] This crazy skull can't be contained in a frame!!!\n\n---Richard F. Yates (Holy Fool)",
+        "dimensions": {
+          "display": {
+            "mime": "image/jpeg",
+            "size": 57232,
+            "dimensions": {
+              "width": 800,
+              "height": 450
+            }
+          },
+          "resized": {
+            "social": {
+              "width": 1200,
+              "height": 675
+            },
+            "source": "display",
+            "thumb288": {
+              "width": 288,
+              "height": 162
+            },
+            "thumb400": {
+              "width": 400,
+              "height": 225
+            }
+          },
+          "artifact": {
+            "mime": "image/png",
+            "size": 172572,
+            "dimensions": {
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          "thumbnail": {
+            "mime": "image/jpeg",
+            "size": 25528,
+            "dimensions": {
+              "width": 400,
+              "height": 225
+            }
+          }
+        },
+        "display_uri": "ipfs://QmY8h3hkXp8WGaydkkRDcnftVTngj3MKmCVbZVA6bAVV1v",
+        "extra": [
+          {
+            "uri": "ipfs://QmY8h3hkXp8WGaydkkRDcnftVTngj3MKmCVbZVA6bAVV1v",
+            "file_name": "display.png",
+            "file_size": 18987,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "800x800"
+            }
+          },
+          {
+            "uri": "ipfs://QmSfRrMkbgSbeHKUijxJgttpwhNa2jH2HjLCcQq2VTssP7",
+            "file_name": "artifact.png",
+            "file_size": 172572,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "1920x1080"
+            }
+          },
+          {
+            "uri": "ipfs://QmUwJdunFEHZ4HQMKA3pe14CKu95weZC5WdHBG3zaxy5NF",
+            "file_name": "thumbnail.png",
+            "file_size": 6180,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "400x400"
+            }
+          }
+        ],
+        "metadata": "ipfs://QmaGXfYW6unvBrxUrABVMDmtRtK7sEnz8NXtz5BfUWygys",
+        "mime": "image/png",
+        "name": "\"Beyond the Frame (Skull)\"",
+        "rights": "No License. All rights reserved.",
+        "rights_uri": null,
+        "supply": 9,
+        "symbol": "THEFRAME",
+        "thumbnail_uri": "ipfs://QmUwJdunFEHZ4HQMKA3pe14CKu95weZC5WdHBG3zaxy5NF",
+        "timestamp": "2024-07-11T14:48:30+00:00",
+        "creators": [
+          {
+            "creator_address": "tz1iD7LwGyJMtUQ7pRB5Rb4y1jXTTBYf8PWV",
+            "holder": {
+              "alias": "Richard F. Yates (Holy Fool)"
+            }
+          }
+        ]
+      },
+      {
+        "artifact_uri": "ipfs://QmcEgckorknanieEMgivzVyAEWPiCRTYyPoWBD68EoFzM9",
+        "description": "Illustration of music waves how it feels. Hand drawn illustration created on procreate",
+        "dimensions": {
+          "display": {
+            "mime": "image/jpeg",
+            "size": 104019,
+            "dimensions": {
+              "width": 800,
+              "height": 450
+            }
+          },
+          "resized": {
+            "social": {
+              "width": 1200,
+              "height": 675
+            },
+            "source": "display",
+            "thumb288": {
+              "width": 288,
+              "height": 162
+            },
+            "thumb400": {
+              "width": 400,
+              "height": 225
+            }
+          },
+          "artifact": {
+            "mime": "image/jpeg",
+            "size": 817082,
+            "dimensions": {
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          "thumbnail": {
+            "mime": "image/jpeg",
+            "size": 36251,
+            "dimensions": {
+              "width": 400,
+              "height": 225
+            }
+          }
+        },
+        "display_uri": "ipfs://Qmcv9des2EVPD6DH7WN4gKczaaEDr9dEjUn6noS7cnQGQ9",
+        "extra": [
+          {
+            "uri": "ipfs://Qmcv9des2EVPD6DH7WN4gKczaaEDr9dEjUn6noS7cnQGQ9",
+            "file_name": "display.png",
+            "file_size": 18987,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "800x800"
+            }
+          },
+          {
+            "uri": "ipfs://QmcEgckorknanieEMgivzVyAEWPiCRTYyPoWBD68EoFzM9",
+            "file_name": "artifact.jpg",
+            "file_size": 817082,
+            "mime_type": "image/jpeg",
+            "dimensions": {
+              "unit": "px",
+              "value": "1920x1080"
+            }
+          },
+          {
+            "uri": "ipfs://QmQWL3Yk79vaHRrKQ1dLvZjPbDm9Q1pxzsCGfpHKgieD7T",
+            "file_name": "thumbnail.png",
+            "file_size": 6180,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "400x400"
+            }
+          }
+        ],
+        "metadata": "ipfs://QmZe2LTxS7yy6WQcTuUQeyadLUaTGT547YxdJb6Tokr4EZ",
+        "mime": "image/jpeg",
+        "name": "Electronic",
+        "rights": "No License. All rights reserved.",
+        "rights_uri": null,
+        "supply": 10,
+        "symbol": "THEFRAME",
+        "thumbnail_uri": "ipfs://QmQWL3Yk79vaHRrKQ1dLvZjPbDm9Q1pxzsCGfpHKgieD7T",
+        "timestamp": "2024-07-11T13:47:05+00:00",
+        "creators": [
+          {
+            "creator_address": "tz1KvMWmmKJxPpCGRXzqRH6jpXV6dkpEps1P",
+            "holder": {
+              "alias": "Voke"
+            }
+          }
+        ]
+      },
+      {
+        "artifact_uri": "ipfs://Qmbmm9gepSHrX4eLez4ypoq3eBSseFPJj1Lz7igrk9BwAP",
+        "description": "Desolation tries to colonize you.",
+        "dimensions": {
+          "display": {
+            "mime": "image/jpeg",
+            "size": 12202,
+            "dimensions": {
+              "width": 800,
+              "height": 450
+            }
+          },
+          "resized": {
+            "social": {
+              "width": 1200,
+              "height": 675
+            },
+            "source": "display",
+            "thumb288": {
+              "width": 288,
+              "height": 162
+            },
+            "thumb400": {
+              "width": 400,
+              "height": 225
+            }
+          },
+          "artifact": {
+            "mime": "image/jpeg",
+            "size": 678977,
+            "dimensions": {
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          "thumbnail": {
+            "mime": "image/jpeg",
+            "size": 5051,
+            "dimensions": {
+              "width": 400,
+              "height": 225
+            }
+          }
+        },
+        "display_uri": "ipfs://QmRCUoqtBP81biTJmcT5vnaczwNCKt53Zp3MHLZj1KdWvx",
+        "extra": [
+          {
+            "uri": "ipfs://QmRCUoqtBP81biTJmcT5vnaczwNCKt53Zp3MHLZj1KdWvx",
+            "file_name": "display.png",
+            "file_size": 18987,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "800x800"
+            }
+          },
+          {
+            "uri": "ipfs://Qmbmm9gepSHrX4eLez4ypoq3eBSseFPJj1Lz7igrk9BwAP",
+            "file_name": "artifact.jpg",
+            "file_size": 678977,
+            "mime_type": "image/jpeg",
+            "dimensions": {
+              "unit": "px",
+              "value": "1920x1080"
+            }
+          },
+          {
+            "uri": "ipfs://QmVqxTG25bU1NFe75Xz5aUwHUu3FRGv4nmwcwTuP8SM58j",
+            "file_name": "thumbnail.png",
+            "file_size": 6180,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "400x400"
+            }
+          }
+        ],
+        "metadata": "ipfs://QmZhE7uDXZKdxDvW2uGkPez7v3e3hrGvovdXGTPe1MJ56B",
+        "mime": "image/jpeg",
+        "name": "boundaries",
+        "rights": "No License. All rights reserved.",
+        "rights_uri": null,
+        "supply": 31,
+        "symbol": "THEFRAME",
+        "thumbnail_uri": "ipfs://QmVqxTG25bU1NFe75Xz5aUwHUu3FRGv4nmwcwTuP8SM58j",
+        "timestamp": "2024-07-11T13:50:45+00:00",
+        "creators": [
+          {
+            "creator_address": "tz1WF9U5X7q5nN5pN1Cjt8cQK3uNsQ9ztS8N",
+            "holder": {
+              "alias": "DDO__xyz"
+            }
+          }
+        ]
+      },
+      {
+        "artifact_uri": "ipfs://QmWi3Wu9Hf4cLVAMj8x11yUCYA2wXsZQdH38UAwyHpms9J",
+        "description": "The title \"Butterflies and Clouds Don't Taste the Same\" can be seen as a metaphor for the human experience of impermanence and the fleeting nature of pleasure, beauty and existence. The phrase “same flavor” implies a sense of unity and shared essence, which is precisely what is missing between butterflies and clouds.\n\nButterflies, as a symbol, can represent the fleeting nature of human life, beauty and pleasure. They are delicate, fragile and ephemeral, but they bring joy and wonder to those who experience them. In this sense, they can be seen as a manifestation of the impermanence of all things, including human existence.\n\nClouds, on the other hand, can symbolize the unpredictable and ever-changing nature of life. They constantly change shape, transform and reform, never staying the same for long. This can be seen as a reflection of the human experience of uncertainty, impermanence and the constant flux of life.\n\nThe fact that they “do not have the same flavor” suggests that these two aspects of existence – the ephemeral and the unpredictable – are fundamentally incompatible. This incompatibility can be seen as a reflection of the human condition, in which we struggle to reconcile our desire for permanence and stability with the reality of impermanence and change.\n\nThis dichotomy can be seen as a manifestation of the ancient Greek concept of the \"human condition\", where humanity is caught between the Apollonian desire for order, structure and permanence and the Dionysian forces of chaos, change and unpredictability.\n\n\n1920 x 1080 / HD mp4 / 45 s / 21,6 Mo \na subrealist reread based on the oil painting masterpiece by : \n\nWilliam Quiller Orchardson - The first cloud \n\n\nOriginal works On view at : National Gallery of Victoria, Melbourne",
+        "dimensions": {
+          "display": {
+            "mime": "image/gif",
+            "size": 1075936,
+            "dimensions": {
+              "width": 480,
+              "height": 270
+            }
+          },
+          "resized": {
+            "social": {
+              "width": 1200,
+              "height": 675
+            },
+            "source": "display",
+            "thumb288": {
+              "width": 288,
+              "height": 162
+            },
+            "thumb400": {
+              "width": 400,
+              "height": 225
+            }
+          },
+          "artifact": {
+            "mime": "video/mp4",
+            "size": 22740683,
+            "dimensions": {
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          "thumbnail": {
+            "mime": "image/gif",
+            "size": 322781,
+            "dimensions": {
+              "width": 400,
+              "height": 225
+            }
+          }
+        },
+        "display_uri": "ipfs://QmUm8ocLWnpBXdtzjDoMM1HM9qvuGusKTmoDYjUL7XaRGP",
+        "extra": [
+          {
+            "uri": "ipfs://QmUm8ocLWnpBXdtzjDoMM1HM9qvuGusKTmoDYjUL7XaRGP",
+            "file_name": "display.png",
+            "file_size": 18987,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "800x800"
+            }
+          },
+          {
+            "uri": "ipfs://QmWi3Wu9Hf4cLVAMj8x11yUCYA2wXsZQdH38UAwyHpms9J",
+            "file_name": "artifact.mp4",
+            "file_size": 22740683,
+            "mime_type": "video/mp4",
+            "dimensions": {
+              "unit": "px",
+              "value": "1920x1080"
+            }
+          },
+          {
+            "uri": "ipfs://QmTxommxeSrFnyCXdhkbtte4s1VpA1cvAgatxQESSBQ8R8",
+            "file_name": "thumbnail.png",
+            "file_size": 6180,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "400x400"
+            }
+          }
+        ],
+        "metadata": "ipfs://QmSKEyDZ9HqJToTAtANEDXkPS3BQUX2kNjg8Skfi3Hna5K",
+        "mime": "video/mp4",
+        "name": "Butterflies and clouds don't taste the same",
+        "rights": "No License. All rights reserved.",
+        "rights_uri": null,
+        "supply": 3,
+        "symbol": "THEFRAME",
+        "thumbnail_uri": "ipfs://QmTxommxeSrFnyCXdhkbtte4s1VpA1cvAgatxQESSBQ8R8",
+        "timestamp": "2024-07-11T09:52:20+00:00",
+        "creators": [
+          {
+            "creator_address": "tz1Ws6ueRTDTJFmqbyVBpBdDzMdv4gHP9Ui7",
+            "holder": {
+              "alias": "treeskulltown"
+            }
+          }
+        ]
+      },
+      {
+        "artifact_uri": "ipfs://QmV7bePS4SsNdHvSLePTXkBwepfYpzuUTQJEjJy3hdkRwF",
+        "description": "Just feeling the VibezzZ....",
+        "dimensions": {
+          "display": {
+            "mime": "image/gif",
+            "size": 5959919,
+            "dimensions": {
+              "width": 569,
+              "height": 320
+            }
+          },
+          "resized": {
+            "social": {
+              "width": 1200,
+              "height": 675
+            },
+            "source": "display",
+            "thumb288": {
+              "width": 288,
+              "height": 162
+            },
+            "thumb400": {
+              "width": 400,
+              "height": 225
+            }
+          },
+          "artifact": {
+            "mime": "video/mp4",
+            "size": 6031435,
+            "dimensions": {
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          "thumbnail": {
+            "mime": "image/gif",
+            "size": 3207352,
+            "dimensions": {
+              "width": 400,
+              "height": 224
+            }
+          }
+        },
+        "display_uri": "ipfs://Qmd72NJmRoNtuD2ChEEpJ55YkZ4D4tgM6WzP8WDaGXxB2e",
+        "extra": [
+          {
+            "uri": "ipfs://Qmd72NJmRoNtuD2ChEEpJ55YkZ4D4tgM6WzP8WDaGXxB2e",
+            "file_name": "display.png",
+            "file_size": 18987,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "800x800"
+            }
+          },
+          {
+            "uri": "ipfs://QmV7bePS4SsNdHvSLePTXkBwepfYpzuUTQJEjJy3hdkRwF",
+            "file_name": "artifact.mp4",
+            "file_size": 6031435,
+            "mime_type": "video/mp4",
+            "dimensions": {
+              "unit": "px",
+              "value": "1920x1080"
+            }
+          },
+          {
+            "uri": "ipfs://QmcTyvAmN23je4CG1sdqvZkwJCem765yKroKJp1vkkxrRF",
+            "file_name": "thumbnail.png",
+            "file_size": 6180,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "400x400"
+            }
+          }
+        ],
+        "metadata": "ipfs://QmQRzEu8UqNVeVnhEdAgKMFF2LJgiTNELeugrhj59nRH5G",
+        "mime": "video/mp4",
+        "name": "🆅🅸🅱🅴🆉🆉🆉",
+        "rights": "No License. All rights reserved.",
+        "rights_uri": null,
+        "supply": 17,
+        "symbol": "THEFRAME",
+        "thumbnail_uri": "ipfs://QmcTyvAmN23je4CG1sdqvZkwJCem765yKroKJp1vkkxrRF",
+        "timestamp": "2024-07-11T14:19:55+00:00",
+        "creators": [
+          {
+            "creator_address": "tz1ckmtqdYkbzpuSTJiwJFExsZytgC3xxPMF",
+            "holder": {
+              "alias": "Marcotic"
+            }
+          }
+        ]
+      },
+      {
+        "artifact_uri": "ipfs://QmZkSVNkEHPEjcxVreK4VSMULtLHEevFpdntPrWa3nZ8Pn",
+        "description": "Tesserart Presents: \"The Frame\" by HOXID\nTezDev 2024\n\nincommensurable_frequencies_attractor_torus_1\n\n\"Mathematical descriptions sometimes fall short. Perhaps this was a disturbance of the space-time continuum observed in passing.\"\n\n\ntheurbanita 2024\n\n#theurbanita #theurbanita2024 #2024 #tezdev #tezdev2024",
+        "dimensions": {
+          "display": {
+            "mime": "image/jpeg",
+            "size": 26645,
+            "dimensions": {
+              "width": 800,
+              "height": 450
+            }
+          },
+          "resized": {
+            "social": {
+              "width": 1200,
+              "height": 675
+            },
+            "source": "display",
+            "thumb288": {
+              "width": 288,
+              "height": 162
+            },
+            "thumb400": {
+              "width": 400,
+              "height": 225
+            }
+          },
+          "artifact": {
+            "mime": "image/png",
+            "size": 1823053,
+            "dimensions": {
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          "thumbnail": {
+            "mime": "image/jpeg",
+            "size": 9329,
+            "dimensions": {
+              "width": 400,
+              "height": 225
+            }
+          }
+        },
+        "display_uri": "ipfs://QmZ7dVkyCZ639rm5MQz1PjV3fcKvaFMbSL32kBrKMsH5md",
+        "extra": [
+          {
+            "uri": "ipfs://QmZ7dVkyCZ639rm5MQz1PjV3fcKvaFMbSL32kBrKMsH5md",
+            "file_name": "display.png",
+            "file_size": 18987,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "800x800"
+            }
+          },
+          {
+            "uri": "ipfs://QmZkSVNkEHPEjcxVreK4VSMULtLHEevFpdntPrWa3nZ8Pn",
+            "file_name": "artifact.png",
+            "file_size": 1823053,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "1920x1080"
+            }
+          },
+          {
+            "uri": "ipfs://QmfBqdgZ4aYALJP54T87pcY7Cpj5W72ryqGzMD6cptnjSw",
+            "file_name": "thumbnail.png",
+            "file_size": 6180,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "400x400"
+            }
+          }
+        ],
+        "metadata": "ipfs://QmfRqWcSgAtsA3ACHqFRAppdSr8NZg1HhL7F4ZgpzhePKa",
+        "mime": "image/png",
+        "name": "incommensurable_frequencies_attractor_torus_1",
+        "rights": "No License. All rights reserved.",
+        "rights_uri": null,
+        "supply": 18,
+        "symbol": "THEFRAME",
+        "thumbnail_uri": "ipfs://QmfBqdgZ4aYALJP54T87pcY7Cpj5W72ryqGzMD6cptnjSw",
+        "timestamp": "2024-07-11T12:18:25+00:00",
+        "creators": [
+          {
+            "creator_address": "tz1YnJCi3ZoeSgszw6x78WZgeGumecM2EvbW",
+            "holder": {
+              "alias": "theurbanita💫"
+            }
+          }
+        ]
+      },
+      {
+        "artifact_uri": "ipfs://QmXMmkcYCJxwcBpm66ER1snB7HchmNrRjFYPUaLtsAefqC",
+        "description": "It is necessary once in a while.",
+        "dimensions": {
+          "display": {
+            "mime": "image/png",
+            "size": 175596,
+            "dimensions": {
+              "width": 800,
+              "height": 450
+            }
+          },
+          "resized": {
+            "social": {
+              "width": 1200,
+              "height": 675
+            },
+            "source": "display",
+            "thumb288": {
+              "width": 288,
+              "height": 162
+            },
+            "thumb400": {
+              "width": 400,
+              "height": 225
+            }
+          },
+          "artifact": {
+            "mime": "image/png",
+            "size": 3189745,
+            "dimensions": {
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          "thumbnail": {
+            "mime": "image/png",
+            "size": 52028,
+            "dimensions": {
+              "width": 400,
+              "height": 225
+            }
+          }
+        },
+        "display_uri": "ipfs://QmVYg7BdELazFijuxAZTGHzcLfxtVY69YD4nP9nGk7fAAY",
+        "extra": [
+          {
+            "uri": "ipfs://QmVYg7BdELazFijuxAZTGHzcLfxtVY69YD4nP9nGk7fAAY",
+            "file_name": "display.png",
+            "file_size": 18987,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "800x800"
+            }
+          },
+          {
+            "uri": "ipfs://QmXMmkcYCJxwcBpm66ER1snB7HchmNrRjFYPUaLtsAefqC",
+            "file_name": "artifact.png",
+            "file_size": 3189745,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "1920x1080"
+            }
+          },
+          {
+            "uri": "ipfs://QmWdTkWLZbLh6gFajQFJP1U9kgMbdJidRXBq3qpkBxRHih",
+            "file_name": "thumbnail.png",
+            "file_size": 6180,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "400x400"
+            }
+          }
+        ],
+        "metadata": "ipfs://QmeSH4Skjnw1Ls4qg8GvKwTKEVptVAJAxaCy3sajidJXXC",
+        "mime": "image/png",
+        "name": "Touching grass ☘️",
+        "rights": "No License. All rights reserved.",
+        "rights_uri": null,
+        "supply": 24,
+        "symbol": "THEFRAME",
+        "thumbnail_uri": "ipfs://QmWdTkWLZbLh6gFajQFJP1U9kgMbdJidRXBq3qpkBxRHih",
+        "timestamp": "2024-07-11T10:26:40+00:00",
+        "creators": [
+          {
+            "creator_address": "tz1T3TRisZtHaV6bu9HqfEqHtWuYv4VSV4z2",
+            "holder": {
+              "alias": "Cyborg"
+            }
+          }
+        ]
+      },
+      {
+        "artifact_uri": "ipfs://Qma2xzUu5phTtmZM1tVeNhPZutUMTjny6VdXwUY3AYBmZr",
+        "description": "DURING DAWN HOURS THIS PAINTED STORK WAS EAGERLY CALLING OUT FOR ITS MATE.",
+        "dimensions": {
+          "display": {
+            "mime": "image/jpeg",
+            "size": 36518,
+            "dimensions": {
+              "width": 800,
+              "height": 450
+            }
+          },
+          "resized": {
+            "social": {
+              "width": 1200,
+              "height": 675
+            },
+            "source": "display",
+            "thumb288": {
+              "width": 288,
+              "height": 162
+            },
+            "thumb400": {
+              "width": 400,
+              "height": 225
+            }
+          },
+          "artifact": {
+            "mime": "image/jpeg",
+            "size": 1071766,
+            "dimensions": {
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          "thumbnail": {
+            "mime": "image/jpeg",
+            "size": 12155,
+            "dimensions": {
+              "width": 400,
+              "height": 225
+            }
+          }
+        },
+        "display_uri": "ipfs://QmRL777G3LrQkxVTDeSss9QASDdSPfXQck44vSWc3dpwcR",
+        "extra": [
+          {
+            "uri": "ipfs://QmRL777G3LrQkxVTDeSss9QASDdSPfXQck44vSWc3dpwcR",
+            "file_name": "display.png",
+            "file_size": 18987,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "800x800"
+            }
+          },
+          {
+            "uri": "ipfs://Qma2xzUu5phTtmZM1tVeNhPZutUMTjny6VdXwUY3AYBmZr",
+            "file_name": "artifact.jpg",
+            "file_size": 1071766,
+            "mime_type": "image/jpeg",
+            "dimensions": {
+              "unit": "px",
+              "value": "1920x1080"
+            }
+          },
+          {
+            "uri": "ipfs://QmRkKQwfXvPZJ1SKPZdw7u9NWgw3UjjiyFKGmYSPzuZWDd",
+            "file_name": "thumbnail.png",
+            "file_size": 6180,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "400x400"
+            }
+          }
+        ],
+        "metadata": "ipfs://QmeWo2hy2u2ww4brHPmxKbcGkh5KtaRkXah8g2fskoebGb",
+        "mime": "image/jpeg",
+        "name": "THE CALL",
+        "rights": "No License. All rights reserved.",
+        "rights_uri": null,
+        "supply": 16,
+        "symbol": "THEFRAME",
+        "thumbnail_uri": "ipfs://QmRkKQwfXvPZJ1SKPZdw7u9NWgw3UjjiyFKGmYSPzuZWDd",
+        "timestamp": "2024-07-11T15:09:15+00:00",
+        "creators": [
+          {
+            "creator_address": "tz1b4ogjdhJQ2M1xXxY9s4Fkrfs2CjSn7tZv",
+            "holder": {
+              "alias": null
+            }
+          }
+        ]
+      },
+      {
+        "artifact_uri": "ipfs://QmSnix6jJM8SHxVRmot3ytAB4r7fT85Wu7qvdjX8RpHSH6",
+        "description": "Amateur painting",
+        "dimensions": {
+          "display": {
+            "mime": "image/jpeg",
+            "size": 62273,
+            "dimensions": {
+              "width": 800,
+              "height": 450
+            }
+          },
+          "resized": {
+            "social": {
+              "width": 1200,
+              "height": 675
+            },
+            "source": "display",
+            "thumb288": {
+              "width": 288,
+              "height": 162
+            },
+            "thumb400": {
+              "width": 400,
+              "height": 225
+            }
+          },
+          "artifact": {
+            "mime": "image/jpeg",
+            "size": 363373,
+            "dimensions": {
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          "thumbnail": {
+            "mime": "image/jpeg",
+            "size": 22518,
+            "dimensions": {
+              "width": 400,
+              "height": 225
+            }
+          }
+        },
+        "display_uri": "ipfs://Qmc5daEz7r2dmdKC33YUhdjyG14ujZPiRJRk8ahURkV2PS",
+        "extra": [
+          {
+            "uri": "ipfs://Qmc5daEz7r2dmdKC33YUhdjyG14ujZPiRJRk8ahURkV2PS",
+            "file_name": "display.png",
+            "file_size": 18987,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "800x800"
+            }
+          },
+          {
+            "uri": "ipfs://QmSnix6jJM8SHxVRmot3ytAB4r7fT85Wu7qvdjX8RpHSH6",
+            "file_name": "artifact.jpg",
+            "file_size": 363373,
+            "mime_type": "image/jpeg",
+            "dimensions": {
+              "unit": "px",
+              "value": "1920x1080"
+            }
+          },
+          {
+            "uri": "ipfs://QmR4ZNTPkv5Vkj5xrvGJ8A83tRcEHC2cg4NThmDh7jRxbV",
+            "file_name": "thumbnail.png",
+            "file_size": 6180,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "400x400"
+            }
+          }
+        ],
+        "metadata": "ipfs://QmVkFSMwVNTVh1zydoVL8ygw6t9x17tZXFaZUjfTkYGHpy",
+        "mime": "image/jpeg",
+        "name": "Cat Meets Duck",
+        "rights": "No License. All rights reserved.",
+        "rights_uri": null,
+        "supply": 4,
+        "symbol": "THEFRAME",
+        "thumbnail_uri": "ipfs://QmR4ZNTPkv5Vkj5xrvGJ8A83tRcEHC2cg4NThmDh7jRxbV",
+        "timestamp": "2024-07-11T14:15:05+00:00",
+        "creators": [
+          {
+            "creator_address": "tz1QYrZhE1QMRSJHrGBCuUk6ZzMjvESeWWZG",
+            "holder": {
+              "alias": "glbkst"
+            }
+          }
+        ]
+      },
+      {
+        "artifact_uri": "ipfs://QmdnXsiGdqbx2L8QSQy49EM73oxkPddwZwNHxgXMPj7pED",
+        "description": "Standing still, the lonely trees are bathed by the Sun",
+        "dimensions": {
+          "display": {
+            "mime": "image/jpeg",
+            "size": 29487,
+            "dimensions": {
+              "width": 800,
+              "height": 450
+            }
+          },
+          "resized": {
+            "social": {
+              "width": 1200,
+              "height": 675
+            },
+            "source": "display",
+            "thumb288": {
+              "width": 288,
+              "height": 162
+            },
+            "thumb400": {
+              "width": 400,
+              "height": 225
+            }
+          },
+          "artifact": {
+            "mime": "image/jpeg",
+            "size": 751903,
+            "dimensions": {
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          "thumbnail": {
+            "mime": "image/jpeg",
+            "size": 9230,
+            "dimensions": {
+              "width": 400,
+              "height": 225
+            }
+          }
+        },
+        "display_uri": "ipfs://QmRszv2fnBqbhCFoSgZTG9ZouGKsKca3MBDkcK1J5y5VdJ",
+        "extra": [
+          {
+            "uri": "ipfs://QmRszv2fnBqbhCFoSgZTG9ZouGKsKca3MBDkcK1J5y5VdJ",
+            "file_name": "display.png",
+            "file_size": 18987,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "800x800"
+            }
+          },
+          {
+            "uri": "ipfs://QmdnXsiGdqbx2L8QSQy49EM73oxkPddwZwNHxgXMPj7pED",
+            "file_name": "artifact.jpg",
+            "file_size": 751903,
+            "mime_type": "image/jpeg",
+            "dimensions": {
+              "unit": "px",
+              "value": "1920x1080"
+            }
+          },
+          {
+            "uri": "ipfs://QmVp9ZEnMpPZGBEfZ1BYsdVhxVVW7MUGGj789yXLtStbgt",
+            "file_name": "thumbnail.png",
+            "file_size": 6180,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "400x400"
+            }
+          }
+        ],
+        "metadata": "ipfs://Qmcoetp7GaAiDXWWP5YMBP9zs6TKVpRgzPq2RZLVLDFbhb",
+        "mime": "image/jpeg",
+        "name": "Lonely Trees",
+        "rights": "No License. All rights reserved.",
+        "rights_uri": null,
+        "supply": 10,
+        "symbol": "THEFRAME",
+        "thumbnail_uri": "ipfs://QmVp9ZEnMpPZGBEfZ1BYsdVhxVVW7MUGGj789yXLtStbgt",
+        "timestamp": "2024-07-11T14:16:25+00:00",
+        "creators": [
+          {
+            "creator_address": "tz1UBq31NSjTnXHPqVrs7dfh8GPybCKjPST6",
+            "holder": {
+              "alias": "Canary Islander"
+            }
+          }
+        ]
+      },
+      {
+        "artifact_uri": "ipfs://Qmecw614SdEeVhqXCYz29K2D924ZuwTksnoVuJ7WtWKsLk",
+        "description": "The Dermaptera serves as a compelling symbol of the interplay between the hidden and the known. Its bizarre appearance and secretive habits embody the uncanny and the subconscious, transforming the mundane into the extraordinary. In contrast, its intricate design and functional morphology reflect nature's meticulous order and beauty. Thus, the Dermaptera bridges these philosophical realms, challenging perceptions while inviting admiration, encapsulating the complex dance between reality and imagination, the seen and the unseen.",
+        "dimensions": {
+          "display": {
+            "mime": "image/jpeg",
+            "size": 24298,
+            "dimensions": {
+              "width": 800,
+              "height": 450
+            }
+          },
+          "resized": {
+            "social": {
+              "width": 1200,
+              "height": 675
+            },
+            "source": "display",
+            "thumb288": {
+              "width": 288,
+              "height": 162
+            },
+            "thumb400": {
+              "width": 400,
+              "height": 225
+            }
+          },
+          "artifact": {
+            "mime": "image/png",
+            "size": 2026527,
+            "dimensions": {
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          "thumbnail": {
+            "mime": "image/jpeg",
+            "size": 8372,
+            "dimensions": {
+              "width": 400,
+              "height": 225
+            }
+          }
+        },
+        "display_uri": "ipfs://QmZAySS1FuRgBLuQancirCqVnUemzYz7fYxZoSRnK583HY",
+        "extra": [
+          {
+            "uri": "ipfs://QmZAySS1FuRgBLuQancirCqVnUemzYz7fYxZoSRnK583HY",
+            "file_name": "display.png",
+            "file_size": 18987,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "800x800"
+            }
+          },
+          {
+            "uri": "ipfs://Qmecw614SdEeVhqXCYz29K2D924ZuwTksnoVuJ7WtWKsLk",
+            "file_name": "artifact.png",
+            "file_size": 2026527,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "1920x1080"
+            }
+          },
+          {
+            "uri": "ipfs://QmQLHjmeK76VaYFxHMgM63Pta2pkqiAEW4EoBdM8VR7tJ4",
+            "file_name": "thumbnail.png",
+            "file_size": 6180,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "400x400"
+            }
+          }
+        ],
+        "metadata": "ipfs://QmQ5nKauoYaXc6b2hftxafEdF76SQxSDZxvVeAW7bFZcdP",
+        "mime": "image/png",
+        "name": "Dermaptera",
+        "rights": "No License. All rights reserved.",
+        "rights_uri": null,
+        "supply": 27,
+        "symbol": "THEFRAME",
+        "thumbnail_uri": "ipfs://QmQLHjmeK76VaYFxHMgM63Pta2pkqiAEW4EoBdM8VR7tJ4",
+        "timestamp": "2024-07-11T14:59:20+00:00",
+        "creators": [
+          {
+            "creator_address": "tz1PKkPLvUotmysqMgPhaYLPa4nrySVLqne8",
+            "holder": {
+              "alias": "Kristina Thiele"
+            }
+          }
+        ]
+      },
+      {
+        "artifact_uri": "ipfs://QmYfqusDZPC1DxhGibejYAyuWB6s6wP2V2qXAe6oTpC5i1",
+        "description": "\"Obscured Strips\" captures the hidden and fragmented sides of our private identities. Inspired by Robert Rauschenberg, Frank Stella, and Cindy Sherman, this piece uses vibrant colors and layered textures to explore how we perceive and understand the different facets of a person and the complexities and elusiveness of relationships.",
+        "dimensions": {
+          "display": {
+            "mime": "image/png",
+            "size": 218889,
+            "dimensions": {
+              "width": 800,
+              "height": 450
+            }
+          },
+          "resized": {
+            "social": {
+              "width": 1200,
+              "height": 675
+            },
+            "source": "display",
+            "thumb288": {
+              "width": 288,
+              "height": 162
+            },
+            "thumb400": {
+              "width": 400,
+              "height": 225
+            }
+          },
+          "artifact": {
+            "mime": "image/png",
+            "size": 5037658,
+            "dimensions": {
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          "thumbnail": {
+            "mime": "image/png",
+            "size": 57667,
+            "dimensions": {
+              "width": 400,
+              "height": 225
+            }
+          }
+        },
+        "display_uri": "ipfs://QmUDwYP6aJHmpMabzG9d7b3uvaUosyCM9shDoC5E932SJJ",
+        "extra": [
+          {
+            "uri": "ipfs://QmUDwYP6aJHmpMabzG9d7b3uvaUosyCM9shDoC5E932SJJ",
+            "file_name": "display.png",
+            "file_size": 18987,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "800x800"
+            }
+          },
+          {
+            "uri": "ipfs://QmYfqusDZPC1DxhGibejYAyuWB6s6wP2V2qXAe6oTpC5i1",
+            "file_name": "artifact.png",
+            "file_size": 5037658,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "1920x1080"
+            }
+          },
+          {
+            "uri": "ipfs://QmWvWZXSnKN4Wr36ZZ7CHqfbVJD2zZcjUGsBS8afGA3GsP",
+            "file_name": "thumbnail.png",
+            "file_size": 6180,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "400x400"
+            }
+          }
+        ],
+        "metadata": "ipfs://QmeZyMNBgQTZGMTwuykWHv9NkvoQgCijf3xeaDrNawzDXu",
+        "mime": "image/png",
+        "name": "Obscured Strips",
+        "rights": "No License. All rights reserved.",
+        "rights_uri": null,
+        "supply": 22,
+        "symbol": "THEFRAME",
+        "thumbnail_uri": "ipfs://QmWvWZXSnKN4Wr36ZZ7CHqfbVJD2zZcjUGsBS8afGA3GsP",
+        "timestamp": "2024-07-11T09:52:40+00:00",
+        "creators": [
+          {
+            "creator_address": "tz1TyDzhNe4gEYAQjvvAvtKNcCAkuneXFLJL",
+            "holder": {
+              "alias": "FAILOFTEN"
+            }
+          }
+        ]
+      },
+      {
+        "artifact_uri": "ipfs://QmYNJA9LUYJhCk9WbKBaLN58UnCUF2hBgo4wTYXMG7Pgu7",
+        "description": "Backyard, warm and still,\nSunshine dripping through the trees,\nSummer’s drowsy spell.\n\nAn AI Collaboration by YEDAI 2024",
+        "dimensions": {
+          "display": {
+            "mime": "image/png",
+            "size": 236251,
+            "dimensions": {
+              "width": 800,
+              "height": 450
+            }
+          },
+          "resized": {
+            "social": {
+              "width": 1200,
+              "height": 675
+            },
+            "source": "display",
+            "thumb288": {
+              "width": 288,
+              "height": 162
+            },
+            "thumb400": {
+              "width": 400,
+              "height": 225
+            }
+          },
+          "artifact": {
+            "mime": "image/png",
+            "size": 3786291,
+            "dimensions": {
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          "thumbnail": {
+            "mime": "image/png",
+            "size": 61693,
+            "dimensions": {
+              "width": 400,
+              "height": 225
+            }
+          }
+        },
+        "display_uri": "ipfs://QmazLKizuNHCvm4GNT4myn6gAmsJHaoSo58PE3e1owrsXs",
+        "extra": [
+          {
+            "uri": "ipfs://QmazLKizuNHCvm4GNT4myn6gAmsJHaoSo58PE3e1owrsXs",
+            "file_name": "display.png",
+            "file_size": 18987,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "800x800"
+            }
+          },
+          {
+            "uri": "ipfs://QmYNJA9LUYJhCk9WbKBaLN58UnCUF2hBgo4wTYXMG7Pgu7",
+            "file_name": "artifact.png",
+            "file_size": 3786291,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "1920x1080"
+            }
+          },
+          {
+            "uri": "ipfs://QmNXKThHrHMXKqHVmw91dPCfs3ER6Y5vZKmMaoh2uWeZCN",
+            "file_name": "thumbnail.png",
+            "file_size": 6180,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "400x400"
+            }
+          }
+        ],
+        "metadata": "ipfs://QmVSsfHdy36HnK5YFdSUT4TRtGckpEdJ8iznqeZNFSwbkB",
+        "mime": "image/png",
+        "name": "Backyard Doldrum",
+        "rights": "No License. All rights reserved.",
+        "rights_uri": null,
+        "supply": 22,
+        "symbol": "THEFRAME",
+        "thumbnail_uri": "ipfs://QmNXKThHrHMXKqHVmw91dPCfs3ER6Y5vZKmMaoh2uWeZCN",
+        "timestamp": "2024-07-11T14:28:25+00:00",
+        "creators": [
+          {
+            "creator_address": "tz1LSf23YMtCvJhzHKKZmfCNVR8XpShs7fk8",
+            "holder": {
+              "alias": "YEDAI"
+            }
+          }
+        ]
+      },
+      {
+        "artifact_uri": "ipfs://QmX6bRLg1Acjs9yKFEtHLMYBAPxceq9awKbDi9faPmAEiN",
+        "description": "Aurora's dance, now fragmented light,\nDigital pulses, mysterious might,\nWhispers of a force unseen,\nA transaction devourer in the machine.\n\nGouache painting digitalized and processed through a homemade shader script.\nGIF 1920x1020, 20 frames",
+        "dimensions": {
+          "display": {
+            "mime": "image/gif",
+            "size": 5686678,
+            "dimensions": {
+              "width": 800,
+              "height": 450
+            }
+          },
+          "resized": {
+            "social": {
+              "width": 1200,
+              "height": 675
+            },
+            "source": "artifact",
+            "thumb288": {
+              "width": 288,
+              "height": 162
+            },
+            "thumb400": {
+              "width": 400,
+              "height": 225
+            }
+          },
+          "artifact": {
+            "mime": "image/gif",
+            "size": 27999322,
+            "dimensions": {
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          "thumbnail": {
+            "mime": "image/gif",
+            "size": 1344603,
+            "dimensions": {
+              "width": 400,
+              "height": 225
+            }
+          }
+        },
+        "display_uri": "ipfs://QmRMnSpHthnr19rA4JfbCsLFnvJRaNZxfL5VbueBxLoTRC",
+        "extra": [
+          {
+            "uri": "ipfs://QmRMnSpHthnr19rA4JfbCsLFnvJRaNZxfL5VbueBxLoTRC",
+            "file_name": "display.png",
+            "file_size": 18987,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "800x800"
+            }
+          },
+          {
+            "uri": "ipfs://QmX6bRLg1Acjs9yKFEtHLMYBAPxceq9awKbDi9faPmAEiN",
+            "file_name": "artifact.gif",
+            "file_size": 27999322,
+            "mime_type": "image/gif",
+            "dimensions": {
+              "unit": "px",
+              "value": "1920x1080"
+            }
+          },
+          {
+            "uri": "ipfs://QmUqVqpfFCAhDHcaS4eDSEmiB7tLUV4YT2b75CCSVrRXRb",
+            "file_name": "thumbnail.png",
+            "file_size": 6180,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "400x400"
+            }
+          }
+        ],
+        "metadata": "ipfs://QmbyRuqrS12fvoziseBs76BHnFEvAMDYXXcvdc2dN3F67z",
+        "mime": "image/gif",
+        "name": "Hashed Borealis",
+        "rights": "No License. All rights reserved.",
+        "rights_uri": null,
+        "supply": 15,
+        "symbol": "THEFRAME",
+        "thumbnail_uri": "ipfs://QmUqVqpfFCAhDHcaS4eDSEmiB7tLUV4YT2b75CCSVrRXRb",
+        "timestamp": "2024-07-11T10:20:40+00:00",
+        "creators": [
+          {
+            "creator_address": "tz1cmFPdKwUHdDiXgoMbfTD6aUSLAC7rfNFr",
+            "holder": {
+              "alias": "coneheadsquid"
+            }
+          }
+        ]
+      },
+      {
+        "artifact_uri": "ipfs://QmcnQqj2obq3tDEzk4nA3YAsXfhtZXwAESNDYhBCkT8Qr8",
+        "description": "What do you do when you’re stuck in a dream?",
+        "dimensions": {
+          "display": {
+            "mime": "image/jpeg",
+            "size": 36902,
+            "dimensions": {
+              "width": 800,
+              "height": 450
+            }
+          },
+          "resized": {
+            "social": {
+              "width": 1200,
+              "height": 675
+            },
+            "source": "display",
+            "thumb288": {
+              "width": 288,
+              "height": 162
+            },
+            "thumb400": {
+              "width": 400,
+              "height": 225
+            }
+          },
+          "artifact": {
+            "mime": "image/jpeg",
+            "size": 476062,
+            "dimensions": {
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          "thumbnail": {
+            "mime": "image/jpeg",
+            "size": 12701,
+            "dimensions": {
+              "width": 400,
+              "height": 225
+            }
+          }
+        },
+        "display_uri": "ipfs://QmfHU9D8oA9gnqPJyJ4BRo9zwjWKgNqFp3uVnSAH9EekTD",
+        "extra": [
+          {
+            "uri": "ipfs://QmfHU9D8oA9gnqPJyJ4BRo9zwjWKgNqFp3uVnSAH9EekTD",
+            "file_name": "display.png",
+            "file_size": 18987,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "800x800"
+            }
+          },
+          {
+            "uri": "ipfs://QmcnQqj2obq3tDEzk4nA3YAsXfhtZXwAESNDYhBCkT8Qr8",
+            "file_name": "artifact.jpg",
+            "file_size": 476062,
+            "mime_type": "image/jpeg",
+            "dimensions": {
+              "unit": "px",
+              "value": "1920x1080"
+            }
+          },
+          {
+            "uri": "ipfs://Qmab6nJwj8zzGSpykdMy4Vdz5dWxpy2evLG2GmKXVPUFvG",
+            "file_name": "thumbnail.png",
+            "file_size": 6180,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "400x400"
+            }
+          }
+        ],
+        "metadata": "ipfs://Qme2LAj9n1mevbCgqmW15RTibh2upqsSRvJmrRVFxaJ34b",
+        "mime": "image/jpeg",
+        "name": "Dark Delirium",
+        "rights": "No License. All rights reserved.",
+        "rights_uri": null,
+        "supply": 25,
+        "symbol": "THEFRAME",
+        "thumbnail_uri": "ipfs://Qmab6nJwj8zzGSpykdMy4Vdz5dWxpy2evLG2GmKXVPUFvG",
+        "timestamp": "2024-07-11T11:57:15+00:00",
+        "creators": [
+          {
+            "creator_address": "tz1LvjGR7QTwFLMv8caZ3aegTKZhYKX4FgBo",
+            "holder": {
+              "alias": "Elfearsfoxsox"
+            }
+          }
+        ]
+      },
+      {
+        "artifact_uri": "ipfs://QmZ5ki2VEW7fbqWCKNc6vk7BrF89L8WDvaxQBZcUmP4QAA",
+        "description": "Garbage can be beautiful.",
+        "dimensions": {
+          "display": {
+            "mime": "image/gif",
+            "size": 1502788,
+            "dimensions": {
+              "width": 800,
+              "height": 450
+            }
+          },
+          "resized": {
+            "social": {
+              "width": 1200,
+              "height": 675
+            },
+            "source": "artifact",
+            "thumb288": {
+              "width": 288,
+              "height": 162
+            },
+            "thumb400": {
+              "width": 400,
+              "height": 225
+            }
+          },
+          "artifact": {
+            "mime": "image/gif",
+            "size": 8245133,
+            "dimensions": {
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          "thumbnail": {
+            "mime": "image/gif",
+            "size": 374407,
+            "dimensions": {
+              "width": 400,
+              "height": 225
+            }
+          }
+        },
+        "display_uri": "ipfs://QmSKNS1PFta3K7q76GVbH1q7HWFVAqoWXSxNsPfRXR53Qm",
+        "extra": [
+          {
+            "uri": "ipfs://QmSKNS1PFta3K7q76GVbH1q7HWFVAqoWXSxNsPfRXR53Qm",
+            "file_name": "display.png",
+            "file_size": 18987,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "800x800"
+            }
+          },
+          {
+            "uri": "ipfs://QmZ5ki2VEW7fbqWCKNc6vk7BrF89L8WDvaxQBZcUmP4QAA",
+            "file_name": "artifact.gif",
+            "file_size": 8245133,
+            "mime_type": "image/gif",
+            "dimensions": {
+              "unit": "px",
+              "value": "1920x1080"
+            }
+          },
+          {
+            "uri": "ipfs://QmUWqvvNCr5qTNaB9p5q1Q3DrDwi8a2q6HpDFnpqpu3Ce1",
+            "file_name": "thumbnail.png",
+            "file_size": 6180,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "400x400"
+            }
+          }
+        ],
+        "metadata": "ipfs://QmQAQN2BjATENAGy8UX2jVCXJF5WzpargfXn6QXGJgd93A",
+        "mime": "image/gif",
+        "name": "Pulsing Wad",
+        "rights": "No License. All rights reserved.",
+        "rights_uri": null,
+        "supply": 16,
+        "symbol": "THEFRAME",
+        "thumbnail_uri": "ipfs://QmUWqvvNCr5qTNaB9p5q1Q3DrDwi8a2q6HpDFnpqpu3Ce1",
+        "timestamp": "2024-07-11T10:57:05+00:00",
+        "creators": [
+          {
+            "creator_address": "tz1PbeseFH2cqTZowrBU9M5x2ukgbirQFGfV",
+            "holder": {
+              "alias": "MeterMan"
+            }
+          }
+        ]
+      },
+      {
+        "artifact_uri": "ipfs://QmfBniPdsPRBXUXZqq1v7CEGKkNYKi2QbH2j3wnuSjtCJW",
+        "description": "\"MissyXTezDev 2024\" is an enchanting piece by the artist Mynimal Monster aka MyMo.\nKnown in the digital art world since 2021, Mymo has brought Missy to life in various captivating collections. This artwork showcases Missy, a whimsical character that embodies the playful and imaginative spirit of Mymo's creations. While Missy's previous editions on Tezos are sold out, you can still find her adventures continuing on Zora. Dive into the colorful world of Missy and experience the unique blend of creativity and storytelling that Mynimal Monster is celebrated for.\n\nExplore more from the artist:\n\nWebsite: https://mynimalmonster.wixsite.com/mynimalmonster\nX/Twitter: @MynimalM\nFarcaster: @mynimalmonster",
+        "dimensions": {
+          "display": {
+            "mime": "image/gif",
+            "size": 2025481,
+            "dimensions": {
+              "width": 800,
+              "height": 450
+            }
+          },
+          "resized": {
+            "social": {
+              "width": 1200,
+              "height": 675
+            },
+            "source": "artifact",
+            "thumb288": {
+              "width": 288,
+              "height": 162
+            },
+            "thumb400": {
+              "width": 400,
+              "height": 225
+            }
+          },
+          "artifact": {
+            "mime": "image/gif",
+            "size": 12693427,
+            "dimensions": {
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          "thumbnail": {
+            "mime": "image/gif",
+            "size": 454197,
+            "dimensions": {
+              "width": 400,
+              "height": 225
+            }
+          }
+        },
+        "display_uri": "ipfs://QmT5R3S2pqPkKWWGCxUR9YpfdpGWGxuZNG1eNHUkSSgDCt",
+        "extra": [
+          {
+            "uri": "ipfs://QmT5R3S2pqPkKWWGCxUR9YpfdpGWGxuZNG1eNHUkSSgDCt",
+            "file_name": "display.png",
+            "file_size": 18987,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "800x800"
+            }
+          },
+          {
+            "uri": "ipfs://QmfBniPdsPRBXUXZqq1v7CEGKkNYKi2QbH2j3wnuSjtCJW",
+            "file_name": "artifact.gif",
+            "file_size": 12693427,
+            "mime_type": "image/gif",
+            "dimensions": {
+              "unit": "px",
+              "value": "1920x1080"
+            }
+          },
+          {
+            "uri": "ipfs://Qmdm9ot4pUxe6Gm7CCu7ziu1rS3Aofawzs7sNziynPQSuh",
+            "file_name": "thumbnail.png",
+            "file_size": 6180,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "400x400"
+            }
+          }
+        ],
+        "metadata": "ipfs://QmSXQydkQ1nBgjSdnG7T5Td1Mj5n7LXhsTjTXphsGDaY9E",
+        "mime": "image/gif",
+        "name": "MissyXTezDev 2024",
+        "rights": "No License. All rights reserved.",
+        "rights_uri": null,
+        "supply": 10,
+        "symbol": "THEFRAME",
+        "thumbnail_uri": "ipfs://Qmdm9ot4pUxe6Gm7CCu7ziu1rS3Aofawzs7sNziynPQSuh",
+        "timestamp": "2024-07-11T11:50:45+00:00",
+        "creators": [
+          {
+            "creator_address": "tz1a6Twujy9VdhtZPMvVftdbKtTgJAMWnjva",
+            "holder": {
+              "alias": "Mynimal Monster"
+            }
+          }
+        ]
+      },
+      {
+        "artifact_uri": "ipfs://QmZFVgAhcNy1Arm5abFPAGwuTU6YHiY9mTWLc7KHVPZ1Bc",
+        "description": "480x270 upscaled to 1920x1080, 150 frames",
+        "dimensions": {
+          "display": {
+            "mime": "image/gif",
+            "size": 140764,
+            "dimensions": {
+              "width": 800,
+              "height": 450
+            }
+          },
+          "resized": {
+            "social": {
+              "width": 1200,
+              "height": 675
+            },
+            "source": "artifact",
+            "thumb288": {
+              "width": 288,
+              "height": 162
+            },
+            "thumb400": {
+              "width": 400,
+              "height": 225
+            }
+          },
+          "artifact": {
+            "mime": "image/gif",
+            "size": 379506,
+            "dimensions": {
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          "thumbnail": {
+            "mime": "image/gif",
+            "size": 59965,
+            "dimensions": {
+              "width": 400,
+              "height": 225
+            }
+          }
+        },
+        "display_uri": "ipfs://Qmcku59vMHtXUmH9vHgQ4Pp9HMJekSnzHcybKDEKkqZaAe",
+        "extra": [
+          {
+            "uri": "ipfs://Qmcku59vMHtXUmH9vHgQ4Pp9HMJekSnzHcybKDEKkqZaAe",
+            "file_name": "display.png",
+            "file_size": 18987,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "800x800"
+            }
+          },
+          {
+            "uri": "ipfs://QmZFVgAhcNy1Arm5abFPAGwuTU6YHiY9mTWLc7KHVPZ1Bc",
+            "file_name": "artifact.gif",
+            "file_size": 379506,
+            "mime_type": "image/gif",
+            "dimensions": {
+              "unit": "px",
+              "value": "1920x1080"
+            }
+          },
+          {
+            "uri": "ipfs://Qma9ZKPtYVxEJYVHk8VFtHvqB1w9ajBX9pnb4tyoZ3R7Zu",
+            "file_name": "thumbnail.png",
+            "file_size": 6180,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "400x400"
+            }
+          }
+        ],
+        "metadata": "ipfs://QmNRZTfCV3Kemjmpes2tmmsUENZ8DQgLdtPPaW6u61UN6X",
+        "mime": "image/gif",
+        "name": "▛▗",
+        "rights": "No License. All rights reserved.",
+        "rights_uri": null,
+        "supply": 50,
+        "symbol": "THEFRAME",
+        "thumbnail_uri": "ipfs://Qma9ZKPtYVxEJYVHk8VFtHvqB1w9ajBX9pnb4tyoZ3R7Zu",
+        "timestamp": "2024-07-11T14:35:45+00:00",
+        "creators": [
+          {
+            "creator_address": "tz1NgN7FCrSzs4vfMroKXyKE32WsReYD4WPd",
+            "holder": {
+              "alias": "loackme"
+            }
+          }
+        ]
+      },
+      {
+        "artifact_uri": "ipfs://Qmc9d7XxYw37aLginQJxP5rVmHhRHSKLGcpHUGvYz699DV",
+        "description": "atomic model structure",
+        "dimensions": {
+          "display": {
+            "mime": "image/jpeg",
+            "size": 73297,
+            "dimensions": {
+              "width": 800,
+              "height": 450
+            }
+          },
+          "resized": {
+            "social": {
+              "width": 1200,
+              "height": 675
+            },
+            "source": "display",
+            "thumb288": {
+              "width": 288,
+              "height": 162
+            },
+            "thumb400": {
+              "width": 400,
+              "height": 225
+            }
+          },
+          "artifact": {
+            "mime": "image/png",
+            "size": 3356319,
+            "dimensions": {
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          "thumbnail": {
+            "mime": "image/jpeg",
+            "size": 28993,
+            "dimensions": {
+              "width": 400,
+              "height": 225
+            }
+          }
+        },
+        "display_uri": "ipfs://QmZk4DfVA7ymA6qDQhPTwSayDu8XX4R6keAsQtuvDuyLeR",
+        "extra": [
+          {
+            "uri": "ipfs://QmZk4DfVA7ymA6qDQhPTwSayDu8XX4R6keAsQtuvDuyLeR",
+            "file_name": "display.png",
+            "file_size": 18987,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "800x800"
+            }
+          },
+          {
+            "uri": "ipfs://Qmc9d7XxYw37aLginQJxP5rVmHhRHSKLGcpHUGvYz699DV",
+            "file_name": "artifact.png",
+            "file_size": 3356319,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "1920x1080"
+            }
+          },
+          {
+            "uri": "ipfs://QmafjyvxLzgxWuR1Cv7HkBeo2pA9zwt74d3ZQjkLoxCRhn",
+            "file_name": "thumbnail.png",
+            "file_size": 6180,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "400x400"
+            }
+          }
+        ],
+        "metadata": "ipfs://QmcYkNgMwbdHpLSkya71xmJAqMi9Kg8kmNUUASWgvZgfuu",
+        "mime": "image/png",
+        "name": "atomium",
+        "rights": "No License. All rights reserved.",
+        "rights_uri": null,
+        "supply": 17,
+        "symbol": "THEFRAME",
+        "thumbnail_uri": "ipfs://QmafjyvxLzgxWuR1Cv7HkBeo2pA9zwt74d3ZQjkLoxCRhn",
+        "timestamp": "2024-07-11T12:55:35+00:00",
+        "creators": [
+          {
+            "creator_address": "tz2U93fu1pssE95bADCHfbpgo9r9LZL1UJvk",
+            "holder": {
+              "alias": "amorvobiscum"
+            }
+          }
+        ]
+      },
+      {
+        "artifact_uri": "ipfs://QmdG3MZVWJSYMFNWThas6JLH5Tn4FLxQtVLshT8y3Ywnbr",
+        "description": "Abandoned building long exposure\nPlace : Tuticorin, India",
+        "dimensions": {
+          "display": {
+            "mime": "image/jpeg",
+            "size": 24831,
+            "dimensions": {
+              "width": 800,
+              "height": 450
+            }
+          },
+          "resized": {
+            "social": {
+              "width": 1200,
+              "height": 675
+            },
+            "source": "display",
+            "thumb288": {
+              "width": 288,
+              "height": 162
+            },
+            "thumb400": {
+              "width": 400,
+              "height": 225
+            }
+          },
+          "artifact": {
+            "mime": "image/jpeg",
+            "size": 417423,
+            "dimensions": {
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          "thumbnail": {
+            "mime": "image/jpeg",
+            "size": 8869,
+            "dimensions": {
+              "width": 400,
+              "height": 225
+            }
+          }
+        },
+        "display_uri": "ipfs://QmSafsKG82DQ4xhbKYbajVkuRu7vXDnmKAAnXNBZLdwvMM",
+        "extra": [
+          {
+            "uri": "ipfs://QmSafsKG82DQ4xhbKYbajVkuRu7vXDnmKAAnXNBZLdwvMM",
+            "file_name": "display.png",
+            "file_size": 18987,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "800x800"
+            }
+          },
+          {
+            "uri": "ipfs://QmdG3MZVWJSYMFNWThas6JLH5Tn4FLxQtVLshT8y3Ywnbr",
+            "file_name": "artifact.jpg",
+            "file_size": 417423,
+            "mime_type": "image/jpeg",
+            "dimensions": {
+              "unit": "px",
+              "value": "1920x1080"
+            }
+          },
+          {
+            "uri": "ipfs://Qmd1k8MyqCB9CHZiCXhRCfMLW3qXnx2q68RJT9C3ZHnydg",
+            "file_name": "thumbnail.png",
+            "file_size": 6180,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "400x400"
+            }
+          }
+        ],
+        "metadata": "ipfs://QmPeBfqy3SdLGC7QTTGXAdUjHn3Rb838mEsSZUqd6AKNk1",
+        "mime": "image/jpeg",
+        "name": "Abandoned building long exposure",
+        "rights": "No License. All rights reserved.",
+        "rights_uri": null,
+        "supply": 24,
+        "symbol": "THEFRAME",
+        "thumbnail_uri": "ipfs://Qmd1k8MyqCB9CHZiCXhRCfMLW3qXnx2q68RJT9C3ZHnydg",
+        "timestamp": "2024-07-11T14:05:10+00:00",
+        "creators": [
+          {
+            "creator_address": "tz1SVE4BPF1Cit1VKmMQhZUqzpW9niNn1GPv",
+            "holder": {
+              "alias": "Sivanantham Govindan"
+            }
+          }
+        ]
+      },
+      {
+        "artifact_uri": "ipfs://QmZWRhxoKK9WtXpEmpzf9RsbVy8NVg8yxhT86Y9UVHtBAu",
+        "description": "Artists emerging from the safety or their warm sea of melted cheese.",
+        "dimensions": {
+          "display": {
+            "mime": "image/gif",
+            "size": 8645969,
+            "dimensions": {
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          "resized": {
+            "social": {
+              "width": 1200,
+              "height": 675
+            },
+            "source": "display",
+            "thumb288": {
+              "width": 288,
+              "height": 162
+            },
+            "thumb400": {
+              "width": 400,
+              "height": 225
+            }
+          },
+          "artifact": {
+            "mime": "video/mp4",
+            "size": 39563749,
+            "dimensions": {
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          "thumbnail": {
+            "mime": "image/gif",
+            "size": 376043,
+            "dimensions": {
+              "width": 400,
+              "height": 225
+            }
+          }
+        },
+        "display_uri": "ipfs://QmePgDb2qzWZxLXcX1cRf3grTPSZo4iUCYdXKPJcWkQ1r9",
+        "extra": [
+          {
+            "uri": "ipfs://QmePgDb2qzWZxLXcX1cRf3grTPSZo4iUCYdXKPJcWkQ1r9",
+            "file_name": "display.png",
+            "file_size": 18987,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "800x800"
+            }
+          },
+          {
+            "uri": "ipfs://QmZWRhxoKK9WtXpEmpzf9RsbVy8NVg8yxhT86Y9UVHtBAu",
+            "file_name": "artifact.mp4",
+            "file_size": 39563749,
+            "mime_type": "video/mp4",
+            "dimensions": {
+              "unit": "px",
+              "value": "1920x1080"
+            }
+          },
+          {
+            "uri": "ipfs://QmPTHtPPsrGobR8seGsdgCcwwFvgV2wjEcMJXE4DgCU1u9",
+            "file_name": "thumbnail.png",
+            "file_size": 6180,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "400x400"
+            }
+          }
+        ],
+        "metadata": "ipfs://QmefYAv4AyNqo6gaz4xzm1Kxe7JwGEbQ7QbgwLrZAdXvtG",
+        "mime": "video/mp4",
+        "name": "Emerge",
+        "rights": "No License. All rights reserved.",
+        "rights_uri": null,
+        "supply": 4,
+        "symbol": "THEFRAME",
+        "thumbnail_uri": "ipfs://QmPTHtPPsrGobR8seGsdgCcwwFvgV2wjEcMJXE4DgCU1u9",
+        "timestamp": "2024-07-11T11:49:25+00:00",
+        "creators": [
+          {
+            "creator_address": "tz1Sz7wHwWAjB9zBYKbzTSC66kCtBpJnR3W1",
+            "holder": {
+              "alias": "BonsAI-fox"
+            }
+          }
+        ]
+      },
+      {
+        "artifact_uri": "ipfs://QmUbt5fGxNoFEFcByFiiDxEEpmQmERWG7viuNGtKKBd4F9",
+        "description": " \"A slumber did my spirit seal;\nI had no human fears:\nShe seemed a thing that could not feel\nThe touch of earthly years.\n\nNo motion has she now, no force;\nShe neither hears nor sees;\nRolled round in earth's diurnal course,\nWith rocks, and stones, and trees.\"\nHomage to William Wordsworth and Susan my beloved sister.",
+        "dimensions": {
+          "display": {
+            "mime": "image/jpeg",
+            "size": 90407,
+            "dimensions": {
+              "width": 800,
+              "height": 450
+            }
+          },
+          "resized": {
+            "social": {
+              "width": 1200,
+              "height": 675
+            },
+            "source": "display",
+            "thumb288": {
+              "width": 288,
+              "height": 162
+            },
+            "thumb400": {
+              "width": 400,
+              "height": 225
+            }
+          },
+          "artifact": {
+            "mime": "image/png",
+            "size": 5135034,
+            "dimensions": {
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          "thumbnail": {
+            "mime": "image/jpeg",
+            "size": 14203,
+            "dimensions": {
+              "width": 400,
+              "height": 225
+            }
+          }
+        },
+        "display_uri": "ipfs://QmXB8UUCHupfym7Zkzcqtvg4dVQcxceuPTQyrqV6avJ5XB",
+        "extra": [
+          {
+            "uri": "ipfs://QmXB8UUCHupfym7Zkzcqtvg4dVQcxceuPTQyrqV6avJ5XB",
+            "file_name": "display.png",
+            "file_size": 18987,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "800x800"
+            }
+          },
+          {
+            "uri": "ipfs://QmUbt5fGxNoFEFcByFiiDxEEpmQmERWG7viuNGtKKBd4F9",
+            "file_name": "artifact.png",
+            "file_size": 5135034,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "1920x1080"
+            }
+          },
+          {
+            "uri": "ipfs://QmdaEoGaoUfTvP1kyWta8hRnbW42K6iXpfz74X97haXSjB",
+            "file_name": "thumbnail.png",
+            "file_size": 6180,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "400x400"
+            }
+          }
+        ],
+        "metadata": "ipfs://Qmem9xuyQdxMPU4BdjKqYu7EnJsvZkiGuSjtrWo8iDWqK1",
+        "mime": "image/png",
+        "name": "Slumber",
+        "rights": "No License. All rights reserved.",
+        "rights_uri": null,
+        "supply": 30,
+        "symbol": "THEFRAME",
+        "thumbnail_uri": "ipfs://QmdaEoGaoUfTvP1kyWta8hRnbW42K6iXpfz74X97haXSjB",
+        "timestamp": "2024-07-11T13:17:35+00:00",
+        "creators": [
+          {
+            "creator_address": "tz1fwooh9rza5AyRfaaWLGHywJhrZ8p6bZdm",
+            "holder": {
+              "alias": "Y4Si"
+            }
+          }
+        ]
+      },
+      {
+        "artifact_uri": "ipfs://QmeVQh98Hu39DRnCKLgEDP8KrpRT8oXpnw1j38t9fKfcmP",
+        "description": "Time is invisible, but it strongly shapes my lives. In this artwork, I've gradually stripped away colors, finding that simpler tones give a purer feeling compared to previous versions. This resonates with how I perceive time",
+        "dimensions": {
+          "display": {
+            "mime": "image/png",
+            "size": 318979,
+            "dimensions": {
+              "width": 800,
+              "height": 450
+            }
+          },
+          "resized": {
+            "social": {
+              "width": 1200,
+              "height": 675
+            },
+            "source": "display",
+            "thumb288": {
+              "width": 288,
+              "height": 162
+            },
+            "thumb400": {
+              "width": 400,
+              "height": 225
+            }
+          },
+          "artifact": {
+            "mime": "image/png",
+            "size": 5345639,
+            "dimensions": {
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          "thumbnail": {
+            "mime": "image/png",
+            "size": 82423,
+            "dimensions": {
+              "width": 400,
+              "height": 225
+            }
+          }
+        },
+        "display_uri": "ipfs://QmY4QSafZBUdmUoZCzcfsDLDcnaEt1TNUe5KLLQSdNfCq3",
+        "extra": [
+          {
+            "uri": "ipfs://QmY4QSafZBUdmUoZCzcfsDLDcnaEt1TNUe5KLLQSdNfCq3",
+            "file_name": "display.png",
+            "file_size": 18987,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "800x800"
+            }
+          },
+          {
+            "uri": "ipfs://QmeVQh98Hu39DRnCKLgEDP8KrpRT8oXpnw1j38t9fKfcmP",
+            "file_name": "artifact.png",
+            "file_size": 5345639,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "1920x1080"
+            }
+          },
+          {
+            "uri": "ipfs://QmVWYK5AFFCnkoP63Nd2oj9bCcRd2qmmJi6f3qERTLiWsR",
+            "file_name": "thumbnail.png",
+            "file_size": 6180,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "400x400"
+            }
+          }
+        ],
+        "metadata": "ipfs://QmTYiqE2QwfaqKZAA9z6aAkwzUGWMcnakQjVn3csHJg7jU",
+        "mime": "image/png",
+        "name": "Untitled - Time",
+        "rights": "No License. All rights reserved.",
+        "rights_uri": null,
+        "supply": 10,
+        "symbol": "THEFRAME",
+        "thumbnail_uri": "ipfs://QmVWYK5AFFCnkoP63Nd2oj9bCcRd2qmmJi6f3qERTLiWsR",
+        "timestamp": "2024-07-11T10:19:30+00:00",
+        "creators": [
+          {
+            "creator_address": "tz1UouXqe39RwEauqcLPdWRyQkFNqjULfLsv",
+            "holder": {
+              "alias": "Alvis Lee"
+            }
+          }
+        ]
+      },
+      {
+        "artifact_uri": "ipfs://QmTSr8pgboeDuwjz4vqoNReVh9uThTFZ1ekqemLQyH1e6F",
+        "description": "A challenge...or a reprieve\n\nLet your line in the sand be an opportunity to reflect on all that is beautiful around you - and how fleeting it can be...",
+        "dimensions": {
+          "display": {
+            "mime": "image/jpeg",
+            "size": 85329,
+            "dimensions": {
+              "width": 800,
+              "height": 450
+            }
+          },
+          "resized": {
+            "social": {
+              "width": 1200,
+              "height": 675
+            },
+            "source": "display",
+            "thumb288": {
+              "width": 288,
+              "height": 162
+            },
+            "thumb400": {
+              "width": 400,
+              "height": 225
+            }
+          },
+          "artifact": {
+            "mime": "image/png",
+            "size": 5051545,
+            "dimensions": {
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          "thumbnail": {
+            "mime": "image/jpeg",
+            "size": 15975,
+            "dimensions": {
+              "width": 400,
+              "height": 225
+            }
+          }
+        },
+        "display_uri": "ipfs://QmUSSpVJx2ZtPoJsqbW9Ww8RYKKdFwr3oQdW5vG1QEpbEw",
+        "extra": [
+          {
+            "uri": "ipfs://QmUSSpVJx2ZtPoJsqbW9Ww8RYKKdFwr3oQdW5vG1QEpbEw",
+            "file_name": "display.png",
+            "file_size": 18987,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "800x800"
+            }
+          },
+          {
+            "uri": "ipfs://QmTSr8pgboeDuwjz4vqoNReVh9uThTFZ1ekqemLQyH1e6F",
+            "file_name": "artifact.png",
+            "file_size": 5051545,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "1920x1080"
+            }
+          },
+          {
+            "uri": "ipfs://QmRamadHqf2VX3oLS11uVzKx3AwpxxV7gAhABDvy7z43Y1",
+            "file_name": "thumbnail.png",
+            "file_size": 6180,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "400x400"
+            }
+          }
+        ],
+        "metadata": "ipfs://Qmdma37KGVaqmiFrJoczRQKLy7bk2wkSu3cdZ1oUcosHp2",
+        "mime": "image/png",
+        "name": "Lines in the Sand",
+        "rights": "No License. All rights reserved.",
+        "rights_uri": null,
+        "supply": 22,
+        "symbol": "THEFRAME",
+        "thumbnail_uri": "ipfs://QmRamadHqf2VX3oLS11uVzKx3AwpxxV7gAhABDvy7z43Y1",
+        "timestamp": "2024-07-11T15:31:45+00:00",
+        "creators": [
+          {
+            "creator_address": "tz1Nf3x6S5H5cZFWYsi5iUYB6v2GzuQSoGZS",
+            "holder": {
+              "alias": "KAART"
+            }
+          }
+        ]
+      },
+      {
+        "artifact_uri": "ipfs://QmVGZgHeUCGFAPVYnmpdhXBT3YdBnyBuMj63neeiEQz9Kx",
+        "description": "Abstract digital painting in 2024\nBy Arts of Chet",
+        "dimensions": {
+          "display": {
+            "mime": "image/png",
+            "size": 117610,
+            "dimensions": {
+              "width": 800,
+              "height": 450
+            }
+          },
+          "resized": {
+            "social": {
+              "width": 1200,
+              "height": 675
+            },
+            "source": "display",
+            "thumb288": {
+              "width": 288,
+              "height": 162
+            },
+            "thumb400": {
+              "width": 400,
+              "height": 225
+            }
+          },
+          "artifact": {
+            "mime": "image/png",
+            "size": 1566026,
+            "dimensions": {
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          "thumbnail": {
+            "mime": "image/png",
+            "size": 35724,
+            "dimensions": {
+              "width": 400,
+              "height": 225
+            }
+          }
+        },
+        "display_uri": "ipfs://QmPRB3cuLws6SdCxzSgRx6uzAXQv7rZ9qhjqTJi2kURvEh",
+        "extra": [
+          {
+            "uri": "ipfs://QmPRB3cuLws6SdCxzSgRx6uzAXQv7rZ9qhjqTJi2kURvEh",
+            "file_name": "display.png",
+            "file_size": 18987,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "800x800"
+            }
+          },
+          {
+            "uri": "ipfs://QmVGZgHeUCGFAPVYnmpdhXBT3YdBnyBuMj63neeiEQz9Kx",
+            "file_name": "artifact.png",
+            "file_size": 1566026,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "1920x1080"
+            }
+          },
+          {
+            "uri": "ipfs://QmUL16qzCPTYdjjWWTCaKTGq7x2GWc9aLhQxfHhi9Qda9L",
+            "file_name": "thumbnail.png",
+            "file_size": 6180,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "400x400"
+            }
+          }
+        ],
+        "metadata": "ipfs://QmUqqpXWKJaQLNbBEH82UaWTDJFho1btoSoF23Q7FeBSdG",
+        "mime": "image/png",
+        "name": "Abstract of Brazil",
+        "rights": "No License. All rights reserved.",
+        "rights_uri": null,
+        "supply": 17,
+        "symbol": "THEFRAME",
+        "thumbnail_uri": "ipfs://QmUL16qzCPTYdjjWWTCaKTGq7x2GWc9aLhQxfHhi9Qda9L",
+        "timestamp": "2024-07-11T15:12:35+00:00",
+        "creators": [
+          {
+            "creator_address": "tz1hghbrDGx33HendcHRAdKUDtdFoFP24uaE",
+            "holder": {
+              "alias": "Arts of Chet"
+            }
+          }
+        ]
+      },
+      {
+        "artifact_uri": "ipfs://QmZ5JxXV8aGqF1bzSagV6ZJmmMfyaeksWm2LpWpemLBE5c",
+        "description": "In the void, time suspends, and the anticipation of what's to come hangs like a canvas of infinite possibility.",
+        "dimensions": {
+          "display": {
+            "mime": "image/png",
+            "size": 1259268,
+            "dimensions": {
+              "width": 973,
+              "height": 547
+            }
+          },
+          "resized": {
+            "social": {
+              "width": 1200,
+              "height": 675
+            },
+            "source": "display",
+            "thumb288": {
+              "width": 288,
+              "height": 162
+            },
+            "thumb400": {
+              "width": 400,
+              "height": 225
+            }
+          },
+          "artifact": {
+            "mime": "video/mp4",
+            "size": 2600448,
+            "dimensions": {
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          "thumbnail": {
+            "mime": "image/png",
+            "size": 58492,
+            "dimensions": {
+              "width": 400,
+              "height": 224
+            }
+          }
+        },
+        "display_uri": "ipfs://QmXghKyw4U1srduV6d9gwYqXqTkPBwznKumSWmP6LvZxm6",
+        "extra": [
+          {
+            "uri": "ipfs://QmXghKyw4U1srduV6d9gwYqXqTkPBwznKumSWmP6LvZxm6",
+            "file_name": "display.png",
+            "file_size": 18987,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "800x800"
+            }
+          },
+          {
+            "uri": "ipfs://QmZ5JxXV8aGqF1bzSagV6ZJmmMfyaeksWm2LpWpemLBE5c",
+            "file_name": "artifact.mp4",
+            "file_size": 2600448,
+            "mime_type": "video/mp4",
+            "dimensions": {
+              "unit": "px",
+              "value": "1920x1080"
+            }
+          },
+          {
+            "uri": "ipfs://QmVTRrm54pwQzSG3Mq1XG5LFWXGtPJm4uzSduc4WPTnVtg",
+            "file_name": "thumbnail.png",
+            "file_size": 6180,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "400x400"
+            }
+          }
+        ],
+        "metadata": "ipfs://QmWYFMseJVVhUgEtLQgW34KaZJG1txngrY3Xk8xG7kbnpe",
+        "mime": "video/mp4",
+        "name": "time suspends",
+        "rights": "No License. All rights reserved.",
+        "rights_uri": null,
+        "supply": 12,
+        "symbol": "THEFRAME",
+        "thumbnail_uri": "ipfs://QmVTRrm54pwQzSG3Mq1XG5LFWXGtPJm4uzSduc4WPTnVtg",
+        "timestamp": "2024-07-11T14:54:00+00:00",
+        "creators": [
+          {
+            "creator_address": "tz2HsY37jMmBrY2CzA2fEDp5Nx9QNwPpPaX6",
+            "holder": {
+              "alias": "ake"
+            }
+          }
+        ]
+      },
+      {
+        "artifact_uri": "ipfs://QmSr5kEoiMMBJyYEiEEjdTyjbNj9hC5X2Jzex126uvjdxz",
+        "description": "Soar by FotoChad\nVenice Beach California Skatepark",
+        "dimensions": {
+          "display": {
+            "mime": "image/jpeg",
+            "size": 40372,
+            "dimensions": {
+              "width": 800,
+              "height": 450
+            }
+          },
+          "resized": {
+            "social": {
+              "width": 1200,
+              "height": 675
+            },
+            "source": "display",
+            "thumb288": {
+              "width": 288,
+              "height": 162
+            },
+            "thumb400": {
+              "width": 400,
+              "height": 225
+            }
+          },
+          "artifact": {
+            "mime": "image/jpeg",
+            "size": 1016330,
+            "dimensions": {
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          "thumbnail": {
+            "mime": "image/jpeg",
+            "size": 13708,
+            "dimensions": {
+              "width": 400,
+              "height": 225
+            }
+          }
+        },
+        "display_uri": "ipfs://QmUppwryiD7gwCWd4pprqmX9JD3yVxrPuD5mNsKaMtMZGR",
+        "extra": [
+          {
+            "uri": "ipfs://QmUppwryiD7gwCWd4pprqmX9JD3yVxrPuD5mNsKaMtMZGR",
+            "file_name": "display.png",
+            "file_size": 18987,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "800x800"
+            }
+          },
+          {
+            "uri": "ipfs://QmSr5kEoiMMBJyYEiEEjdTyjbNj9hC5X2Jzex126uvjdxz",
+            "file_name": "artifact.jpg",
+            "file_size": 1016330,
+            "mime_type": "image/jpeg",
+            "dimensions": {
+              "unit": "px",
+              "value": "1920x1080"
+            }
+          },
+          {
+            "uri": "ipfs://QmZewvJAm2ZgtK3njEAuSbkuBdipPeG9tD7sxF1aYkMiU9",
+            "file_name": "thumbnail.png",
+            "file_size": 6180,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "400x400"
+            }
+          }
+        ],
+        "metadata": "ipfs://Qmb49ZPGu5AXXMLEBjvy5Y6UBLo2c3mFjbyTjQtMW5Qmp4",
+        "mime": "image/jpeg",
+        "name": "Soar",
+        "rights": "No License. All rights reserved.",
+        "rights_uri": null,
+        "supply": 10,
+        "symbol": "THEFRAME",
+        "thumbnail_uri": "ipfs://QmZewvJAm2ZgtK3njEAuSbkuBdipPeG9tD7sxF1aYkMiU9",
+        "timestamp": "2024-07-11T10:06:30+00:00",
+        "creators": [
+          {
+            "creator_address": "tz1XwcnHXatm41UwLiCH93gJsrefLNfQEYe6",
+            "holder": {
+              "alias": "fotochad"
+            }
+          }
+        ]
+      },
+      {
+        "artifact_uri": "ipfs://QmfBeNgsjGJs1xMjhDE5mQBc7PsJzGKZf6qTzpW1z3ACsE",
+        "description": "Special Edition for „The Frame“ - created 7 July 2024 by TOCA ME / TI",
+        "dimensions": {
+          "display": {
+            "mime": "image/jpeg",
+            "size": 18090,
+            "dimensions": {
+              "width": 800,
+              "height": 450
+            }
+          },
+          "resized": {
+            "social": {
+              "width": 1200,
+              "height": 675
+            },
+            "source": "display",
+            "thumb288": {
+              "width": 288,
+              "height": 162
+            },
+            "thumb400": {
+              "width": 400,
+              "height": 225
+            }
+          },
+          "artifact": {
+            "mime": "image/jpeg",
+            "size": 440805,
+            "dimensions": {
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          "thumbnail": {
+            "mime": "image/jpeg",
+            "size": 7030,
+            "dimensions": {
+              "width": 400,
+              "height": 225
+            }
+          }
+        },
+        "display_uri": "ipfs://QmbzK5hGwcEMDawdeg85ivDHkUMzYZZVP6YTsXo4r5ogZB",
+        "extra": [
+          {
+            "uri": "ipfs://QmbzK5hGwcEMDawdeg85ivDHkUMzYZZVP6YTsXo4r5ogZB",
+            "file_name": "display.png",
+            "file_size": 18987,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "800x800"
+            }
+          },
+          {
+            "uri": "ipfs://QmfBeNgsjGJs1xMjhDE5mQBc7PsJzGKZf6qTzpW1z3ACsE",
+            "file_name": "artifact.jpg",
+            "file_size": 440805,
+            "mime_type": "image/jpeg",
+            "dimensions": {
+              "unit": "px",
+              "value": "1920x1080"
+            }
+          },
+          {
+            "uri": "ipfs://QmQY8nGxFbDK13FNGrBLY6zhVMx1PZGad7ZoF2ajNrZpFK",
+            "file_name": "thumbnail.png",
+            "file_size": 6180,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "400x400"
+            }
+          }
+        ],
+        "metadata": "ipfs://QmTXZbBEFriqxUG8w2JaLjLZL9GBraKtwUjGJFsQmWMfAa",
+        "mime": "image/jpeg",
+        "name": "Lost Memories 09 - Special Edition",
+        "rights": "No License. All rights reserved.",
+        "rights_uri": null,
+        "supply": 41,
+        "symbol": "THEFRAME",
+        "thumbnail_uri": "ipfs://QmQY8nGxFbDK13FNGrBLY6zhVMx1PZGad7ZoF2ajNrZpFK",
+        "timestamp": "2024-07-11T15:20:25+00:00",
+        "creators": [
+          {
+            "creator_address": "tz1cUJWv28HJGvqrXitgPSLwA6nJLL2omrhT",
+            "holder": {
+              "alias": "TM out"
+            }
+          }
+        ]
+      },
+      {
+        "artifact_uri": "ipfs://QmWBiqZ8fDhREciTATLTFfkNA1FTugtKsbUKA18grNcVQS",
+        "description": "Shot of the sun setting through the first marble I ever made",
+        "dimensions": {
+          "display": {
+            "mime": "image/jpeg",
+            "size": 39586,
+            "dimensions": {
+              "width": 800,
+              "height": 450
+            }
+          },
+          "resized": {
+            "social": {
+              "width": 1200,
+              "height": 675
+            },
+            "source": "display",
+            "thumb288": {
+              "width": 288,
+              "height": 162
+            },
+            "thumb400": {
+              "width": 400,
+              "height": 225
+            }
+          },
+          "artifact": {
+            "mime": "image/jpeg",
+            "size": 505304,
+            "dimensions": {
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          "thumbnail": {
+            "mime": "image/jpeg",
+            "size": 10369,
+            "dimensions": {
+              "width": 400,
+              "height": 225
+            }
+          }
+        },
+        "display_uri": "ipfs://QmeXn6k22S41KWhqRNFQq2sC89HAQU4Q3cBV4Xfj3LaNWc",
+        "extra": [
+          {
+            "uri": "ipfs://QmeXn6k22S41KWhqRNFQq2sC89HAQU4Q3cBV4Xfj3LaNWc",
+            "file_name": "display.png",
+            "file_size": 18987,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "800x800"
+            }
+          },
+          {
+            "uri": "ipfs://QmWBiqZ8fDhREciTATLTFfkNA1FTugtKsbUKA18grNcVQS",
+            "file_name": "artifact.jpg",
+            "file_size": 505304,
+            "mime_type": "image/jpeg",
+            "dimensions": {
+              "unit": "px",
+              "value": "1920x1080"
+            }
+          },
+          {
+            "uri": "ipfs://QmaMdB5Z6twiYobVuvQ5mwEvEuJhZWeURV91tSG5SELfBa",
+            "file_name": "thumbnail.png",
+            "file_size": 6180,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "400x400"
+            }
+          }
+        ],
+        "metadata": "ipfs://QmbDRP8WQdMAE1DyPsxyvraJzb1TTRSeYu65mePsitzZgp",
+        "mime": "image/jpeg",
+        "name": "A Pinch of Sunset",
+        "rights": "No License. All rights reserved.",
+        "rights_uri": null,
+        "supply": 15,
+        "symbol": "THEFRAME",
+        "thumbnail_uri": "ipfs://QmaMdB5Z6twiYobVuvQ5mwEvEuJhZWeURV91tSG5SELfBa",
+        "timestamp": "2024-07-11T11:22:05+00:00",
+        "creators": [
+          {
+            "creator_address": "tz1bxnm4UrKDq1kR8qfxYvnW6Czjhv1yRqPK",
+            "holder": {
+              "alias": null
+            }
+          }
+        ]
+      },
+      {
+        "artifact_uri": "ipfs://QmQ332kQnNs7C5NqWYppymudLBxcDMPstMUadadqTAHgvr",
+        "description": "Pangong Lake, Leh, India",
+        "dimensions": {
+          "display": {
+            "mime": "image/jpeg",
+            "size": 38157,
+            "dimensions": {
+              "width": 800,
+              "height": 450
+            }
+          },
+          "resized": {
+            "social": {
+              "width": 1200,
+              "height": 675
+            },
+            "source": "display",
+            "thumb288": {
+              "width": 288,
+              "height": 162
+            },
+            "thumb400": {
+              "width": 400,
+              "height": 225
+            }
+          },
+          "artifact": {
+            "mime": "image/jpeg",
+            "size": 1039709,
+            "dimensions": {
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          "thumbnail": {
+            "mime": "image/jpeg",
+            "size": 13011,
+            "dimensions": {
+              "width": 400,
+              "height": 225
+            }
+          }
+        },
+        "display_uri": "ipfs://QmYKorou1zcBQ29GG1koU7CcwXAjnEiejsKny1L9Bf18kK",
+        "extra": [
+          {
+            "uri": "ipfs://QmYKorou1zcBQ29GG1koU7CcwXAjnEiejsKny1L9Bf18kK",
+            "file_name": "display.png",
+            "file_size": 18987,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "800x800"
+            }
+          },
+          {
+            "uri": "ipfs://QmQ332kQnNs7C5NqWYppymudLBxcDMPstMUadadqTAHgvr",
+            "file_name": "artifact.jpg",
+            "file_size": 1039709,
+            "mime_type": "image/jpeg",
+            "dimensions": {
+              "unit": "px",
+              "value": "1920x1080"
+            }
+          },
+          {
+            "uri": "ipfs://QmXYTn1Q5VFwFp8eED7HRay6D6ked9vsfAQJuw7jVeHcgw",
+            "file_name": "thumbnail.png",
+            "file_size": 6180,
+            "mime_type": "image/png",
+            "dimensions": {
+              "unit": "px",
+              "value": "400x400"
+            }
+          }
+        ],
+        "metadata": "ipfs://QmWDFEqiRoeWV33vYd9MCkM99sVcPRBdKNSGgxphfzzfZ9",
+        "mime": "image/jpeg",
+        "name": "Reflection of clouds",
+        "rights": "No License. All rights reserved.",
+        "rights_uri": null,
+        "supply": 2,
+        "symbol": "THEFRAME",
+        "thumbnail_uri": "ipfs://QmXYTn1Q5VFwFp8eED7HRay6D6ked9vsfAQJuw7jVeHcgw",
+        "timestamp": "2024-07-11T11:48:25+00:00",
+        "creators": [
+          {
+            "creator_address": "tz1NDz3dPsujFBr442guMPPLDitbpc6UiMQ9",
+            "holder": {
+              "alias": "Srivatsan Sankaran"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

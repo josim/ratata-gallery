@@ -39,3 +39,7 @@ next-env.d.ts
 ratata_gallery_Website_Brief.docx
 CLAUDE.md
 .claude/
+
+# local data-prep working files (large downloads / raw originals)
+/scripts/getdata/assets/
+/scripts/raw-images/
