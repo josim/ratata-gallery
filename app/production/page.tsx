@@ -5,7 +5,7 @@ import PageHero from "@/components/PageHero";
 import ArchiveList from "@/components/ArchiveList";
 
 export const metadata: Metadata = {
-  title: `${strings.site.name} — ${strings.pages.production.heading}`,
+  title: `${strings.site.name} - ${strings.pages.production.heading}`,
   description: strings.pages.production.description,
 };
 

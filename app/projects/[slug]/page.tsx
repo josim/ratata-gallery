@@ -22,7 +22,7 @@ export function generateMetadata({
   if (!project) return {};
 
   return {
-    title: `${strings.site.name} — ${project.title}`,
+    title: `${strings.site.name} - ${project.title}`,
     description: project.content.slice(0, 160),
   };
 }
@@ -144,7 +144,7 @@ export default async function ProjectPage({
                 <div className="relative aspect-[4/3] w-full border border-line bg-card">
                   <Image
                     src={artwork.image}
-                    alt={`${artwork.title} — ${artwork.artist}`}
+                    alt={`${artwork.title} - ${artwork.artist}`}
                     fill
                     loading="lazy"
                     sizes="(min-width: 1024px) 25vw, 50vw"
