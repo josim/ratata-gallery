@@ -15,52 +15,58 @@ export default function ImpressumPage() {
       <div className="max-w-measure space-y-10 text-body text-ink-secondary">
         <section className="space-y-2">
           <h2 className="font-sans text-title-s font-semibold text-ink">
-            Angaben gemäß § 5 TMG
+            Unternehmensinformationen
           </h2>
-          <p>[TODO: Name des Diensteanbieters]</p>
-          <p>[TODO: Straße und Hausnummer]</p>
-          <p>[TODO: PLZ und Ort]</p>
-          <p>[TODO: Land]</p>
-        </section>
-
-        <section className="space-y-2">
-          <h2 className="font-sans text-title-s font-semibold text-ink">
-            Vertreten durch
-          </h2>
-          <p>[TODO: Vertretungsberechtigte Person(en) / Geschäftsführung]</p>
+          <p>Philipp Coufal</p>
+          <p>Am Eichenloh 20</p>
+          <p>60431 Frankfurt am Main</p>
+          <p>Germany</p>
         </section>
 
         <section className="space-y-2">
           <h2 className="font-sans text-title-s font-semibold text-ink">
             Kontakt
           </h2>
-          <p>[TODO: Telefonnummer]</p>
-          <p>[TODO: E-Mail-Adresse]</p>
-        </section>
-
-        <section className="space-y-2">
-          <h2 className="font-sans text-title-s font-semibold text-ink">
-            Registereintrag
-          </h2>
-          <p>[TODO: Eintragung im Register, Registergericht]</p>
-          <p>[TODO: Registernummer]</p>
-        </section>
-
-        <section className="space-y-2">
-          <h2 className="font-sans text-title-s font-semibold text-ink">
-            Umsatzsteuer-Identifikationsnummer
-          </h2>
+          <p>Telefon: +49 (0)174 1864217</p>
           <p>
-            [TODO: Umsatzsteuer-Identifikationsnummer gemäß § 27a
-            Umsatzsteuergesetz, falls vorhanden]
+            E-Mail:{" "}
+            <a
+              href="mailto:info@ratata.gallery"
+              className="text-accent underline decoration-1 underline-offset-[0.15em] hover:text-accent-hover hover:decoration-2"
+            >
+              info@ratata.gallery
+            </a>
           </p>
         </section>
 
         <section className="space-y-2">
           <h2 className="font-sans text-title-s font-semibold text-ink">
-            Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV
+            Technischer Support
           </h2>
-          <p>[TODO: Name und Anschrift der inhaltlich verantwortlichen Person]</p>
+          <p>Kontaktperson: Johannes Simon</p>
+          <p>
+            E-Mail:{" "}
+            <a
+              href="mailto:info@ratata.gallery"
+              className="text-accent underline decoration-1 underline-offset-[0.15em] hover:text-accent-hover hover:decoration-2"
+            >
+              info@ratata.gallery
+            </a>
+          </p>
+        </section>
+
+        <section className="space-y-2">
+          <h2 className="font-sans text-title-s font-semibold text-ink">
+            Rechtliche Hinweise
+          </h2>
+          <p>
+            Alle Inhalte auf dieser Website unterliegen dem Urheberrecht und
+            anderen Gesetzen zum Schutz des geistigen Eigentums.
+          </p>
+          <p>
+            Für Links auf externe Webseiten und deren Inhalte wird keine
+            Verantwortung übernommen.
+          </p>
         </section>
       </div>
     </div>
