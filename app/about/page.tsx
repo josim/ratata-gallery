@@ -3,7 +3,7 @@ import { strings } from "@/lib/strings";
 import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
-  title: `${strings.site.name} — ${strings.about.heading}`,
+  title: `${strings.site.name} - ${strings.about.heading}`,
   description: strings.about.body,
 };
 

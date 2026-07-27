@@ -212,7 +212,7 @@ export default function ArchiveList({
                   </td>
                   <td className="py-3 pr-4 align-top text-ink-secondary">
                     {[project.venue, project.city].filter(Boolean).join(", ") ||
-                      "—"}
+                      "·"}
                   </td>
                   <td className="py-3 align-top">
                     <RoleBadge role={project.role} />

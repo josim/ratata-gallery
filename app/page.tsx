@@ -6,7 +6,7 @@ import { projectMeta } from "@/lib/format";
 import ProjectCard from "@/components/ProjectCard";
 import RoleBadge from "@/components/RoleBadge";
 
-// Editorial pick for the lead plate (DESIGN.md §5.9 — the home hero is the one
+// Editorial pick for the lead plate (DESIGN.md §5.9 - the home hero is the one
 // surface allowed a highlight beneath the display-xl headline). Swap the slug
 // to re-cast the plate; the caption, badge and link all follow the project.
 const LEAD_SLUG = "what-hot-shit";
@@ -14,7 +14,7 @@ const LEAD_SLUG = "what-hot-shit";
 // How many artworks the closing contact sheet shows before linking out.
 const SHEET_LIMIT = 24;
 
-// First sentence of a project body — used as the caption in the lead plate and
+// First sentence of a project body - used as the caption in the lead plate and
 // the contact sheet. Bodies are plain prose (no markdown syntax).
 function firstSentence(content: string): string {
   const text = content.trim().replace(/\s+/g, " ");
@@ -32,7 +32,7 @@ const LINK_CLASS =
   "text-body text-accent underline decoration-1 underline-offset-[0.15em] hover:text-accent-hover hover:decoration-2";
 
 // The home listing groups by category (mirroring the site nav) rather than by
-// year — each section links through to its full archive page.
+// year - each section links through to its full archive page.
 const CATEGORY_SECTIONS = [
   { category: "exhibition", heading: strings.pages.exhibitions.heading, href: "/exhibitions" },
   { category: "production", heading: strings.pages.production.heading, href: "/production" },
@@ -187,7 +187,7 @@ export default function HomePage() {
               >
                 <Image
                   src={artwork.image}
-                  alt={`${artwork.title} — ${artwork.artist}`}
+                  alt={`${artwork.title} - ${artwork.artist}`}
                   fill
                   loading="lazy"
                   sizes="(min-width: 1024px) 12vw, (min-width: 640px) 16vw, 25vw"
