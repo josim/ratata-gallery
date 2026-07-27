@@ -64,6 +64,8 @@ export const strings = {
     factVenue: "Venue",
     factArtists: "Artists",
     linksHeading: "Links & Press",
+    linksPress: "Press & Links",
+    linksSocial: "Social",
     indexPlateLinks: "LINKS & PRESS",
     playLabel: "Play",
   },
