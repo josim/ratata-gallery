@@ -6,9 +6,7 @@ import { strings } from "@/lib/strings";
 // Components.
 export const NAV_ITEMS = [
   { href: "/exhibitions", label: strings.nav.exhibitions },
-  { href: "/fairs-events", label: strings.nav.fairsEvents },
-  { href: "/tech-productions", label: strings.nav.techProductions },
-  { href: "/platforms", label: strings.nav.platforms },
+  { href: "/production", label: strings.nav.production },
   { href: "/tezcon-europe", label: strings.nav.tezconEurope },
   { href: "/about", label: strings.nav.about },
 ];

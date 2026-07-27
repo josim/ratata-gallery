@@ -9,6 +9,10 @@ import RoleBadge from "@/components/RoleBadge";
 
 type View = "grid" | "index";
 
+// Temporarily hidden — set to true to bring back the role filters and the
+// Grid/Index view switch.
+const SHOW_CONTROLS = false;
+
 function roleToParam(role: ProjectRole) {
   return role.toLowerCase().replace(/\s+/g, "-");
 }
@@ -31,11 +35,14 @@ export default function ArchiveList({
 
   const [activeRoles, setActiveRoles] = useState<ProjectRole[]>([]);
   const [view, setView] = useState<View>(defaultView);
-  const [sortAsc, setSortAsc] = useState(false);
+  // null = keep the incoming order (curated via frontmatter `order`, or
+  // newest-first); the year column header switches to explicit year sorting.
+  const [sortAsc, setSortAsc] = useState<boolean | null>(null);
 
   // Hydrate from the URL once on mount so filtered/sorted views stay
   // shareable/cite-able (DESIGN.md §5.6).
   useEffect(() => {
+    if (!SHOW_CONTROLS) return;
     const params = new URLSearchParams(window.location.search);
     const roleParam = params.get("role");
     if (roleParam) {
@@ -91,7 +98,11 @@ export default function ArchiveList({
 
   const sorted = useMemo(
     () =>
-      [...filtered].sort((a, b) => (sortAsc ? a.year - b.year : b.year - a.year)),
+      sortAsc === null
+        ? filtered
+        : [...filtered].sort((a, b) =>
+            sortAsc ? a.year - b.year : b.year - a.year
+          ),
     [filtered, sortAsc]
   );
 
@@ -101,6 +112,7 @@ export default function ArchiveList({
 
   return (
     <div>
+      {SHOW_CONTROLS && (
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-line bg-paper-sunk px-4 py-4 sm:px-6">
         <div className="flex flex-wrap items-center gap-2">
           <span className="sr-only">{strings.archive.filterLabel}</span>
@@ -149,6 +161,7 @@ export default function ArchiveList({
           </span>
         </div>
       </div>
+      )}
 
       {sorted.length === 0 ? (
         <p className="px-4 py-12 text-body text-ink-secondary sm:px-6">
@@ -168,7 +181,7 @@ export default function ArchiveList({
                 <th className="w-20 py-3 pr-4 font-normal">
                   <button
                     type="button"
-                    onClick={() => setSortAsc((v) => !v)}
+                    onClick={() => setSortAsc((v) => !(v ?? false))}
                     className="inline-flex items-center gap-1 border-0 bg-transparent p-0 uppercase"
                   >
                     {strings.archive.columnYear} {sortAsc ? "↑" : "↓"}

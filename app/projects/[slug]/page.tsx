@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import Image from "next/image";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getAllProjects, getProjectBySlug } from "@/lib/projects";
 import { strings } from "@/lib/strings";
@@ -48,6 +49,7 @@ export default function ProjectPage({
           },
         ]
       : []),
+    ...(project.credits ?? []),
   ];
 
   return (
@@ -89,6 +91,34 @@ export default function ProjectPage({
           <LinksList links={project.links ?? []} />
         </div>
       </div>
+
+      {project.artworkSections?.map((section) => (
+        <section key={section.heading} className="mt-16 space-y-6">
+          <h2 className="border-b border-line pb-3 font-serif text-title-m font-medium text-ink">
+            {section.heading}
+          </h2>
+          <ul className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-4">
+            {section.items.map((artwork) => (
+              <li key={artwork.image}>
+                <div className="relative aspect-[4/3] w-full border border-line bg-card">
+                  <Image
+                    src={artwork.image}
+                    alt={`${artwork.title} — ${artwork.artist}`}
+                    fill
+                    loading="lazy"
+                    sizes="(min-width: 1024px) 25vw, 50vw"
+                    className="object-contain"
+                  />
+                </div>
+                <p className="mt-2 text-body text-ink">{artwork.title}</p>
+                <p className="text-meta uppercase text-ink-muted">
+                  {artwork.artist}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
     </article>
   );
 }

@@ -4,12 +4,23 @@ import matter from "gray-matter";
 
 const PROJECTS_DIR = path.join(process.cwd(), "content", "projects");
 
-export type ProjectCategory = "exhibition" | "fair" | "tech" | "platform";
+export type ProjectCategory = "exhibition" | "production";
 export type ProjectRole = "Curated" | "Booth" | "Tech Lead" | "Platform";
 
 export type ProjectLink = {
   label: string;
   url: string;
+};
+
+export type Artwork = {
+  title: string;
+  artist: string;
+  image: string;
+};
+
+export type ArtworkSection = {
+  heading: string;
+  items: Artwork[];
 };
 
 export type ProjectFrontmatter = {
@@ -20,9 +31,12 @@ export type ProjectFrontmatter = {
   city?: string;
   category: ProjectCategory;
   role: ProjectRole;
+  order?: number;
   featured?: boolean;
   artists?: string[];
+  credits?: { label: string; value: string }[];
   images?: string[];
+  artworkSections?: ArtworkSection[];
   links?: ProjectLink[];
 };
 
@@ -53,7 +67,14 @@ export function getAllProjects(): Project[] {
     .map((file) => readProjectFile(path.basename(file, ".mdx")))
     .filter((p): p is Project => p !== null);
 
-  return projects.sort((a, b) => b.year - a.year);
+  // Projects with an explicit `order` sort by it (curated sequence, e.g. the
+  // exhibitions); the rest fall back to newest-first.
+  return projects.sort((a, b) => {
+    if (a.order != null && b.order != null) return a.order - b.order;
+    if (a.order != null) return -1;
+    if (b.order != null) return 1;
+    return b.year - a.year;
+  });
 }
 
 export function getProjectsByCategory(category: ProjectCategory): Project[] {
