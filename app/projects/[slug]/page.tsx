@@ -84,7 +84,7 @@ export default function ProjectPage({
             ))}
           </dl>
 
-          <div className="max-w-measure space-y-4 text-body text-ink [&_a]:text-accent [&_a]:underline [&_a]:decoration-1 [&_a]:underline-offset-[0.15em] [&_a:hover]:text-accent-hover [&_a:hover]:decoration-2">
+          <div className="max-w-measure space-y-4 text-body text-ink [&_a]:text-accent [&_a]:underline [&_a]:decoration-1 [&_a]:underline-offset-[0.15em] [&_a:hover]:text-accent-hover [&_a:hover]:decoration-2 [&_h3]:pt-4 [&_h3]:font-serif [&_h3]:text-title-s [&_h3]:font-medium [&_h3]:text-ink">
             <MDXRemote source={project.content} />
           </div>
 
