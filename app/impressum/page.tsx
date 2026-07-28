@@ -1,13 +1,17 @@
 import type { Metadata } from "next";
-import { strings } from "@/lib/strings";
+import { getStrings } from "@/lib/lang";
 import PageHero from "@/components/PageHero";
 
-export const metadata: Metadata = {
-  title: `${strings.site.name} - ${strings.legal.impressum.heading}`,
-  description: strings.legal.impressum.description,
-};
+export function generateMetadata(): Metadata {
+  const strings = getStrings();
+  return {
+    title: `${strings.site.name} - ${strings.legal.impressum.heading}`,
+    description: strings.legal.impressum.description,
+  };
+}
 
 export default function ImpressumPage() {
+  const strings = getStrings();
   return (
     <div>
       <PageHero title={strings.legal.impressum.heading} />

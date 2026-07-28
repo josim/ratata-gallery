@@ -1,4 +1,4 @@
-import { strings } from "@/lib/strings";
+import { getStrings } from "@/lib/lang";
 import type { ProjectLink } from "@/lib/projects";
 
 // Source tag derived from the link's own domain (DESIGN.md §5.8: OBJKT · X ·
@@ -58,6 +58,7 @@ function LinkRows({ links }: { links: ProjectLink[] }) {
 export default function LinksList({ links }: { links: ProjectLink[] }) {
   if (!links.length) return null;
 
+  const strings = getStrings();
   const social = links.filter((link) => isSocial(link.url));
   const press = links.filter((link) => !isSocial(link.url));
 

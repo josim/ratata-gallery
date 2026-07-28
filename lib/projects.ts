@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { DEFAULT_LANG, type Lang } from "@/lib/strings";
 
 const PROJECTS_DIR = path.join(process.cwd(), "content", "projects");
 
@@ -45,26 +46,45 @@ export type Project = ProjectFrontmatter & {
   content: string;
 };
 
-function readProjectFile(slug: string): Project | null {
+// The English file under content/projects/ is the source of truth. A German
+// variant at content/projects/de/<slug>.mdx is a partial override: its body
+// replaces the English body, and any frontmatter fields it declares (e.g. a
+// translated `dates`) are merged over the English ones.
+function readProjectFile(slug: string, lang: Lang = DEFAULT_LANG): Project | null {
   const filePath = path.join(PROJECTS_DIR, `${slug}.mdx`);
   if (!fs.existsSync(filePath)) return null;
 
   const raw = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(raw);
 
+  let frontmatter = data as ProjectFrontmatter;
+  let body = content;
+
+  if (lang === "de") {
+    const dePath = path.join(PROJECTS_DIR, "de", `${slug}.mdx`);
+    if (fs.existsSync(dePath)) {
+      const deFile = matter(fs.readFileSync(dePath, "utf8"));
+      frontmatter = {
+        ...frontmatter,
+        ...(deFile.data as Partial<ProjectFrontmatter>),
+      };
+      if (deFile.content.trim()) body = deFile.content;
+    }
+  }
+
   return {
-    ...(data as ProjectFrontmatter),
+    ...frontmatter,
     slug,
-    content,
+    content: body,
   };
 }
 
-export function getAllProjects(): Project[] {
+export function getAllProjects(lang: Lang = DEFAULT_LANG): Project[] {
   if (!fs.existsSync(PROJECTS_DIR)) return [];
 
   const files = fs.readdirSync(PROJECTS_DIR).filter((f) => f.endsWith(".mdx"));
   const projects = files
-    .map((file) => readProjectFile(path.basename(file, ".mdx")))
+    .map((file) => readProjectFile(path.basename(file, ".mdx"), lang))
     .filter((p): p is Project => p !== null);
 
   // Projects with an explicit `order` sort by it (curated sequence, e.g. the
@@ -77,14 +97,20 @@ export function getAllProjects(): Project[] {
   });
 }
 
-export function getProjectsByCategory(category: ProjectCategory): Project[] {
-  return getAllProjects().filter((p) => p.category === category);
+export function getProjectsByCategory(
+  category: ProjectCategory,
+  lang: Lang = DEFAULT_LANG
+): Project[] {
+  return getAllProjects(lang).filter((p) => p.category === category);
 }
 
-export function getProjectBySlug(slug: string): Project | null {
-  return readProjectFile(slug);
+export function getProjectBySlug(
+  slug: string,
+  lang: Lang = DEFAULT_LANG
+): Project | null {
+  return readProjectFile(slug, lang);
 }
 
-export function getFeaturedProjects(): Project[] {
-  return getAllProjects().filter((p) => p.featured);
+export function getFeaturedProjects(lang: Lang = DEFAULT_LANG): Project[] {
+  return getAllProjects(lang).filter((p) => p.featured);
 }

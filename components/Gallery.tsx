@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { strings } from "@/lib/strings";
+import { useStrings } from "@/components/LangProvider";
 
 const VIDEO_EXTENSIONS = [".mp4", ".webm"];
 
@@ -13,6 +13,7 @@ function isVideo(src: string) {
 // DESIGN.md §5.7 — loops autoplay muted/looped, but respect
 // prefers-reduced-motion by holding playback and offering a play control.
 function GalleryVideo({ src }: { src: string }) {
+  const strings = useStrings();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [reducedMotion, setReducedMotion] = useState(false);
   const [playing, setPlaying] = useState(false);
@@ -112,6 +113,7 @@ export default function GalleryCarousel({
   images: GalleryImage[];
   title: string;
 }) {
+  const strings = useStrings();
   const [current, setCurrent] = useState(0);
 
   if (!images.length) return null;

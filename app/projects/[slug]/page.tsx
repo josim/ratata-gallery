@@ -4,7 +4,7 @@ import Image from "next/image";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getAllProjects, getProjectBySlug } from "@/lib/projects";
 import { withImageSizes } from "@/lib/images";
-import { strings } from "@/lib/strings";
+import { getLang, getStrings } from "@/lib/lang";
 import RoleBadge from "@/components/RoleBadge";
 import GalleryCarousel from "@/components/Gallery";
 import LinksList from "@/components/LinksList";
@@ -18,7 +18,8 @@ export function generateMetadata({
 }: {
   params: { slug: string };
 }): Metadata {
-  const project = getProjectBySlug(params.slug);
+  const strings = getStrings();
+  const project = getProjectBySlug(params.slug, getLang());
   if (!project) return {};
 
   return {
@@ -32,7 +33,8 @@ export default async function ProjectPage({
 }: {
   params: { slug: string };
 }) {
-  const project = getProjectBySlug(params.slug);
+  const strings = getStrings();
+  const project = getProjectBySlug(params.slug, getLang());
   if (!project) notFound();
 
   const images = await withImageSizes(project.images ?? []);

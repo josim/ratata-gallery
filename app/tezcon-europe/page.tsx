@@ -1,14 +1,18 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { strings } from "@/lib/strings";
+import { getStrings } from "@/lib/lang";
 import PageHero from "@/components/PageHero";
 
-export const metadata: Metadata = {
-  title: `${strings.site.name} - ${strings.tezcon.heading}`,
-  description: strings.tezcon.body,
-};
+export function generateMetadata(): Metadata {
+  const strings = getStrings();
+  return {
+    title: `${strings.site.name} - ${strings.tezcon.heading}`,
+    description: strings.tezcon.body,
+  };
+}
 
 export default function TezconEuropePage() {
+  const strings = getStrings();
   return (
     <div>
       <div className="grid gap-8 lg:grid-cols-12 lg:gap-16">

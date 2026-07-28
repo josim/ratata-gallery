@@ -1,9 +1,12 @@
-// Single source of truth for all UI copy.
-// Keeping every string here (instead of inline in components/pages) means a
-// German translation can later be added by swapping this dictionary out —
-// no i18n library required.
+// Single source of truth for all UI copy, per language.
+// Server components resolve the active dictionary via lib/lang.ts
+// (cookie-based); client components via the LangProvider context.
 
-export const strings = {
+export type Lang = "en" | "de";
+export const DEFAULT_LANG: Lang = "de";
+export const LANG_COOKIE = "lang";
+
+const en = {
   site: {
     name: "ratata gallery",
     // PROVISIONAL COPY - used in the footer and as the site meta description.
@@ -43,7 +46,8 @@ export const strings = {
     worksLink: "View all works",
     tezconEyebrow: "Upcoming",
     tezconHeading: "Tezcon Europe",
-    tezconTeaser: "Tezcon Europe: the community-run Tezos convention comes to Frankfurt.",
+    tezconTeaser:
+      "Tezcon Europe: the community-run Tezos convention comes to Frankfurt.",
     tezconLink: "Learn more",
   },
   archive: {
@@ -72,7 +76,7 @@ export const strings = {
   tezcon: {
     eyebrow: "Upcoming",
     heading: "Tezcon Europe",
-    // PROVISIONAL COPY - dates, venue, and program are placeholders until the
+    // PROVISIONAL COPY - venue and program are placeholders until the
     // edition is confirmed; the Seattle background is factual.
     body: "The legendary Tezcon comes to Europe: talks, exhibitions, live music, and minting in Frankfurt am Main.",
     heroImage: "/images/tezcon-europe/frankfurt-skyline-2022.jpg",
@@ -98,11 +102,13 @@ export const strings = {
     program: [
       {
         title: "Talks & panels",
-        description: "Artists, builders, and collectors on the state of the Tezos ecosystem.",
+        description:
+          "Artists, builders, and collectors on the state of the Tezos ecosystem.",
       },
       {
         title: "Exhibition",
-        description: "A curated show of digital art from the community, on-site in Frankfurt.",
+        description:
+          "A curated show of digital art from the community, on-site in Frankfurt.",
       },
       {
         title: "Interactive installations",
@@ -170,4 +176,180 @@ export const strings = {
       description: "ratata gallery - Datenschutzerklärung.",
     },
   },
-} as const;
+};
+
+export type Strings = typeof en;
+
+const de: Strings = {
+  site: {
+    name: "ratata gallery",
+    // PROVISIONAL COPY - used in the footer and as the site meta description.
+    tagline:
+      "Galerie und Künstlerkollektiv für digitale Kunst - Frankfurt am Main.",
+    wordmark: "ratata",
+    wordmarkSuffix: ".gallery",
+  },
+  nav: {
+    home: "Start",
+    exhibitions: "Ausstellungen",
+    production: "Produktion",
+    tezconEurope: "Tezcon Europe",
+    about: "Über uns",
+    langEn: "EN",
+    langDe: "DE",
+  },
+  footer: {
+    impressum: "Impressum",
+    datenschutz: "Datenschutz",
+    youtube: "YouTube",
+    youtubeUrl: "https://www.youtube.com/@ratata_artcode",
+    copyright: `© ${new Date().getFullYear()} ratata · Frankfurt am Main`,
+  },
+  home: {
+    // PROVISIONAL COPY - drafted from the archive, pending the client's own
+    // wording. Every claim below is backed by a project in content/projects.
+    eyebrow: "Galerie & Kollektiv · Frankfurt am Main",
+    missionHeading: "Digitale Kunst, gezeigt in echten Räumen.",
+    missionBody:
+      "ratata ist eine Galerie und ein Künstlerkollektiv in Frankfurt am Main. Seit 2021 kuratieren wir Ausstellungen, betreiben offizielle NFT-Stände auf internationalen Kunstmessen und bauen die Minting- und Display-Technologie dahinter.",
+    leadEyebrow: "Aus dem Archiv",
+    leadLink: "Projekt ansehen",
+    viewAll: "Alle ansehen",
+    worksEyebrow: "Gezeigte Arbeiten",
+    worksCountSuffix: "Arbeiten",
+    worksLink: "Alle Arbeiten ansehen",
+    tezconEyebrow: "Demnächst",
+    tezconHeading: "Tezcon Europe",
+    tezconTeaser:
+      "Tezcon Europe: die Community-Convention rund um Tezos kommt nach Frankfurt.",
+    tezconLink: "Mehr erfahren",
+  },
+  archive: {
+    filterLabel: "Nach Rolle filtern",
+    empty: "Noch keine Projekte.",
+    noMatch: "Keine Projekte passen zu diesem Filter.",
+    viewGrid: "Raster",
+    viewIndex: "Index",
+    resultsSuffix: "PROJEKTE",
+    resultsSuffixOne: "PROJEKT",
+    columnYear: "Jahr",
+    columnTitle: "Titel",
+    columnVenue: "Ort / Stadt",
+    columnRole: "Rolle",
+  },
+  project: {
+    factDates: "Termine",
+    factVenue: "Ort",
+    factArtists: "Künstler:innen",
+    linksHeading: "Links & Presse",
+    linksPress: "Presse & Links",
+    linksSocial: "Social Media",
+    indexPlateLinks: "LINKS & PRESSE",
+    playLabel: "Abspielen",
+  },
+  tezcon: {
+    eyebrow: "Demnächst",
+    heading: "Tezcon Europe",
+    // PROVISIONAL COPY - venue and program are placeholders until the
+    // edition is confirmed; the Seattle background is factual.
+    body: "Die legendäre Tezcon kommt nach Europa: Talks, Ausstellungen, Livemusik und Minting in Frankfurt am Main.",
+    heroImage: "/images/tezcon-europe/frankfurt-skyline-2022.jpg",
+    heroImageAlt: "Die Frankfurter Skyline, gesehen über den Main",
+    heroImageCredit: "Foto: Jörg Braukmann",
+    heroImageLicense: "CC BY-SA 4.0",
+    heroImageLicenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+    heroImageSourceLabel: "via Wikimedia Commons",
+    heroImageSourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Frankfurt_Skyline_2022.jpg",
+    facts: [
+      { label: "Termin", value: "24./25. Oktober 2026" },
+      { label: "Ort", value: "Frankfurt am Main, wird noch bekannt gegeben" },
+      { label: "Format", value: "Talks · Ausstellung · Livemusik · Minting" },
+      { label: "Veranstaltet von", value: "ratata gallery" },
+    ],
+    seattleHeading: "Von Seattle nach Frankfurt",
+    seattleBody: [
+      "TezCon begann in Seattle als Grassroots-Convention für das Tezos-Ökosystem: ein von der Community getragenes Treffen von Künstlern, Sammlern, Entwicklern und Denkern, entstanden aus dem TezTones-Kollektiv und unterstützt von Tezos Commons. Die Ausgaben in der Kenyon Hall verbanden Paneltalks, kuratierte Ausstellungen, Livemusik und gemeinsames Arbeiten vor Ort, mit einem bewusst unkommerziellen Geist: Community zuerst.",
+      "Tezcon Europe bringt dieses Format über den Atlantik. Ausgerichtet von ratata gallery in Frankfurt am Main folgt die europäische Ausgabe derselben Idee: von der Community, für die Community.",
+    ],
+    programHeading: "Programm (vorläufig)",
+    program: [
+      {
+        title: "Talks & Panels",
+        description:
+          "Künstler, Entwickler und Sammler über den Stand des Tezos-Ökosystems.",
+      },
+      {
+        title: "Ausstellung",
+        description:
+          "Eine kuratierte Schau digitaler Kunst aus der Community, vor Ort in Frankfurt.",
+      },
+      {
+        title: "Interaktive Installationen",
+        description: "Interaktive Installationen vor Ort.",
+      },
+      {
+        title: "Musik & Socials",
+        description: "Livesets und offene Sessions, Abende inklusive.",
+      },
+    ],
+    seattleLinks: [
+      {
+        label: "TezCon Seattle - thetezos.com",
+        url: "https://thetezos.com/events/tezcon-seattle/",
+      },
+      {
+        label: "TezCon Seattle: A Vision Realized - Tezos Commons",
+        url: "https://news.tezoscommons.org/tezcon-seattle-a-vision-realized-21cb2548ef4b",
+      },
+      {
+        label: "TezCon-2026-Galerie auf Teia",
+        url: "https://tezcon2026-gallery.teia.art/",
+      },
+    ],
+    contactHeading: "Kontakt",
+    contactEmail: "info@ratata.gallery",
+  },
+  about: {
+    heading: "Über uns",
+    body: "ratata wurde 2021 von Adi Oohgaga und Johannes Simon gegründet. Von Frankfurt am Main aus kuratieren Galerie und Kollektiv Ausstellungen digitaler Kunst, betreiben offizielle NFT-Stände auf internationalen Kunstmessen und bauen die Minting- und Display-Technologie dahinter.",
+    contactHeading: "Kontakt",
+    contactBody: "Anfragen gern an",
+    contactEmail: "info@ratata.gallery",
+  },
+  categories: {
+    exhibition: "Ausstellung",
+    production: "Produktion",
+  },
+  roles: {
+    Curated: "Kuratiert",
+    Booth: "Stand",
+    "Tech Lead": "Tech Lead",
+    Platform: "Plattform",
+  },
+  pages: {
+    exhibitions: {
+      eyebrow: "Ausstellungsarchiv",
+      heading: "Ausstellungen",
+      description: "ratata gallery - kuratierte Ausstellungen.",
+    },
+    production: {
+      eyebrow: "Produktionsarchiv",
+      heading: "Produktion",
+      description:
+        "ratata gallery - Messen, Events, Tech-Produktionen und Plattformen.",
+    },
+  },
+  legal: {
+    impressum: {
+      heading: "Impressum",
+      description: "ratata gallery - Impressum.",
+    },
+    datenschutz: {
+      heading: "Datenschutzerklärung",
+      description: "ratata gallery - Datenschutzerklärung.",
+    },
+  },
+};
+
+export const STRINGS: Record<Lang, Strings> = { en, de };
