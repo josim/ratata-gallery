@@ -17,6 +17,7 @@ export type Artwork = {
   title: string;
   artist: string;
   image: string;
+  url?: string;
 };
 
 export type ArtworkSection = {
