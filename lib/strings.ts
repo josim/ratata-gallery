@@ -97,8 +97,8 @@ export const strings = {
         description: "A curated show of digital art from the community, on-site in Frankfurt.",
       },
       {
-        title: "Live minting",
-        description: "On-site minting installations in the tradition of ratata productions.",
+        title: "Interactive installations",
+        description: "On-site interactive installations in the tradition of ratata productions.",
       },
       {
         title: "Music & socials",
