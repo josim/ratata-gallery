@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { strings } from "@/lib/strings";
 import PageHero from "@/components/PageHero";
 
@@ -10,11 +11,47 @@ export const metadata: Metadata = {
 export default function TezconEuropePage() {
   return (
     <div>
-      <PageHero
-        eyebrow={strings.tezcon.eyebrow}
-        title={strings.tezcon.heading}
-        intro={strings.tezcon.body}
-      />
+      <div className="grid gap-8 lg:grid-cols-12 lg:gap-16">
+        <div className="lg:col-span-8">
+          <PageHero
+            eyebrow={strings.tezcon.eyebrow}
+            title={strings.tezcon.heading}
+            intro={strings.tezcon.body}
+          />
+        </div>
+
+        <figure className="mb-12 md:mb-16 lg:col-span-4">
+          <div className="relative aspect-[2/1] w-full border border-line bg-paper-card">
+            <Image
+              src={strings.tezcon.heroImage}
+              alt={strings.tezcon.heroImageAlt}
+              fill
+              sizes="(min-width: 1024px) 33vw, 100vw"
+              className="object-cover"
+            />
+          </div>
+          <figcaption className="mt-2 text-meta text-ink-muted">
+            {strings.tezcon.heroImageCredit},{" "}
+            <a
+              href={strings.tezcon.heroImageLicenseUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline decoration-1 underline-offset-[0.15em] hover:text-ink"
+            >
+              {strings.tezcon.heroImageLicense}
+            </a>
+            ,{" "}
+            <a
+              href={strings.tezcon.heroImageSourceUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline decoration-1 underline-offset-[0.15em] hover:text-ink"
+            >
+              {strings.tezcon.heroImageSourceLabel}
+            </a>
+          </figcaption>
+        </figure>
+      </div>
 
       <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div className="space-y-16 lg:col-span-8">

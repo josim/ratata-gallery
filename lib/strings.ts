@@ -75,8 +75,16 @@ export const strings = {
     // PROVISIONAL COPY - dates, venue, and program are placeholders until the
     // edition is confirmed; the Seattle background is factual.
     body: "The legendary Tezcon comes to Europe: talks, exhibitions, live music, and minting in Frankfurt am Main.",
+    heroImage: "/images/tezcon-europe/frankfurt-skyline-2022.jpg",
+    heroImageAlt: "The Frankfurt am Main skyline seen across the river Main",
+    heroImageCredit: "Photo: Jörg Braukmann",
+    heroImageLicense: "CC BY-SA 4.0",
+    heroImageLicenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+    heroImageSourceLabel: "via Wikimedia Commons",
+    heroImageSourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Frankfurt_Skyline_2022.jpg",
     facts: [
-      { label: "Dates", value: "2026, to be announced" },
+      { label: "Dates", value: "24/25 October 2026" },
       { label: "Venue", value: "Frankfurt am Main, to be announced" },
       { label: "Format", value: "Talks · Exhibition · Live music · Minting" },
       { label: "Hosted by", value: "ratata gallery" },
@@ -97,8 +105,8 @@ export const strings = {
         description: "A curated show of digital art from the community, on-site in Frankfurt.",
       },
       {
-        title: "Live minting",
-        description: "On-site minting installations in the tradition of ratata productions.",
+        title: "Interactive installations",
+        description: "On-site interactive installations.",
       },
       {
         title: "Music & socials",
@@ -124,9 +132,10 @@ export const strings = {
   },
   about: {
     heading: "About",
-    body: "TODO: About ratata gallery - Johannes / jorion and team.",
+    body: "ratata was founded in 2021 by Adi Oohgaga and Johannes Simon. Based in Frankfurt am Main, the gallery and collective curates exhibitions of digital art, runs official NFT booths at international art fairs, and builds the minting and display technology behind them.",
     contactHeading: "Contact",
-    contactBody: "TODO: Contact details.",
+    contactBody: "For inquiries, write to us at",
+    contactEmail: "info@ratata.gallery",
   },
   categories: {
     exhibition: "Exhibition",
