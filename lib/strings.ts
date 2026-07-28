@@ -84,7 +84,7 @@ export const strings = {
     heroImageSourceUrl:
       "https://commons.wikimedia.org/wiki/File:Frankfurt_Skyline_2022.jpg",
     facts: [
-      { label: "Dates", value: "2026, to be announced" },
+      { label: "Dates", value: "24/25 October 2026" },
       { label: "Venue", value: "Frankfurt am Main, to be announced" },
       { label: "Format", value: "Talks · Exhibition · Live music · Minting" },
       { label: "Hosted by", value: "ratata gallery" },
@@ -106,7 +106,7 @@ export const strings = {
       },
       {
         title: "Interactive installations",
-        description: "On-site interactive installations in the tradition of ratata productions.",
+        description: "On-site interactive installations.",
       },
       {
         title: "Music & socials",
