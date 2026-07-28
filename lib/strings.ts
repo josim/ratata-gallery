@@ -75,6 +75,14 @@ export const strings = {
     // PROVISIONAL COPY - dates, venue, and program are placeholders until the
     // edition is confirmed; the Seattle background is factual.
     body: "The legendary Tezcon comes to Europe: talks, exhibitions, live music, and minting in Frankfurt am Main.",
+    heroImage: "/images/tezcon-europe/frankfurt-skyline-2022.jpg",
+    heroImageAlt: "The Frankfurt am Main skyline seen across the river Main",
+    heroImageCredit: "Photo: Jörg Braukmann",
+    heroImageLicense: "CC BY-SA 4.0",
+    heroImageLicenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+    heroImageSourceLabel: "via Wikimedia Commons",
+    heroImageSourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Frankfurt_Skyline_2022.jpg",
     facts: [
       { label: "Dates", value: "2026, to be announced" },
       { label: "Venue", value: "Frankfurt am Main, to be announced" },
