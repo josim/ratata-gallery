@@ -124,7 +124,7 @@ export const strings = {
   },
   about: {
     heading: "About",
-    body: "TODO: About ratata gallery - Johannes / jorion and team.",
+    body: "ratata was founded in 2021 by Adi Oohgaga and Johannes Simon. Based in Frankfurt am Main, the gallery and collective curates exhibitions of digital art, runs official NFT booths at international art fairs, and builds the minting and display technology behind them.",
     contactHeading: "Contact",
     contactBody: "TODO: Contact details.",
   },
