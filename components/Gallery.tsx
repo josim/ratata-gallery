@@ -37,7 +37,7 @@ function GalleryVideo({ src }: { src: string }) {
         autoPlay={!reducedMotion}
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
-        className="w-full"
+        className="mx-auto h-auto max-h-[70vh] w-auto max-w-full"
       >
         <source src={src} type={src.toLowerCase().endsWith(".webm") ? "video/webm" : "video/mp4"} />
       </video>
