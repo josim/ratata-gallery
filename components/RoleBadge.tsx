@@ -1,4 +1,6 @@
-import { strings } from "@/lib/strings";
+"use client";
+
+import { useStrings } from "@/components/LangProvider";
 import type { ProjectRole } from "@/lib/projects";
 
 // DESIGN.md §5.5 — quiet-but-distinct badges: hue text + 6px marker + hairline-weight
@@ -32,6 +34,7 @@ export default function RoleBadge({
   role: ProjectRole;
   active?: boolean;
 }) {
+  const strings = useStrings();
   return (
     <span
       className={`inline-flex items-center gap-1.5 border px-2 py-1 font-sans text-meta uppercase ${

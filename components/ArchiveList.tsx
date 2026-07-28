@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { strings } from "@/lib/strings";
+import { useStrings } from "@/components/LangProvider";
 import type { Project, ProjectRole } from "@/lib/projects";
 import ProjectCard from "@/components/ProjectCard";
 import RoleBadge from "@/components/RoleBadge";
@@ -28,6 +28,7 @@ export default function ArchiveList({
   projects: Project[];
   defaultView?: View;
 }) {
+  const strings = useStrings();
   const roles = useMemo(
     () => Array.from(new Set(projects.map((p) => p.role))),
     [projects]

@@ -1,16 +1,20 @@
 import type { Metadata } from "next";
 import { getProjectsByCategory } from "@/lib/projects";
-import { strings } from "@/lib/strings";
+import { getLang, getStrings } from "@/lib/lang";
 import PageHero from "@/components/PageHero";
 import ArchiveList from "@/components/ArchiveList";
 
-export const metadata: Metadata = {
-  title: `${strings.site.name} - ${strings.pages.production.heading}`,
-  description: strings.pages.production.description,
-};
+export function generateMetadata(): Metadata {
+  const strings = getStrings();
+  return {
+    title: `${strings.site.name} - ${strings.pages.production.heading}`,
+    description: strings.pages.production.description,
+  };
+}
 
 export default function ProductionPage() {
-  const projects = getProjectsByCategory("production");
+  const strings = getStrings();
+  const projects = getProjectsByCategory("production", getLang());
 
   return (
     <div>

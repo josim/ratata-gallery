@@ -1,7 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getAllProjects, getProjectBySlug } from "@/lib/projects";
-import { strings } from "@/lib/strings";
+import { getLang, getStrings } from "@/lib/lang";
+import type { Strings } from "@/lib/strings";
 import { projectMeta } from "@/lib/format";
 import ProjectCard from "@/components/ProjectCard";
 import RoleBadge from "@/components/RoleBadge";
@@ -22,7 +23,7 @@ function firstSentence(content: string): string {
   return end === -1 ? text : text.slice(0, end + 1);
 }
 
-function projectCount(count: number): string {
+function projectCount(count: number, strings: Strings): string {
   const suffix =
     count === 1 ? strings.archive.resultsSuffixOne : strings.archive.resultsSuffix;
   return `${count} ${suffix}`;
@@ -31,17 +32,19 @@ function projectCount(count: number): string {
 const LINK_CLASS =
   "text-body text-accent underline decoration-1 underline-offset-[0.15em] hover:text-accent-hover hover:decoration-2";
 
-// The home listing groups by category (mirroring the site nav) rather than by
-// year - each section links through to its full archive page.
-const CATEGORY_SECTIONS = [
-  { category: "exhibition", heading: strings.pages.exhibitions.heading, href: "/exhibitions" },
-  { category: "production", heading: strings.pages.production.heading, href: "/production" },
-] as const;
-
 export default function HomePage() {
-  const projects = getAllProjects();
+  const lang = getLang();
+  const strings = getStrings();
+  const projects = getAllProjects(lang);
 
-  const lead = getProjectBySlug(LEAD_SLUG);
+  // The home listing groups by category (mirroring the site nav) rather than
+  // by year - each section links through to its full archive page.
+  const categorySections = [
+    { category: "exhibition", heading: strings.pages.exhibitions.heading, href: "/exhibitions" },
+    { category: "production", heading: strings.pages.production.heading, href: "/production" },
+  ] as const;
+
+  const lead = getProjectBySlug(LEAD_SLUG, lang);
   const leadImage = lead?.images?.[0];
 
   const showcase = projects.find((p) => p.artworkSections?.length);
@@ -118,7 +121,7 @@ export default function HomePage() {
         </section>
       )}
 
-      {CATEGORY_SECTIONS.map(({ category, heading, href }) => {
+      {categorySections.map(({ category, heading, href }) => {
         const items = projects.filter(
           (project) => project.category === category
         );
@@ -137,7 +140,7 @@ export default function HomePage() {
                 {heading}
               </h2>
               <p className="text-meta uppercase text-ink-muted [font-variant-numeric:tabular-nums]">
-                {projectCount(items.length)}
+                {projectCount(items.length, strings)}
               </p>
             </div>
 

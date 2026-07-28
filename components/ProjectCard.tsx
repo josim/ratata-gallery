@@ -1,7 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import type { Project } from "@/lib/projects";
-import { strings } from "@/lib/strings";
+import { useStrings } from "@/components/LangProvider";
 import { projectMeta } from "@/lib/format";
 import RoleBadge from "@/components/RoleBadge";
 
@@ -16,6 +18,7 @@ const ROLE_VAR: Record<Project["role"], string> = {
 };
 
 export default function ProjectCard({ project }: { project: Project }) {
+  const strings = useStrings();
   const image = project.images?.[0];
   const meta = projectMeta(project);
   const linkCount = project.links?.length ?? 0;

@@ -1,14 +1,56 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
-import { strings } from "@/lib/strings";
-import { NAV_ITEMS } from "@/lib/nav";
+import { LANG_COOKIE, type Lang } from "@/lib/strings";
+import { useLang, useStrings } from "@/components/LangProvider";
+import { getNavItems } from "@/lib/nav";
+
+// DE first — the site is German-first, English beside it.
+function LangSwitch() {
+  const lang = useLang();
+  const s = useStrings();
+  const router = useRouter();
+
+  function switchTo(next: Lang) {
+    if (next === lang) return;
+    document.cookie = `${LANG_COOKIE}=${next}; path=/; max-age=31536000; samesite=lax`;
+    router.refresh();
+  }
+
+  const options: { value: Lang; label: string }[] = [
+    { value: "de", label: s.nav.langDe },
+    { value: "en", label: s.nav.langEn },
+  ];
+
+  return (
+    <>
+      {options.map((option) => (
+        <button
+          key={option.value}
+          type="button"
+          lang={option.value}
+          aria-pressed={lang === option.value}
+          onClick={() => switchTo(option.value)}
+          className={`border-0 bg-transparent p-0 uppercase ${
+            lang === option.value
+              ? "text-ink"
+              : "text-ink-muted hover:text-ink-secondary"
+          }`}
+        >
+          {option.label}
+        </button>
+      ))}
+    </>
+  );
+}
 
 export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const s = useStrings();
+  const navItems = getNavItems(s);
 
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-paper">
@@ -19,15 +61,15 @@ export default function Header() {
           className="flex items-baseline gap-1"
         >
           <span className="font-serif text-[1.25rem] font-medium tracking-[-0.01em] text-ink">
-            {strings.site.wordmark}
+            {s.site.wordmark}
           </span>
           <span className="text-meta uppercase text-ink-muted">
-            {strings.site.wordmarkSuffix}
+            {s.site.wordmarkSuffix}
           </span>
         </Link>
 
         <nav aria-label="Primary" className="hidden items-center gap-6 md:flex">
-          {NAV_ITEMS.map((item) => {
+          {navItems.map((item) => {
             const active = pathname === item.href;
             return (
               <Link
@@ -45,10 +87,7 @@ export default function Header() {
             );
           })}
           <div className="flex items-center gap-2 border-l border-line pl-4 text-meta uppercase">
-            <span className="text-ink">{strings.nav.langEn}</span>
-            <span className="text-ink-muted/50" aria-disabled="true">
-              {strings.nav.langDe}
-            </span>
+            <LangSwitch />
           </div>
         </nav>
 
@@ -70,7 +109,7 @@ export default function Header() {
           className="border-t border-line bg-paper px-[clamp(20px,5vw,64px)] py-6 md:hidden"
         >
           <ul className="space-y-4">
-            {NAV_ITEMS.map((item) => {
+            {navItems.map((item) => {
               const active = pathname === item.href;
               return (
                 <li key={item.href}>
@@ -89,10 +128,7 @@ export default function Header() {
             })}
           </ul>
           <div className="mt-6 flex gap-3 text-meta uppercase">
-            <span className="text-ink">{strings.nav.langEn}</span>
-            <span className="text-ink-muted/50" aria-disabled="true">
-              {strings.nav.langDe}
-            </span>
+            <LangSwitch />
           </div>
         </nav>
       )}
