@@ -9,6 +9,14 @@ import RoleBadge from "@/components/RoleBadge";
 import GalleryCarousel from "@/components/Gallery";
 import LinksList from "@/components/LinksList";
 
+// Body links point off-site (objkt, press) — open them in a new tab so the
+// reader keeps their place in the archive.
+const mdxComponents = {
+  a: (props: React.ComponentProps<"a">) => (
+    <a {...props} target="_blank" rel="noopener noreferrer" />
+  ),
+};
+
 export function generateStaticParams() {
   return getAllProjects().map((project) => ({ slug: project.slug }));
 }
@@ -99,7 +107,7 @@ export default async function ProjectPage({
 
           <div className="mt-12 space-y-12">
             <div className="max-w-measure space-y-4 text-body text-ink [&_a]:text-accent [&_a]:underline [&_a]:decoration-1 [&_a]:underline-offset-[0.15em] [&_a:hover]:text-accent-hover [&_a:hover]:decoration-2 [&_h3]:pt-4 [&_h3]:font-serif [&_h3]:text-title-s [&_h3]:font-medium [&_h3]:text-ink">
-              <MDXRemote source={project.content} />
+              <MDXRemote source={project.content} components={mdxComponents} />
             </div>
 
             <LinksList links={project.links ?? []} />
@@ -127,7 +135,7 @@ export default async function ProjectPage({
 
           <div className="space-y-12 lg:order-1 lg:col-span-8">
             <div className="max-w-measure space-y-4 text-body text-ink [&_a]:text-accent [&_a]:underline [&_a]:decoration-1 [&_a]:underline-offset-[0.15em] [&_a:hover]:text-accent-hover [&_a:hover]:decoration-2 [&_h3]:pt-4 [&_h3]:font-serif [&_h3]:text-title-s [&_h3]:font-medium [&_h3]:text-ink">
-              <MDXRemote source={project.content} />
+              <MDXRemote source={project.content} components={mdxComponents} />
             </div>
 
             <LinksList links={project.links ?? []} />
@@ -153,7 +161,18 @@ export default async function ProjectPage({
                     className="object-contain"
                   />
                 </div>
-                <p className="mt-2 text-body text-ink">{artwork.title}</p>
+                {artwork.url ? (
+                  <a
+                    href={artwork.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 inline-block text-body text-accent underline decoration-1 underline-offset-[0.15em] hover:text-accent-hover hover:decoration-2"
+                  >
+                    {artwork.title} <span aria-hidden="true">↗</span>
+                  </a>
+                ) : (
+                  <p className="mt-2 text-body text-ink">{artwork.title}</p>
+                )}
                 <p className="text-meta uppercase text-ink-muted">
                   {artwork.artist}
                 </p>
