@@ -240,7 +240,7 @@ const de: Strings = {
     // PROVISIONAL COPY - drafted from the archive, pending the client's own
     // wording. Every claim below is backed by a project in content/projects.
     eyebrow: "Galerie & Kollektiv · Frankfurt am Main",
-    missionHeading: "Digitale Kunst, in echten Räumen.",
+    missionHeading: "Digitale Kunst, in realen Räumen.",
     missionBody:
       "ratata ist eine Galerie und ein Künstlerkollektiv in Frankfurt am Main. Seit 2021 kuratieren wir Ausstellungen, betreiben offizielle NFT-Stände auf internationalen Kunstmessen und bauen die Minting- und Display-Technologie dahinter.",
     leadEyebrow: "Aus dem Archiv",
