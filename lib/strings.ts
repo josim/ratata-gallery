@@ -368,9 +368,9 @@ const de: Strings = {
     peopleHeading: "Die Menschen hinter ratata",
     people: [
       {
-        name: "Phil (AdiOohgaga)",
-        role: "Konzept & Produktion",
-        body: "Phil studierte Ingenieurwissenschaften in London, bevor er in die Medien- und Kommunikationsbranche wechselte. Zu seinen Stationen zählen die Moderation für MTV Philippines sowie die Arbeit als Texter bei Saatchi & Saatchi und MRM. Bei ratata verbindet er Konzeption, Redaktion und Kommunikation.",
+        name: "Johannes",
+        role: "Technologie & Produktion",
+        body: "Johannes studierte Informatik an der Fachhochschule Frankfurt. Nach Stationen in Datenanalyse und Front-End-Entwicklung bei MRM übernahm er die technische Leitung bei Escape Events Frankfurt und wirkte dort am Aufbau fester Standorte und mobiler Escape-Room-Formate mit. Bei ratata verantwortet er Technologie, Produktion und interaktive Systeme.",
       },
       {
         name: "Phil (AdiOohgaga)",
