@@ -6,10 +6,27 @@ import type { Strings } from "@/lib/strings";
 import { projectMeta } from "@/lib/format";
 import ProjectCard from "@/components/ProjectCard";
 
-// Editorial pick for the lead plate (DESIGN.md §5.9 - the home hero is the one
-// surface allowed a highlight beneath the display-xl headline). Swap the slug
-// to re-cast the plate; the caption and link follow the project.
-const LEAD_SLUG = "what-hot-shit";
+// Editorial picks keep the homepage persuasive while the compact indexes below
+// retain access to the complete archive.
+const LEAD_SLUG = "positions-berlin-2024";
+const HIGHLIGHT_SLUGS = {
+  exhibition: [
+    "positions-berlin-2022",
+    "pixposure",
+    "i-airtist",
+  ],
+  production: [
+    "deutsche-bank-ai-art-night",
+    "nfc-summit-lisbon",
+    "uai-talent-night",
+  ],
+} as const;
+
+const EVIDENCE_SLUGS = [
+  "positions-berlin-2022",
+  "deutsche-bank-ai-art-night",
+  "nfc-summit-lisbon",
+] as const;
 
 // How many artworks the closing contact sheet shows before linking out.
 const SHEET_LIMIT = 24;
@@ -68,25 +85,25 @@ export default function HomePage() {
       {lead && leadImage && (
         <section
           aria-labelledby="lead-title"
-          className="grid gap-8 border-t border-line pt-12 md:pt-16 lg:grid-cols-12 lg:items-center lg:gap-12"
+          className="grid gap-8 border-t border-line pt-12 md:pt-16 lg:grid-cols-12 lg:items-start lg:gap-12"
         >
           <Link
             href={`/projects/${lead.slug}`}
-            className="block border border-line bg-paper-card transition-colors duration-150 ease-out hover:border-ink-muted lg:col-span-7"
+            className="block border border-line bg-paper-card transition-colors duration-150 ease-out hover:border-ink-muted lg:col-span-8"
           >
-            <div className="relative aspect-[4/3] w-full">
+            <div className="relative aspect-[3/2] w-full">
               <Image
                 src={leadImage}
                 alt={lead.title}
                 fill
                 priority
-                sizes="(min-width: 1024px) 58vw, 100vw"
-                className="object-cover"
+                sizes="(min-width: 1024px) 66vw, 100vw"
+                className="object-contain"
               />
             </div>
           </Link>
 
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-4">
             <p className="text-meta uppercase text-ink-muted">
               {strings.home.leadEyebrow}
             </p>
@@ -104,6 +121,9 @@ export default function HomePage() {
             <p className="mt-3 text-meta uppercase text-ink-muted">
               {projectMeta(lead)}
             </p>
+            <p className="mt-3 text-meta uppercase text-ink-secondary">
+              {strings.home.roleLabel}: {strings.roles[lead.role]}
+            </p>
             <p className="mt-5 max-w-measure text-body text-ink-secondary">
               {firstSentence(lead.content)}
             </p>
@@ -117,10 +137,61 @@ export default function HomePage() {
         </section>
       )}
 
+      <section
+        aria-labelledby="evidence-heading"
+        className="border-y border-line py-10 md:py-12"
+      >
+        <div className="grid gap-8 lg:grid-cols-12 lg:gap-12">
+          <div className="lg:col-span-4">
+            <p className="text-meta uppercase text-ink-muted">
+              {strings.home.evidenceEyebrow}
+            </p>
+            <h2
+              id="evidence-heading"
+              className="mt-3 font-serif text-title-m font-medium text-ink"
+            >
+              {strings.home.evidenceHeading}
+            </h2>
+            <p className="mt-3 text-body text-ink-secondary">
+              {strings.home.evidenceBody}
+            </p>
+          </div>
+          <ol className="divide-y divide-line border-y border-line lg:col-span-8">
+            {EVIDENCE_SLUGS.map((slug) => {
+              const project = getProjectBySlug(slug, lang);
+              if (!project) return null;
+              return (
+                <li
+                  key={project.slug}
+                  className="grid gap-2 py-4 md:grid-cols-[minmax(15rem,0.85fr)_minmax(0,1.15fr)] md:items-baseline md:gap-8"
+                >
+                  <Link
+                    href={`/projects/${project.slug}`}
+                    className="font-serif text-title-s font-medium text-ink transition-colors duration-150 ease-out hover:text-accent"
+                  >
+                    {project.title}
+                  </Link>
+                  <p className="min-w-0 text-meta uppercase text-ink-muted md:text-right">
+                    {projectMeta(project)}
+                  </p>
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+      </section>
+
       {categorySections.map(({ category, heading, href }) => {
         const items = projects.filter(
           (project) => project.category === category
         );
+        const highlightOrder = HIGHLIGHT_SLUGS[category];
+        const highlights = highlightOrder
+          .map((slug) => items.find((project) => project.slug === slug))
+          .filter(
+            (project): project is NonNullable<typeof project> =>
+              Boolean(project)
+          );
         if (items.length === 0) return null;
         return (
           <section
@@ -140,14 +211,46 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="mt-8 grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-6">
-              {items.map((project) => (
+            <div className="mt-8 grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-6">
+              {highlights.map((project) => (
                 <ProjectCard key={project.slug} project={project} />
               ))}
             </div>
 
+            <div className="mt-8 border-y border-line">
+              <p className="border-b border-line py-3 text-meta uppercase text-ink-muted">
+                {strings.home.compactIndex}
+              </p>
+              <ul className="divide-y divide-line sm:grid sm:grid-cols-2 sm:divide-y-0">
+                {items.map((project) => (
+                  <li
+                    key={project.slug}
+                    className="border-line sm:border-b sm:odd:border-r"
+                  >
+                    <Link
+                      href={`/projects/${project.slug}`}
+                      className="group grid min-h-14 grid-cols-[minmax(0,1fr)_auto_auto] items-baseline gap-3 px-3 py-4 transition-colors duration-200 ease-out hover:bg-paper-sunk sm:px-4"
+                    >
+                      <span className="min-w-0 text-body text-ink transition-[color,transform] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1 group-hover:text-accent group-focus-visible:translate-x-1 group-focus-visible:text-accent motion-reduce:transform-none motion-reduce:transition-none">
+                        {project.title}
+                      </span>
+                      <span className="text-meta uppercase text-ink-muted [font-variant-numeric:tabular-nums]">
+                        {project.year}
+                      </span>
+                      <span
+                        aria-hidden="true"
+                        className="-translate-x-1 text-body text-accent opacity-0 transition-[opacity,transform] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100 motion-reduce:transform-none motion-reduce:transition-none"
+                      >
+                        →
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
             <Link href={href} className={`mt-6 inline-block ${LINK_CLASS}`}>
-              {strings.home.viewAll} →
+              {strings.home.openArchive} →
             </Link>
           </section>
         );
