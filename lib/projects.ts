@@ -13,6 +13,13 @@ export type ProjectLink = {
   url: string;
 };
 
+export type ProjectMedia = {
+  src: string;
+  alt: string;
+  caption?: string;
+  credit?: string;
+};
+
 export type Artwork = {
   title: string;
   artist: string;
@@ -38,8 +45,11 @@ export type ProjectFrontmatter = {
   artists?: string[];
   credits?: { label: string; value: string }[];
   images?: string[];
+  media?: ProjectMedia[];
+  primaryAction?: ProjectLink;
   artworkSections?: ArtworkSection[];
   links?: ProjectLink[];
+  overviewText?: string;
 };
 
 export type Project = ProjectFrontmatter & {

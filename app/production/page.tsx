@@ -15,12 +15,20 @@ export function generateMetadata(): Metadata {
 export default function ProductionPage() {
   const strings = getStrings();
   const projects = getProjectsByCategory("production", getLang());
+  const years = projects.map((project) => project.year);
+  const yearRange = years.length
+    ? `${Math.min(...years)}—${Math.max(...years)}`
+    : "—";
 
   return (
     <div>
       <PageHero
         eyebrow={strings.pages.production.eyebrow}
         title={strings.pages.production.heading}
+        archiveSummary={{
+          countLabel: `${projects.length.toString().padStart(2, "0")} ${strings.archive.resultsSuffix}`,
+          yearRange,
+        }}
       />
       <ArchiveList projects={projects} />
     </div>

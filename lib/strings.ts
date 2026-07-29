@@ -11,7 +11,7 @@ const en = {
     name: "ratata gallery",
     // PROVISIONAL COPY - used in the footer and as the site meta description.
     tagline:
-      "Gallery and artist collective for digital art – Frankfurt am Main.",
+      "Gallery and artist collective for digital art in Frankfurt am Main.",
     wordmark: "ratata",
     wordmarkSuffix: ".gallery",
   },
@@ -71,9 +71,14 @@ const en = {
     columnRole: "Role",
   },
   project: {
+    backToArchive: "Back to archive",
+    overview: "Overview",
+    roleLabel: "Role",
     factDates: "Dates",
     factVenue: "Venue",
     factArtists: "Artists",
+    previousProject: "Previous project",
+    nextProject: "Next project",
     linksHeading: "Links & Press",
     linksPress: "Press & Links",
     linksSocial: "Social",
@@ -224,7 +229,7 @@ const de: Strings = {
     name: "ratata gallery",
     // PROVISIONAL COPY - used in the footer and as the site meta description.
     tagline:
-      "Galerie und Künstlerkollektiv für digitale Kunst – Frankfurt am Main.",
+      "Galerie und Künstlerkollektiv für digitale Kunst in Frankfurt am Main.",
     wordmark: "ratata",
     wordmarkSuffix: ".gallery",
   },
@@ -284,9 +289,14 @@ const de: Strings = {
     columnRole: "Rolle",
   },
   project: {
+    backToArchive: "Zurück zum Archiv",
+    overview: "Überblick",
+    roleLabel: "Rolle",
     factDates: "Termine",
     factVenue: "Ort",
     factArtists: "Künstler:innen",
+    previousProject: "Vorheriges Projekt",
+    nextProject: "Nächstes Projekt",
     linksHeading: "Links & Presse",
     linksPress: "Presse & Links",
     linksSocial: "Social Media",

@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useStrings } from "@/components/LangProvider";
 import type { Project, ProjectRole } from "@/lib/projects";
-import ProjectCard from "@/components/ProjectCard";
+import ArchiveEntry from "@/components/ArchiveEntry";
 
 type View = "grid" | "index";
 
@@ -172,9 +172,13 @@ export default function ArchiveList({
           {strings.archive.noMatch}
         </p>
       ) : view === "grid" ? (
-        <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-6 py-8">
-          {sorted.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
+        <div className="py-4 md:py-8">
+          {sorted.map((project, index) => (
+            <ArchiveEntry
+              key={project.slug}
+              project={project}
+              index={index}
+            />
           ))}
         </div>
       ) : (
