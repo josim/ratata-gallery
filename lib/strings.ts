@@ -11,7 +11,7 @@ const en = {
     name: "ratata gallery",
     // PROVISIONAL COPY - used in the footer and as the site meta description.
     tagline:
-      "Gallery and artist collective for digital art - Frankfurt am Main.",
+      "Gallery and artist collective for digital art – Frankfurt am Main.",
     wordmark: "ratata",
     wordmarkSuffix: ".gallery",
   },
@@ -35,7 +35,7 @@ const en = {
     // PROVISIONAL COPY - drafted from the archive, pending the client's own
     // wording. Every claim below is backed by a project in content/projects.
     eyebrow: "Gallery & Collective · Frankfurt am Main",
-    missionHeading: "Digital art, shown in real rooms.",
+    missionHeading: "Digital art, shown in real spaces.",
     missionBody:
       "ratata is a gallery and artist collective based in Frankfurt am Main. Since 2021 we have curated exhibitions, operated official NFT booths at international art fairs, and built the minting and display technology behind them.",
     leadEyebrow: "From the archive",
@@ -83,7 +83,7 @@ const en = {
     heading: "Tezcon Europe",
     // PROVISIONAL COPY - venue and program are placeholders until the
     // edition is confirmed; the Seattle background is factual.
-    body: "The legendary Tezcon comes to Europe: talks, exhibitions, live music, and minting in Frankfurt am Main.",
+    body: "Tezcon, the community-run Tezos convention, comes to Europe: talks, exhibitions, live music, and minting in Frankfurt am Main.",
     heroImage: "/images/tezcon-europe/frankfurt-skyline-2022.jpg",
     heroImageAlt: "The Frankfurt am Main skyline seen across the river Main",
     heroImageCredit: "Photo: Jörg Braukmann",
@@ -117,20 +117,20 @@ const en = {
       },
       {
         title: "Interactive installations",
-        description: "On-site interactive installations.",
+        description: "Interactive works to experience on-site.",
       },
       {
         title: "Music & socials",
-        description: "Live sets and open sessions, evenings included.",
+        description: "Live sets and open sessions throughout the evenings.",
       },
     ],
     seattleLinks: [
       {
-        label: "TezCon Seattle - thetezos.com",
+        label: "TezCon Seattle – thetezos.com",
         url: "https://thetezos.com/events/tezcon-seattle/",
       },
       {
-        label: "TezCon Seattle: A Vision Realized - Tezos Commons",
+        label: "TezCon Seattle: A Vision Realized – Tezos Commons",
         url: "https://news.tezoscommons.org/tezcon-seattle-a-vision-realized-21cb2548ef4b",
       },
       {
@@ -188,23 +188,23 @@ const en = {
     exhibitions: {
       eyebrow: "Exhibition Archive",
       heading: "Exhibitions",
-      description: "ratata gallery - curated exhibitions.",
+      description: "ratata gallery – curated exhibitions.",
     },
     production: {
       eyebrow: "Production Archive",
       heading: "Production",
       description:
-        "ratata gallery - fairs, events, tech productions, and platforms.",
+        "ratata gallery – fairs, events, tech productions, and platforms.",
     },
   },
   legal: {
     impressum: {
       heading: "Impressum",
-      description: "ratata gallery - Impressum.",
+      description: "ratata gallery – Impressum.",
     },
     datenschutz: {
       heading: "Datenschutzerklärung",
-      description: "ratata gallery - Datenschutzerklärung.",
+      description: "ratata gallery – Datenschutzerklärung.",
     },
   },
 };
@@ -216,7 +216,7 @@ const de: Strings = {
     name: "ratata gallery",
     // PROVISIONAL COPY - used in the footer and as the site meta description.
     tagline:
-      "Galerie und Künstlerkollektiv für digitale Kunst - Frankfurt am Main.",
+      "Galerie und Künstlerkollektiv für digitale Kunst – Frankfurt am Main.",
     wordmark: "ratata",
     wordmarkSuffix: ".gallery",
   },
@@ -288,7 +288,7 @@ const de: Strings = {
     heading: "Tezcon Europe",
     // PROVISIONAL COPY - venue and program are placeholders until the
     // edition is confirmed; the Seattle background is factual.
-    body: "Die legendäre Tezcon kommt nach Europa: Talks, Ausstellungen, Livemusik und Minting in Frankfurt am Main.",
+    body: "Tezcon, die Community-Convention des Tezos-Ökosystems, kommt nach Europa: Talks, Ausstellungen, Livemusik und Minting in Frankfurt am Main.",
     heroImage: "/images/tezcon-europe/frankfurt-skyline-2022.jpg",
     heroImageAlt: "Die Frankfurter Skyline, gesehen über den Main",
     heroImageCredit: "Foto: Jörg Braukmann",
@@ -305,7 +305,7 @@ const de: Strings = {
     ],
     seattleHeading: "Von Seattle nach Frankfurt",
     seattleBody: [
-      "TezCon begann in Seattle als Grassroots-Convention für das Tezos-Ökosystem: ein von der Community getragenes Treffen von Künstlern, Sammlern, Entwicklern und Denkern, entstanden aus dem TezTones-Kollektiv und unterstützt von Tezos Commons. Die Ausgaben in der Kenyon Hall verbanden Paneltalks, kuratierte Ausstellungen, Livemusik und gemeinsames Arbeiten vor Ort, mit einem bewusst unkommerziellen Geist: Community zuerst.",
+      "TezCon begann in Seattle als Grassroots-Convention für das Tezos-Ökosystem: ein von der Community getragenes Treffen von Künstler:innen, Sammler:innen, Entwickler:innen und Denker:innen, entstanden aus dem TezTones-Kollektiv und unterstützt von Tezos Commons. Die Ausgaben in der Kenyon Hall verbanden Paneltalks, kuratierte Ausstellungen, Livemusik und gemeinsames Arbeiten vor Ort – getragen von einem bewusst unkommerziellen Selbstverständnis: Community zuerst.",
       "Tezcon Europe bringt dieses Format über den Atlantik. Ausgerichtet von ratata gallery in Frankfurt am Main folgt die europäische Ausgabe derselben Idee: von der Community, für die Community.",
     ],
     programHeading: "Programm (vorläufig)",
@@ -313,7 +313,7 @@ const de: Strings = {
       {
         title: "Talks & Panels",
         description:
-          "Künstler, Entwickler und Sammler über den Stand des Tezos-Ökosystems.",
+          "Künstler:innen, Entwickler:innen und Sammler:innen über den Stand des Tezos-Ökosystems.",
       },
       {
         title: "Ausstellung",
@@ -322,20 +322,20 @@ const de: Strings = {
       },
       {
         title: "Interaktive Installationen",
-        description: "Interaktive Installationen vor Ort.",
+        description: "Interaktive Arbeiten zum Erleben vor Ort.",
       },
       {
         title: "Musik & Socials",
-        description: "Livesets und offene Sessions, Abende inklusive.",
+        description: "Livesets und offene Sessions im Abendprogramm.",
       },
     ],
     seattleLinks: [
       {
-        label: "TezCon Seattle - thetezos.com",
+        label: "TezCon Seattle – thetezos.com",
         url: "https://thetezos.com/events/tezcon-seattle/",
       },
       {
-        label: "TezCon Seattle: A Vision Realized - Tezos Commons",
+        label: "TezCon Seattle: A Vision Realized – Tezos Commons",
         url: "https://news.tezoscommons.org/tezcon-seattle-a-vision-realized-21cb2548ef4b",
       },
       {
@@ -352,9 +352,9 @@ const de: Strings = {
     peopleHeading: "Die Menschen hinter ratata",
     people: [
       {
-        name: "Johannes",
-        role: "Technologie & Produktion",
-        body: "Johannes studierte Informatik an der Fachhochschule Frankfurt. Nach Stationen in Datenanalyse und Front-End-Entwicklung bei MRM übernahm er die technische Leitung bei Escape Events Frankfurt und wirkte dort am Aufbau fester Standorte und mobiler Escape-Room-Formate mit. Bei ratata verantwortet er Technologie, Produktion und interaktive Systeme.",
+        name: "Phil (AdiOohgaga)",
+        role: "Konzept & Produktion",
+        body: "Phil studierte Ingenieurwissenschaften in London, bevor er in die Medien- und Kommunikationsbranche wechselte. Zu seinen Stationen zählen die Moderation für MTV Philippines sowie die Arbeit als Texter bei Saatchi & Saatchi und MRM. Bei ratata verbindet er Konzeption, Redaktion und Kommunikation.",
       },
       {
         name: "Phil (AdiOohgaga)",
@@ -363,9 +363,13 @@ const de: Strings = {
       },
     ],
     rootsHeading: "Von Molequlab zu ratata",
-    rootsBody: "Von 2015 bis 2019 arbeiteten Phil und Johannes gemeinsam als Molequlab. Ein interdisziplinäres Studio an der Schnittstelle von digitalen Produkten, Fertigung und vernetzter Technologie. Dazu gehörten der Home-Farming-Assistent Xoodo, technische Beratung, 3D-Druck und Materialrecycling, Robotik und IoT sowie Front-End-Entwicklung. Diese Verbindung aus kreativer Praxis und technischer Umsetzung bildet das Fundament der ratata gallery.",
+    rootsBody: "Von 2015 bis 2019 arbeiteten Phil und Johannes gemeinsam als Molequlab, einem interdisziplinären Studio an der Schnittstelle von digitalen Produkten, Fertigung und vernetzter Technologie. Zu den Projekten gehörten der Home-Farming-Assistent Xoodo, technische Beratung, 3D-Druck und Materialrecycling, Robotik und IoT sowie Front-End-Entwicklung. Diese Verbindung aus kreativer Praxis und technischer Umsetzung bildet das Fundament der ratata gallery.",
     archiveHeading: "Molequlab-Archiv",
     archiveLinks: [
+      {
+        label: "Molequlab auf YouTube",
+        url: "https://www.youtube.com/channel/UCATT5xD8syWRcaQk02xTBeg",
+      },
       {
         label: "Molequlab-Entwürfe auf Thingiverse",
         url: "https://www.thingiverse.com/molequlab/designs",
@@ -389,23 +393,23 @@ const de: Strings = {
     exhibitions: {
       eyebrow: "Ausstellungsarchiv",
       heading: "Ausstellungen",
-      description: "ratata gallery - kuratierte Ausstellungen.",
+      description: "ratata gallery – kuratierte Ausstellungen.",
     },
     production: {
       eyebrow: "Produktionsarchiv",
       heading: "Produktion",
       description:
-        "ratata gallery - Messen, Events, Tech-Produktionen und Plattformen.",
+        "ratata gallery – Messen, Events, Tech-Produktionen und Plattformen.",
     },
   },
   legal: {
     impressum: {
       heading: "Impressum",
-      description: "ratata gallery - Impressum.",
+      description: "ratata gallery – Impressum.",
     },
     datenschutz: {
       heading: "Datenschutzerklärung",
-      description: "ratata gallery - Datenschutzerklärung.",
+      description: "ratata gallery – Datenschutzerklärung.",
     },
   },
 };
