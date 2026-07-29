@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getAllProjects, getProjectBySlug } from "@/lib/projects";
+import { getUpcomingEntries } from "@/lib/upcoming";
 import { getLang, getStrings } from "@/lib/lang";
 import type { Strings } from "@/lib/strings";
 import { projectMeta } from "@/lib/format";
@@ -35,6 +36,7 @@ export default function HomePage() {
   const lang = getLang();
   const strings = getStrings();
   const projects = getAllProjects(lang);
+  const upcomingEntries = getUpcomingEntries(lang, strings);
 
   // The home listing groups by category (mirroring the site nav) rather than
   // by year - each section links through to its full archive page.
@@ -119,7 +121,7 @@ export default function HomePage() {
 
       {categorySections.map(({ category, heading, href }) => {
         const items = projects.filter(
-          (project) => project.category === category
+          (project) => project.category === category && !project.upcoming
         );
         if (items.length === 0) return null;
         return (
@@ -206,23 +208,37 @@ export default function HomePage() {
       )}
 
       <section
-        aria-labelledby="tezcon-heading"
+        aria-labelledby="upcoming-heading"
         className="border border-line bg-paper-sunk p-8 sm:p-12"
       >
         <p className="text-meta uppercase text-ink-muted">
-          {strings.home.tezconEyebrow}
+          {strings.home.upcomingEyebrow}
         </p>
         <h2
-          id="tezcon-heading"
+          id="upcoming-heading"
           className="mt-2 font-serif text-title-m font-medium text-ink"
         >
-          {strings.home.tezconHeading}
+          {strings.home.upcomingHeading}
         </h2>
-        <p className="mt-3 max-w-measure text-body text-ink-secondary">
-          {strings.home.tezconTeaser}
-        </p>
-        <Link href="/tezcon-europe" className={`mt-4 inline-block ${LINK_CLASS}`}>
-          {strings.home.tezconLink} →
+        <ul className="mt-6 border-t border-line">
+          {upcomingEntries.map((entry) => (
+            <li key={entry.key} className="border-b border-line">
+              <Link
+                href={entry.href}
+                className="group grid gap-1 py-3 sm:grid-cols-[11rem_1fr] sm:items-baseline sm:gap-6"
+              >
+                <span className="text-meta uppercase text-ink-muted [font-variant-numeric:tabular-nums]">
+                  {entry.dates}
+                </span>
+                <span className="text-body text-ink transition-colors duration-150 ease-out group-hover:text-accent">
+                  {entry.title}
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <Link href="/upcoming" className={`mt-6 inline-block ${LINK_CLASS}`}>
+          {strings.home.upcomingLink} →
         </Link>
       </section>
     </div>

@@ -7,7 +7,7 @@ export function getNavItems(s: Strings) {
   return [
     { href: "/exhibitions", label: s.nav.exhibitions },
     { href: "/production", label: s.nav.production },
-    { href: "/tezcon-europe", label: s.nav.tezconEurope },
+    { href: "/upcoming", label: s.nav.upcoming },
     { href: "/about", label: s.nav.about },
   ];
 }

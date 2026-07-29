@@ -35,6 +35,11 @@ export type ProjectFrontmatter = {
   role: ProjectRole;
   order?: number;
   featured?: boolean;
+  // Marks an event that has not happened yet: listed on /upcoming (sorted by
+  // startDate, ISO yyyy-mm-dd) and excluded from the archive pages. Remove the
+  // flag once the event is over and the project joins the archive.
+  upcoming?: boolean;
+  startDate?: string;
   artists?: string[];
   credits?: { label: string; value: string }[];
   images?: string[];
@@ -102,7 +107,9 @@ export function getProjectsByCategory(
   category: ProjectCategory,
   lang: Lang = DEFAULT_LANG
 ): Project[] {
-  return getAllProjects(lang).filter((p) => p.category === category);
+  return getAllProjects(lang).filter(
+    (p) => p.category === category && !p.upcoming
+  );
 }
 
 export function getProjectBySlug(
@@ -114,4 +121,12 @@ export function getProjectBySlug(
 
 export function getFeaturedProjects(lang: Lang = DEFAULT_LANG): Project[] {
   return getAllProjects(lang).filter((p) => p.featured);
+}
+
+export function getUpcomingProjects(lang: Lang = DEFAULT_LANG): Project[] {
+  return getAllProjects(lang)
+    .filter((p) => p.upcoming)
+    .sort((a, b) =>
+      (a.startDate ?? String(a.year)).localeCompare(b.startDate ?? String(b.year))
+    );
 }
