@@ -7,8 +7,11 @@ function sourceTag(url: string): string {
   try {
     const host = new URL(url).hostname.replace(/^www\./, "");
     if (host.includes("objkt.com")) return "OBJKT";
+    if (host.includes("teia.art")) return "TEIA";
     if (host.includes("x.com") || host.includes("twitter.com")) return "X";
     if (host.includes("mallow.art")) return "MALLOW";
+    if (host.includes("infiniteink.art")) return "INFINITEINK";
+    if (host.includes("8scribo.xyz")) return "8SCRIBO";
     if (host.includes("farcaster") || host.includes("warpcast.com"))
       return "FARCASTER";
   } catch {
@@ -25,6 +28,24 @@ function isSocial(url: string): boolean {
     return ["x.com", "twitter.com", "instagram.com", "farcaster.xyz", "warpcast.com", "youtube.com"].some(
       (social) => host === social || host.endsWith(`.${social}`)
     );
+  } catch {
+    return false;
+  }
+}
+
+function isCrypto(url: string): boolean {
+  try {
+    const host = new URL(url).hostname.replace(/^www\./, "");
+    return [
+      "objkt.com",
+      "objkt.media",
+      "teia.art",
+      "mallow.art",
+      "fxhash.xyz",
+      "versum.xyz",
+      "infiniteink.art",
+      "8scribo.xyz",
+    ].some((crypto) => host === crypto || host.endsWith(`.${crypto}`));
   } catch {
     return false;
   }
@@ -60,11 +81,15 @@ export default function LinksList({ links }: { links: ProjectLink[] }) {
 
   const strings = getStrings();
   const social = links.filter((link) => isSocial(link.url));
-  const press = links.filter((link) => !isSocial(link.url));
+  const crypto = links.filter((link) => isCrypto(link.url));
+  const press = links.filter(
+    (link) => !isSocial(link.url) && !isCrypto(link.url)
+  );
 
   const groups = [
     { heading: strings.project.linksPress, items: press },
     { heading: strings.project.linksSocial, items: social },
+    { heading: strings.project.linksCrypto, items: crypto },
   ].filter((group) => group.items.length > 0);
 
   return (
