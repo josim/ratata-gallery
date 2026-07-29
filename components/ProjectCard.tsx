@@ -5,7 +5,6 @@ import Image from "next/image";
 import type { Project } from "@/lib/projects";
 import { useStrings } from "@/components/LangProvider";
 import { projectMeta } from "@/lib/format";
-import RoleBadge from "@/components/RoleBadge";
 
 // DESIGN.md §5.4 — the role-hued keyline that differentiates the text-only
 // "index plate" card at a glance. Set via inline style (not a border-{color}
@@ -32,8 +31,6 @@ export default function ProjectCard({ project }: { project: Project }) {
         style={{ borderLeftColor: ROLE_VAR[project.role] }}
         className="group flex min-h-[320px] flex-col justify-between border border-line border-l-[3px] bg-paper-sunk p-7 transition-colors duration-150 ease-out hover:border-ink-muted sm:p-8"
       >
-        <RoleBadge role={project.role} />
-
         <div className="my-6 border-b border-line pb-4">
           <h3 className="font-serif text-title-l font-medium text-ink transition-colors duration-150 ease-out group-hover:text-accent">
             {project.title}
@@ -68,7 +65,6 @@ export default function ProjectCard({ project }: { project: Project }) {
         />
       </div>
       <div className="space-y-2 p-6">
-        <RoleBadge role={project.role} />
         <h3 className="font-serif text-title-m font-medium text-ink transition-colors duration-150 ease-out group-hover:text-accent">
           {project.title}
         </h3>
