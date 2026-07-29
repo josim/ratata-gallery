@@ -21,17 +21,30 @@ export default function ImpressumPage() {
           <h2 className="font-sans text-title-s font-semibold text-ink">
             Unternehmensinformationen
           </h2>
-          <p>Philipp Coufal</p>
-          <p>Am Eichenloh 20</p>
-          <p>60431 Frankfurt am Main</p>
-          <p>Germany</p>
+          <address className="not-italic">
+            Philipp Coufal
+            <br />
+            Am Eichenloh 20
+            <br />
+            60431 Frankfurt am Main
+            <br />
+            Deutschland
+          </address>
         </section>
 
         <section className="space-y-2">
           <h2 className="font-sans text-title-s font-semibold text-ink">
             Kontakt
           </h2>
-          <p>Telefon: +49 (0)174 1864217</p>
+          <p>
+            Telefon:{" "}
+            <a
+              href="tel:+491741864217"
+              className="text-accent underline decoration-1 underline-offset-[0.15em] hover:text-accent-hover hover:decoration-2"
+            >
+              +49 (0)174 1864217
+            </a>
+          </p>
           <p>
             E-Mail:{" "}
             <a
