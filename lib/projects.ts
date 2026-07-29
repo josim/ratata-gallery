@@ -35,6 +35,16 @@ export type ArtworkSection = {
   items: Artwork[];
 };
 
+export type ArtistProfile = {
+  name: string;
+  image: string;
+  imageAlt: string;
+  imagePresentation?: "compact";
+  description: string;
+  url: string;
+  linkLabel: string;
+};
+
 export type ProjectFrontmatter = {
   title: string;
   year: number;
@@ -46,6 +56,7 @@ export type ProjectFrontmatter = {
   order?: number;
   featured?: boolean;
   artists?: string[];
+  artistProfiles?: ArtistProfile[];
   credits?: { label: string; value: string }[];
   images?: string[];
   media?: ProjectMedia[];

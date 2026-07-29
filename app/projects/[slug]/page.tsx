@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import {
@@ -187,7 +188,63 @@ export default async function ProjectPage({
               <MDXRemote source={project.content} components={mdxComponents} />
             </div>
 
-            {project.artists?.length ? (
+            {project.artistProfiles?.length ? (
+              <section aria-labelledby="artist-roster">
+                <h2
+                  id="artist-roster"
+                  className="mb-8 border-b border-line pb-3 font-serif text-title-s font-medium text-ink"
+                >
+                  {strings.project.factArtists}
+                </h2>
+                <ul className="space-y-12">
+                  {project.artistProfiles.map((artist) => (
+                    <li key={artist.name} className="grid gap-6 sm:grid-cols-12 sm:gap-8">
+                      <div
+                        className={
+                          artist.imagePresentation === "compact"
+                            ? "relative h-[200px] w-[200px] overflow-hidden border border-line bg-card sm:col-span-3"
+                            : "relative aspect-square overflow-hidden border border-line bg-card sm:col-span-5 lg:col-span-4"
+                        }
+                      >
+                        <Image
+                          src={artist.image}
+                          alt={artist.imageAlt}
+                          fill
+                          sizes={
+                            artist.imagePresentation === "compact"
+                              ? "200px"
+                              : "(min-width: 1024px) 33vw, (min-width: 640px) 42vw, 100vw"
+                          }
+                          className="object-cover"
+                        />
+                      </div>
+                      <div
+                        className={`flex flex-col justify-center ${
+                          artist.imagePresentation === "compact"
+                            ? "sm:col-span-8"
+                            : "sm:col-span-7 lg:col-span-6"
+                        }`}
+                      >
+                        <h3 className="font-serif text-title-m font-medium text-ink">
+                          {artist.name}
+                        </h3>
+                        <p className="mt-4 max-w-measure text-body text-ink-secondary">
+                          {artist.description}
+                        </p>
+                        <a
+                          href={artist.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-6 w-fit text-body text-accent underline decoration-1 underline-offset-[0.15em] transition-colors hover:text-accent-hover hover:decoration-2"
+                        >
+                          {artist.linkLabel} <span aria-hidden="true">↗</span>
+                        </a>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ) : project.artists?.length ? (
               <section aria-labelledby="artist-roster" className="max-w-measure">
                 <h2
                   id="artist-roster"
