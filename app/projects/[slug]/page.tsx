@@ -141,14 +141,16 @@ export default async function ProjectPage({
         </div>
       )}
 
-      {project.artworkSections?.map((section) => (
+      {project.artworkSections
+        ?.filter((section) => section.heading && section.items?.length)
+        .map((section) => (
         <section key={section.heading} className="mt-16 space-y-6">
           <h2 className="border-b border-line pb-3 font-serif text-title-m font-medium text-ink">
             {section.heading}
           </h2>
           <ArtworkGrid items={section.items} heading={section.heading} />
         </section>
-      ))}
+        ))}
     </article>
   );
 }
