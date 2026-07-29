@@ -37,7 +37,7 @@ const en = {
     eyebrow: "Gallery & Collective · Frankfurt am Main",
     missionHeading: "Digital art, in real spaces.",
     missionBody:
-      "ratata is a gallery and artist collective based in Frankfurt am Main. Since 2021 we have curated exhibitions, operated official NFT booths at international art fairs, and built the minting and display technology behind them.",
+      "ratata is a gallery and artist collective from Frankfurt am Main. We curate digital art, present it in exhibitions and at international art fairs, and develop the technology that makes these presentations possible.",
     leadEyebrow: "From the archive",
     leadLink: "View project",
     viewAll: "View all",
@@ -45,7 +45,7 @@ const en = {
     evidenceEyebrow: "Selected evidence",
     evidenceHeading: "Work in institutions and public settings",
     evidenceBody:
-      "Three documented projects show how ratata combines curation, production, and technical delivery. Each entry links to project details and sources.",
+      "Selected projects show how ratata brings together curatorial practice, production, and technical development.",
     compactIndex: "Complete compact index",
     openArchive: "Open archive with filters",
     worksEyebrow: "Works exhibited",
@@ -155,14 +155,14 @@ const en = {
     peopleHeading: "The people behind ratata",
     people: [
       {
-        name: "Johannes",
-        role: "Technology & Production",
-        body: "Johannes studied information technology at Frankfurt University of Applied Sciences. After working in data analysis and front-end development at MRM, he became technical director at Escape Events Frankfurt, where he helped develop permanent locations and mobile escape-room formats. At ratata, he focuses on technology, production, and interactive systems.",
-      },
-      {
         name: "Phil (AdiOohgaga)",
         role: "Concept & Communication",
         body: "Phil studied engineering in London before moving into media and communication. His path includes presenting for MTV Philippines and working as a copywriter at Saatchi & Saatchi and MRM. At ratata, he brings together concept development, editorial work, and communication.",
+      },
+      {
+        name: "Johannes",
+        role: "Technology & Production",
+        body: "Johannes studied information technology at Frankfurt University of Applied Sciences. After working in data analysis and front-end development at MRM, he became technical director at Escape Events Frankfurt, where he helped develop permanent locations and mobile escape-room formats. At ratata, he focuses on technology, production, and interactive systems.",
       },
     ],
     rootsHeading: "From Molequlab to ratata",
@@ -250,7 +250,7 @@ const de: Strings = {
     eyebrow: "Galerie & Kollektiv · Frankfurt am Main",
     missionHeading: "Digitale Kunst, in realen Räumen.",
     missionBody:
-      "ratata ist eine Galerie und ein Künstlerkollektiv in Frankfurt am Main. Seit 2021 kuratieren wir Ausstellungen, betreiben offizielle NFT-Stände auf internationalen Kunstmessen und bauen die Minting- und Display-Technologie dahinter.",
+      "ratata ist eine Galerie und ein Künstlerkollektiv aus Frankfurt am Main. Wir kuratieren digitale Kunst, bringen sie in Ausstellungen und auf internationale Kunstmessen und entwickeln die Technik, die diese Präsentationen möglich macht.",
     leadEyebrow: "Aus dem Archiv",
     leadLink: "Projekt ansehen",
     viewAll: "Alle ansehen",
@@ -258,7 +258,7 @@ const de: Strings = {
     evidenceEyebrow: "Ausgewählte Nachweise",
     evidenceHeading: "Arbeit in Institutionen und öffentlichen Räumen",
     evidenceBody:
-      "Drei dokumentierte Projekte zeigen, wie ratata Kuration, Produktion und technische Umsetzung verbindet. Jeder Eintrag führt zu Projektdetails und Quellen.",
+      "Ausgewählte Projekte zeigen, wie ratata kuratorische Arbeit, Produktion und technische Entwicklung zusammenführt.",
     compactIndex: "Vollständiger kompakter Index",
     openArchive: "Archiv mit Filtern öffnen",
     worksEyebrow: "Gezeigte Arbeiten",
@@ -368,14 +368,14 @@ const de: Strings = {
     peopleHeading: "Die Menschen hinter ratata",
     people: [
       {
-        name: "Johannes",
-        role: "Technologie & Produktion",
-        body: "Johannes studierte Informatik an der Fachhochschule Frankfurt. Nach Stationen in Datenanalyse und Front-End-Entwicklung bei MRM übernahm er die technische Leitung bei Escape Events Frankfurt und wirkte dort am Aufbau fester Standorte und mobiler Escape-Room-Formate mit. Bei ratata verantwortet er Technologie, Produktion und interaktive Systeme.",
+        name: "Phil (AdiOohgaga)",
+        role: "Konzept & Produktion",
+        body: "Phil studierte Ingenieurwissenschaften in London, bevor er in die Medien- und Kommunikationsbranche wechselte. Zu seinen Stationen zählen die Moderation für MTV Philippines sowie die Arbeit als Texter bei Saatchi & Saatchi und MRM. Bei ratata verbindet er Konzeption, Redaktion und Kommunikation.",
       },
       {
-        name: "Phil (AdiOohgaga)",
-        role: "Konzept & Kommunikation",
-        body: "Phil studierte Ingenieurwissenschaften in London, bevor er in Medien und Kommunikation wechselte. Zu seinen Stationen zählen die Moderation für MTV Philippines sowie die Arbeit als Texter bei Saatchi & Saatchi und MRM. Bei ratata verbindet er Konzeption, Redaktion und Kommunikation.",
+        name: "Johannes",
+        role: "Technologie & Kommunikation",
+        body: "Johannes studierte Informatik an der Fachhochschule Frankfurt. Nach Stationen in Datenanalyse und Front-End-Entwicklung bei MRM übernahm er die technische Leitung bei Escape Events Frankfurt und wirkte dort am Aufbau fester Standorte und mobiler Escape-Room-Formate mit. Bei ratata verantwortet er Technologie, Produktion und interaktive Systeme.",
       },
     ],
     rootsHeading: "Von Molequlab zu ratata",
