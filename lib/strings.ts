@@ -143,7 +143,33 @@ const en = {
   },
   about: {
     heading: "About",
-    body: "ratata was founded in 2021 by Adi Oohgaga and Johannes Simon. Based in Frankfurt am Main, the gallery and collective curates exhibitions of digital art, runs official NFT booths at international art fairs, and builds the minting and display technology behind them.",
+    body: "ratata is led by Johannes and Phil. Their collaboration began with Molequlab in 2015; since 2019, they have brought their combined experience in technology, production, and communication to ratata gallery.",
+    peopleHeading: "The people behind ratata",
+    people: [
+      {
+        name: "Johannes",
+        role: "Technology & Production",
+        body: "Johannes studied information technology at Frankfurt University of Applied Sciences. After working in data analysis and front-end development at MRM, he became technical director at Escape Events Frankfurt, where he helped develop permanent locations and mobile escape-room formats. At ratata, he focuses on technology, production, and interactive systems.",
+      },
+      {
+        name: "Phil (AdiOohgaga)",
+        role: "Concept & Communication",
+        body: "Phil studied engineering in London before moving into media and communication. His path includes presenting for MTV Philippines and working as a copywriter at Saatchi & Saatchi and MRM. At ratata, he brings together concept development, editorial work, and communication.",
+      },
+    ],
+    rootsHeading: "From Molequlab to ratata",
+    rootsBody: "From 2015 to 2019, Phil and Johannes worked together as Molequlab, an interdisciplinary studio spanning digital products, fabrication, and connected technology. Projects included the Xoodo home-farming assistant, technical consulting, 3D-printing services and material recycling, robotics and IoT, and front-end development. This combination of creative practice and technical implementation became the foundation for ratata gallery.",
+    archiveHeading: "Molequlab archive",
+    archiveLinks: [
+      {
+        label: "Molequlab on YouTube",
+        url: "https://www.youtube.com/channel/UCATT5xD8syWRcaQk02xTBeg",
+      },
+      {
+        label: "Molequlab designs on Thingiverse",
+        url: "https://www.thingiverse.com/molequlab/designs",
+      },
+    ],
     contactHeading: "Contact",
     contactBody: "For inquiries, write to us at",
     contactEmail: "info@ratata.gallery",
@@ -322,7 +348,29 @@ const de: Strings = {
   },
   about: {
     heading: "Über uns",
-    body: "ratata wurde 2021 von Adi Oohgaga und Johannes Simon gegründet. Von Frankfurt am Main aus kuratieren Galerie und Kollektiv Ausstellungen digitaler Kunst, betreiben offizielle NFT-Stände auf internationalen Kunstmessen und bauen die Minting- und Display-Technologie dahinter.",
+    body: "Hinter ratata stehen Johannes und Phil. Ihre Zusammenarbeit begann 2015 mit Molequlab; seit 2019 bringen sie ihre gemeinsame Erfahrung aus Technologie, Produktion und Kommunikation in die ratata gallery ein.",
+    peopleHeading: "Die Menschen hinter ratata",
+    people: [
+      {
+        name: "Johannes",
+        role: "Technologie & Produktion",
+        body: "Johannes studierte Informatik an der Fachhochschule Frankfurt. Nach Stationen in Datenanalyse und Front-End-Entwicklung bei MRM übernahm er die technische Leitung bei Escape Events Frankfurt und wirkte dort am Aufbau fester Standorte und mobiler Escape-Room-Formate mit. Bei ratata verantwortet er Technologie, Produktion und interaktive Systeme.",
+      },
+      {
+        name: "Phil (AdiOohgaga)",
+        role: "Konzept & Kommunikation",
+        body: "Phil studierte Ingenieurwissenschaften in London, bevor er in Medien und Kommunikation wechselte. Zu seinen Stationen zählen die Moderation für MTV Philippines sowie die Arbeit als Texter bei Saatchi & Saatchi und MRM. Bei ratata verbindet er Konzeption, Redaktion und Kommunikation.",
+      },
+    ],
+    rootsHeading: "Von Molequlab zu ratata",
+    rootsBody: "Von 2015 bis 2019 arbeiteten Phil und Johannes gemeinsam als Molequlab. Ein interdisziplinäres Studio an der Schnittstelle von digitalen Produkten, Fertigung und vernetzter Technologie. Dazu gehörten der Home-Farming-Assistent Xoodo, technische Beratung, 3D-Druck und Materialrecycling, Robotik und IoT sowie Front-End-Entwicklung. Diese Verbindung aus kreativer Praxis und technischer Umsetzung bildet das Fundament der ratata gallery.",
+    archiveHeading: "Molequlab-Archiv",
+    archiveLinks: [
+      {
+        label: "Molequlab-Entwürfe auf Thingiverse",
+        url: "https://www.thingiverse.com/molequlab/designs",
+      },
+    ],
     contactHeading: "Kontakt",
     contactBody: "Anfragen gern an",
     contactEmail: "info@ratata.gallery",
