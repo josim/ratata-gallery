@@ -143,18 +143,18 @@ const en = {
   },
   about: {
     heading: "About",
-    body: "ratata is led by Johannes and Phil. Their collaboration began with Molequlab in 2015; since 2019, they have brought their combined experience in technology, production, and communication to ratata gallery.",
+    body: "ratata is led by AdiOohgaga and Johannes. Their collaboration began with Molequlab in 2015; since 2019, they have brought their combined experience in technology, production, and communication to ratata gallery.",
     peopleHeading: "The people behind ratata",
     people: [
       {
-        name: "Johannes",
-        role: "Technology & Production",
-        body: "Johannes studied information technology at Frankfurt University of Applied Sciences. After working in data analysis and front-end development at MRM, he became technical director at Escape Events Frankfurt, where he helped develop permanent locations and mobile escape-room formats. At ratata, he focuses on technology, production, and interactive systems.",
+        name: "Phil (AdiOohgaga)",
+        role: "Concept & Production",
+        body: "Phil studied engineering in London before moving into media and communication. His path includes presenting for MTV Philippines and working as a copywriter at Saatchi & Saatchi and MRM. At ratata, he brings together concept development, editorial work, and communication.",
       },
       {
-        name: "Phil (AdiOohgaga)",
-        role: "Concept & Communication",
-        body: "Phil studied engineering in London before moving into media and communication. His path includes presenting for MTV Philippines and working as a copywriter at Saatchi & Saatchi and MRM. At ratata, he brings together concept development, editorial work, and communication.",
+        name: "Johannes",
+        role: "Technology & Development",
+        body: "Johannes studied information technology at Frankfurt University of Applied Sciences. After working in data analysis and front-end development at MRM, he became technical director at Escape Events Frankfurt, where he helped develop permanent locations and mobile escape-room formats. At ratata, he focuses on technology, production, and interactive systems.",
       },
     ],
     rootsHeading: "From Molequlab to ratata",
@@ -348,18 +348,18 @@ const de: Strings = {
   },
   about: {
     heading: "Über uns",
-    body: "Hinter ratata stehen Johannes und Phil. Ihre Zusammenarbeit begann 2015 mit Molequlab; seit 2019 bringen sie ihre gemeinsame Erfahrung aus Technologie, Produktion und Kommunikation in die ratata gallery ein.",
+    body: "Hinter ratata stehen AdiOohgaga und Johannes. Ihre Zusammenarbeit begann 2015 mit Molequlab; seit 2019 bringen sie ihre gemeinsame Erfahrung aus Technologie, Produktion und Kommunikation in die ratata gallery ein.",
     peopleHeading: "Die Menschen hinter ratata",
     people: [
       {
-        name: "Johannes",
-        role: "Technologie & Produktion",
-        body: "Johannes studierte Informatik an der Fachhochschule Frankfurt. Nach Stationen in Datenanalyse und Front-End-Entwicklung bei MRM übernahm er die technische Leitung bei Escape Events Frankfurt und wirkte dort am Aufbau fester Standorte und mobiler Escape-Room-Formate mit. Bei ratata verantwortet er Technologie, Produktion und interaktive Systeme.",
+        name: "Phil (AdiOohgaga)",
+        role: "Konzept & Produktion",
+        body: "Phil studierte Ingenieurwissenschaften in London, bevor er in Medien und Kommunikation wechselte. Zu seinen Stationen zählen die Moderation für MTV Philippines sowie die Arbeit als Texter bei Saatchi & Saatchi und MRM. Bei ratata verbindet er Konzeption, Redaktion und Kommunikation.",
       },
       {
-        name: "Phil (AdiOohgaga)",
-        role: "Konzept & Kommunikation",
-        body: "Phil studierte Ingenieurwissenschaften in London, bevor er in Medien und Kommunikation wechselte. Zu seinen Stationen zählen die Moderation für MTV Philippines sowie die Arbeit als Texter bei Saatchi & Saatchi und MRM. Bei ratata verbindet er Konzeption, Redaktion und Kommunikation.",
+        name: "Johannes",
+        role: "Technologie & Entwicklung",
+        body: "Johannes studierte Informatik an der Fachhochschule Frankfurt. Nach Stationen in Datenanalyse und Front-End-Entwicklung bei MRM übernahm er die technische Leitung bei Escape Events Frankfurt und wirkte dort am Aufbau fester Standorte und mobiler Escape-Room-Formate mit. Bei ratata verantwortet er Technologie, Produktion und interaktive Systeme.",
       },
     ],
     rootsHeading: "Von Molequlab zu ratata",
