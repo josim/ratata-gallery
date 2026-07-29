@@ -12,7 +12,7 @@ import { withImageSizes } from "@/lib/images";
 import { getLang, getStrings } from "@/lib/lang";
 import GalleryCarousel from "@/components/Gallery";
 import LinksList from "@/components/LinksList";
-import ArtworkGrid from "@/components/ArtworkGrid";
+import ArtworkCollections from "@/components/ArtworkCollections";
 
 // Body links point off-site (objkt, press) — open them in a new tab so the
 // reader keeps their place in the archive.
@@ -241,16 +241,15 @@ export default async function ProjectPage({
         </div>
       )}
 
-      {project.artworkSections
-        ?.filter((section) => section.heading && section.items?.length)
-        .map((section) => (
-        <section key={section.heading} className="mt-16 space-y-6">
-          <h2 className="border-b border-line pb-3 font-serif text-title-m font-medium text-ink">
-            {section.heading}
-          </h2>
-          <ArtworkGrid items={section.items} heading={section.heading} />
-        </section>
-        ))}
+      {project.artworkSections?.some(
+        (section) => section.heading && section.items?.length
+      ) && (
+        <ArtworkCollections
+          sections={project.artworkSections.filter(
+            (section) => section.heading && section.items?.length
+          )}
+        />
+      )}
 
       {(previousProject || nextProject) && (
         <nav
