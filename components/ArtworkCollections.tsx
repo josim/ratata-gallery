@@ -40,26 +40,28 @@ export default function ArtworkCollections({
             </p>
           </div>
 
-          <div
-            className="-mx-1 flex max-w-full gap-1 overflow-x-auto px-1 pb-1"
-            aria-label={strings.project.artworksFilterLabel}
-          >
-            <FilterButton
-              active={activeFilter === "all"}
-              onClick={() => setActiveFilter("all")}
-              label={strings.project.artworksAll}
-              count={total}
-            />
-            {sections.map((section, index) => (
+          {sections.length > 1 && (
+            <div
+              className="-mx-1 flex max-w-full gap-1 overflow-x-auto px-1 pb-1"
+              aria-label={strings.project.artworksFilterLabel}
+            >
               <FilterButton
-                key={section.heading}
-                active={activeFilter === index}
-                onClick={() => setActiveFilter(index)}
-                label={section.heading.replace(/\s+2024$/, "")}
-                count={section.items.length}
+                active={activeFilter === "all"}
+                onClick={() => setActiveFilter("all")}
+                label={strings.project.artworksAll}
+                count={total}
               />
-            ))}
-          </div>
+              {sections.map((section, index) => (
+                <FilterButton
+                  key={section.heading}
+                  active={activeFilter === index}
+                  onClick={() => setActiveFilter(index)}
+                  label={section.heading.replace(/\s+2024$/, "")}
+                  count={section.items.length}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
 
