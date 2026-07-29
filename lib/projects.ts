@@ -16,6 +16,7 @@ export type ProjectLink = {
 export type ProjectMedia = {
   src: string;
   alt: string;
+  poster?: string;
   caption?: string;
   credit?: string;
 };
@@ -24,6 +25,8 @@ export type Artwork = {
   title: string;
   artist: string;
   image: string;
+  video?: string;
+  curator?: string;
   url?: string;
 };
 

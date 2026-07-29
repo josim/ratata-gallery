@@ -43,3 +43,9 @@ CLAUDE.md
 # local data-prep working files (large downloads / raw originals)
 /scripts/getdata/assets/
 /scripts/raw-images/
+
+# Local source masters; optimized web versions are committed instead.
+/public/images/positions-berlin/2024/Ocean-Flames.mov
+/public/images/positions-berlin/2024/Twitch-Streamer-Reaction-Video.mp4
+/public/images/positions-berlin/2024/anthropocene_daze_artifact_objkt.mp4
+/public/images/positions-berlin/2024/deforestation.gif

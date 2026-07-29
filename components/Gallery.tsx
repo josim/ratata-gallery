@@ -13,7 +13,13 @@ function isVideo(src: string) {
 
 // DESIGN.md §5.7 — loops autoplay muted/looped, but respect
 // prefers-reduced-motion by holding playback and offering a play control.
-function GalleryVideo({ src }: { src: string }) {
+function GalleryVideo({
+  src,
+  poster,
+}: {
+  src: string;
+  poster?: string;
+}) {
   const strings = useStrings();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [reducedMotion, setReducedMotion] = useState(false);
@@ -35,6 +41,7 @@ function GalleryVideo({ src }: { src: string }) {
         loop
         playsInline
         preload="metadata"
+        poster={poster}
         autoPlay={!reducedMotion}
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
@@ -60,6 +67,7 @@ export type GalleryImage = {
   width?: number;
   height?: number;
   alt?: string;
+  poster?: string;
   caption?: string;
   credit?: string;
 };
@@ -92,7 +100,7 @@ function Plate({
   if (isVideo(image.src)) {
     return (
       <div className="border border-line bg-card">
-        <GalleryVideo src={image.src} />
+        <GalleryVideo src={image.src} poster={image.poster} />
       </div>
     );
   }
@@ -222,18 +230,39 @@ export function GalleryLightbox({
 
       <div className="flex h-full w-full items-center justify-center px-4 py-20 sm:px-20">
         <div className="relative h-full w-full">
-          <Image
-            key={active.src}
-            src={active.src}
-            alt={
-              active.alt ??
-              `${title}, image ${current + 1} of ${images.length}`
-            }
-            fill
-            priority
-            sizes="100vw"
-            className="object-contain"
-          />
+          {isVideo(active.src) ? (
+            <video
+              key={active.src}
+              controls
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              poster={active.poster}
+              aria-label={
+                active.alt ??
+                `${title}, video ${current + 1} of ${images.length}`
+              }
+              className="h-full w-full object-contain"
+            >
+              <source src={active.src} type="video/mp4" />
+            </video>
+          ) : (
+            <Image
+              key={active.src}
+              src={active.src}
+              alt={
+                active.alt ??
+                `${title}, image ${current + 1} of ${images.length}`
+              }
+              fill
+              unoptimized={active.src.toLowerCase().endsWith(".gif")}
+              priority
+              sizes="100vw"
+              className="object-contain"
+            />
+          )}
         </div>
       </div>
 
@@ -323,7 +352,7 @@ export default function GalleryCarousel({
     <figure className="min-w-0 space-y-3">
       <div className="border border-line bg-card">
         {isVideo(active.src) ? (
-          <GalleryVideo src={active.src} />
+          <GalleryVideo src={active.src} poster={active.poster} />
         ) : (
           <button
             ref={openerRef}
