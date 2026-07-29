@@ -5,7 +5,6 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { getAllProjects, getProjectBySlug } from "@/lib/projects";
 import { withImageSizes } from "@/lib/images";
 import { getLang, getStrings } from "@/lib/lang";
-import RoleBadge from "@/components/RoleBadge";
 import GalleryCarousel from "@/components/Gallery";
 import LinksList from "@/components/LinksList";
 
@@ -68,7 +67,6 @@ export default async function ProjectPage({
   return (
     <article>
       <header className="mb-12 space-y-3">
-        <RoleBadge role={project.role} />
         <h1 className="max-w-measure font-serif text-title-l font-medium text-ink">
           {project.title}
         </h1>
@@ -143,7 +141,9 @@ export default async function ProjectPage({
         </div>
       )}
 
-      {project.artworkSections?.map((section) => (
+      {project.artworkSections
+        ?.filter((section) => section.heading && section.items?.length)
+        .map((section) => (
         <section key={section.heading} className="mt-16 space-y-6">
           <h2 className="border-b border-line pb-3 font-serif text-title-m font-medium text-ink">
             {section.heading}
@@ -180,7 +180,7 @@ export default async function ProjectPage({
             ))}
           </ul>
         </section>
-      ))}
+        ))}
     </article>
   );
 }
