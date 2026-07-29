@@ -72,6 +72,11 @@ const en = {
     linksSocial: "Social",
     indexPlateLinks: "LINKS & PRESS",
     playLabel: "Play",
+    openFullscreen: "Open image full screen",
+    fullscreenLabel: "Full-screen image viewer",
+    closeFullscreen: "Close full-screen image",
+    previousImage: "Previous image",
+    nextImage: "Next image",
   },
   tezcon: {
     eyebrow: "Upcoming",
@@ -246,6 +251,11 @@ const de: Strings = {
     linksSocial: "Social Media",
     indexPlateLinks: "LINKS & PRESSE",
     playLabel: "Abspielen",
+    openFullscreen: "Bild im Vollbild öffnen",
+    fullscreenLabel: "Vollbild-Bildansicht",
+    closeFullscreen: "Vollbildansicht schließen",
+    previousImage: "Vorheriges Bild",
+    nextImage: "Nächstes Bild",
   },
   tezcon: {
     eyebrow: "Demnächst",

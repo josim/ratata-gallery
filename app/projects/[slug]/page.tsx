@@ -1,13 +1,12 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import Image from "next/image";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getAllProjects, getProjectBySlug } from "@/lib/projects";
 import { withImageSizes } from "@/lib/images";
 import { getLang, getStrings } from "@/lib/lang";
-import RoleBadge from "@/components/RoleBadge";
 import GalleryCarousel from "@/components/Gallery";
 import LinksList from "@/components/LinksList";
+import ArtworkGrid from "@/components/ArtworkGrid";
 
 // Body links point off-site (objkt, press) — open them in a new tab so the
 // reader keeps their place in the archive.
@@ -68,7 +67,6 @@ export default async function ProjectPage({
   return (
     <article>
       <header className="mb-12 space-y-3">
-        <RoleBadge role={project.role} />
         <h1 className="max-w-measure font-serif text-title-l font-medium text-ink">
           {project.title}
         </h1>
@@ -148,37 +146,7 @@ export default async function ProjectPage({
           <h2 className="border-b border-line pb-3 font-serif text-title-m font-medium text-ink">
             {section.heading}
           </h2>
-          <ul className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-4">
-            {section.items.map((artwork) => (
-              <li key={artwork.image}>
-                <div className="relative aspect-[4/3] w-full border border-line bg-card">
-                  <Image
-                    src={artwork.image}
-                    alt={`${artwork.title} - ${artwork.artist}`}
-                    fill
-                    loading="lazy"
-                    sizes="(min-width: 1024px) 25vw, 50vw"
-                    className="object-contain"
-                  />
-                </div>
-                {artwork.url ? (
-                  <a
-                    href={artwork.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-2 inline-block text-body text-accent underline decoration-1 underline-offset-[0.15em] hover:text-accent-hover hover:decoration-2"
-                  >
-                    {artwork.title} <span aria-hidden="true">↗</span>
-                  </a>
-                ) : (
-                  <p className="mt-2 text-body text-ink">{artwork.title}</p>
-                )}
-                <p className="text-meta uppercase text-ink-muted">
-                  {artwork.artist}
-                </p>
-              </li>
-            ))}
-          </ul>
+          <ArtworkGrid items={section.items} heading={section.heading} />
         </section>
       ))}
     </article>

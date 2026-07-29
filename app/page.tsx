@@ -5,11 +5,10 @@ import { getLang, getStrings } from "@/lib/lang";
 import type { Strings } from "@/lib/strings";
 import { projectMeta } from "@/lib/format";
 import ProjectCard from "@/components/ProjectCard";
-import RoleBadge from "@/components/RoleBadge";
 
 // Editorial pick for the lead plate (DESIGN.md §5.9 - the home hero is the one
 // surface allowed a highlight beneath the display-xl headline). Swap the slug
-// to re-cast the plate; the caption, badge and link all follow the project.
+// to re-cast the plate; the caption and link follow the project.
 const LEAD_SLUG = "what-hot-shit";
 
 // How many artworks the closing contact sheet shows before linking out.
@@ -91,12 +90,9 @@ export default function HomePage() {
             <p className="text-meta uppercase text-ink-muted">
               {strings.home.leadEyebrow}
             </p>
-            <div className="mt-4">
-              <RoleBadge role={lead.role} />
-            </div>
             <h2
               id="lead-title"
-              className="mt-4 font-serif text-title-l font-medium text-ink"
+              className="mt-5 font-serif text-title-l font-medium text-ink"
             >
               <Link
                 href={`/projects/${lead.slug}`}

@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useStrings } from "@/components/LangProvider";
 import type { Project, ProjectRole } from "@/lib/projects";
 import ProjectCard from "@/components/ProjectCard";
-import RoleBadge from "@/components/RoleBadge";
 
 type View = "grid" | "index";
 
@@ -123,9 +122,13 @@ export default function ArchiveList({
               type="button"
               aria-pressed={activeRoles.includes(role)}
               onClick={() => toggleRole(role)}
-              className="border-0 bg-transparent p-0 transition-[background-color,border-color] duration-[120ms]"
+              className={`border-b-2 bg-transparent px-1 py-1 text-meta uppercase transition-colors duration-[120ms] ${
+                activeRoles.includes(role)
+                  ? "border-accent text-ink"
+                  : "border-transparent text-ink-muted hover:text-ink-secondary"
+              }`}
             >
-              <RoleBadge role={role} active={activeRoles.includes(role)} />
+              {strings.roles[role]}
             </button>
           ))}
         </div>
@@ -216,7 +219,9 @@ export default function ArchiveList({
                       "·"}
                   </td>
                   <td className="py-3 align-top">
-                    <RoleBadge role={project.role} />
+                    <span className="text-meta uppercase text-ink-secondary">
+                      {strings.roles[project.role]}
+                    </span>
                   </td>
                 </tr>
               ))}
