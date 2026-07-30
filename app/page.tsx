@@ -256,7 +256,7 @@ export default function HomePage() {
               {strings.home.evidenceBody}
             </p>
           </div>
-          <ol className="divide-y divide-line border-y border-line lg:col-span-8">
+          <ol className="divide-y divide-line lg:col-span-8">
             {EVIDENCE_SLUGS.map((slug) => {
               const project = getProjectBySlug(slug, lang);
               if (!project) return null;
