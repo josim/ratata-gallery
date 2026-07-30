@@ -23,9 +23,10 @@ ist formal Antragsteller und Geld-Empfänger, **ratata liefert die Arbeit** und
 setzt das Event um. Zwei Wege, die sich kombinieren lassen:
 
 - **US-Seite:** **Tezos Commons** (US-Nonprofit, hat TezCon Seattle unterstützt)
-  und/oder die US-Firma **teia cafe** als Fiscal Host bzw. Träger für
-  US-/Ökosystem-Gelder. Der US-Geschäftspartner ist teia-cafe-Gründer, kümmert
-  sich um TezCon und ist mit den TezCon-Organisatoren persönlich bekannt.
+  als Fiscal Host / Träger für Ökosystem-Gelder. Euer US-Partner organisiert
+  TezCon mit und kennt die Organisatoren persönlich; eine Bewerbung ist auch
+  aus Europa möglich (die auf der Website genannte US/Kanada-Nennung ist kein
+  Ausschluss - im Erstkontakt klären).
 - **DE-Seite:** ein **bestehender gemeinnütziger Partner-Verein** oder eine
   **Kulturinstitution** in Frankfurt als Antragsteller/Kooperationspartner für
   Stadt- und Stiftungsgelder, die Gemeinnützigkeit voraussetzen.
@@ -52,7 +53,7 @@ Hebel:
   Roadmap, Team, Nachweis der Ökosystem-Vertrautheit und klaren **Mehrwert fürs
   Tezos-Ökosystem** (eine europäische TezCon ist genau das).
 - **Über den US-Partner** lassen sich Tezos Commons und Ökosystem-Sponsoren
-  bündeln - teia cafe kann als Fiscal Host das Geld halten und weiterreichen.
+  bündeln - Commons kann als Fiscal Host Mittel halten und weiterreichen.
 - Sponsoren nicht nur um Geld, sondern um **in-kind** bitten (spart Budget ohne
   Antrag).
 
@@ -123,10 +124,10 @@ Auch wenn Geld über die US-Seite kommt: **das Event findet in Deutschland statt
 - **Grenzüberschreitend steuerlich beraten lassen.** Zahlt eine US-Firma deutsche
   Kosten, sind **Betriebsstätte**, **Umsatzsteuer** und Verrechnung vorab mit dem
   Steuerberater zu klären - nicht improvisieren.
-- **Interessenkonflikt transparent machen.** Johannes ist an **teia cafe**
-  beteiligt (wenige Prozent). Wenn teia cafe als Träger/Fiscal Host auftritt,
-  gehört das offengelegt und sauber dokumentiert (Rollen, Geldflüsse, marktübliche
-  Konditionen) - analog zur Transparenzpflicht aus der TezCon-Zusammenarbeit.
+- **Rollen &amp; Geldflüsse transparent machen.** Wer welche Mittel hält und
+  weiterreicht (Fiscal Host, Sponsoren, GbR), gehört offengelegt und sauber
+  dokumentiert (Rollen, Geldflüsse, marktübliche Konditionen) - analog zur
+  Transparenzpflicht aus der TezCon-Zusammenarbeit.
 
 ---
 
@@ -152,7 +153,7 @@ Auch wenn Geld über die US-Seite kommt: **das Event findet in Deutschland statt
 ## 7. Empfohlene Sequenz für die freie Con
 
 1. **Anker setzen:** **TF Ecosystem Grant** + **Tezos Commons** (über den
-   US-Partner / teia cafe als Fiscal Host) - schnellster Kapitalzugang, kein e.V.
+   US-Partner, aus Europa bewerbbar) - schnellster Kapitalzugang, kein e.V.
 2. **Venue holen:** **Wirtschaftsförderung** und **Tourismus + Congress** der
    Stadt ansprechen - geschenkte/vergünstigte Location als größter in-kind-Hebel.
 3. **Auffüllen:** **Ökosystem-Sponsoren + lokale Supporter + in-kind**
