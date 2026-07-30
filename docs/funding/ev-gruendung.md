@@ -242,6 +242,44 @@ Da **dieselben Personen** GbR und e.V. steuern, ist das der heikelste Punkt:
 
 ---
 
+## 8b. Förderquellen & aktuelle Fristen (Frankfurt, Stand Juli 2026)
+
+Recherchierte, für ratata relevante Töpfe. **Der e.V. mit Freistellungsbescheid
+ist bei mehreren die Zugangsvoraussetzung.**
+
+### Kulturamt Frankfurt — Projektförderung Bildende Kunst
+- Fördert jährlich ~500 Personen/Projekte/Institutionen; Feld „Bildende Kunst &
+  Künstlerförderung" (Präsentation/Vermittlung aktueller Kunst außerhalb der Museen).
+- **Antrag jederzeit vor Projektbeginn** möglich (keine feste Frist in Bildender Kunst).
+- **Wichtig:** vorab **telefonisch die Förderfähigkeit klären** — bester erster Zug.
+- Online: verwaltung-online.frankfurt.de · Info: kultur-frankfurt.de
+- Kriterium: künstlerische Qualität.
+
+### Kulturfonds Frankfurt RheinMain
+- **Einzelpersonen nicht antragsberechtigt** — nur Institutionen; privat-gemeinnützige
+  Körperschaften nur mit gültigem **Freistellungsbescheid** (→ e.V. nötig).
+- Voraussetzung: **nationale/internationale Strahlkraft** oder regionale Vernetzung,
+  hohes professionelles Niveau → Tezcon passt inhaltlich sehr gut.
+- **Frist:** bei Antragssumme ≤ 20.000 € **spätestens 3 Monate vor** Veranstaltungs-
+  beginn (größere Summen entsprechend früher). Nur online. · kulturfonds-frm.de
+- Kann als **Kofinanzierung/Drittmittel** für andere Anträge dienen.
+
+### Tezos Foundation — Ecosystem Grants
+- **Proposals jederzeit** einreichbar; Review **quartalsweise** (im Monat nach
+  Quartalsende). Auszahlung **milestone-basiert**.
+- Proposal braucht: Projekt/Roadmap, Team, Nachweis der Ökosystem-Vertrautheit,
+  **Mehrwert fürs Tezos-Ökosystem**, Nachhaltigkeit über die Förderung hinaus.
+- Braucht **keinen** e.V. → als schnellen **Anker** parallel starten.
+- tezos.foundation/grants · grants.tezos.foundation · zusätzlich Tezos Commons.
+
+### Finanzamt Frankfurt — § 60a AO
+- Stellt auf Antrag den **Feststellungsbescheid (§ 60a)** aus (für neue Körperschaften
+  vorläufig) — **Voraussetzung für Spendenbescheinigungen** und für o.g. Töpfe.
+- Zuständiges Körperschaft-/Vereins-Finanzamt Frankfurt direkt erfragen.
+
+> Quellen: kultur-frankfurt.de · kulturfonds-frm.de · tezos.foundation/grants ·
+> Beträge/Fristen vor Antrag gegenprüfen.
+
 ## 9. Nächste sinnvolle Schritte
 
 1. **Rechtsform final entscheiden** (e.V. vs. gGmbH) — e.V. empfohlen.
