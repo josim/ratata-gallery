@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ratata — Finanzierung ohne e.V.</title>
+<style>
+  :root {
+    --paper: #fbfaf8; --sunk: #f4f2ec; --card: #ffffff;
+    --ink: #1a1918; --ink-2: #55524d; --ink-3: #767169;
+    --line: #e4e0d9; --control: #948c7e;
+    --accent: #a5372a; --accent-hover: #8a2c21; --accent-tint: #f5e7e4;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --measure: 68ch;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: clamp(28px, 6vw, 72px) clamp(20px, 5vw, 56px) 96px; }
+
+  .masthead { border-bottom: 1px solid var(--line); padding-bottom: 28px; }
+  .wordmark { display: block; height: 30px; width: auto; color: var(--ink); }
+  .kicker { margin: 26px 0 0; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
+  h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(2rem, 5.5vw, 3rem); line-height: 1.08; letter-spacing: -0.02em; text-wrap: balance; margin: 10px 0 0; }
+  .doc-meta { margin: 18px 0 0; font-size: 0.78rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-3); display: flex; flex-wrap: wrap; gap: 6px 14px; }
+
+  section { margin-top: clamp(40px, 6vw, 60px); }
+  h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(1.4rem, 3.4vw, 1.85rem); letter-spacing: -0.01em; line-height: 1.15; text-wrap: balance; margin: 0 0 16px; }
+  h3 { font-family: var(--serif); font-weight: 600; font-size: 1.16rem; margin: 24px 0 6px; }
+  p { margin: 0 0 14px; max-width: var(--measure); }
+  a { color: var(--accent); text-underline-offset: 0.15em; text-decoration-thickness: 1px; }
+  a:hover { color: var(--accent-hover); text-decoration-thickness: 2px; }
+  strong { font-weight: 600; }
+  .lead { font-size: 1.16rem; line-height: 1.6; color: var(--ink-2); }
+  .eyebrow { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin: 0 0 10px; font-weight: 600; }
+
+  ul.clean { margin: 0 0 14px; padding: 0; list-style: none; max-width: var(--measure); }
+  ul.clean li { position: relative; padding-left: 20px; margin-bottom: 9px; }
+  ul.clean li::before { content: ""; position: absolute; left: 2px; top: 0.62em; width: 6px; height: 6px; background: var(--accent); }
+
+  .glance { background: var(--sunk); border: 1px solid var(--line); padding: clamp(20px, 4vw, 30px); display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 22px 28px; }
+  .glance .lbl { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); display: block; margin-bottom: 5px; }
+  .glance .val { font-family: var(--serif); font-size: 1.26rem; line-height: 1.2; color: var(--ink); }
+  .glance .val small { font-family: var(--sans); font-size: 0.82rem; color: var(--ink-2); display: block; margin-top: 3px; }
+
+  .callout { border: 1px solid var(--line); border-left: 3px solid var(--accent); background: var(--sunk); padding: 18px 22px; margin: 8px 0; }
+  .callout p { margin: 0; max-width: none; }
+  .callout .tag { display: inline-block; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 6px; }
+  .callout.strong { background: var(--accent-tint); }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--line); margin-bottom: 6px; }
+  table { border-collapse: collapse; width: 100%; font-size: 0.93rem; }
+  th, td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  thead th { font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); background: var(--sunk); font-weight: 600; }
+  tbody tr:last-child td { border-bottom: none; }
+  td.c { white-space: nowrap; font-weight: 600; }
+  .no { color: var(--accent); font-weight: 600; }
+  .table-note { font-size: 0.82rem; color: var(--ink-3); margin-top: 8px; }
+
+  .source { border-top: 1px solid var(--line); padding: 20px 0; }
+  .source:last-of-type { border-bottom: 1px solid var(--line); }
+  .source h3 { margin: 0 0 4px; }
+  .source p { font-size: 0.96rem; }
+  .facts { display: flex; flex-wrap: wrap; gap: 6px 8px; margin: 10px 0 0; }
+  .chip { font-size: 0.72rem; letter-spacing: 0.02em; color: var(--ink-2); border: 1px solid var(--line); padding: 3px 9px; background: var(--card); }
+  .chip b { color: var(--ink); font-weight: 600; }
+  .chip.tp { color: var(--accent); border-color: var(--accent-tint); background: var(--accent-tint); }
+
+  blockquote { margin: 8px 0; padding: 14px 0 14px 20px; border-left: 3px solid var(--control); font-family: var(--serif); font-size: 1.12rem; font-style: italic; color: var(--ink-2); max-width: var(--measure); }
+  ol.plain { max-width: var(--measure); padding-left: 1.3em; margin: 0 0 14px; }
+  ol.plain li { margin-bottom: 9px; }
+
+  footer { margin-top: 72px; padding-top: 24px; border-top: 1px solid var(--line); }
+  footer p { font-size: 0.82rem; color: var(--ink-3); }
+  .src-list { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 0.82rem; margin: 0 0 14px; }
+  .src-list a { color: var(--ink-2); }
+
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  @media (max-width: 520px) { body { font-size: 16px; } }
+</style>
+<style media="print">
+  @page { size: A4; margin: 14mm; }
+  html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; background: #fbfaf8; }
+  .wrap { padding: 8mm 0 0 !important; max-width: none !important; }
+  nav.toc { position: static !important; }
+  .glance, .callout, .source, .table-wrap, tr, ol.steps > li, blockquote { break-inside: avoid; }
+  h1, h2, h3 { break-after: avoid; }
+  a { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+
+  <header class="masthead">
+    <svg class="wordmark" viewBox="-120 -120 4225 1108.7" role="img" aria-label="ratata" preserveAspectRatio="xMidYMid meet" fill="currentColor"><path fill-rule="evenodd" d="M3821-18h180V866h-2v1h-1c-2.22-9-9.51-17.672-14-25-4.2-6.857-5.79-14.086-10-21-5.45-8.944-11.97-18.825-17-28-25.19-45.968-48.05-92.842-75-137-6.8-11.142-10.2-22.823-17-34-9.91-16.287-17.8-34.22-28-51-4.84-7.962-13.04-18.043-16-27V-18ZM1864,290V749h-49V867H1680q-31.995-58.993-64-118H1489v1c9.23,10.206,12.7,25.987,20,38,15.27,25.137,29.96,52.211,43,79H1063v-1c5.68-6.348,7.42-15.477,12-23,13.3-21.871,24.69-46.165,38-68,2.71-4.44,9.81-24.235,13-26h361c-1.37-10.6-13.74-27.393-19-36-12.95-21.183-22.34-44.253-35-65-3.14-5.148-12.97-29.854-16-32H1070c-1.75,7.383-7.4,14.117-11,20-7.83,12.794-13.45,26.651-21,39s-11.47,25.623-19,38c-20.081,33.008-36.934,69.088-57,102-7.342,12.043-13.579,24.959-20,37-1.927,3.614-4.488,13.26-8,15H907c-6-8.913-24.9-23.131-34-30-19.036-14.374-34.721-33.439-54-48-13.01-9.827-23.716-22.993-37-33l-6-7H684c-3.842-5.764-9.481-9.83-15-14l-10-11a266.74,266.74,0,0,0-27-24l-11-12a247.544,247.544,0,0,0-25-22l-17-18a265.863,265.863,0,0,1-27-24l-10-11a256.464,256.464,0,0,1-26-23l-10-11a157.677,157.677,0,0,1-20-18H306V749H256V867H-20V749H192V176H581c80.858,0,151.769-4.7,198,30,24.24,18.192,33.871,50.454,42,85,2.037,8.659,1.272,17.962,3,26v18c2.889,13.562,2.919,57.455,0,71q-0.5,14-1,28c-5.1,23.08-7.341,46.483-18,64-30.485,50.1-92.35,62.006-173,62v1L843,749h28c1.376-5.514,5.39-9.733,8-14,6.664-10.9,11.609-22.55,18-33,18.547-30.326,32.751-63.082,51-93,12.126-19.878,19.9-41.1,32-61,43.34-71.291,78.59-148.756,122-220,20.69-33.947,36.59-70.482,57-104,6.57-10.782,12.22-22.383,18-33,1.44-2.639,5.28-13.795,7-15h119c1.64,6.839,6.71,12.617,10,18,6.29,10.28,10.99,21.162,17,31,18.48,30.246,32.76,63.1,51,93,12.53,20.529,20.51,42.459,33,63,45.11,74.194,81.81,154.84,127,229,20.68,33.944,36.6,70.5,57,104,4,6.563,13.67,32.413,19,35h133V290H1542c-3.02-9.144-1-24.976-1-36V176c13.15-4.319,35.72-1,51-1h480c3.02,9.144,1,24.976,1,36v78c-12.86,4.228-48.64,1-65,1H1864ZM2877,749V289H2668V176h531V289H2990V749h-49V867H2807c-4.32-9.8-10.6-19.16-16-28-12.42-20.317-21.88-42.138-34-62-3.29-5.387-10.56-25.808-15-28H2616v2c11.46,12.6,15.97,32.126,25,47,13.38,22.037,26.1,45.849,38,69H2190v-2c7.86-8.743,10.72-21.672,17-32,10.35-17.013,19.63-36,30-53,3.45-5.664,11.64-28.609,16-31h361v-1c-9.19-10.3-12.67-25.952-20-38-11.08-18.213-21.78-38.239-32-57-4.85-8.9-9.43-17.612-14-26-1.48-2.708-2.45-9.591-5-11H2197c-2.04,8.682-8.72,17-13,24-7.83,12.795-13.45,26.651-21,39-4.99,8.169-7.02,16.821-12,25-18.28,30.049-33.74,63.054-52,93-10.22,16.757-18.06,34.7-28,51-2.14,3.508-6.51,17.23-9,19H1927V749h70c4.92-11.276,11.82-21.881,18-32,10.23-16.747,18.05-34.705,28-51,4.22-6.9,5.8-14.087,10-21,16.32-26.835,30.65-56.2,47-83,10.35-16.966,16.69-35.035,27-52,37.21-61.225,67.68-127.817,105-189,20.69-33.923,36.58-70.485,57-104,6.24-10.246,11.01-21.179,17-31,2.02-3.309,2.53-9.374,6-11h117c8.67,19.54,21.03,39.039,32,57,20.64,33.8,36.6,70.548,57,104,10.35,16.97,16.68,35.014,27,52,38.99,64.145,70.93,133.9,110,198,4.21,6.909,5.8,14.085,10,21,18.47,30.387,34.5,63.615,53,94,6.57,10.782,12.22,22.383,18,33,1.44,2.639,5.28,13.795,7,15h134Zm944,0h-79c1.44,10.429,10.5,19.806,15,28,10.09,18.39,17.14,37.145,28,55,6.29,10.341,15.58,22.706,19,35H3316v-1c7.13-7.412,9.48-18.928,15-28,11.08-18.213,21.78-38.239,32-57,2.49-4.574,13.74-30.4,16-32h362v-1c-7.44-8.176-10.08-20.264-16-30-12.9-21.214-24.07-44.8-37-66-3.46-5.679-14.75-33.69-18-36H3324c-11.52,26.524-29.08,56.562-44,81-4.99,8.171-7.02,16.82-12,25-15.35,25.229-28.66,52.847-44,78-9.51,15.589-17.63,32.306-26,48-1.74,3.259-7.72,17.746-10,19H3053V749h71c1.64-6.839,6.71-12.617,10-18,6.29-10.28,10.99-21.162,17-31,18.54-30.35,32.75-63.1,51-93,12.53-20.529,20.51-42.459,33-63,45.11-74.194,81.81-154.84,127-229,20.68-33.944,36.6-70.5,57-104,3.19-5.236,16.07-34.409,19-36h117c48.25,82.064,89.44,169.77,139,251,12.52,20.53,20.51,42.459,33,63,22.15,36.427,39.58,76.126,62,113,8.16,13.417,14.58,28.138,23,42,2.4,3.947,7.5,9.66,9,14v91ZM1373,526c-0.92-6.865-5.96-12.041-9-17-8.46-13.82-14.81-28.606-23-42-4.22-6.9-5.79-14.09-10-21-18.88-31.011-35.07-64.98-54-96-8.42-13.8-14.84-28.617-23-42-3.45-5.654-5.11-16-11-19-1.62,6.832-6.71,12.631-10,18-10.24,16.7-18.05,34.733-28,51-14.72,24.069-24.34,49.908-39,74-18.24,29.983-36.69,61.984-52,94h259Zm997-237c-1.77,7.577-7.34,14.032-11,20-6.29,10.259-11.01,21.208-17,31-4.22,6.9-5.79,14.092-10,21-18.63,30.586-33.12,63.955-52,95-8.16,13.416-14.58,28.143-23,42-4.91,8.082-12.25,17.311-15,27h257v-2c-4.3-4.82-5.48-11.223-9-17-8.16-13.4-14.56-28.135-23-42-25-41.09-45.98-85.938-71-127C2387.3,322.731,2381.06,300.5,2370,289ZM306,290V467H592c31.61,0,79.455,5.823,100-7,11.45-7.146,16.409-20.93,20-36q0.5-18.5,1-37c0-33.044,2.123-73-17-87-22.183-16.242-75.788-10-113-10H306Zm3191,0q-64.5,117.487-129,235h258v-2c-2.95-2.529-2.87-5.512-5-9-8.16-13.386-14.59-28.187-23-42-25.41-41.741-46.58-87.272-72-129-8.43-13.845-14.84-28.589-23-42C3500.58,297.018,3500.51,292.8,3497,290ZM369,749H625c7.566,11.351,24.953,25.653,36,34l11,12a256.126,256.126,0,0,0,26,23l16,17c11.272,8.52,26.189,20.213,34,32H369V749Z"/></svg>
+    <p class="kicker">Interne Arbeitsgrundlage · Funding</p>
+    <h1>Finanzierung ohne eigenen e.V.</h1>
+    <div class="doc-meta"><span>TezCon Europe · ratata</span><span>·</span><span>Frankfurt am Main</span><span>·</span><span>Stand Juli 2026</span><span>·</span><span>Entwurf v1</span></div>
+  </header>
+
+  <section>
+    <p class="lead">Für die freie, community-getragene TezCon Europe braucht ihr nicht zwingend einen eigenen deutschen e.V. Über Trägerschaft, Tezos-Ökosystem und eine von der Stadt gestellte Location lässt sich ein kostenloses Event finanzieren - ein e.V. bleibt das Werkzeug für deutsche Zuschüsse und kann parallel entstehen.</p>
+    <div class="callout">
+      <span class="tag">Kein Rechts- oder Steuerrat</span>
+      <p>Arbeitsgrundlage. Trägerschaft, grenzüberschreitende Zahlungen (US zahlt DE), Haftung und Umsatzsteuer mit <strong>Steuerberater</strong> und ggf. <strong>Anwalt</strong> klären, bevor ihr Verträge unterschreibt. Als „zu prüfen" markierte Angaben vor Kontakt gegenprüfen.</p>
+    </div>
+  </section>
+
+  <section aria-label="Auf einen Blick">
+    <div class="glance">
+      <div><span class="lbl">Heute</span><span class="val">GbR<small>Johannes + Phil</small></span></div>
+      <div><span class="lbl">TezCon Europe</span><span class="val">frei<small>~500 Pers. · Ende 2026 / Anf. 2027</small></span></div>
+      <div><span class="lbl">Anker</span><span class="val">TF + Commons<small>Tezos-Ökosystem</small></span></div>
+      <div><span class="lbl">Größter Hebel</span><span class="val">Venue<small>von der Stadt, in-kind</small></span></div>
+      <div><span class="lbl">Name TezCon</span><span class="val">common good<small>frei nutzbar</small></span></div>
+      <div><span class="lbl">e.V.</span><span class="val">optional<small>parallel, nicht blockierend</small></span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Kernidee — Trägerschaft statt eigener Gemeinnützigkeit</h2>
+    <p>Man braucht keinen <strong>eigenen</strong> e.V., wenn eine <strong>Trägerschaft / Fiscal Sponsorship</strong> genutzt wird: eine geeignete Organisation ist formal Antragsteller und Geld-Empfänger, ratata liefert die Arbeit. Zwei kombinierbare Wege:</p>
+    <ul class="clean">
+      <li><strong>US-Seite:</strong> <strong>Tezos Commons</strong> (US-Nonprofit, hat TezCon Seattle unterstützt) als Fiscal Host / Träger für Ökosystem-Gelder - über euren US-Partner, auch aus Europa bewerbbar.</li>
+      <li><strong>DE-Seite:</strong> ein bestehender <strong>gemeinnütziger Partner-Verein</strong> / eine Kulturinstitution als Antragsteller für Stadt- und Stiftungsgelder, die Gemeinnützigkeit voraussetzen.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Tezos-Ökosystem-Geld</h2>
+    <p>Schnellster Kapitalzugang, weil hier keine deutsche Gemeinnützigkeit nötig ist. Geht an Teams, Firmen oder Einzelpersonen.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Quelle</th><th>Wer / Was</th><th class="c">e.V.?</th></tr></thead>
+      <tbody>
+        <tr><td>Tezos Foundation Ecosystem Grant</td><td>laufend; Review quartalsweise; milestone-basiert</td><td class="c no">Nein</td></tr>
+        <tr><td>Tezos Commons</td><td>US-Nonprofit, community-nah, trug TezCon Seattle</td><td class="c no">Nein</td></tr>
+        <tr><td>Ökosystem-Sponsoren</td><td>objkt, Wallets, Nomadic Labs / TriliTech / Marigold, Etherlink, tzAPAC</td><td class="c no">Nein</td></tr>
+        <tr><td>In-kind</td><td>Infrastruktur, Tooling, Reise/Speaker, Reichweite</td><td class="c no">Nein</td></tr>
+      </tbody>
+    </table></div>
+    <p class="table-note">TF-Grant als Anker parallel starten; über den US-Partner lassen sich Commons + Sponsoren bündeln. Sponsoren auch um in-kind bitten.</p>
+  </section>
+
+  <section>
+    <h2>Stadt / Venue-first</h2>
+    <blockquote>Eine geschenkte oder vergünstigte Location <strong>ist Funding</strong> (in-kind) und der größte Kostenhebel eines 500-Personen-Events. Hier zuerst ansetzen.</blockquote>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Ansprechpartner</th><th>Passt weil</th><th class="c">e.V.?</th></tr></thead>
+      <tbody>
+        <tr><td>Wirtschaftsförderung Frankfurt</td><td>Standortwert; arbeitet mit Firmen (GbR ok)</td><td class="c no">Nein</td></tr>
+        <tr><td>Frankfurt Convention Bureau</td><td>Venue-/Logistik-Service der Stadt, kostenfrei</td><td class="c no">Nein</td></tr>
+        <tr><td>Kulturamt Frankfurt</td><td>Raumüberlassung / Kooperation (Zuschüsse meist mit Gemeinnützigkeit)</td><td class="c">teils</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <h2>Supporter-Modell für ein freies Event</h2>
+    <p>Freier Eintritt, keine Standgebühren: Kosten tragen Supporter, nicht die Gäste. Bewusst <strong>kein Pay-to-Play</strong> - keine Bühne gegen Geld, kein Logo-Teppich, keine Datenweitergabe.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Tier</th><th class="c">Richtwert</th><th>Gegenleistung (zurückhaltend)</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Friend</strong></td><td class="c">ab ~500 €</td><td>Nennung in der Supporter-Liste, Sammel-Dank, Sammel-Social-Post</td></tr>
+        <tr><td><strong>Supporter</strong></td><td class="c">~1.500–3.000 €</td><td>+ kleines Logo (Wall, Website), Nennung im Programm</td></tr>
+        <tr><td><strong>Partner</strong></td><td class="c">~5.000–8.000 €</td><td>+ hervorgehobenes Logo, Nennung im Nachbericht, einige Community-Plätze</td></tr>
+        <tr><td><strong>Community Enabler</strong></td><td class="c">ab ~10.000 €</td><td>+ „ermöglicht durch", frühe Einbindung. Kein Programm-Einfluss</td></tr>
+      </tbody>
+    </table></div>
+    <p class="table-note">Beträge sind unverbindliche Richtwerte. In-kind-Kategorien: Venue · Catering · Technik/AV · Reise/Hotel · Medien/Doku · Community-Tools. Über die GbR ist Sponsoring Betriebseinnahme (USt beachten); bloße Logo-Duldung ist eher steuerfrei, aktive Werbung ein wirtschaftlicher Geschäftsbetrieb.</p>
+  </section>
+
+  <section>
+    <h2>Community- / Crypto-native</h2>
+    <ul class="clean">
+      <li><strong>Gitcoin / Public-Goods-Runde</strong> - nur falls eine Runde thematisch passt (Tezos ist nicht EVM → nachrangig).</li>
+      <li><strong>Transparenter Community-Fundraiser</strong> - offenes Ziel, öffentlich nachvollziehbar.</li>
+      <li><strong>Benefit-NFT</strong> - z. B. eine Slothzine-Sonderedition; Erlös ins Event-Budget.</li>
+      <li><strong>Optionale Paid Extras</strong> (Workshop, Dinner, Merch) zur Quersubvention - Kern bleibt gratis.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Vergleich — braucht e.V. vs. braucht keinen</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Finanzierungsweg</th><th class="c">Eigener dt. e.V.?</th></tr></thead>
+      <tbody>
+        <tr><td>Tezos Foundation / Commons / Ökosystem-Sponsoren</td><td class="c no">Nein</td></tr>
+        <tr><td>Wirtschaftsförderung / Convention Bureau</td><td class="c no">Nein</td></tr>
+        <tr><td>Kulturamt - Raum / Kooperation</td><td class="c no">Nein</td></tr>
+        <tr><td>Gitcoin / Community-Fundraiser / Benefit-NFT / Paid Extras</td><td class="c no">Nein</td></tr>
+        <tr><td>Kulturamt / Kulturfonds / Stiftungen - <strong>Zuschüsse</strong></td><td class="c">Ja / Partner-Träger</td></tr>
+        <tr><td>Deutsche Verträge (Venue, Security, Versicherung)</td><td class="c">empfohlen*</td></tr>
+      </tbody>
+    </table></div>
+    <p class="table-note">*Deutsche Verträge brauchen einen deutschen Partner - im Zweifel die GbR mit persönlicher Haftung. Eine haftungsbeschränkte Struktur (e.V./gGmbH) begrenzt das.</p>
+    <div class="callout strong">
+      <span class="tag">Vorbehalt zur US-Struktur</span>
+      <p>Auch wenn Geld über die US-Seite kommt: das Event ist in Deutschland. Venue, Dienstleister, Security, Versicherung, Genehmigungen brauchen einen <strong>deutschen Vertragspartner</strong> (GbR → persönliche Haftung bei 500 Personen). Grenzüberschreitende Zahlungen steuerlich klären (Betriebsstätte, USt). Rollen und Geldflüsse (Fiscal Host, Sponsoren, GbR) transparent offenlegen und dokumentieren.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Kontakte &amp; Anlaufstellen</h2>
+    <p>Recherchierte Startpunkte. Unbestätigtes ist als „zu prüfen" markiert.</p>
+
+    <div class="source">
+      <h3>Frankfurt Convention Bureau (Tourismus+Congress)</h3>
+      <p>Kostenloser städtischer Service für Veranstalter: Venue-Suche, Hotelkontingente, Nahverkehrs-Tickets. Kein Gemeinnützigkeits-Nachweis nötig - der richtige Partner für Venue &amp; Logistik.</p>
+      <div class="facts"><span class="chip"><b>Mail</b> congress@infofrankfurt.de</span><span class="chip"><b>Web</b> meetfrankfurt.de/convention-bureau</span></div>
+    </div>
+
+    <div class="source">
+      <h3>Tezos Commons</h3>
+      <p>Ecosystem-Nonprofit, trug TezCon Seattle mit; betreibt ein Small Grant Program. Im Erstkontakt gezielt <strong>Fiscal Sponsorship / Trägerschaft</strong> erfragen - der eleganteste Ohne-e.V.-Hebel (Mittel + Absicherung ohne eigenen Verein).</p>
+      <div class="facts"><span class="chip"><b>Web</b> tezoscommons.org/grants</span><span class="chip tp">Fiscal Sponsorship: zu prüfen</span></div>
+    </div>
+
+    <div class="source">
+      <h3>Tezos Foundation — Ecosystem Grants</h3>
+      <p>Laufend einreichbar, quartalsweises Review, milestone-basiert. Kein e.V. nötig → als schnellen Anker parallel starten. Proposal: Ökosystem-Mehrwert, Team, Roadmap, Milestone-Budget.</p>
+      <div class="facts"><span class="chip"><b>Portal</b> grants.tezos.foundation</span><span class="chip"><b>Mail</b> grants@tezos.foundation</span></div>
+    </div>
+
+    <div class="source">
+      <h3>Wirtschaftsförderung Frankfurt GmbH</h3>
+      <p>Städtische Gesellschaft für den Wirtschaftsstandort; Beratung kostenlos, arbeitet mit Firmen. Standort-Story: internationale Tech-Community bringt ~500 Gäste nach Frankfurt. Eher Vermittlung/Sichtbarkeit als Bar-Zuschuss.</p>
+      <div class="facts"><span class="chip"><b>Web</b> frankfurt-business.net</span><span class="chip tp">Event-Töpfe: zu prüfen</span></div>
+    </div>
+
+    <div class="source">
+      <h3>Kulturamt Frankfurt — Beratung &amp; Raum</h3>
+      <p>Kostenloses Beratungsgespräch (Referat Bildende Kunst) - ohne e.V. Niederschwelliger Einstieg in die Kulturszene, mögliche Raumüberlassung/Kooperation. Zuschüsse dagegen meist mit Gemeinnützigkeit.</p>
+      <div class="facts"><span class="chip"><b>Web</b> kultur-frankfurt.de</span><span class="chip tp">Direktkontakt: zu prüfen</span></div>
+    </div>
+
+    <div class="source">
+      <h3>Venue-Leads für ~500 Personen</h3>
+      <p>Ausgangspunkte (am besten über das Convention Bureau vermitteln lassen; Kapazität/Preis vor Ort prüfen).</p>
+      <div class="facts"><span class="chip"><b>SAALBAU</b> städtisch</span><span class="chip"><b>UNION HALLE</b> 150–1.500</span><span class="chip"><b>Gesellschaftshaus Palmengarten</b> 200–500</span></div>
+    </div>
+
+    <h3>Priorität</h3>
+    <ol class="plain">
+      <li><strong>Tezos Commons</strong> - Fiscal Sponsorship klären = bester Ohne-e.V.-Hebel für Mittel + Trägerschaft.</li>
+      <li><strong>Tezos Foundation Grants</strong> - jederzeit, kein e.V.; paralleler Anker.</li>
+      <li><strong>Convention Bureau</strong> - Venue/Logistik, kostenfrei, GbR-tauglich.</li>
+      <li><strong>Wirtschaftsförderung</strong> - Standort-Argument, Vermittlung, Sichtbarkeit.</li>
+      <li><strong>Kulturamt-Beratungsgespräch</strong> - kostenlos, ohne e.V.; Vernetzung.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Empfohlene Sequenz</h2>
+    <ol class="plain">
+      <li><strong>Anker setzen:</strong> TF Ecosystem Grant + Tezos Commons (über US-Partner, aus Europa bewerbbar).</li>
+      <li><strong>Venue holen:</strong> Convention Bureau + Wirtschaftsförderung - Location als größter in-kind-Hebel.</li>
+      <li><strong>Auffüllen:</strong> Ökosystem- + lokale Supporter + in-kind.</li>
+      <li><strong>Optional:</strong> Community-Runde / Benefit-NFT / Paid Extras.</li>
+      <li><strong>Früh klären:</strong> reicht die GbR für Umsetzung/Haftung, oder braucht es eine haftungsbeschränkte Struktur? (Steuerberater/Anwalt.)</li>
+    </ol>
+  </section>
+
+  <footer>
+    <p class="src-list">
+      <a href="https://www.meetfrankfurt.de/en/convention-bureau" target="_blank" rel="noopener">meetfrankfurt.de</a>
+      <a href="https://www.frankfurt-business.net/" target="_blank" rel="noopener">frankfurt-business.net</a>
+      <a href="https://www.kultur-frankfurt.de" target="_blank" rel="noopener">kultur-frankfurt.de</a>
+      <a href="https://tezos.foundation/grants/" target="_blank" rel="noopener">tezos.foundation/grants</a>
+      <a href="https://tezoscommons.org/grants/" target="_blank" rel="noopener">tezoscommons.org/grants</a>
+    </p>
+    <p>Quellen: Frankfurt Convention Bureau, Wirtschaftsförderung Frankfurt, Kulturamt Frankfurt, Tezos Commons, Tezos Foundation. Stand Juli 2026 - Beträge, Fristen und als „zu prüfen" markierte Angaben vor Antrag gegenprüfen. Interne Arbeitsgrundlage für ratata, kein Rechts- oder Steuerrat.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
