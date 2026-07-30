@@ -34,7 +34,7 @@ const en = {
   home: {
     // PROVISIONAL COPY - drafted from the archive, pending the client's own
     // wording. Every claim below is backed by a project in content/projects.
-    eyebrow: "Gallery & Collective · Frankfurt am Main",
+    eyebrow: "Frankfurt am Main",
     missionHeading: "Digital art, in real spaces.",
     missionBody:
       "ratata is a gallery and artist collective from Frankfurt am Main. We curate digital art, present it in exhibitions and at international art fairs, and develop the technology that makes these presentations possible.",
@@ -42,11 +42,11 @@ const en = {
     leadLink: "View project",
     viewAll: "View all",
     roleLabel: "Role",
-    evidenceEyebrow: "Selected evidence",
+    evidenceEyebrow: "",
     evidenceHeading: "Work in institutions and public settings",
     evidenceBody:
       "Selected projects show how ratata brings together curatorial practice, production, and technical development.",
-    compactIndex: "Complete compact index",
+    compactIndex: "index",
     openArchive: "Open archive with filters",
     worksEyebrow: "Works exhibited",
     worksCountSuffix: "Works",
@@ -386,7 +386,7 @@ const de: Strings = {
   home: {
     // PROVISIONAL COPY - drafted from the archive, pending the client's own
     // wording. Every claim below is backed by a project in content/projects.
-    eyebrow: "Galerie & Kollektiv · Frankfurt am Main",
+    eyebrow: "Frankfurt am Main",
     missionHeading: "Digitale Kunst, in realen Räumen.",
     missionBody:
       "ratata ist eine Galerie und ein Künstlerkollektiv aus Frankfurt am Main. Wir kuratieren digitale Kunst, bringen sie in Ausstellungen und auf internationale Kunstmessen und entwickeln die Technik, die diese Präsentationen möglich macht.",
@@ -394,11 +394,11 @@ const de: Strings = {
     leadLink: "Projekt ansehen",
     viewAll: "Alle ansehen",
     roleLabel: "Rolle",
-    evidenceEyebrow: "Ausgewählte Nachweise",
+    evidenceEyebrow: "",
     evidenceHeading: "Arbeit in Institutionen und öffentlichen Räumen",
     evidenceBody:
-      "Ausgewählte Projekte zeigen, wie ratata kuratorische Arbeit, Produktion und technische Entwicklung zusammenführt.",
-    compactIndex: "Vollständiger kompakter Index",
+      "Ausgewählte Projekte zeigen, wie wir kuratorische Arbeit, Produktion und technische Entwicklung zusammenführt.",
+    compactIndex: "Index",
     openArchive: "Archiv mit Filtern öffnen",
     worksEyebrow: "Gezeigte Arbeiten",
     worksCountSuffix: "Arbeiten",
