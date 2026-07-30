@@ -6,6 +6,7 @@ import { useState } from "react";
 import { LANG_COOKIE, type Lang } from "@/lib/strings";
 import { useLang, useStrings } from "@/components/LangProvider";
 import { getNavItems } from "@/lib/nav";
+import BrandWordmark from "@/components/BrandWordmark";
 
 // DE first — the site is German-first, English beside it.
 function LangSwitch() {
@@ -58,14 +59,12 @@ export default function Header() {
         <Link
           href="/"
           onClick={() => setOpen(false)}
-          className="flex items-baseline gap-1"
+          className="flex items-center"
         >
-          <span className="font-serif text-[1.25rem] font-medium tracking-[-0.01em] text-ink">
-            {s.site.wordmark}
-          </span>
-          <span className="text-meta uppercase text-ink-muted">
-            {s.site.wordmarkSuffix}
-          </span>
+          <BrandWordmark
+            title={s.site.wordmark}
+            className="h-[22px] w-auto text-ink md:h-6"
+          />
         </Link>
 
         <nav aria-label="Primary" className="hidden items-center gap-6 md:flex">
