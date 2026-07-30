@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useStrings } from "@/components/LangProvider";
 import { projectMeta } from "@/lib/format";
 import type { Project } from "@/lib/projects";
 
@@ -13,7 +12,6 @@ export default function ArchiveEntry({
   project: Project;
   index: number;
 }) {
-  const strings = useStrings();
   const image = project.images?.[0];
   const number = String(index + 1).padStart(2, "0");
   const reverse = index % 2 === 1;
@@ -31,12 +29,9 @@ export default function ArchiveEntry({
               : "md:col-span-10"
           }`}
         >
-          <div className="mb-10 flex items-start justify-between gap-4 md:mb-16">
+          <div className="mb-10 md:mb-16">
             <span className="text-meta uppercase text-ink-muted [font-variant-numeric:tabular-nums]">
               {number}
-            </span>
-            <span className="text-meta uppercase text-ink-muted">
-              {strings.roles[project.role] ?? project.role}
             </span>
           </div>
 

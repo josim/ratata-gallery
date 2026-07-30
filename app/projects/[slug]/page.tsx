@@ -14,6 +14,7 @@ import { getLang, getStrings } from "@/lib/lang";
 import GalleryCarousel from "@/components/Gallery";
 import LinksList from "@/components/LinksList";
 import ArtworkCollections from "@/components/ArtworkCollections";
+import SlothzineCatalogue from "@/components/SlothzineCatalogue";
 
 // Body links point off-site (objkt, press) — open them in a new tab so the
 // reader keeps their place in the archive.
@@ -256,6 +257,10 @@ export default async function ProjectPage({
                 </ul>
               </section>
             ) : null}
+
+            {project.slug === "tezcon-2024-slothzine" && (
+              <SlothzineCatalogue lang={getLang()} />
+            )}
 
             <LinksList links={secondaryLinks} />
           </div>
