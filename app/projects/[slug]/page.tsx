@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
@@ -7,7 +8,6 @@ import {
   getAllProjects,
   getProjectBySlug,
   getProjectsByCategory,
-  type ProjectRole,
 } from "@/lib/projects";
 import { withImageSizes } from "@/lib/images";
 import { getLang, getStrings } from "@/lib/lang";
@@ -21,13 +21,6 @@ const mdxComponents = {
   a: (props: React.ComponentProps<"a">) => (
     <a {...props} target="_blank" rel="noopener noreferrer" />
   ),
-};
-
-const ROLE_COLOR: Record<ProjectRole, string> = {
-  Curated: "var(--role-curated)",
-  Booth: "var(--role-booth)",
-  "Tech Lead": "var(--role-tech)",
-  Platform: "var(--role-platform)",
 };
 
 export function generateStaticParams() {
@@ -79,12 +72,32 @@ export default async function ProjectPage({
     (link) => link.url !== project.primaryAction?.url
   );
 
-  const facts: { label: string; value: string }[] = [
+  const facts: { label: string; value: ReactNode }[] = [
     ...(project.dates
       ? [{ label: strings.project.factDates, value: project.dates }]
       : []),
     ...(project.venue
       ? [{ label: strings.project.factVenue, value: project.venue }]
+      : []),
+    ...(project.presentations?.length
+      ? [
+          {
+            label: strings.project.factPresentations,
+            value: (
+              <ul className="space-y-2">
+                {project.presentations.map((presentation) => (
+                  <li key={`${presentation.venue}-${presentation.dates}`}>
+                    {presentation.venue}
+                    <span className="text-ink-secondary">
+                      {" "}
+                      · {presentation.dates}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            ),
+          },
+        ]
       : []),
     ...(project.credits ?? []),
   ];
@@ -101,28 +114,7 @@ export default async function ProjectPage({
       </nav>
 
       <header className="mb-12 max-w-measure">
-        <div className="mb-5 flex flex-wrap items-center gap-3">
-          <span className="text-meta uppercase text-ink-muted">
-            {archiveLabel}
-          </span>
-          <span aria-hidden="true" className="text-ink-muted">
-            ·
-          </span>
-          <span
-            className="inline-flex items-center gap-2 border px-2 py-1 text-meta uppercase"
-            style={{
-              color: ROLE_COLOR[project.role],
-              borderColor: `color-mix(in srgb, ${ROLE_COLOR[project.role]} 40%, transparent)`,
-            }}
-          >
-            <span
-              aria-hidden="true"
-              className="h-1.5 w-1.5"
-              style={{ backgroundColor: ROLE_COLOR[project.role] }}
-            />
-            {strings.roles[project.role]}
-          </span>
-        </div>
+        <p className="mb-5 text-meta uppercase text-ink-muted">{archiveLabel}</p>
         <h1 className="font-serif text-[clamp(2.25rem,5vw,4rem)] font-normal leading-[1.05] tracking-[-0.02em] text-ink text-balance">
           {project.title}
         </h1>

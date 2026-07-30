@@ -33,6 +33,12 @@ export default function Footer() {
               {item.label}
             </Link>
           ))}
+          <Link
+            href="/about#partners"
+            className="text-ink-secondary underline-offset-4 hover:underline"
+          >
+            {s.about.partnersHeading}
+          </Link>
         </nav>
 
         <div className="flex flex-col gap-3 text-body-s">

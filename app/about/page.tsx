@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { getStrings } from "@/lib/lang";
 import PageHero from "@/components/PageHero";
 
@@ -72,6 +73,72 @@ export default function AboutPage() {
               ))}
             </ul>
           </div>
+        </div>
+      </section>
+
+      <section
+        id="partners"
+        aria-labelledby="partners-heading"
+        className="mt-16 scroll-mt-24 border-t border-line pt-12 md:mt-24 md:grid md:grid-cols-12 md:gap-8 md:pt-16"
+      >
+        <h2
+          id="partners-heading"
+          className="font-serif text-title-m font-medium text-ink md:col-span-4"
+        >
+          {strings.about.partnersHeading}
+        </h2>
+        <div className="mt-5 md:col-span-8 md:mt-0">
+          <p className="max-w-measure text-body text-ink-secondary">
+            {strings.about.partnersBody}
+          </p>
+          <ul className="mt-8 grid gap-x-6 gap-y-10 sm:grid-cols-2">
+            {strings.about.partners.map((partner) => (
+              <li key={partner.url}>
+                <a
+                  href={partner.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block"
+                >
+                  <span
+                    className={`relative flex aspect-video items-center justify-center overflow-hidden border border-line ${
+                      partner.imageSurface === "dark"
+                        ? "bg-ink"
+                        : "bg-paper-sunk"
+                    }`}
+                  >
+                    {partner.image ? (
+                      <Image
+                        src={partner.image}
+                        alt={partner.imageAlt}
+                        fill
+                        sizes="(min-width: 768px) 32vw, (min-width: 640px) 46vw, 100vw"
+                        className={`transition-opacity duration-150 group-hover:opacity-90 ${
+                          partner.imageFit === "contain"
+                            ? partner.imageInset === "wide"
+                              ? "object-contain p-8"
+                              : "object-contain p-5"
+                            : "object-cover"
+                        }`}
+                      />
+                    ) : (
+                      <span className="max-w-[12ch] text-center font-serif text-title-l font-medium text-ink transition-colors duration-150 group-hover:text-accent">
+                        {partner.mark}
+                      </span>
+                    )}
+                  </span>
+                  <span className="mt-4 grid gap-1 border-b border-line pb-3">
+                    <span className="w-fit whitespace-nowrap font-serif text-title-s font-medium text-ink underline decoration-1 underline-offset-[0.18em] group-hover:text-accent group-hover:decoration-2">
+                      {partner.name} <span aria-hidden="true">↗</span>
+                    </span>
+                    <span className="text-meta uppercase text-ink-muted">
+                      {partner.relationship}
+                    </span>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

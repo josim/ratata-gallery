@@ -45,11 +45,17 @@ export type ArtistProfile = {
   linkLabel: string;
 };
 
+export type ProjectPresentation = {
+  venue: string;
+  dates: string;
+};
+
 export type ProjectFrontmatter = {
   title: string;
   year: number;
   dates?: string;
   venue?: string;
+  presentations?: ProjectPresentation[];
   city?: string;
   category: ProjectCategory;
   role: ProjectRole;
