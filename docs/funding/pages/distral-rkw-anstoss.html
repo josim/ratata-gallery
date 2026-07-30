@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ratata - Distr@l & RKW Hessen</title>
+<style>
+  :root {
+    --paper:#fbfaf8; --sunk:#f4f2ec; --card:#fff; --ink:#1a1918; --ink-2:#55524d; --ink-3:#767169;
+    --line:#e4e0d9; --control:#948c7e; --accent:#a5372a; --accent-hover:#8a2c21; --accent-tint:#f5e7e4;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --mono:"SF Mono",ui-monospace,Menlo,Consolas,monospace;
+    --measure:72ch;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16.5px;line-height:1.62;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  .wrap{max-width:880px;margin:0 auto;padding:clamp(28px,6vw,64px) clamp(20px,5vw,56px) 96px}
+  .masthead{border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:8px}
+  .wordmark{color:var(--ink)}
+  .wordmark svg{height:28px;width:auto;display:block}
+  .kicker{margin:22px 0 0;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+  .doc h1{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,5vw,2.7rem);line-height:1.08;letter-spacing:-.02em;text-wrap:balance;margin:.4em 0 .5em}
+  .doc h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.35rem,3.2vw,1.7rem);letter-spacing:-.01em;line-height:1.15;text-wrap:balance;margin:1.7em 0 .5em;padding-top:.3em;border-top:1px solid var(--line)}
+  .doc h3{font-family:var(--serif);font-weight:600;font-size:1.15rem;margin:1.4em 0 .3em}
+  .doc h4{font-size:.95rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2);margin:1.2em 0 .3em}
+  .doc p{margin:0 0 .8em;max-width:var(--measure)}
+  .doc ul,.doc ol{max-width:var(--measure);padding-left:1.3em;margin:0 0 .9em}
+  .doc li{margin-bottom:.35em}
+  .doc li>ul,.doc li>ol{margin:.35em 0}
+  .doc a{color:var(--accent);text-underline-offset:.15em;text-decoration-thickness:1px}
+  .doc a:hover{color:var(--accent-hover)}
+  .doc strong{font-weight:600}
+  .doc em{font-style:italic}
+  .doc code{font-family:var(--mono);font-size:.86em;background:var(--sunk);border:1px solid var(--line);padding:.06em .35em;border-radius:0}
+  .doc pre{background:var(--sunk);border:1px solid var(--line);padding:14px 16px;overflow-x:auto}
+  .doc pre code{background:none;border:none;padding:0}
+  .doc hr{border:none;border-top:1px solid var(--line);margin:1.8em 0}
+  .doc blockquote{margin:1em 0;padding:12px 20px;border:1px solid var(--line);border-left:3px solid var(--accent);background:var(--sunk)}
+  .doc blockquote p{margin:0;max-width:none}
+  .doc table{border-collapse:collapse;width:100%;font-size:.9rem;margin:.4em 0 1em;display:block;overflow-x:auto}
+  .doc thead th{font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);background:var(--sunk);font-weight:600;text-align:left}
+  .doc th,.doc td{border:1px solid var(--line);padding:9px 12px;vertical-align:top;text-align:left}
+  @media print{
+    @page{size:A4;margin:14mm}
+    html,body{-webkit-print-color-adjust:exact;print-color-adjust:exact;background:var(--paper)}
+    .wrap{padding:6mm 0 0!important;max-width:none!important}
+    .doc h2,.doc h3,.doc h4{break-after:avoid}
+    .doc table,.doc blockquote,.doc pre,.doc tr,.doc li{break-inside:avoid}
+    .doc a{text-decoration:underline}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="masthead"><span class="wordmark"><svg role="img" aria-label="RATATA" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" viewBox="-120 -120 4225 1108.7">
+  <defs>
+    <style>.cls-2{fill:currentColor;fill-rule:evenodd}</style>
+  </defs>
+  
+  <path id="Color_Fill_2" data-name="Color Fill 2" class="cls-2" d="M3821-18h180V866h-2v1h-1c-2.22-9-9.51-17.672-14-25-4.2-6.857-5.79-14.086-10-21-5.45-8.944-11.97-18.825-17-28-25.19-45.968-48.05-92.842-75-137-6.8-11.142-10.2-22.823-17-34-9.91-16.287-17.8-34.22-28-51-4.84-7.962-13.04-18.043-16-27V-18ZM1864,290V749h-49V867H1680q-31.995-58.993-64-118H1489v1c9.23,10.206,12.7,25.987,20,38,15.27,25.137,29.96,52.211,43,79H1063v-1c5.68-6.348,7.42-15.477,12-23,13.3-21.871,24.69-46.165,38-68,2.71-4.44,9.81-24.235,13-26h361c-1.37-10.6-13.74-27.393-19-36-12.95-21.183-22.34-44.253-35-65-3.14-5.148-12.97-29.854-16-32H1070c-1.75,7.383-7.4,14.117-11,20-7.83,12.794-13.45,26.651-21,39s-11.47,25.623-19,38c-20.081,33.008-36.934,69.088-57,102-7.342,12.043-13.579,24.959-20,37-1.927,3.614-4.488,13.26-8,15H907c-6-8.913-24.9-23.131-34-30-19.036-14.374-34.721-33.439-54-48-13.01-9.827-23.716-22.993-37-33l-6-7H684c-3.842-5.764-9.481-9.83-15-14l-10-11a266.74,266.74,0,0,0-27-24l-11-12a247.544,247.544,0,0,0-25-22l-17-18a265.863,265.863,0,0,1-27-24l-10-11a256.464,256.464,0,0,1-26-23l-10-11a157.677,157.677,0,0,1-20-18H306V749H256V867H-20V749H192V176H581c80.858,0,151.769-4.7,198,30,24.24,18.192,33.871,50.454,42,85,2.037,8.659,1.272,17.962,3,26v18c2.889,13.562,2.919,57.455,0,71q-0.5,14-1,28c-5.1,23.08-7.341,46.483-18,64-30.485,50.1-92.35,62.006-173,62v1L843,749h28c1.376-5.514,5.39-9.733,8-14,6.664-10.9,11.609-22.55,18-33,18.547-30.326,32.751-63.082,51-93,12.126-19.878,19.9-41.1,32-61,43.34-71.291,78.59-148.756,122-220,20.69-33.947,36.59-70.482,57-104,6.57-10.782,12.22-22.383,18-33,1.44-2.639,5.28-13.795,7-15h119c1.64,6.839,6.71,12.617,10,18,6.29,10.28,10.99,21.162,17,31,18.48,30.246,32.76,63.1,51,93,12.53,20.529,20.51,42.459,33,63,45.11,74.194,81.81,154.84,127,229,20.68,33.944,36.6,70.5,57,104,4,6.563,13.67,32.413,19,35h133V290H1542c-3.02-9.144-1-24.976-1-36V176c13.15-4.319,35.72-1,51-1h480c3.02,9.144,1,24.976,1,36v78c-12.86,4.228-48.64,1-65,1H1864ZM2877,749V289H2668V176h531V289H2990V749h-49V867H2807c-4.32-9.8-10.6-19.16-16-28-12.42-20.317-21.88-42.138-34-62-3.29-5.387-10.56-25.808-15-28H2616v2c11.46,12.6,15.97,32.126,25,47,13.38,22.037,26.1,45.849,38,69H2190v-2c7.86-8.743,10.72-21.672,17-32,10.35-17.013,19.63-36,30-53,3.45-5.664,11.64-28.609,16-31h361v-1c-9.19-10.3-12.67-25.952-20-38-11.08-18.213-21.78-38.239-32-57-4.85-8.9-9.43-17.612-14-26-1.48-2.708-2.45-9.591-5-11H2197c-2.04,8.682-8.72,17-13,24-7.83,12.795-13.45,26.651-21,39-4.99,8.169-7.02,16.821-12,25-18.28,30.049-33.74,63.054-52,93-10.22,16.757-18.06,34.7-28,51-2.14,3.508-6.51,17.23-9,19H1927V749h70c4.92-11.276,11.82-21.881,18-32,10.23-16.747,18.05-34.705,28-51,4.22-6.9,5.8-14.087,10-21,16.32-26.835,30.65-56.2,47-83,10.35-16.966,16.69-35.035,27-52,37.21-61.225,67.68-127.817,105-189,20.69-33.923,36.58-70.485,57-104,6.24-10.246,11.01-21.179,17-31,2.02-3.309,2.53-9.374,6-11h117c8.67,19.54,21.03,39.039,32,57,20.64,33.8,36.6,70.548,57,104,10.35,16.97,16.68,35.014,27,52,38.99,64.145,70.93,133.9,110,198,4.21,6.909,5.8,14.085,10,21,18.47,30.387,34.5,63.615,53,94,6.57,10.782,12.22,22.383,18,33,1.44,2.639,5.28,13.795,7,15h134Zm944,0h-79c1.44,10.429,10.5,19.806,15,28,10.09,18.39,17.14,37.145,28,55,6.29,10.341,15.58,22.706,19,35H3316v-1c7.13-7.412,9.48-18.928,15-28,11.08-18.213,21.78-38.239,32-57,2.49-4.574,13.74-30.4,16-32h362v-1c-7.44-8.176-10.08-20.264-16-30-12.9-21.214-24.07-44.8-37-66-3.46-5.679-14.75-33.69-18-36H3324c-11.52,26.524-29.08,56.562-44,81-4.99,8.171-7.02,16.82-12,25-15.35,25.229-28.66,52.847-44,78-9.51,15.589-17.63,32.306-26,48-1.74,3.259-7.72,17.746-10,19H3053V749h71c1.64-6.839,6.71-12.617,10-18,6.29-10.28,10.99-21.162,17-31,18.54-30.35,32.75-63.1,51-93,12.53-20.529,20.51-42.459,33-63,45.11-74.194,81.81-154.84,127-229,20.68-33.944,36.6-70.5,57-104,3.19-5.236,16.07-34.409,19-36h117c48.25,82.064,89.44,169.77,139,251,12.52,20.53,20.51,42.459,33,63,22.15,36.427,39.58,76.126,62,113,8.16,13.417,14.58,28.138,23,42,2.4,3.947,7.5,9.66,9,14v91ZM1373,526c-0.92-6.865-5.96-12.041-9-17-8.46-13.82-14.81-28.606-23-42-4.22-6.9-5.79-14.09-10-21-18.88-31.011-35.07-64.98-54-96-8.42-13.8-14.84-28.617-23-42-3.45-5.654-5.11-16-11-19-1.62,6.832-6.71,12.631-10,18-10.24,16.7-18.05,34.733-28,51-14.72,24.069-24.34,49.908-39,74-18.24,29.983-36.69,61.984-52,94h259Zm997-237c-1.77,7.577-7.34,14.032-11,20-6.29,10.259-11.01,21.208-17,31-4.22,6.9-5.79,14.092-10,21-18.63,30.586-33.12,63.955-52,95-8.16,13.416-14.58,28.143-23,42-4.91,8.082-12.25,17.311-15,27h257v-2c-4.3-4.82-5.48-11.223-9-17-8.16-13.4-14.56-28.135-23-42-25-41.09-45.98-85.938-71-127C2387.3,322.731,2381.06,300.5,2370,289ZM306,290V467H592c31.61,0,79.455,5.823,100-7,11.45-7.146,16.409-20.93,20-36q0.5-18.5,1-37c0-33.044,2.123-73-17-87-22.183-16.242-75.788-10-113-10H306Zm3191,0q-64.5,117.487-129,235h258v-2c-2.95-2.529-2.87-5.512-5-9-8.16-13.386-14.59-28.187-23-42-25.41-41.741-46.58-87.272-72-129-8.43-13.845-14.84-28.589-23-42C3500.58,297.018,3500.51,292.8,3497,290ZM369,749H625c7.566,11.351,24.953,25.653,36,34l11,12a256.126,256.126,0,0,0,26,23l16,17c11.272,8.52,26.189,20.213,34,32H369V749Z"/>
+</svg></span><p class="kicker">Interne Arbeitsgrundlage · Funding</p></div>
+  <article class="doc">
+<h1>Distr@l &amp; RKW Hessen - zwei konkrete Anstöße für 8scribo</h1>
+<p>Zwei umsetzbare Förder-Schritte für <strong>ratata GbR</strong> (Frankfurt; Johannes + Phil),
+zugeschnitten auf das digitale Produkt <strong>8scribo</strong> - eine Plattform zum
+<strong>Schreiben und Veröffentlichen kurzer Texte / Haikus</strong>.</p>
+<blockquote>
+<p><strong>Framing für beide Programme:</strong> 8scribo als <strong>digitale Produktinnovation /
+Software</strong> darstellen (neue Plattform, neue Nutzererfahrung, Skalierung). Die
+Tezos-/Blockchain-Ebene ist nur <strong>technischer Unterbau</strong> und gehört, wenn
+überhaupt, in einen Nebensatz zur Architektur - <strong>nicht</strong> als Krypto-/Web3-Story.
+Gutachter fördern hier Digitalisierung und wirtschaftliche Wirkung in Hessen,
+nicht Blockchain als Selbstzweck.</p>
+</blockquote>
+<p>Diese Datei ergänzt <code>innovationsfoerderung.md</code> (dort sind Distr@l und RKW nur kurz
+gelistet) mit dem <strong>konkreten Vorgehen</strong> und <strong>fertigen Entwürfen</strong>.</p>
+<blockquote>
+<p>⚠️ <strong>Kein Rechts-, Steuer- oder Förderberatungs-Ersatz.</strong> Alle Beträge, Quoten
+und Fristen sind Rechercheergebnisse (Stand Juli 2026) und <strong>vor jedem Antrag</strong>
+an der Originalquelle bzw. bei WIBank/RKW zu bestätigen. Als <strong>&quot;zu prüfen&quot;</strong>
+markierte Punkte sind bewusst offen - die Recherche ergab keine eindeutige
+Bestätigung.</p>
+</blockquote>
+<blockquote>
+<p>🗓️ <strong>Zeitpunkt:</strong> Ende Juli 2026. Die Distr@l-Bewertungsrunde mit
+Skizzen-Einreichung zum <strong>05.07.2026 ist verstrichen</strong>. Distr@l bewertet
+laufend in Runden (Gremien tagen ca. alle 8-10 Wochen), daher zielt der Entwurf
+unten auf die <strong>nächste Runde</strong> (Termin zu prüfen). RKW ist laufend, aber das
+Landesbudget war 2025 schon <strong>im August erschöpft</strong> - also <strong>jetzt</strong> anfragen.</p>
+</blockquote>
+<hr>
+<h1>TEIL A - Distr@l (WIBank Hessen): Projektskizze für 8scribo</h1>
+<h2>A.1 Ablauf, Förderlinie, Berechtigung (recherchiert, Stand Juli 2026)</h2>
+<p><strong>Was Distr@l ist:</strong> Das zentrale <strong>Digitalisierungs- und Innovations-Förderprogramm
+des Landes Hessen</strong>. Reiner, nicht rückzahlbarer <strong>Zuschuss</strong> für digitale
+Vorhaben, die in Hessen umgesetzt werden. Sechs Förderlinien von Machbarkeitsstudie
+bis Wachstum, Zuschüsse bis 1 Mio. €.</p>
+<p><strong>Die passende Förderlinie für 8scribo: Förderlinie 2A - Digitale
+Produktinnovationen.</strong> Sie fördert die Entwicklung <strong>neuer digitaler Produkte,
+Verfahren oder Dienstleistungen</strong> (Prototypen, Systeme). Das trifft 8scribo als neue
+Schreib-/Publishing-Plattform.</p>
+<table>
+<thead>
+<tr>
+<th>Förderlinie</th>
+<th>Gegenstand</th>
+<th>Max. Zuschuss</th>
+<th>Quote</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 - Machbarkeitsstudien</td>
+<td>Prüfung komplexer Digitalvorhaben</td>
+<td>100.000 €</td>
+<td>bis 50 %</td>
+</tr>
+<tr>
+<td><strong>2A - Digitale Produktinnovationen</strong></td>
+<td><strong>neue digitale Produkte/Services, Prototypen</strong></td>
+<td><strong>500.000 €</strong></td>
+<td><strong>bis ~50 % (Eigenanteil ≥ 50 %) - Quote genau prüfen</strong></td>
+</tr>
+<tr>
+<td>2B - Digitale Prozessinnovationen</td>
+<td>neue/verbesserte digitale Prozesse</td>
+<td>500.000 €</td>
+<td>50-100 % (zu prüfen)</td>
+</tr>
+<tr>
+<td>2C - Digitale Pioniere</td>
+<td>Pilotprojekte mit Pioniercharakter</td>
+<td>100.000 €</td>
+<td>bis 100 % (zu prüfen)</td>
+</tr>
+<tr>
+<td>3 - Wissens-/Transferprojekte</td>
+<td>Netzwerke, Plattformen, Schulungen</td>
+<td>1 Mio. €</td>
+<td>bis 100 % (zu prüfen)</td>
+</tr>
+<tr>
+<td>4A - Validierungsforschung</td>
+<td>Validierung vor Markteintritt</td>
+<td>1 Mio. €</td>
+<td>bis 100 % (zu prüfen)</td>
+</tr>
+<tr>
+<td>4B - Wachstum im digitalen Kontext</td>
+<td>Skalierung digitaler Geschäftsmodelle</td>
+<td>160.000 €</td>
+<td>Jahr 1: 100 %, Jahr 2: 60 % (zu prüfen)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Quoten-Hinweis (zu prüfen):</strong> Zur Quote von 2A gibt es widersprüchliche
+Angaben (eine Quelle &quot;ca. 50-90 %&quot;, eine &quot;bis 50 % / Eigenanteil mind. 50 %&quot;).
+<strong>Vor Skizze bei WIBank/Ministerium verbindlich klären</strong>, welche Quote für ein
+kleines Start-up/KMU in 2A gilt - das bestimmt euren Eigenmittelbedarf.</p>
+</blockquote>
+<p><strong>Ist die GbR antragsberechtigt?</strong></p>
+<ul>
+<li>Antragsberechtigt sind laut Programm <strong>Start-ups, KMU mit Sitz in Hessen,
+Hochschulen und Forschungseinrichtungen</strong>.</li>
+<li>Eine Quelle nennt für 2A explizit <strong>Personengesellschaften</strong> als zulässige
+Rechtsform (eine GbR ist eine Personengesellschaft) - <strong>gutes Signal, aber
+formell zu prüfen</strong>, ob die GbR ohne Handelsregistereintrag akzeptiert wird.</li>
+<li>Genannte Voraussetzung: <strong>Unternehmen bereits gegründet und mit Umsatz</strong>, das
+<strong>Projekt darf noch nicht begonnen</strong> haben, Umsetzung <strong>in Hessen</strong> (bei ratata
+gegeben: Sitz Frankfurt).</li>
+<li>Projektdauer 2A: <strong>12-36 Monate</strong> (zu prüfen für euren Zuschnitt).</li>
+</ul>
+<p><strong>Wie und wo wird eingereicht (zweistufig):</strong></p>
+<ol>
+<li><strong>Stufe 1 - Projektskizze</strong> per E-Mail an das Hessische Ministerium für
+Digitalisierung und Innovation: <strong><a href="mailto:distral-hessen@digitales.hessen.de">distral-hessen@digitales.hessen.de</a></strong>.
+Plausibilitäts-/Ideenprüfung durch ein Gremium.</li>
+<li><strong>Stufe 2 - nach positivem Signal:</strong> ausführliche <strong>Projektbeschreibung +
+formaler Antrag bei der WIBank</strong>.</li>
+</ol>
+<p><strong>Fristen:</strong> <strong>Laufende Einreichung in Bewertungsrunden.</strong> Für 2026 waren
+Skizzen-Termine u. a. der <strong>26.04.2026</strong> und <strong>05.07.2026</strong> (beide verstrichen).
+Gremien tagen ca. alle 8-10 Wochen. <strong>Nächsten Skizzen-Termin auf
+<a href="http://digitales.hessen.de">digitales.hessen.de</a> bestätigen</strong> (zu prüfen) und die Skizze darauf timen.</p>
+<p><strong>Hilfsmittel:</strong> Auf der Programmseite gibt es eine <strong>&quot;Gliederungshilfe&quot; für die
+Skizze</strong> zum Download - vor dem Schreiben ziehen und die dortige Struktur
+übernehmen (spart Rückfragen).</p>
+<p><strong>Kontakt:</strong> Skizzen-Postfach <code>distral-hessen@digitales.hessen.de</code> (Ministerium);
+formaler Antrag/Beratung über die <strong>WIBank</strong> (<a href="http://wibank.de/distral">wibank.de/distral</a>). Eine kurze
+telefonische/E-Mail-Vorabklärung der Förderlinie und Quote ist der beste erste Zug.</p>
+<h2>A.2 So geht ihr vor (Distr@l)</h2>
+<ol>
+<li><strong>Gliederungshilfe + aktuelle Förderlinien-Doku</strong> von <a href="http://digitales.hessen.de">digitales.hessen.de</a> laden;
+prüfen, ob <strong>2A</strong> oder (bei kleinerem Zuschnitt) <strong>2C - Digitale Pioniere</strong> besser
+passt. → verify: Förderlinie + Quote + GbR-Zulässigkeit schriftlich bestätigt.</li>
+<li><strong>Nächsten Bewertungsrunden-Termin</strong> erfragen und Skizze darauf timen. → verify:
+Termin notiert.</li>
+<li><strong>Skizzen-Entwurf unten</strong> mit realen Zahlen (Platzhalter <code>[...]</code>) füllen, auf
+1-3 Seiten kürzen, Digitalbezug + Hessen-Nutzen scharf stellen. → verify: alle
+<code>[...]</code> ersetzt, kein Krypto-Framing.</li>
+<li><strong>Skizze an <a href="mailto:distral-hessen@digitales.hessen.de">distral-hessen@digitales.hessen.de</a></strong> mailen. → verify:
+Eingangsbestätigung.</li>
+<li>Bei positivem Signal <strong>WIBank-Antrag</strong> vorbereiten (detaillierte
+Projektbeschreibung, Finanzierungsnachweis Eigenanteil). → verify: Antrag
+eingereicht.</li>
+</ol>
+<h2>A.3 Entwurf einer Projektskizze - 8scribo (Distr@l Förderlinie 2A)</h2>
+<blockquote>
+<p>Arbeitsentwurf. Platzhalter <code>[...]</code> mit realen Zahlen/Fakten ersetzen. Zielumfang
+der eingereichten Skizze: <strong>kurz und plausibel</strong> (Gliederungshilfe beachten).</p>
+</blockquote>
+<p><strong>Projekttitel:</strong> 8scribo - digitale Plattform für das Schreiben und Veröffentlichen
+kurzer Texte</p>
+<p><strong>Antragsteller:</strong> ratata GbR, Frankfurt am Main (Johannes Simon, Phil <code>[Nachname]</code>)
+· Förderlinie: <strong>2A - Digitale Produktinnovationen</strong> · geplante Laufzeit:
+<code>[z. B. 18 Monate]</code> · Umsetzungsort: Frankfurt am Main (Hessen)</p>
+<h3>1. Ausgangslage / Problem</h3>
+<p>Kurze, literarische Textformen (Haiku, Mikrotexte, Gedichte) haben eine wachsende,
+aber <strong>digital schlecht bediente</strong> Community. Bestehende Plattformen sind entweder
+generische Social-Feeds ohne Fokus auf Form und Qualität oder klassische
+Blog-/Publishing-Tools ohne kuratierte, gemeinschaftliche Veröffentlichung. Es fehlt
+ein <strong>spezialisiertes, niedrigschwelliges Werkzeug</strong>, das Schreiben, Kuratieren und
+Veröffentlichen kurzer Texte verbindet und Autor:innen echte Sichtbarkeit sowie
+verlässliche Urheberschaft gibt. <code>[konkrete Marktlücke / Nutzer-Pain mit Beleg ...]</code></p>
+<h3>2. Innovationskern / Digitalisierungsgrad</h3>
+<p>8scribo ist eine <strong>neu entwickelte digitale Plattform</strong> (Web/App), die den gesamten
+Weg vom Verfassen bis zur kuratierten Veröffentlichung kurzer Texte digital abbildet.
+Innovationskern:</p>
+<ul>
+<li><code>[Kernfunktion 1: z. B. formatbewusster Editor für Haiku/Kurztext mit ...]</code></li>
+<li><code>[Kernfunktion 2: kuratierte, gemeinschaftliche Veröffentlichung / Redaktions-Flow]</code></li>
+<li><code>[Kernfunktion 3: verlässliche, nachweisbare Urheberschaft und Versionierung]</code></li>
+</ul>
+<p><strong>Abgrenzung zum Stand der Technik:</strong> <code>[Womit hebt sich 8scribo von generischen Publishing-/Social-Tools ab? ...]</code> Als technischer Unterbau für fälschungssichere
+Urheberschafts- und Veröffentlichungsnachweise kommt eine <strong>verteilte
+Datenschicht (Tezos)</strong> zum Einsatz - für die Nutzer:innen unsichtbar; im Vordergrund
+steht die <strong>Software- und Produktinnovation</strong>, nicht die Infrastruktur.</p>
+<h3>3. Zielgruppe / Markt</h3>
+<ul>
+<li><strong>Primär:</strong> schreibende Community - Hobby- und semiprofessionelle Autor:innen
+kurzer Formen, Literatur-/Schreib-Communitys, Bildungskontext. <code>[Größenordnung ...]</code></li>
+<li><strong>Sekundär:</strong> <code>[Verlage, Literaturvermittlung, Bildungseinrichtungen, ...]</code></li>
+<li><strong>Marktpotenzial / Geschäftsmodell:</strong> <code>[z. B. Freemium, Pro-Features, kuratierte Editionen, B2B-Lizenz ...]</code></li>
+</ul>
+<h3>4. Alleinstellung (USP)</h3>
+<p><code>[1-3 Sätze: Warum 8scribo besser/anders ist - Fokus auf Kurztext-Form, kuratierte Veröffentlichung, verlässliche Urheberschaft, Community-Ownership.]</code></p>
+<h3>5. Geplante Arbeitspakete (AP)</h3>
+<table>
+<thead>
+<tr>
+<th>AP</th>
+<th>Inhalt</th>
+<th>Ergebnis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AP1</td>
+<td>Konzeption &amp; UX/Produktdesign</td>
+<td><code>[Spezifikation, Prototyp]</code></td>
+</tr>
+<tr>
+<td>AP2</td>
+<td>Entwicklung Editor &amp; Publishing-Core</td>
+<td><code>[funktionsfähiges Kernprodukt]</code></td>
+</tr>
+<tr>
+<td>AP3</td>
+<td>Kuratierungs-/Community-Funktionen</td>
+<td><code>[Redaktions-/Community-Flow]</code></td>
+</tr>
+<tr>
+<td>AP4</td>
+<td>Urheberschafts-/Nachweisschicht (techn. Unterbau)</td>
+<td><code>[integriert, getestet]</code></td>
+</tr>
+<tr>
+<td>AP5</td>
+<td>Beta mit Test-Community, Iteration</td>
+<td><code>[Nutzerfeedback, KPIs]</code></td>
+</tr>
+<tr>
+<td>AP6</td>
+<td>Launch, Doku, Skalierungsvorbereitung</td>
+<td><code>[Go-live in Hessen/DE]</code></td>
+</tr>
+</tbody>
+</table>
+<h3>6. Grober Zeitplan</h3>
+<p><code>[z. B.]</code> Monat 1-3: AP1 · Monat 3-9: AP2/AP3 · Monat 8-12: AP4 · Monat 12-15: AP5 ·
+Monat 15-18: AP6. <code>[an reale Laufzeit anpassen]</code></p>
+<h3>7. Grobe Budgetstruktur</h3>
+<table>
+<thead>
+<tr>
+<th>Position</th>
+<th>Betrag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Personal / Entwicklung (Personenmonate)</td>
+<td><code>[... €]</code></td>
+</tr>
+<tr>
+<td>Externe Dienstleistungen (Design, Security-Review o. Ä.)</td>
+<td><code>[... €]</code></td>
+</tr>
+<tr>
+<td>Sach-/Infrastrukturkosten</td>
+<td><code>[... €]</code></td>
+</tr>
+<tr>
+<td>Sonstiges / Puffer</td>
+<td><code>[... €]</code></td>
+</tr>
+<tr>
+<td><strong>Gesamtkosten</strong></td>
+<td><strong><code>[... €]</code></strong></td>
+</tr>
+<tr>
+<td>davon Distr@l-Zuschuss (Quote <code>[...]</code> %)</td>
+<td><code>[... €]</code></td>
+</tr>
+<tr>
+<td>davon Eigenanteil ratata</td>
+<td><code>[... €]</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Quote und Eigenanteil erst eintragen, wenn die 2A-Quote verbindlich geklärt ist
+(siehe A.1). Eigenmittel-Nachweis wird spätestens beim WIBank-Antrag verlangt.</p>
+</blockquote>
+<h3>8. Hessen-Bezug</h3>
+<ul>
+<li><strong>Sitz und Umsetzung in Frankfurt am Main</strong> (Hessen); Wertschöpfung und
+Arbeitsplätze/Aufträge entstehen in Hessen. <code>[ggf. Kooperationen mit hessischen Partnern / Community / Hochschulen nennen]</code></li>
+<li>Stärkt den <strong>Digital- und Kreativwirtschaftsstandort Hessen</strong> durch ein neues,
+sichtbares Software-Produkt.</li>
+</ul>
+<h3>9. Erwartete Wirkung</h3>
+<ul>
+<li><code>[Nutzerzahlen/Reichweite nach Launch]</code>, neue digitale Wertschöpfung,
+<code>[Beschäftigung/Umsatz]</code>, Sichtbarkeit für den Standort, Anschlussfähigkeit für
+weitere Förderung (z. B. Skalierung über Förderlinie 4B).</li>
+</ul>
+<h2>A.4 Quellen (Teil A)</h2>
+<ul>
+<li>WIBank - Distr@l (Programm): <a href="https://www.wibank.de/distral">https://www.wibank.de/distral</a></li>
+<li>WIBank - Distr@l Überblick: <a href="https://www.wibank.de/wibank/distral/distr-l-518138">https://www.wibank.de/wibank/distral/distr-l-518138</a></li>
+<li>Hessen Digitales - So funktioniert der Antrag (Skizze, E-Mail, Gliederungshilfe):
+<a href="https://digitales.hessen.de/foerderprogramme/distrl/so-funktioniert-der-antrag">https://digitales.hessen.de/foerderprogramme/distrl/so-funktioniert-der-antrag</a></li>
+<li>Förderlinien-Übersicht: <a href="https://unternehmer-hessen.de/hessen-zukunft-und-innovation/distrl-foerderung-hessen/">https://unternehmer-hessen.de/hessen-zukunft-und-innovation/distrl-foerderung-hessen/</a></li>
+<li>StartHub - Förderlinie 2A/2B (Innovationsprojekte): <a href="https://www.starthub-hessen.de/de/services/navigator/distrl-modul-b-digitale-prozessinnovationen-f%C3%B6rderlinie-2/">https://www.starthub-hessen.de/de/services/navigator/distrl-modul-b-digitale-prozessinnovationen-förderlinie-2/</a></li>
+<li>Skizzen-Postfach: <a href="mailto:distral-hessen@digitales.hessen.de">distral-hessen@digitales.hessen.de</a></li>
+</ul>
+<hr>
+<h1>TEIL B - RKW Hessen: geförderte Beratung anfragen</h1>
+<h2>B.1 Ablauf, Formate, Berechtigung (recherchiert, Stand Juli 2026)</h2>
+<p><strong>Was RKW Hessen bietet:</strong> Landesgeförderte <strong>Beratungszuschüsse</strong> - kein
+Projektgeld, sondern stark bezuschusste Expertenberatung. <strong>Nicht rückzahlbarer
+Zuschuss bis 75 %</strong> auf qualifizierte Beratungen, plus <strong>kostenfreies Erstgespräch</strong>.</p>
+<p><strong>Relevante Beratungsformate für ratata/8scribo (2026 freigegeben):</strong></p>
+<ul>
+<li><strong>Gründungsberatung</strong> - für Gründungsinteressierte und junge Unternehmen.</li>
+<li><strong>Digitalisierungsberatung</strong> - Digital-/Produktstrategie, am besten passend für
+8scribo (Roadmap, Skalierung, Prozesse).</li>
+<li><strong>Beratung zur Umsetzung betrieblicher Entwicklungskonzepte</strong> / <strong>Coaching</strong> -
+für Wachstum/Strategie.</li>
+<li>(weitere: Design-, Nachhaltigkeits-, Energie-/PIUS-, Nachfolge-, INQA-Coaching -
+für ratata weniger relevant).</li>
+</ul>
+<p><strong>Berechtigung:</strong> hessische <strong>Gründungsinteressierte, Start-ups und KMU</strong>. <strong>GbR und
+kleine Firmen sind Kernzielgruppe.</strong> Genaue KMU-Kriterien je Format auf der
+RKW-Seite prüfen (zu prüfen), aber der Zugang für eine kleine Frankfurter GbR ist
+klar gegeben.</p>
+<p><strong>Förderquote:</strong> <strong>bis 75 %</strong> des Expertenhonorars (Beispiel aus der Recherche:
+5 Beratungstage ~3.600 €, davon nur ~900 € Eigenanteil - <strong>Zahlen je Format/Jahr
+prüfen</strong>).</p>
+<p><strong>Frist/Budget:</strong> <strong>Laufend, ab sofort für 2026 freigegeben</strong> - aber das
+<strong>Landesbudget war 2025 bereits im August erschöpft</strong>. Daher <strong>früh im Jahr
+anfragen</strong>, um Mittel zu sichern.</p>
+<p><strong>So bucht man / Kontakt:</strong></p>
+<ul>
+<li><strong>Kostenfreies Erstgespräch anfragen</strong>, dort wird der passende Berater/das Format
+zugeordnet.</li>
+<li><strong>Kelsterbach</strong> (nächst zu Frankfurt): Tel. 0 61 07 / 9 65 93-40 ·
+<a href="mailto:kelsterbach@rkw-hessen.de">kelsterbach@rkw-hessen.de</a></li>
+<li><strong>Kassel:</strong> Tel. 05 61 / 93 09 99-0 · <a href="mailto:kassel@rkw-hessen.de">kassel@rkw-hessen.de</a></li>
+<li>Web: <a href="https://www.rkw-hessen.de">https://www.rkw-hessen.de</a></li>
+</ul>
+<h2>B.2 So geht ihr vor (RKW) - Anfrage-/Vorgehens-Checkliste</h2>
+<p><strong>Beratungsziel für ratata (Vorschlag):</strong> <strong>Digitalisierungs-/Produktstrategie für
+8scribo + Förder-Roadmap</strong> - d. h. Geschäftsmodell/Skalierung schärfen und parallel
+die Distr@l-Skizze (Teil A) mit einem geförderten Experten qualifizieren. Alternativ
+oder ergänzend <strong>Gründungsberatung</strong> (Struktur GbR vs. UG, Wachstum).</p>
+<p><strong>Was ratata vorbereitet (vor dem Erstgespräch):</strong></p>
+<ul>
+<li>[ ] Kurzprofil ratata GbR (Sitz Frankfurt, Team, bisherige Produkte/Services).</li>
+<li>[ ] 1-Absatz-Beschreibung von 8scribo (als <strong>Software-/Produktinnovation</strong>, nicht
+Krypto).</li>
+<li>[ ] Konkretes <strong>Beratungsziel</strong> benennen (Digital-/Produktstrategie 8scribo +
+Förder-Roadmap Distr@l).</li>
+<li>[ ] Grobe Frage-/Themenliste (Skalierung, Geschäftsmodell, Rechtsform, Förderung).</li>
+<li>[ ] <code>[grobe Budget-/Zeitvorstellung für die Beratungstage]</code>.</li>
+</ul>
+<p><strong>Schritte:</strong></p>
+<ol>
+<li><strong>Kostenfreies Erstgespräch beim RKW Hessen (Kelsterbach)</strong> anfragen - per
+E-Mail/Telefon oben. → verify: Termin steht.</li>
+<li>Im Gespräch <strong>Format</strong> (Digitalisierungs- vs. Gründungsberatung) und <strong>Berater</strong>
+festlegen; Förderquote und Eigenanteil bestätigen lassen. → verify: Format +
+Quote schriftlich.</li>
+<li><strong>Beratung beauftragen</strong>, Ziel: Produkt-/Digitalstrategie 8scribo + Förder-Roadmap
+(inkl. Distr@l-Skizze aus Teil A). → verify: Beratungsvereinbarung.</li>
+<li><strong>Budget früh sichern</strong> (Landesmittel erschöpfen sich) - <strong>jetzt anfragen, nicht
+im Spätsommer</strong>. → verify: Zusage/Reservierung.</li>
+</ol>
+<p><strong>Konkreter nächster Schritt:</strong> Kurze E-Mail an <strong><a href="mailto:kelsterbach@rkw-hessen.de">kelsterbach@rkw-hessen.de</a></strong> mit
+dem 1-Absatz-Profil + Beratungsziel und Bitte um ein kostenfreies Erstgespräch.</p>
+<h2>B.3 Quellen (Teil B)</h2>
+<ul>
+<li>RKW Hessen - Fördermittel 2026 stehen bereit: <a href="https://www.rkw-hessen.de/aktuelles/news-detailansicht/foerdermittel-2026-kmu-stehen-bereit.html">https://www.rkw-hessen.de/aktuelles/news-detailansicht/foerdermittel-2026-kmu-stehen-bereit.html</a></li>
+<li>RKW Hessen - Beratungsförderung (Überblick): <a href="https://unternehmer-hessen.de/unternehmertum/rkw-hessen-beratungsfoerderung/">https://unternehmer-hessen.de/unternehmertum/rkw-hessen-beratungsfoerderung/</a></li>
+<li>StartHub - RKW Beratungsprogramme: <a href="https://www.starthub-hessen.de/de/services/navigator/Beratung_zur_Umsetzung_betrieblicher_Entwicklungskonzepte/">https://www.starthub-hessen.de/de/services/navigator/Beratung_zur_Umsetzung_betrieblicher_Entwicklungskonzepte/</a></li>
+<li>RKW Hessen (Start): <a href="https://www.rkw-hessen.de">https://www.rkw-hessen.de</a></li>
+<li>Kontakt Kelsterbach: <a href="mailto:kelsterbach@rkw-hessen.de">kelsterbach@rkw-hessen.de</a> · Tel. 0 61 07 / 9 65 93-40</li>
+</ul>
+<hr>
+<h1>Quellen-Sammlung (gesamt)</h1>
+<p><strong>Distr@l / WIBank / Land Hessen</strong></p>
+<ul>
+<li><a href="https://www.wibank.de/distral">https://www.wibank.de/distral</a></li>
+<li><a href="https://www.wibank.de/wibank/distral/distr-l-518138">https://www.wibank.de/wibank/distral/distr-l-518138</a></li>
+<li><a href="https://digitales.hessen.de/foerderprogramme/distrl/so-funktioniert-der-antrag">https://digitales.hessen.de/foerderprogramme/distrl/so-funktioniert-der-antrag</a></li>
+<li><a href="https://unternehmer-hessen.de/hessen-zukunft-und-innovation/distrl-foerderung-hessen/">https://unternehmer-hessen.de/hessen-zukunft-und-innovation/distrl-foerderung-hessen/</a></li>
+<li><a href="https://www.starthub-hessen.de/de/services/navigator/distrl-modul-b-digitale-prozessinnovationen-f%C3%B6rderlinie-2/">https://www.starthub-hessen.de/de/services/navigator/distrl-modul-b-digitale-prozessinnovationen-förderlinie-2/</a></li>
+<li>Skizzen-Postfach: <a href="mailto:distral-hessen@digitales.hessen.de">distral-hessen@digitales.hessen.de</a></li>
+</ul>
+<p><strong>RKW Hessen</strong></p>
+<ul>
+<li><a href="https://www.rkw-hessen.de/aktuelles/news-detailansicht/foerdermittel-2026-kmu-stehen-bereit.html">https://www.rkw-hessen.de/aktuelles/news-detailansicht/foerdermittel-2026-kmu-stehen-bereit.html</a></li>
+<li><a href="https://unternehmer-hessen.de/unternehmertum/rkw-hessen-beratungsfoerderung/">https://unternehmer-hessen.de/unternehmertum/rkw-hessen-beratungsfoerderung/</a></li>
+<li><a href="https://www.starthub-hessen.de/de/services/navigator/Beratung_zur_Umsetzung_betrieblicher_Entwicklungskonzepte/">https://www.starthub-hessen.de/de/services/navigator/Beratung_zur_Umsetzung_betrieblicher_Entwicklungskonzepte/</a></li>
+<li><a href="https://www.rkw-hessen.de">https://www.rkw-hessen.de</a> · Kontakt: <a href="mailto:kelsterbach@rkw-hessen.de">kelsterbach@rkw-hessen.de</a></li>
+</ul>
+<blockquote>
+<p>Stand Juli 2026, aus öffentlichen Quellen. <strong>Vor jedem Antrag</strong> Förderlinie,
+Quote, GbR-Zulässigkeit und aktuelle Fristen an der Originalquelle bzw. bei
+WIBank/Ministerium/RKW bestätigen. Als &quot;zu prüfen&quot; markierte Punkte sind bewusst
+offen. Kein Krypto-/Web3-Framing - 8scribo ist eine digitale Produktinnovation.</p>
+</blockquote>
+
+  </article>
+</div>
+</body>
+</html>

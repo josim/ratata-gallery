@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ratata - 8scribo ohne Web3</title>
+<style>
+  :root {
+    --paper:#fbfaf8; --sunk:#f4f2ec; --card:#fff; --ink:#1a1918; --ink-2:#55524d; --ink-3:#767169;
+    --line:#e4e0d9; --control:#948c7e; --accent:#a5372a; --accent-hover:#8a2c21; --accent-tint:#f5e7e4;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --mono:"SF Mono",ui-monospace,Menlo,Consolas,monospace;
+    --measure:72ch;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16.5px;line-height:1.62;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  .wrap{max-width:880px;margin:0 auto;padding:clamp(28px,6vw,64px) clamp(20px,5vw,56px) 96px}
+  .masthead{border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:8px}
+  .wordmark{color:var(--ink)}
+  .wordmark svg{height:28px;width:auto;display:block}
+  .kicker{margin:22px 0 0;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+  .doc h1{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,5vw,2.7rem);line-height:1.08;letter-spacing:-.02em;text-wrap:balance;margin:.4em 0 .5em}
+  .doc h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.35rem,3.2vw,1.7rem);letter-spacing:-.01em;line-height:1.15;text-wrap:balance;margin:1.7em 0 .5em;padding-top:.3em;border-top:1px solid var(--line)}
+  .doc h3{font-family:var(--serif);font-weight:600;font-size:1.15rem;margin:1.4em 0 .3em}
+  .doc h4{font-size:.95rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2);margin:1.2em 0 .3em}
+  .doc p{margin:0 0 .8em;max-width:var(--measure)}
+  .doc ul,.doc ol{max-width:var(--measure);padding-left:1.3em;margin:0 0 .9em}
+  .doc li{margin-bottom:.35em}
+  .doc li>ul,.doc li>ol{margin:.35em 0}
+  .doc a{color:var(--accent);text-underline-offset:.15em;text-decoration-thickness:1px}
+  .doc a:hover{color:var(--accent-hover)}
+  .doc strong{font-weight:600}
+  .doc em{font-style:italic}
+  .doc code{font-family:var(--mono);font-size:.86em;background:var(--sunk);border:1px solid var(--line);padding:.06em .35em;border-radius:0}
+  .doc pre{background:var(--sunk);border:1px solid var(--line);padding:14px 16px;overflow-x:auto}
+  .doc pre code{background:none;border:none;padding:0}
+  .doc hr{border:none;border-top:1px solid var(--line);margin:1.8em 0}
+  .doc blockquote{margin:1em 0;padding:12px 20px;border:1px solid var(--line);border-left:3px solid var(--accent);background:var(--sunk)}
+  .doc blockquote p{margin:0;max-width:none}
+  .doc table{border-collapse:collapse;width:100%;font-size:.9rem;margin:.4em 0 1em;display:block;overflow-x:auto}
+  .doc thead th{font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);background:var(--sunk);font-weight:600;text-align:left}
+  .doc th,.doc td{border:1px solid var(--line);padding:9px 12px;vertical-align:top;text-align:left}
+  @media print{
+    @page{size:A4;margin:14mm}
+    html,body{-webkit-print-color-adjust:exact;print-color-adjust:exact;background:var(--paper)}
+    .wrap{padding:6mm 0 0!important;max-width:none!important}
+    .doc h2,.doc h3,.doc h4{break-after:avoid}
+    .doc table,.doc blockquote,.doc pre,.doc tr,.doc li{break-inside:avoid}
+    .doc a{text-decoration:underline}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="masthead"><span class="wordmark"><svg role="img" aria-label="RATATA" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" viewBox="-120 -120 4225 1108.7">
+  <defs>
+    <style>.cls-2{fill:currentColor;fill-rule:evenodd}</style>
+  </defs>
+  
+  <path id="Color_Fill_2" data-name="Color Fill 2" class="cls-2" d="M3821-18h180V866h-2v1h-1c-2.22-9-9.51-17.672-14-25-4.2-6.857-5.79-14.086-10-21-5.45-8.944-11.97-18.825-17-28-25.19-45.968-48.05-92.842-75-137-6.8-11.142-10.2-22.823-17-34-9.91-16.287-17.8-34.22-28-51-4.84-7.962-13.04-18.043-16-27V-18ZM1864,290V749h-49V867H1680q-31.995-58.993-64-118H1489v1c9.23,10.206,12.7,25.987,20,38,15.27,25.137,29.96,52.211,43,79H1063v-1c5.68-6.348,7.42-15.477,12-23,13.3-21.871,24.69-46.165,38-68,2.71-4.44,9.81-24.235,13-26h361c-1.37-10.6-13.74-27.393-19-36-12.95-21.183-22.34-44.253-35-65-3.14-5.148-12.97-29.854-16-32H1070c-1.75,7.383-7.4,14.117-11,20-7.83,12.794-13.45,26.651-21,39s-11.47,25.623-19,38c-20.081,33.008-36.934,69.088-57,102-7.342,12.043-13.579,24.959-20,37-1.927,3.614-4.488,13.26-8,15H907c-6-8.913-24.9-23.131-34-30-19.036-14.374-34.721-33.439-54-48-13.01-9.827-23.716-22.993-37-33l-6-7H684c-3.842-5.764-9.481-9.83-15-14l-10-11a266.74,266.74,0,0,0-27-24l-11-12a247.544,247.544,0,0,0-25-22l-17-18a265.863,265.863,0,0,1-27-24l-10-11a256.464,256.464,0,0,1-26-23l-10-11a157.677,157.677,0,0,1-20-18H306V749H256V867H-20V749H192V176H581c80.858,0,151.769-4.7,198,30,24.24,18.192,33.871,50.454,42,85,2.037,8.659,1.272,17.962,3,26v18c2.889,13.562,2.919,57.455,0,71q-0.5,14-1,28c-5.1,23.08-7.341,46.483-18,64-30.485,50.1-92.35,62.006-173,62v1L843,749h28c1.376-5.514,5.39-9.733,8-14,6.664-10.9,11.609-22.55,18-33,18.547-30.326,32.751-63.082,51-93,12.126-19.878,19.9-41.1,32-61,43.34-71.291,78.59-148.756,122-220,20.69-33.947,36.59-70.482,57-104,6.57-10.782,12.22-22.383,18-33,1.44-2.639,5.28-13.795,7-15h119c1.64,6.839,6.71,12.617,10,18,6.29,10.28,10.99,21.162,17,31,18.48,30.246,32.76,63.1,51,93,12.53,20.529,20.51,42.459,33,63,45.11,74.194,81.81,154.84,127,229,20.68,33.944,36.6,70.5,57,104,4,6.563,13.67,32.413,19,35h133V290H1542c-3.02-9.144-1-24.976-1-36V176c13.15-4.319,35.72-1,51-1h480c3.02,9.144,1,24.976,1,36v78c-12.86,4.228-48.64,1-65,1H1864ZM2877,749V289H2668V176h531V289H2990V749h-49V867H2807c-4.32-9.8-10.6-19.16-16-28-12.42-20.317-21.88-42.138-34-62-3.29-5.387-10.56-25.808-15-28H2616v2c11.46,12.6,15.97,32.126,25,47,13.38,22.037,26.1,45.849,38,69H2190v-2c7.86-8.743,10.72-21.672,17-32,10.35-17.013,19.63-36,30-53,3.45-5.664,11.64-28.609,16-31h361v-1c-9.19-10.3-12.67-25.952-20-38-11.08-18.213-21.78-38.239-32-57-4.85-8.9-9.43-17.612-14-26-1.48-2.708-2.45-9.591-5-11H2197c-2.04,8.682-8.72,17-13,24-7.83,12.795-13.45,26.651-21,39-4.99,8.169-7.02,16.821-12,25-18.28,30.049-33.74,63.054-52,93-10.22,16.757-18.06,34.7-28,51-2.14,3.508-6.51,17.23-9,19H1927V749h70c4.92-11.276,11.82-21.881,18-32,10.23-16.747,18.05-34.705,28-51,4.22-6.9,5.8-14.087,10-21,16.32-26.835,30.65-56.2,47-83,10.35-16.966,16.69-35.035,27-52,37.21-61.225,67.68-127.817,105-189,20.69-33.923,36.58-70.485,57-104,6.24-10.246,11.01-21.179,17-31,2.02-3.309,2.53-9.374,6-11h117c8.67,19.54,21.03,39.039,32,57,20.64,33.8,36.6,70.548,57,104,10.35,16.97,16.68,35.014,27,52,38.99,64.145,70.93,133.9,110,198,4.21,6.909,5.8,14.085,10,21,18.47,30.387,34.5,63.615,53,94,6.57,10.782,12.22,22.383,18,33,1.44,2.639,5.28,13.795,7,15h134Zm944,0h-79c1.44,10.429,10.5,19.806,15,28,10.09,18.39,17.14,37.145,28,55,6.29,10.341,15.58,22.706,19,35H3316v-1c7.13-7.412,9.48-18.928,15-28,11.08-18.213,21.78-38.239,32-57,2.49-4.574,13.74-30.4,16-32h362v-1c-7.44-8.176-10.08-20.264-16-30-12.9-21.214-24.07-44.8-37-66-3.46-5.679-14.75-33.69-18-36H3324c-11.52,26.524-29.08,56.562-44,81-4.99,8.171-7.02,16.82-12,25-15.35,25.229-28.66,52.847-44,78-9.51,15.589-17.63,32.306-26,48-1.74,3.259-7.72,17.746-10,19H3053V749h71c1.64-6.839,6.71-12.617,10-18,6.29-10.28,10.99-21.162,17-31,18.54-30.35,32.75-63.1,51-93,12.53-20.529,20.51-42.459,33-63,45.11-74.194,81.81-154.84,127-229,20.68-33.944,36.6-70.5,57-104,3.19-5.236,16.07-34.409,19-36h117c48.25,82.064,89.44,169.77,139,251,12.52,20.53,20.51,42.459,33,63,22.15,36.427,39.58,76.126,62,113,8.16,13.417,14.58,28.138,23,42,2.4,3.947,7.5,9.66,9,14v91ZM1373,526c-0.92-6.865-5.96-12.041-9-17-8.46-13.82-14.81-28.606-23-42-4.22-6.9-5.79-14.09-10-21-18.88-31.011-35.07-64.98-54-96-8.42-13.8-14.84-28.617-23-42-3.45-5.654-5.11-16-11-19-1.62,6.832-6.71,12.631-10,18-10.24,16.7-18.05,34.733-28,51-14.72,24.069-24.34,49.908-39,74-18.24,29.983-36.69,61.984-52,94h259Zm997-237c-1.77,7.577-7.34,14.032-11,20-6.29,10.259-11.01,21.208-17,31-4.22,6.9-5.79,14.092-10,21-18.63,30.586-33.12,63.955-52,95-8.16,13.416-14.58,28.143-23,42-4.91,8.082-12.25,17.311-15,27h257v-2c-4.3-4.82-5.48-11.223-9-17-8.16-13.4-14.56-28.135-23-42-25-41.09-45.98-85.938-71-127C2387.3,322.731,2381.06,300.5,2370,289ZM306,290V467H592c31.61,0,79.455,5.823,100-7,11.45-7.146,16.409-20.93,20-36q0.5-18.5,1-37c0-33.044,2.123-73-17-87-22.183-16.242-75.788-10-113-10H306Zm3191,0q-64.5,117.487-129,235h258v-2c-2.95-2.529-2.87-5.512-5-9-8.16-13.386-14.59-28.187-23-42-25.41-41.741-46.58-87.272-72-129-8.43-13.845-14.84-28.589-23-42C3500.58,297.018,3500.51,292.8,3497,290ZM369,749H625c7.566,11.351,24.953,25.653,36,34l11,12a256.126,256.126,0,0,0,26,23l16,17c11.272,8.52,26.189,20.213,34,32H369V749Z"/>
+</svg></span><p class="kicker">Interne Arbeitsgrundlage · Funding</p></div>
+  <article class="doc">
+<h1>8scribo - Nicht-Web3-Förderquellen (Literatur, digitale Kultur, Bildung)</h1>
+<p>Recherche zu Fördertöpfen für <strong>8scribo</strong>, geframt als das, was es inhaltlich ist:
+eine <strong>Plattform zum Schreiben und Veröffentlichen kurzer Texte, Haikus und Poesie</strong></p>
+<ul>
+<li>also <strong>digitale Literatur / Publikations- und Schreibwerkzeug / Literaturvermittlung
+/ Community Writing / digitale Kultur</strong>. Die Tezos-/Blockchain-Technik ist dabei nur
+der Unterbau und wird in Anträgen bewusst <strong>nicht</strong> in den Vordergrund gestellt.</li>
+</ul>
+<p>Trägerin ist die <strong>ratata GbR</strong> (Johannes + Phil, Frankfurt am Main).</p>
+<p>Diese Datei ergänzt:</p>
+<ul>
+<li><code>ev-gruendung.md</code> (Kultur-/Stiftungsförderung über einen gemeinnützigen e.V.,
+Kulturamt Frankfurt, Kulturfonds Frankfurt RheinMain)</li>
+<li><code>innovationsfoerderung.md</code> (Wirtschafts-/Innovationsförderung: ZIM, Distr@l, RKW,
+EXIST, Hessen Ideen, Kreativpilot:innen, Creative Europe <em>Cooperation Projects</em>)</li>
+</ul>
+<p>Die dort behandelten Programme werden hier <strong>nur als Querverweis</strong> erwähnt, nicht
+erneut aufgeführt.</p>
+<blockquote>
+<p>⚠️ <strong>Kein Rechts-, Steuer- oder Förderberatungs-Ersatz.</strong> Alle Beträge, Fristen und
+Berechtigungen sind Rechercheergebnisse (Stand Juli 2026) und <strong>vor jedem Antrag</strong>
+an der Originalquelle zu prüfen. Als &quot;zu prüfen&quot; markierte Punkte ergaben in der
+Recherche kein eindeutiges Ergebnis.</p>
+</blockquote>
+<blockquote>
+<p>🗓️ <strong>Zeitpunkt:</strong> Ende Juli 2026. Einige Jahresfristen sind bereits durch (z. B.
+Creative Europe <em>Literary Works</em> am 29.01.2026); dafür stehen unten die
+voraussichtlich nächsten Zyklen.</p>
+</blockquote>
+<blockquote>
+<p>🧩 <strong>Die Rechtsform-Frage zieht sich durch alles:</strong> Sehr viele der stärksten
+Literatur- und Kulturtöpfe setzen entweder eine <strong>Institution/juristische Person mit
+Sitz in Deutschland</strong> oder direkt <strong>Gemeinnützigkeit</strong> voraus. Für einen Teil der
+hier genannten Programme ist die <strong>GbR ausreichend</strong>, für die attraktivsten
+(Kulturstiftung des Bundes, Allianz Foundation, Kulturamt-Projektförderung mit
+vollem Zugang) ist der <strong>e.V. aus <code>ev-gruendung.md</code> faktisch der Türöffner</strong>. Das
+ist das wichtigste strategische Ergebnis dieser Recherche.</p>
+</blockquote>
+<hr>
+<h2>Teil A - Literaturförderung</h2>
+<h3>1. Deutscher Literaturfonds e.V. - Allgemeine Projektförderung</h3>
+<p><strong>Was:</strong> Der Deutsche Literaturfonds ist die zentrale Förderinstitution für die
+zeitgenössische deutschsprachige Literatur (Mittel des Bundes/BKM). Neben der
+Autorenförderung (Stipendien) gibt es die <strong>Allgemeine Projektförderung</strong> für
+Projekte, Initiativen und Publikationen rund um die Gegenwartsliteratur.</p>
+<p><strong>Warum für 8scribo besonders relevant:</strong> Die Projektförderung ist ausdrücklich
+<strong>nicht rein textbasiert</strong> - förderfähig sind laut Programmbeschreibung auch
+<strong>medienoffene und performative Projekte</strong>, etwa Vorhaben der <strong>multimedialen und
+multimodalen Sprachkunst</strong>. Genau in dieses Feld lässt sich 8scribo als
+<strong>digitale Plattform für kurze literarische Formen (Haiku, Poesie, Mikrotexte)</strong>
+einordnen - als literarisches Vermittlungs-/Publikationsvorhaben, nicht als Tech-Tool.</p>
+<p><strong>Wer ist berechtigt:</strong> Für die <strong>Projektförderung</strong> sind <strong>Institutionen mit Sitz in
+Deutschland</strong> antragsberechtigt (juristische Personen; ein <strong>e.V. passt hier klar</strong>,
+GbR <strong>zu prüfen</strong> - &quot;Institution&quot; spricht eher gegen eine reine GbR). Für die
+<strong>Autorenförderung/Arbeitsstipendien</strong> gilt dagegen die Person: deutschsprachige
+Autor:innen mit deutscher Staatsbürgerschaft oder Erstwohnsitz in Deutschland, die
+bereits mindestens eine eigenständige, nicht selbst finanzierte literarische
+Publikation in einem anerkannten Verlag veröffentlicht haben.</p>
+<p><strong>Passendes 8scribo-Framing:</strong> Projektförderung für ein konkretes literarisches
+Vorhaben auf der Plattform (z. B. eine kuratierte Haiku-/Kurzlyrik-Reihe, ein
+digitales Publikationsformat mit Autor:innen), nicht die Plattform &quot;an sich&quot;.</p>
+<p><strong>Höhe:</strong> Projektförderung bis <strong>max. 100.000 € pro Jahr und Antrag</strong>.
+Arbeitsstipendien: <strong>3.000 €/Monat</strong>, bis 12 Monate.</p>
+<p><strong>Frist:</strong> Zweimal jährlich - <strong>30. April</strong> (Herbstsitzung, Förderbeginn frühestens
+November) und <strong>31. Oktober</strong> (Frühjahrssitzung, Förderbeginn frühestens Mai). Für
+die Herbstsitzung 2026 wird das Antragsverfahren überarbeitet; Anträge
+voraussichtlich ab Mitte März möglich (bestätigen).</p>
+<p><strong>Antragsweg:</strong> Online über <a href="http://deutscher-literaturfonds.de">deutscher-literaturfonds.de</a>.</p>
+<p><strong>Fit für 8scribo:</strong> <strong>Hoch</strong> inhaltlich (medienoffene/multimodale Sprachkunst ist
+das ideale Framing). Zugang zur Projektförderung aber wahrscheinlich <strong>nur über den
+e.V.</strong>; die personengebundenen Arbeitsstipendien sind für die konkrete Person
+Johannes/Phil denkbar, wenn die Publikationsvoraussetzung erfüllt ist.</p>
+<p><strong>Quellen:</strong> <a href="https://deutscher-literaturfonds.de/foerderprogramme/projektfoerderung/">deutscher-literaturfonds.de - Projektförderung</a> ·
+<a href="https://deutscher-literaturfonds.de/foerderprogramme/">Förderprogramme-Übersicht</a> ·
+<a href="https://www.literaturport.de/preise-stipendien/preisdetails/allgemeine-projektfoerderung-des-deutschen-literaturfonds-ev/">Allgemeine Projektförderung (literaturport.de)</a></p>
+<hr>
+<h3>2. &quot;Neustart Kultur&quot;-Nachfolge - aktueller Stand</h3>
+<p><strong>Was / Status:</strong> Das Bundesprogramm <strong>Neustart Kultur</strong> (2020-2023, ~1 Mrd. €,
+BKM) ist <strong>abgeschlossen</strong>. Es hatte für Literatur und digitale Formate viel bewegt
+(u. a. digitale Autor:innen-Videobeiträge über den Literaturfonds, digitale
+Veranstaltungsinfrastruktur über den Deutschen Übersetzerfonds, der Digitalfonds
+<strong>dive in</strong> der Kulturstiftung des Bundes).</p>
+<p><strong>Wichtig - es gibt keinen 1:1-Nachfolger.</strong> Die Recherche zeigt <strong>kein neues
+Corona-artiges Sonderprogramm</strong> für 2026. Die frühere Neustart-Funktionalität ist
+<strong>in die regulären Programme zurückgewandert</strong>:</p>
+<ul>
+<li><strong>Kulturstiftung des Bundes</strong> - Allgemeine Projektförderung + digitale Programme
+(siehe Teil B / Abschnitt 4).</li>
+<li><strong>Deutscher Literaturfonds</strong> - reguläre Projekt-/Autorenförderung (Abschnitt 1).</li>
+<li><strong>Deutscher Übersetzerfonds</strong> - reguläre Stipendien/Projektfonds (Abschnitt 4).</li>
+</ul>
+<p><strong>Konsequenz für 8scribo:</strong> Nicht auf ein &quot;Neustart 2&quot;-Programm warten. Der Weg führt
+über die <strong>etablierten Regelprogramme</strong>. Politisch möglich, dass es künftig neue
+Digitalkultur-Fonds gibt - <strong>beobachten</strong> (<a href="http://kulturstaatsminister.de">kulturstaatsminister.de</a>, <a href="http://kulturrat.de">kulturrat.de</a>).</p>
+<p><strong>Quellen:</strong> <a href="https://www.kulturrat.de/corona-pandemie/neustart-kultur/">Deutscher Kulturrat - Neustart Kultur</a> ·
+<a href="https://deutscher-literaturfonds.de/neustart-kultur/">Deutscher Literaturfonds - Neustart (abgeschlossen)</a> ·
+<a href="https://kulturstaatsminister.de/kunst-und-kulturfoerderung/kuenstlerinnen-und-kuenstler/foerderfonds">Förderfonds BKM / Kulturstaatsminister</a></p>
+<hr>
+<h3>3. Literarisches Colloquium Berlin (LCB) - digitale Literatur</h3>
+<p><strong>Was:</strong> Das LCB ist eine der wichtigsten Literaturinstitutionen Deutschlands
+(Werkstätten, Stipendien, internationale Vernetzung). Für 8scribo interessant sind
+weniger klassische Zuschüsse als <strong>digitale Programme und Netzwerke</strong>:</p>
+<ul>
+<li><strong>VOOO - Villa of One's Own:</strong> digitaler Werkstattraum des LCB für Autor:innen und
+Übersetzer:innen, online und hybrid (kollaboratives Arbeiten, Präsentationen,
+Livestream).</li>
+<li><strong>JUNIVERS:</strong> internationales Forum mit Fokus auf <strong>Lyrik/Poesie</strong>-Übersetzung und
+transnationalen Dialog.</li>
+<li><strong>Echt absolut - Literarisches Übersetzen mit Jugendlichen</strong> (mit dem Deutschen
+Übersetzerfonds): Strukturen und Lernangebote für junge Menschen ab 12 - ein
+möglicher <strong>Bildungs-/Kooperationsanker</strong>.</li>
+</ul>
+<p><strong>Wer ist berechtigt:</strong> Das LCB fördert überwiegend <strong>einzelne Autor:innen/
+Übersetzer:innen</strong> (personengebunden, oft über Werkstätten und Bewerbungen) und
+arbeitet <strong>projekt-/kooperationsbasiert</strong>. Für 8scribo realistischer als
+<strong>Kooperations-/Präsentationspartner</strong> oder über die Teilnahme einzelner Autor:innen
+denn als klassischer Zuschussgeber an die GbR.</p>
+<p><strong>Passendes 8scribo-Framing:</strong> Digitale Lyrik-/Kurzformen-Plattform, die zu
+<strong>JUNIVERS</strong> (Poesie) und <strong>VOOO</strong> (digitales Schreiben/Präsentieren) inhaltlich
+anschlussfähig ist. Ansatz: Kontakt suchen, gemeinsames Format/Präsentation, nicht
+Direktantrag.</p>
+<p><strong>Höhe / Frist:</strong> Programm- und werkstattabhängig; keine allgemeine Antragssumme.
+Aktuelle Ausschreibungen laufend auf <a href="http://lcb.de">lcb.de</a>.</p>
+<p><strong>Fit für 8scribo:</strong> <strong>Mittel</strong> - starker inhaltlicher/Netzwerk-Fit (v. a. Poesie
+über JUNIVERS), aber eher <strong>Sichtbarkeit/Kooperation</strong> als direktes Fördergeld.</p>
+<p><strong>Quellen:</strong> <a href="https://lcb.de/foerderungen/">lcb.de - Förderungen</a> ·
+<a href="https://lcb.de/haus/institution/">LCB Institution / VOOO / JUNIVERS</a></p>
+<hr>
+<h3>4. Deutscher Übersetzerfonds (DÜF) - nur bedingt relevant</h3>
+<p><strong>Was:</strong> Größter Förderer der literarischen Übersetzung im deutschsprachigen Raum
+(Stipendien, Projektfonds, digitale Veranstaltungsinfrastruktur, Bildungsangebote rund
+ums Übersetzen).</p>
+<p><strong>Relevanz für 8scribo (ehrlich):</strong> <strong>Nur relevant, wenn 8scribo einen echten
+Übersetzungs-Strang bekäme</strong> - z. B. mehrsprachige Haiku/Poesie, Übersetzung kurzer
+literarischer Formen auf der Plattform, oder ein Format wie &quot;Echt absolut&quot; (Übersetzen
+mit Jugendlichen, gemeinsam mit dem LCB). Ohne Übersetzungsbezug ist der DÜF <strong>kein
+passender Topf</strong>.</p>
+<p><strong>Wer:</strong> Literarische Übersetzer:innen (Stipendien, personengebunden) sowie
+Institutionen/Akteure der freien Szene (Projektfonds).</p>
+<p><strong>Frist (Regelprogramm):</strong> Stipendien u. a. Sommer-Vergabe mit Einsendeschluss
+<strong>15. Mai 2026</strong>; Projekt-/Herbstvergabe mit Einsendeschluss <strong>15. September 2026</strong>
+(bestätigen).</p>
+<p><strong>Fit für 8scribo:</strong> <strong>Gering</strong> im Ist-Zustand; <strong>mittel</strong>, falls ein
+Mehrsprachigkeits-/Übersetzungsformat aufgesetzt wird (dann als Kooperation).</p>
+<p><strong>Quellen:</strong> <a href="http://www.uebersetzerfonds.de/">uebersetzerfonds.de</a> ·
+<a href="https://www.uebersetzerfonds.de/presse">DÜF Presse/Programme</a></p>
+<hr>
+<h3>5. Literaturhäuser &amp; Netzwerke (Frankfurt/Hessen)</h3>
+<p><strong>Was:</strong> Das <strong>Literaturhaus Frankfurt</strong> und der <strong>Hessische Literaturrat e.V.</strong> sind
+zentrale Knoten der hessischen Literaturszene. Sie schreiben teils eigene Stipendien
+aus, sind aber vor allem <strong>Kooperations-, Veranstaltungs- und Vernetzungspartner</strong> -
+wichtig für Sichtbarkeit, Jury-/Beiratszugänge und als Mitantragsteller/Letter of
+Support bei größeren Anträgen.</p>
+<p><strong>Hessischer Literaturrat - Hessisches Literaturstipendium &amp; Residenzen:</strong> getragen
+vom Hessischen Wissenschafts-/Kunstministerium, der Stadt Wiesbaden und dem
+Literaturrat. Überwiegend <strong>Aufenthalts-/Residenzstipendien</strong> (z. B. Vilnius im
+September, Prag im November, &quot;Land in Sicht&quot; im ländlichen Raum). <strong>Personengebunden</strong>,
+klassisch literarisch - für 8scribo als Plattform <strong>kein direkter Topf</strong>, aber ein
+<strong>Türöffner ins hessische Netzwerk</strong> und für einzelne beteiligte Autor:innen relevant.</p>
+<p><strong>Passendes 8scribo-Framing:</strong> Nicht als Antragsteller, sondern als
+<strong>Kooperations-/Programmpartner</strong> (&quot;digitale Kurzlyrik-Plattform aus Frankfurt&quot;) -
+Anschluss an lokale Literaturvermittlung, gemeinsame Formate, Empfehlungsschreiben.</p>
+<p><strong>Frist:</strong> Programmabhängig (z. B. Bewerbungsfrist Vilnius-Stipendium <strong>5. April
+2026</strong>).</p>
+<p><strong>Fit für 8scribo:</strong> <strong>Mittel</strong> als Netzwerk-/Sichtbarkeitshebel und für einzelne
+Autor:innen; <strong>gering</strong> als Direktzuschuss an die GbR.</p>
+<p><strong>Quellen:</strong> <a href="https://www.hessischer-literaturrat.de/literaturstipendien/">Hessischer Literaturrat - Literaturstipendien</a> ·
+<a href="https://literaturhaus-frankfurt.de/verein/foerderer-und-partner/">Literaturhaus Frankfurt - Förderer &amp; Partner</a> ·
+<a href="https://wissenschaft.hessen.de/foerderung-finden/kulturfoerderung/literaturfoerderung">wissenschaft.hessen.de - Literaturförderung</a></p>
+<hr>
+<h2>Teil B - Digitale Kultur &amp; Kulturstiftungen</h2>
+<h3>6. Kulturstiftung des Bundes (KSB)</h3>
+<p>Die KSB ist der stärkste Bundes-Topf für <strong>große, innovative, überregionale/
+internationale Kulturprojekte</strong> - inklusive <strong>digitaler Programme</strong>. Zwei relevante
+Schienen:</p>
+<h4>6.1 Allgemeine Projektförderung</h4>
+<p><strong>Was:</strong> Zweimal jährlich Fördergelder für Projekte <strong>aller Sparten</strong>, ausdrücklich
+auch <strong>Literatur</strong> und <strong>Neue Medien</strong>. Gefördert werden <strong>große, innovative Projekte
+im internationalen Kontext</strong>.</p>
+<p><strong>Wer ist berechtigt:</strong> Kulturschaffende/Kulturträger. In der Praxis sind das
+<strong>juristische Personen mit professioneller Trägerstruktur</strong> - für 8scribo faktisch
+<strong>nur über den e.V.</strong> sinnvoll (GbR <strong>zu prüfen</strong>, aber unwahrscheinlich als
+Vollantragsteller bei dieser Größenordnung).</p>
+<p><strong>Höhe/Bedingungen:</strong> <strong>Antragssumme mind. 50.000 €</strong>; <strong>Eigen-/Drittmittel mind. 20 %</strong>
+der Gesamtkosten müssen gesichert sein. → passt zur Idee, den <strong>Kulturfonds Frankfurt
+RheinMain</strong> (siehe <code>ev-gruendung.md</code>) als <strong>Kofinanzierung</strong> einzusetzen.</p>
+<p><strong>Frist:</strong> Laufende Einreichung über das elektronische Antragsformular; die Fachjury
+tagt <strong>zweimal jährlich</strong>. Aktueller Einsendeschluss: <strong>31. Juli 2026, 12:00 Uhr</strong>
+(Jury tagt November 2026); Projekte dürfen nicht vor der Jurysitzung starten.</p>
+<p><strong>Passendes 8scribo-Framing:</strong> Ein <strong>ambitioniertes, international angelegtes
+Literatur-/Digitalkunst-Projekt</strong> auf Basis der Plattform (z. B. internationale
+Haiku-/Kurzlyrik-Kooperation, digitale Publikationsplattform als kuratiertes
+Kulturprojekt) - Betonung auf künstlerischer Innovation und internationalem Kontext,
+nicht auf der Technik.</p>
+<p><strong>Fit für 8scribo:</strong> <strong>Hoch bei Ambition, aber voraussetzungsreich</strong> - braucht e.V.,
+großes Projektvolumen (≥ 50k), Kofinanzierung und internationalen Anspruch.
+Mittelfristiges &quot;Leuchtturm&quot;-Ziel.</p>
+<p><strong>Quellen:</strong> <a href="https://www.kulturstiftung-des-bundes.de/en/themes_focuses/general_project_funding.html">KSB - Allgemeine Projektförderung</a> ·
+<a href="https://www.foerderdatenbank.de/FDB/Content/DE/Foerderprogramm/Bund/KultStiftBund/1286_allgemeine-foerderrichtlinien.html">Förderdatenbank - Allgemeine Projektförderung KSB</a> ·
+<a href="https://www.stadtkultur-hh.de/2026/06/allgemeine-projektfoerderung-der-kulturstiftung-des-bundes-bis-31-7-2026/">Ausschreibung bis 31.7.2026 (stadtkultur-hh.de)</a></p>
+<h4>6.2 dive in / Fonds Digital (Digitalprogramme)</h4>
+<p><strong>Was:</strong> <strong>dive in. Programm für digitale Interaktionen</strong> förderte digitale/hybride
+Kulturvermittlung; der <strong>Fonds Digital</strong> richtet sich an Kultureinrichtungen mit
+bestehender Digitalstrategie (Konsortien aus ≥ 2 Einrichtungen), die digitale
+Ästhetik/Ausdrucksformen weiterentwickeln.</p>
+<p><strong>Wichtige Einschränkung:</strong> Diese Digitalprogramme zielen auf <strong>etablierte
+Kultureinrichtungen</strong> (Museen, Gedenkstätten, Bibliotheken, soziokulturelle Zentren,
+Archive). <strong>dive in</strong> wurde ursprünglich aus <strong>Neustart Kultur</strong> finanziert - der
+konkrete Fördertopf ist damit <strong>ausgelaufen</strong>; ob/in welcher Form es 2026 eine
+Neuauflage gibt, ist <strong>zu prüfen</strong>.</p>
+<p><strong>Relevanz für 8scribo:</strong> Als eigenständige Plattform passt 8scribo <strong>nicht</strong> direkt
+in die Institutions-Logik. <strong>Denkbarer Weg:</strong> als <strong>digitaler Partner einer
+förderberechtigten Einrichtung</strong> (Bibliothek, Literaturhaus) in einem gemeinsamen
+Digitalprojekt.</p>
+<p><strong>Fit für 8scribo:</strong> <strong>Gering direkt</strong>, <strong>mittel</strong> als Technik-/Format-Partner einer
+Institution. Neuauflagen beobachten.</p>
+<p><strong>Quellen:</strong> <a href="https://www.kulturstiftung-des-bundes.de/de/projekte/detail/dive_in_programm_fuer_digitale_interaktionen.html">KSB - dive in</a> ·
+<a href="https://portal.wissenschaftliche-sammlungen.de/FundingProgram/183236">Fonds Digital (Überblick)</a></p>
+<hr>
+<h3>7. Allianz Foundation (vormals Allianz Kulturstiftung)</h3>
+<p><strong>Was:</strong> Die frühere <strong>Allianz Kulturstiftung</strong> ist seit 2022 in die <strong>Allianz
+Foundation</strong> überführt - eine gemeinnützige Stiftung <strong>für Europa</strong>, die Kohäsion mit
+den Mitteln von <strong>Kunst, Kultur, Zivilgesellschaft und Ökologie</strong> stärkt. Historisch
+mit klarem <strong>Literatur-Schwerpunkt</strong> (literarische Übersetzung, grenzüberschreitende
+Literaturfestivals, Europäische Schriftstellerkonferenz).</p>
+<p><strong>Wer ist berechtigt:</strong> <strong>Gemeinnützige</strong> Partner/Organisationen in Europa (gGmbH,
+gAG, <strong>gemeinnütziger e.V.</strong>), mit <strong>translokalem, interdisziplinärem,
+wirkungsorientiertem</strong> Ansatz und hohem konzeptionellem/künstlerischem Niveau.
+→ <strong>e.V. + Gemeinnützigkeit faktisch Voraussetzung</strong> (GbR passt nicht).</p>
+<p><strong>Höhe:</strong> Im <strong>Grants Program</strong> typischerweise <strong>80.000-200.000 €</strong> für bis zu 24
+Monate.</p>
+<p><strong>Frist:</strong> Themen-/Call-basiert; Aufrufe (z. B. &quot;Climate Cultures&quot;) werden auf
+<a href="http://allianzfoundation.org">allianzfoundation.org</a> veröffentlicht. <strong>Aktuellen Call und 2026-Termine prüfen.</strong></p>
+<p><strong>Passendes 8scribo-Framing:</strong> <strong>Europäische, grenzüberschreitende Community rund um
+kurze literarische Formen</strong> (Haiku/Poesie als verbindende, mehrsprachige Ausdrucksform)</p>
+<ul>
+<li>Betonung von Teilhabe, Inklusion, transnationalem Dialog. Der europäische
+Community-Gedanke passt gut zum Ethos &quot;from the community, for the community&quot;.</li>
+</ul>
+<p><strong>Fit für 8scribo:</strong> <strong>Mittel bis hoch inhaltlich</strong>, aber <strong>nur mit e.V. + starkem
+europäischem/gemeinnützigem Framing</strong> und passendem Call.</p>
+<p><strong>Quellen:</strong> <a href="https://allianzfoundation.org/apply/">allianzfoundation.org - Apply</a> ·
+<a href="https://allianzfoundation.org/grants-program-2025/">Grants Program</a> ·
+<a href="https://de.wikipedia.org/wiki/Allianz_Kulturstiftung">Allianz Kulturstiftung (Wikipedia, Historie)</a></p>
+<hr>
+<h3>8. Robert Bosch Stiftung / Stiftung Mercator - Einordnung</h3>
+<p><strong>Was / ehrliche Einordnung:</strong> Beide sind große, thematisch <strong>fokussierte</strong> Stiftungen</p>
+<ul>
+<li>
+<p>aber ihr Zuschnitt passt <strong>nur mittelbar</strong> zu einer Literatur-/Schreibplattform:</p>
+</li>
+<li>
+<p><strong>Robert Bosch Stiftung:</strong> Literaturbezug v. a. über den <strong>Adelbert-von-Chamisso-
+Programm/-Preis</strong> (Autor:innen nicht-deutscher Muttersprache, die zur
+deutschsprachigen Literatur beitragen) - ein <strong>Preis/Programm, kein offener
+Projekttopf</strong> für Plattformen. Ansonsten Schwerpunkte Gesundheit, Bildung, globale
+Fragen, Migration/Verständigung.</p>
+</li>
+<li>
+<p><strong>Stiftung Mercator:</strong> Schwerpunkt <strong>&quot;Demokratie und Zusammenhalt in der
+digitalisierten Gesellschaft&quot;</strong>, Klima, Bildung, Teilhabe. Fördert eher
+<strong>wissenschaft-/zivilgesellschaftlich-strategische</strong> Vorhaben, keine Literatur-
+plattformen als solche.</p>
+</li>
+</ul>
+<p><strong>Denkbarer, aber schmaler Weg:</strong> Nur wenn 8scribo klar als <strong>gesellschaftliches
+Teilhabe-/Bildungs-/Demokratieprojekt</strong> (digitales Schreiben als kulturelle Teilhabe,
+Sprachbildung, Ausdruck marginalisierter Stimmen) und <strong>über den e.V.</strong> aufgesetzt
+wird. Beide fördern überwiegend <strong>auf Einladung / thematisch</strong>, selten über offene
+Ausschreibungen.</p>
+<p><strong>Fit für 8scribo:</strong> <strong>Gering</strong> im Kern; <strong>niedrige Priorität</strong>. Eher beobachten, ob
+ein thematischer Call (Digitalisierung + Teilhabe/Bildung) passt.</p>
+<p><strong>Quellen:</strong> <a href="https://www.stiftung-mercator.de/de/woran-wir-arbeiten/digitalisierte-gesellschaft/">Stiftung Mercator - Digitalisierte Gesellschaft</a> ·
+<a href="https://www.kurt-wolff-stiftung.de/infopool-robert-bosch-stiftung/">Robert Bosch Stiftung - Literatur (Infopool)</a></p>
+<hr>
+<h2>Teil C - EU</h2>
+<h3>9. Creative Europe - Circulation of European Literary Works</h3>
+<p><strong>Was:</strong> EU-Förderlinie (Programm KULTUR) für die <strong>grenzüberschreitende Verbreitung
+europäischer Literatur</strong> durch <strong>Übersetzung, Publikation, Vertrieb und Promotion</strong>
+literarischer Werke (Fiktion inkl. <strong>Lyrik</strong>, Kurzgeschichten, Kinder-/Jugend-
+literatur). Unterscheidet sich vom bereits behandelten Strang <em>European Cooperation
+Projects</em> (siehe <code>innovationsfoerderung.md</code>, Abschnitt 8.1).</p>
+<p><strong>Wer ist berechtigt:</strong> Vor allem <strong>Verlage</strong> bzw. Akteure der Buchbranche mit solider
+verlegerischer Strategie; Zusammenarbeit über die gesamte Buch-Wertschöpfungskette
+(Verlage, Vertrieb, Buchhandel, Bibliotheken, Literaturfestivals). Ein Projekt muss
+<strong>mindestens 5 Werke</strong> übersetzen/publizieren/verbreiten. Antragsteller sind
+juristische Personen aus Programmländern.</p>
+<p><strong>Relevanz für 8scribo (ehrlich):</strong> 8scribo ist <strong>kein Verlag</strong>. Direkt passt die
+Linie nur, wenn 8scribo einen <strong>verlegerischen/Publikations-Strang</strong> aufbaut oder als
+<strong>Partner in einem Konsortium</strong> mit Verlagen auftritt (z. B. digitale Verbreitung/
+Promotion übersetzter Kurzlyrik). Die EU-Prioritäten <strong>digitale Transformation</strong> und
+<strong>faire Sichtbarkeit von Übersetzer:innen</strong> sind ein gutes Andockmerkmal.</p>
+<p><strong>Höhe:</strong> Gesamtbudget ~5 Mio. €, ca. <strong>40 Projekte/Jahr</strong>; Zuschüsse bis
+<strong>300.000 €</strong> bei großen Konsortialprojekten.</p>
+<p><strong>Frist:</strong> Aufruf 2026 mit Einreichfrist <strong>29. Januar 2026 - verstrichen</strong>. <strong>Nächster
+Zyklus voraussichtlich Anfang 2027</strong> (jährliche Wiederholung; bestätigen). Der
+deutsche <strong>Creative Europe Desk KULTUR</strong> berät kostenlos.</p>
+<p><strong>Passendes 8scribo-Framing:</strong> Digitale Verbreitungs-/Promotions-Komponente eines
+Übersetzungsprojekts für europäische Kurzlyrik - als <strong>Konsortialpartner</strong> neben
+Verlagen, nicht als Hauptantragsteller.</p>
+<p><strong>Fit für 8scribo:</strong> <strong>Mittel-/langfristig, indirekt</strong> - realistisch nur im
+Konsortium und mit e.V., nächster Aufruf 2027.</p>
+<p><strong>Quellen:</strong> <a href="https://culture.ec.europa.eu/news/creative-europe-to-support-around-40-projects-to-boost-literary-translation-in-2026">culture.ec.europa.eu - Literary Translation 2026</a> ·
+<a href="https://www.creativeeuropeireland.eu/funding-opportunities/call/circulation-of-european-literary-works">Circulation of European Literary Works (Desk Ireland)</a> ·
+<a href="https://kultur.creative-europe-desk.de/">Creative Europe Desk KULTUR (DE)</a></p>
+<hr>
+<h2>Teil D - Lokal Frankfurt / Hessen</h2>
+<h3>10. Kulturamt Frankfurt - Literaturförderung (Projektförderung)</h3>
+<p><strong>Was:</strong> Das <strong>Kulturamt der Stadt Frankfurt am Main</strong> fördert zeitlich befristete
+literarische Vorhaben - <strong>Lesungen, Lesereihen, Festivals, literarische Wettbewerbe,
+Literaturausstellungen</strong>. (Die Bildende-Kunst-Schiene desselben Amts ist in
+<code>ev-gruendung.md</code> behandelt.)</p>
+<p><strong>Wer ist berechtigt:</strong> Grundsätzlich <strong>jede natürliche oder juristische Person mit
+Wohn-/Geschäftssitz in Frankfurt</strong> - <strong>also auch die GbR</strong> und ein späterer e.V.
+Bereits institutionell/dauerhaft geförderte Einrichtungen sind von der Projekt-
+förderung ausgeschlossen. Für Vereine ist eine <strong>aktuelle Satzung</strong> vorzulegen;
+sonst CV + Beschreibung bisheriger Projekte.</p>
+<p><strong>Passendes 8scribo-Framing:</strong> Ein <strong>konkretes Frankfurter Literaturprojekt</strong> rund um
+die Plattform - z. B. eine <strong>Haiku-/Kurzlyrik-Lesereihe, ein digitaler Schreib-
+wettbewerb oder ein Festivalformat</strong>, das 8scribo als Bühne/Werkzeug nutzt. Wichtig:
+ein <strong>abgegrenztes Vorhaben</strong>, nicht &quot;die Plattform allgemein&quot;.</p>
+<p><strong>Höhe:</strong> In der Regel <strong>max. 70 %</strong> der zuwendungsfähigen Ausgaben.</p>
+<p><strong>Frist:</strong> <strong>Keine feste Frist</strong>; Anträge an den Bereich Literatur werden idealerweise
+<strong>im ersten Halbjahr</strong> gestellt (vor Projektbeginn). <strong>Vorab telefonisch die
+Förderfähigkeit klären</strong> ist der beste erste Zug.</p>
+<p><strong>Antragsweg:</strong> Kulturamt Frankfurt / KulturPortal Frankfurt; Beratung über
+<strong>Kulturberatung Hessen</strong> möglich.</p>
+<p><strong>Fit für 8scribo:</strong> <strong>Hoch als realistischster lokaler Einstieg</strong> - <strong>GbR
+ausdrücklich antragsberechtigt</strong>, niedrige Schwelle, konkretes Projektframing.
+<strong>Bester erster praktischer Zug</strong> dieser Recherche.</p>
+<p><strong>Quellen:</strong> <a href="https://www.kultur-frankfurt.de/portal/de/startseite/literatur/6/1281/0/0/1159.aspx">KulturPortal Frankfurt - Literaturförderung</a> ·
+<a href="https://kulturberatung-hessen.de/foerderprogramme/kulturamt-stadt-frankfurt-projektfoerderung">Kulturamt Frankfurt Projektförderung (Kulturberatung Hessen)</a> ·
+<a href="https://www.kultur-frankfurt.de/portal/de/Kunst/HinweisezurAntragstellung/59/1311/0/0/7.aspx">KulturPortal - Leitfaden/Antragstellung</a></p>
+<hr>
+<h3>11. Land Hessen - Literatur-/Kulturförderung</h3>
+<p><strong>Was:</strong> Das <strong>Hessische Ministerium für Wissenschaft und Forschung, Kunst und Kultur</strong>
+fördert Literatur über mehrere Wege - <strong>Arbeitsstipendien für Autor:innen</strong>,
+<strong>Hessisches Literaturstipendium</strong> (Residenzen, siehe Abschnitt 5) und <strong>Projekt-/
+Strukturförderung</strong> der literarischen Infrastruktur.</p>
+<p><strong>Wer ist berechtigt:</strong> Je nach Linie <strong>Autor:innen mit Hessen-Bezug</strong> (Stipendien,
+personengebunden) bzw. <strong>Träger/Institutionen</strong> literarischer Projekte in Hessen.
+Für 8scribo als GbR: <strong>Projektlinien zu prüfen</strong>; die personengebundenen
+Arbeitsstipendien sind für einzelne Autor:innen relevant, nicht für die Plattform.</p>
+<p><strong>Passendes 8scribo-Framing:</strong> Literarisches Vermittlungs-/Vernetzungsprojekt mit
+Hessen-Bezug; ggf. Kooperation mit dem <strong>Hessischen Literaturrat</strong>.</p>
+<p><strong>Höhe/Frist:</strong> Programmabhängig; Ausschreibungen laufend auf <a href="http://wissenschaft.hessen.de">wissenschaft.hessen.de</a>.</p>
+<p><strong>Fit für 8scribo:</strong> <strong>Mittel</strong> - solide Landesebene, aber teils personengebunden;
+Projektlinien vor Antrag klären.</p>
+<p><strong>Quellen:</strong> <a href="https://wissenschaft.hessen.de/foerderung-finden/kulturfoerderung/literaturfoerderung">wissenschaft.hessen.de - Literaturförderung</a> ·
+<a href="https://wissenschaft.hessen.de/foerderung-finden/kulturfoerderung/foerderung-von-personen-und-projekten/hessisches-literaturstipendium">Hessisches Literaturstipendium</a></p>
+<hr>
+<h2>Teil E - Optional: Sprache / Bildung / kulturelle Bildung</h2>
+<h3>12. Kulturkoffer Hessen - kulturelle Bildung (Schreiben mit jungen Menschen)</h3>
+<p><strong>Was:</strong> Landesprogramm (Hessisches Wissenschafts-/Kunstministerium) zur <strong>kulturellen
+Teilhabe von Kindern und Jugendlichen (3-27 Jahre)</strong>. Gefördert werden Projekte
+kultureller Bildung mit aktiver Teilhabe und neuen künstlerisch-kreativen Ideen -
+<strong>inkl. Neue Medien und (auch hybride/digitale) Leseförderung</strong>, bei der junge Menschen
+angeregt werden, sich <strong>mit digitalen Medien auszudrücken</strong>.</p>
+<p><strong>Wer ist berechtigt:</strong> Projektträger, die mit <strong>einem künstlerischen und einem
+sozialräumlichen Kooperationspartner</strong> arbeiten. Vereine/GbR grundsätzlich möglich
+(genaue Trägeranforderungen <strong>zu prüfen</strong>); ein Kooperationsnetz ist Pflicht.</p>
+<p><strong>Passendes 8scribo-Framing:</strong> <strong>Digitales Schreib-/Poesie-Werkstattformat für junge
+Menschen</strong> - 8scribo als Werkzeug, mit dem Jugendliche eigene Kurztexte/Haikus
+verfassen und veröffentlichen, umgesetzt mit einer lokalen Partner-Einrichtung
+(Schule, Jugend-/Kultureinrichtung). Betont <strong>Ausdruck, Teilhabe, Medienkompetenz</strong>.</p>
+<p><strong>Höhe/Frist:</strong> Jährliche Förderrunde; Projekte laufen typischerweise <strong>Februar-
+Dezember</strong>. Nächste Ausschreibung auf <a href="http://kulturkoffer-hessen.de">kulturkoffer-hessen.de</a> prüfen.</p>
+<p><strong>Fit für 8scribo:</strong> <strong>Mittel bis hoch</strong> als <strong>Bildungs-/Teilhabe-Anker in Hessen</strong> -
+niedrigschwelliger als die Bundes-/EU-Töpfe, GbR ggf. möglich, klarer Community-/
+Teilhabe-Charakter. Braucht Kooperationspartner.</p>
+<p><strong>Quellen:</strong> <a href="https://kulturkoffer-hessen.de/foerderung/">kulturkoffer-hessen.de - Förderung</a> ·
+<a href="https://wissenschaft.hessen.de/foerderung-finden/kulturfoerderung/kulturkoffer">wissenschaft.hessen.de - Kulturkoffer</a></p>
+<hr>
+<h3>13. Digitale Spielekultur / Games - Randnotiz</h3>
+<p><strong>Kurz eingeordnet und bewusst niedrig priorisiert:</strong> Die <strong>Stiftung Digitale
+Spielekultur</strong> (gemeinnützig, aus Bundestag + Games-Branche) fördert <strong>Kultur, Bildung
+und Forschung rund um digitale Spiele</strong> - inhaltlich <strong>kaum anschlussfähig</strong> an eine
+Text-/Poesie-Plattform. Nur relevant, falls 8scribo einmal klar <strong>spielerische/
+interaktive Text-Formate</strong> (z. B. kollaborative, spielartige Schreibformate) entwickelt.
+<strong>Aktuell kein passender Topf</strong>; nur zur Vollständigkeit genannt.</p>
+<p><strong>Quelle:</strong> <a href="https://www.stiftung-digitale-spielekultur.de/">stiftung-digitale-spielekultur.de</a></p>
+<hr>
+<h2>Teil F - Prioritätsliste (welches Framing + welcher Topf für eine Frankfurter GbR)</h2>
+<p>Sortiert nach realistischem, kurzfristigem Nutzen - mit Blick darauf, was <strong>die GbR
+schon jetzt</strong> kann und wofür der <strong>e.V.</strong> (aus <code>ev-gruendung.md</code>) den Zugang öffnet.</p>
+<table>
+<thead>
+<tr>
+<th>Prio</th>
+<th>Topf</th>
+<th>Bestes 8scribo-Framing</th>
+<th>Rechtsform</th>
+<th>Warum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td><strong>Kulturamt Frankfurt - Literaturförderung</strong></td>
+<td>Konkretes Frankfurter Literaturprojekt (Haiku-/Kurzlyrik-Reihe, digitaler Schreibwettbewerb)</td>
+<td><strong>GbR reicht</strong></td>
+<td>Lokal, niedrige Schwelle, keine feste Frist, bis 70 %; bester erster Zug</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td><strong>Kulturkoffer Hessen</strong></td>
+<td>Digitales Schreib-/Poesie-Format mit/für junge Menschen (Teilhabe, Medienkompetenz)</td>
+<td>GbR ggf. (prüfen) + Kooperationspartner</td>
+<td>Bildungs-/Teilhabe-Anker in Hessen, konkret, community-nah</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td><strong>Deutscher Literaturfonds - Projektförderung</strong></td>
+<td>Medienoffene/multimodale Sprachkunst (digitale Kurzlyrik-Plattform als Literaturvorhaben)</td>
+<td><strong>e.V.</strong> (Projekt); Person für Stipendium</td>
+<td>Ideales inhaltliches Framing; bis 100k; Bund</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td><strong>Land Hessen - Literaturförderung</strong></td>
+<td>Literarisches Vermittlungsprojekt mit Hessen-Bezug</td>
+<td>GbR/Projekt prüfen; Person für Stipendium</td>
+<td>Solide Landesebene, Netzwerk Hess. Literaturrat</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td><strong>Kulturstiftung des Bundes - Allg. Projektförderung</strong></td>
+<td>Internationales Leuchtturm-Literatur-/Digitalprojekt (≥ 50k, 20 % Kofinanzierung)</td>
+<td><strong>e.V.</strong></td>
+<td>Größter Bundes-Topf; braucht Ambition + Kofinanzierung (Kulturfonds FRM)</td>
+</tr>
+<tr>
+<td><strong>6</strong></td>
+<td><strong>Allianz Foundation</strong></td>
+<td>Europäische, grenzüberschreitende Community um kurze literarische Formen</td>
+<td><strong>e.V. + gemeinnützig</strong></td>
+<td>80-200k; starker Europa-/Teilhabe-Fit; call-abhängig</td>
+</tr>
+<tr>
+<td><strong>7</strong></td>
+<td><strong>LCB (JUNIVERS/VOOO) + Literaturhäuser/Netzwerke</strong></td>
+<td>Poesie-/Digital-Schreiben, Kooperation statt Direktantrag</td>
+<td>GbR/e.V. (Kooperation)</td>
+<td>Sichtbarkeit, Jury-/Netzwerkzugang, einzelne Autor:innen</td>
+</tr>
+<tr>
+<td><strong>8</strong></td>
+<td><strong>Creative Europe - Literary Works</strong></td>
+<td>Digitale Verbreitung/Promotion übersetzter Kurzlyrik, als Konsortialpartner</td>
+<td>e.V. + Verlags-Konsortium</td>
+<td>Indirekt, nur im Konsortium; nächster Aufruf ~2027</td>
+</tr>
+<tr>
+<td><strong>9</strong></td>
+<td><strong>KSB dive in / Fonds Digital</strong></td>
+<td>Technik-/Format-Partner einer Kultureinrichtung</td>
+<td>über Institution</td>
+<td>Direkt-Zugang unwahrscheinlich; Neuauflage prüfen</td>
+</tr>
+<tr>
+<td><strong>-</strong></td>
+<td><strong>Robert Bosch / Mercator</strong></td>
+<td>nur als Teilhabe-/Demokratie-/Bildungsprojekt</td>
+<td>e.V.</td>
+<td>Kernfokus passt kaum; niedrige Priorität, beobachten</td>
+</tr>
+<tr>
+<td><strong>-</strong></td>
+<td><strong>Deutscher Übersetzerfonds</strong></td>
+<td>nur mit echtem Mehrsprachigkeits-/Übersetzungsstrang</td>
+<td>Person/Institution</td>
+<td>Nur bei Übersetzungsformat relevant</td>
+</tr>
+<tr>
+<td><strong>-</strong></td>
+<td><strong>Stiftung Digitale Spielekultur</strong></td>
+<td>nur bei spielerischen Textformaten</td>
+<td>-</td>
+<td>Aktuell kein Fit</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Roter Faden:</strong></p>
+<ol>
+<li><strong>Sofort mit der GbR machbar:</strong> <strong>Kulturamt Frankfurt</strong> (Prio 1) und potenziell
+<strong>Kulturkoffer Hessen</strong> (Prio 2). Beide belohnen ein <strong>konkret abgegrenztes
+Projekt</strong> mit klarem Literatur-/Teilhabe-Framing - nicht &quot;die Plattform an sich&quot;.</li>
+<li><strong>Der e.V. ist der Hebel für die großen Töpfe:</strong> Deutscher Literaturfonds
+(Projektförderung), Kulturstiftung des Bundes und Allianz Foundation setzen
+<strong>Institution/Gemeinnützigkeit</strong> voraus. Das ist das stärkste Argument, die
+e.V.-Gründung aus <code>ev-gruendung.md</code> zügig anzugehen - sie schaltet mehrere
+attraktive Literatur-/Digitalkultur-Zuschüsse frei.</li>
+<li><strong>Framing-Regel:</strong> 8scribo konsequent als <strong>digitale Literatur / Kurzlyrik-/
+Poesie-Plattform / Schreib- und Publikationswerkzeug / Community Writing</strong>
+darstellen. Die Tezos-Technik ist <strong>Unterbau, kein Antragsthema</strong> - sie gehört
+höchstens in die technische Machbarkeit, nie in die Projektbegründung.</li>
+<li><strong>EU/international</strong> (Creative Europe, Allianz Foundation) lohnt mittelfristig,
+braucht aber <strong>Partner/Konsortium</strong> und e.V.</li>
+</ol>
+<hr>
+<h2>Teil G - Quellen-Sammlung</h2>
+<p><strong>Literatur (Bund)</strong></p>
+<ul>
+<li>Deutscher Literaturfonds - Projektförderung: <a href="https://deutscher-literaturfonds.de/foerderprogramme/projektfoerderung/">https://deutscher-literaturfonds.de/foerderprogramme/projektfoerderung/</a></li>
+<li>Deutscher Literaturfonds - Förderprogramme: <a href="https://deutscher-literaturfonds.de/foerderprogramme/">https://deutscher-literaturfonds.de/foerderprogramme/</a></li>
+<li>Deutscher Literaturfonds - Neustart (abgeschlossen): <a href="https://deutscher-literaturfonds.de/neustart-kultur/">https://deutscher-literaturfonds.de/neustart-kultur/</a></li>
+<li>Deutscher Kulturrat - Neustart Kultur: <a href="https://www.kulturrat.de/corona-pandemie/neustart-kultur/">https://www.kulturrat.de/corona-pandemie/neustart-kultur/</a></li>
+<li>BKM Förderfonds / Kulturstaatsminister: <a href="https://kulturstaatsminister.de/kunst-und-kulturfoerderung/kuenstlerinnen-und-kuenstler/foerderfonds">https://kulturstaatsminister.de/kunst-und-kulturfoerderung/kuenstlerinnen-und-kuenstler/foerderfonds</a></li>
+<li>Literarisches Colloquium Berlin - Förderungen: <a href="https://lcb.de/foerderungen/">https://lcb.de/foerderungen/</a></li>
+<li>LCB - Institution (VOOO/JUNIVERS): <a href="https://lcb.de/haus/institution/">https://lcb.de/haus/institution/</a></li>
+<li>Deutscher Übersetzerfonds: <a href="http://www.uebersetzerfonds.de/">http://www.uebersetzerfonds.de/</a></li>
+</ul>
+<p><strong>Digitale Kultur / Kulturstiftungen</strong></p>
+<ul>
+<li>Kulturstiftung des Bundes - Allgemeine Projektförderung: <a href="https://www.kulturstiftung-des-bundes.de/en/themes_focuses/general_project_funding.html">https://www.kulturstiftung-des-bundes.de/en/themes_focuses/general_project_funding.html</a></li>
+<li>Förderdatenbank - Allg. Projektförderung KSB: <a href="https://www.foerderdatenbank.de/FDB/Content/DE/Foerderprogramm/Bund/KultStiftBund/1286_allgemeine-foerderrichtlinien.html">https://www.foerderdatenbank.de/FDB/Content/DE/Foerderprogramm/Bund/KultStiftBund/1286_allgemeine-foerderrichtlinien.html</a></li>
+<li>KSB - dive in: <a href="https://www.kulturstiftung-des-bundes.de/de/projekte/detail/dive_in_programm_fuer_digitale_interaktionen.html">https://www.kulturstiftung-des-bundes.de/de/projekte/detail/dive_in_programm_fuer_digitale_interaktionen.html</a></li>
+<li>Allianz Foundation - Apply: <a href="https://allianzfoundation.org/apply/">https://allianzfoundation.org/apply/</a></li>
+<li>Allianz Foundation - Grants Program: <a href="https://allianzfoundation.org/grants-program-2025/">https://allianzfoundation.org/grants-program-2025/</a></li>
+<li>Stiftung Mercator - Digitalisierte Gesellschaft: <a href="https://www.stiftung-mercator.de/de/woran-wir-arbeiten/digitalisierte-gesellschaft/">https://www.stiftung-mercator.de/de/woran-wir-arbeiten/digitalisierte-gesellschaft/</a></li>
+<li>Robert Bosch Stiftung - Literatur (Infopool): <a href="https://www.kurt-wolff-stiftung.de/infopool-robert-bosch-stiftung/">https://www.kurt-wolff-stiftung.de/infopool-robert-bosch-stiftung/</a></li>
+</ul>
+<p><strong>EU</strong></p>
+<ul>
+<li>Creative Europe - Literary Translation 2026: <a href="https://culture.ec.europa.eu/news/creative-europe-to-support-around-40-projects-to-boost-literary-translation-in-2026">https://culture.ec.europa.eu/news/creative-europe-to-support-around-40-projects-to-boost-literary-translation-in-2026</a></li>
+<li>Circulation of European Literary Works (Desk Ireland): <a href="https://www.creativeeuropeireland.eu/funding-opportunities/call/circulation-of-european-literary-works">https://www.creativeeuropeireland.eu/funding-opportunities/call/circulation-of-european-literary-works</a></li>
+<li>Creative Europe Desk KULTUR (DE): <a href="https://kultur.creative-europe-desk.de/">https://kultur.creative-europe-desk.de/</a></li>
+</ul>
+<p><strong>Frankfurt / Hessen</strong></p>
+<ul>
+<li>KulturPortal Frankfurt - Literaturförderung: <a href="https://www.kultur-frankfurt.de/portal/de/startseite/literatur/6/1281/0/0/1159.aspx">https://www.kultur-frankfurt.de/portal/de/startseite/literatur/6/1281/0/0/1159.aspx</a></li>
+<li>Kulturamt Frankfurt Projektförderung (Kulturberatung Hessen): <a href="https://kulturberatung-hessen.de/foerderprogramme/kulturamt-stadt-frankfurt-projektfoerderung">https://kulturberatung-hessen.de/foerderprogramme/kulturamt-stadt-frankfurt-projektfoerderung</a></li>
+<li><a href="http://wissenschaft.hessen.de">wissenschaft.hessen.de</a> - Literaturförderung: <a href="https://wissenschaft.hessen.de/foerderung-finden/kulturfoerderung/literaturfoerderung">https://wissenschaft.hessen.de/foerderung-finden/kulturfoerderung/literaturfoerderung</a></li>
+<li>Hessischer Literaturrat - Literaturstipendien: <a href="https://www.hessischer-literaturrat.de/literaturstipendien/">https://www.hessischer-literaturrat.de/literaturstipendien/</a></li>
+<li>Literaturhaus Frankfurt - Förderer &amp; Partner: <a href="https://literaturhaus-frankfurt.de/verein/foerderer-und-partner/">https://literaturhaus-frankfurt.de/verein/foerderer-und-partner/</a></li>
+<li>Kulturkoffer Hessen - Förderung: <a href="https://kulturkoffer-hessen.de/foerderung/">https://kulturkoffer-hessen.de/foerderung/</a></li>
+</ul>
+<p><strong>Bildung / Sonstiges</strong></p>
+<ul>
+<li>Stiftung Digitale Spielekultur: <a href="https://www.stiftung-digitale-spielekultur.de/">https://www.stiftung-digitale-spielekultur.de/</a></li>
+</ul>
+<blockquote>
+<p>Alle Angaben Stand Juli 2026, aus öffentlichen Quellen. Berechtigung (v. a. GbR vs.
+e.V./Gemeinnützigkeit), Höhe und Fristen <strong>vor jedem Antrag</strong> an der Originalquelle
+bzw. bei der jeweiligen Förderberatung bestätigen. Als &quot;zu prüfen&quot; markierte Punkte
+sind bewusst offen gelassen, weil die Recherche keine eindeutige Bestätigung ergab.</p>
+</blockquote>
+
+  </article>
+</div>
+</body>
+</html>
