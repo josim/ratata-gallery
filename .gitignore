@@ -44,6 +44,10 @@ CLAUDE.md
 /scripts/getdata/assets/
 /scripts/raw-images/
 
+# Slothzine PDF masters (~1.5 GB). The reading room streams these from IPFS
+# (see lib/slothzineArchive.ts); the local copies stay out of the repo.
+/public/slothzines/pdfs/
+
 # Local source masters; optimized web versions are committed instead.
 /public/images/positions-berlin/2024/Ocean-Flames.mov
 /public/images/positions-berlin/2024/Twitch-Streamer-Reaction-Video.mp4

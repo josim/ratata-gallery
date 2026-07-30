@@ -22,6 +22,26 @@ pnpm build
 Produces a fully static build (no client-side data fetching); every route is
 generated at build time via `generateStaticParams`.
 
+## Refreshing the Slothzine archive
+
+```bash
+pnpm data:slothzines
+```
+
+The importer queries the public TzKT token API for
+`tz1gw1zX1MRDBoh9CrefzkJx8qhuqaTQ7jEm`, keeps the newest mint for each issue
+number, and verifies that issues 1–50 are present. It writes display-ready
+metadata to `data/slothzines.json` and downloads the PDFs to
+`public/slothzines/pdfs/`.
+
+The metadata retains the token name, description, tags, IPFS artifact and
+display URIs, browser-ready gateway URLs, Teia URL, mint details, and local PDF
+URL. Downloads are resumable: complete files are skipped and interrupted
+downloads remain isolated as `.part` files until they pass the size check.
+
+Set `SLOTHZINE_IPFS_GATEWAY` to use a different gateway; its value should be an
+HTTP base ending in `/ipfs/`.
+
 ## How to add a project
 
 Add a new `.mdx` file under `content/projects/`. The filename (without
