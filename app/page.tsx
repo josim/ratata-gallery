@@ -157,9 +157,6 @@ export default function HomePage() {
   return (
     <div className="space-y-16 md:space-y-24">
       <section className="grid gap-10 md:grid-cols-12 md:gap-6">
-        <p className="text-meta uppercase text-ink-muted md:col-span-12">
-          {strings.home.eyebrow}
-        </p>
         <h1 className="max-w-[18ch] text-balance font-serif text-display-xl font-normal text-ink md:col-span-8">
           {strings.home.missionHeading.includes(",") ? (
             <>
@@ -259,7 +256,7 @@ export default function HomePage() {
               {strings.home.evidenceBody}
             </p>
           </div>
-          <ol className="divide-y divide-line border-y border-line lg:col-span-8">
+          <ol className="divide-y divide-line lg:col-span-8">
             {EVIDENCE_SLUGS.map((slug) => {
               const project = getProjectBySlug(slug, lang);
               if (!project) return null;

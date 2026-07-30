@@ -1,4 +1,5 @@
 import Link from "next/link";
+import BrandWordmark from "@/components/BrandWordmark";
 import { getStrings } from "@/lib/lang";
 import { getNavItems } from "@/lib/nav";
 
@@ -10,13 +11,11 @@ export default function Footer() {
     <footer className="border-t border-line bg-paper-sunk">
       <div className="mx-auto grid max-w-container gap-10 px-[clamp(20px,5vw,64px)] py-16 sm:grid-cols-3">
         <div className="space-y-3">
-          <Link href="/" className="flex items-baseline gap-1">
-            <span className="font-serif text-[1.25rem] font-medium tracking-[-0.01em] text-ink">
-              {s.site.wordmark}
-            </span>
-            <span className="text-meta uppercase text-ink-muted">
-              {s.site.wordmarkSuffix}
-            </span>
+          <Link href="/" className="inline-flex items-center">
+            <BrandWordmark
+              title={s.site.wordmark}
+              className="h-6 w-auto text-ink"
+            />
           </Link>
           <p className="max-w-[32ch] text-body-s text-ink-secondary">
             {s.site.tagline}
