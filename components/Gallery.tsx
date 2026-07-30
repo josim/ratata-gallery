@@ -13,7 +13,13 @@ function isVideo(src: string) {
 
 // DESIGN.md §5.7 — loops autoplay muted/looped, but respect
 // prefers-reduced-motion by holding playback and offering a play control.
-function GalleryVideo({ src }: { src: string }) {
+function GalleryVideo({
+  src,
+  poster,
+}: {
+  src: string;
+  poster?: string;
+}) {
   const strings = useStrings();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [reducedMotion, setReducedMotion] = useState(false);
@@ -35,6 +41,7 @@ function GalleryVideo({ src }: { src: string }) {
         loop
         playsInline
         preload="metadata"
+        poster={poster}
         autoPlay={!reducedMotion}
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
@@ -59,7 +66,23 @@ export type GalleryImage = {
   src: string;
   width?: number;
   height?: number;
+  alt?: string;
+  poster?: string;
+  caption?: string;
+  credit?: string;
 };
+
+function ImageCaption({ image }: { image: GalleryImage }) {
+  if (!image.caption && !image.credit) return null;
+
+  return (
+    <figcaption className="text-body-s leading-relaxed text-ink-secondary">
+      {image.caption}
+      {image.caption && image.credit ? " · " : null}
+      {image.credit}
+    </figcaption>
+  );
+}
 
 // A single image renders as a catalogue plate: natural aspect ratio,
 // height-capped, uncropped, the hairline frame hugging the image.
@@ -77,7 +100,7 @@ function Plate({
   if (isVideo(image.src)) {
     return (
       <div className="border border-line bg-card">
-        <GalleryVideo src={image.src} />
+        <GalleryVideo src={image.src} poster={image.poster} />
       </div>
     );
   }
@@ -92,7 +115,7 @@ function Plate({
       >
         <Image
           src={image.src}
-          alt={title}
+          alt={image.alt ?? title}
           width={image.width}
           height={image.height}
           priority
@@ -113,7 +136,7 @@ function Plate({
       <div className="relative aspect-[3/2] w-full">
         <Image
           src={image.src}
-          alt={title}
+          alt={image.alt ?? title}
           fill
           priority
           sizes="(min-width: 1200px) 760px, 100vw"
@@ -207,15 +230,39 @@ export function GalleryLightbox({
 
       <div className="flex h-full w-full items-center justify-center px-4 py-20 sm:px-20">
         <div className="relative h-full w-full">
-          <Image
-            key={active.src}
-            src={active.src}
-            alt={`${title}, image ${current + 1} of ${images.length}`}
-            fill
-            priority
-            sizes="100vw"
-            className="object-contain"
-          />
+          {isVideo(active.src) ? (
+            <video
+              key={active.src}
+              controls
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              poster={active.poster}
+              aria-label={
+                active.alt ??
+                `${title}, video ${current + 1} of ${images.length}`
+              }
+              className="h-full w-full object-contain"
+            >
+              <source src={active.src} type="video/mp4" />
+            </video>
+          ) : (
+            <Image
+              key={active.src}
+              src={active.src}
+              alt={
+                active.alt ??
+                `${title}, image ${current + 1} of ${images.length}`
+              }
+              fill
+              unoptimized={active.src.toLowerCase().endsWith(".gif")}
+              priority
+              sizes="100vw"
+              className="object-contain"
+            />
+          )}
         </div>
       </div>
 
@@ -261,23 +308,38 @@ export default function GalleryCarousel({
   const strings = useStrings();
   const [current, setCurrent] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
+  const openerRef = useRef<HTMLButtonElement>(null);
+  const mediaKey = images.map((image) => image.src).join("|");
+
+  useEffect(() => {
+    setCurrent(0);
+    setLightboxOpen(false);
+  }, [mediaKey]);
+
+  function closeLightbox() {
+    setLightboxOpen(false);
+    requestAnimationFrame(() => openerRef.current?.focus());
+  }
 
   if (!images.length) return null;
   if (images.length === 1) {
     return (
       <>
-        <Plate
-          image={images[0]}
-          title={title}
-          onOpen={() => setLightboxOpen(true)}
-        />
+        <figure className="space-y-3">
+          <Plate
+            image={images[0]}
+            title={title}
+            onOpen={() => setLightboxOpen(true)}
+          />
+          <ImageCaption image={images[0]} />
+        </figure>
         {lightboxOpen && !isVideo(images[0].src) && (
           <GalleryLightbox
             images={images}
             title={title}
             current={0}
             onChange={() => undefined}
-            onClose={() => setLightboxOpen(false)}
+            onClose={closeLightbox}
           />
         )}
       </>
@@ -287,12 +349,13 @@ export default function GalleryCarousel({
   const active = images[Math.min(current, images.length - 1)];
 
   return (
-    <figure className="space-y-3">
+    <figure className="min-w-0 space-y-3">
       <div className="border border-line bg-card">
         {isVideo(active.src) ? (
-          <GalleryVideo src={active.src} />
+          <GalleryVideo src={active.src} poster={active.poster} />
         ) : (
           <button
+            ref={openerRef}
             type="button"
             onClick={() => setLightboxOpen(true)}
             aria-label={strings.project.openFullscreen}
@@ -301,7 +364,10 @@ export default function GalleryCarousel({
             <Image
               key={active.src}
               src={active.src}
-              alt={`${title}, image ${current + 1} of ${images.length}`}
+              alt={
+                active.alt ??
+                `${title}, image ${current + 1} of ${images.length}`
+              }
               fill
               priority={current === 0}
               sizes="(min-width: 1200px) 760px, 100vw"
@@ -311,8 +377,12 @@ export default function GalleryCarousel({
         )}
       </div>
 
-      <div className="flex items-start justify-between gap-4">
-        <div className="flex flex-wrap gap-2" role="group" aria-label={title}>
+      <div className="flex min-w-0 items-start justify-between gap-4">
+        <div
+          className="-mx-1 flex min-w-0 flex-1 gap-2 overflow-x-auto px-1 pb-2 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0"
+          role="group"
+          aria-label={title}
+        >
           {images.map((image, i) => (
             <button
               key={image.src}
@@ -346,10 +416,12 @@ export default function GalleryCarousel({
           ))}
         </div>
 
-        <figcaption className="whitespace-nowrap pt-1 text-meta uppercase tabular-nums text-ink-muted">
+        <p className="whitespace-nowrap pt-1 text-meta uppercase tabular-nums text-ink-muted">
           {current + 1} / {images.length}
-        </figcaption>
+        </p>
       </div>
+
+      <ImageCaption image={active} />
 
       {lightboxOpen && !isVideo(active.src) && (
         <GalleryLightbox
@@ -362,7 +434,7 @@ export default function GalleryCarousel({
             const selected = images.filter((image) => !isVideo(image.src))[index];
             setCurrent(images.findIndex((image) => image.src === selected.src));
           }}
-          onClose={() => setLightboxOpen(false)}
+          onClose={closeLightbox}
         />
       )}
     </figure>

@@ -1,12 +1,20 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { getAllProjects, getProjectBySlug } from "@/lib/projects";
+import {
+  getAllProjects,
+  getProjectBySlug,
+  getProjectsByCategory,
+} from "@/lib/projects";
 import { withImageSizes } from "@/lib/images";
 import { getLang, getStrings } from "@/lib/lang";
 import GalleryCarousel from "@/components/Gallery";
 import LinksList from "@/components/LinksList";
-import ArtworkGrid from "@/components/ArtworkGrid";
+import ArtworkCollections from "@/components/ArtworkCollections";
+import SlothzineCatalogue from "@/components/SlothzineCatalogue";
 
 // Body links point off-site (objkt, press) — open them in a new tab so the
 // reader keeps their place in the archive.
@@ -44,20 +52,51 @@ export default async function ProjectPage({
   const project = getProjectBySlug(params.slug, getLang());
   if (!project) notFound();
 
-  const images = await withImageSizes(project.images ?? []);
+  const images = await withImageSizes(project.media ?? project.images ?? []);
+  const archiveHref =
+    project.category === "exhibition" ? "/exhibitions" : "/production";
+  const archiveLabel =
+    project.category === "exhibition"
+      ? strings.nav.exhibitions
+      : strings.nav.production;
+  const categoryProjects = getProjectsByCategory(project.category, getLang());
+  const projectIndex = categoryProjects.findIndex(
+    (candidate) => candidate.slug === project.slug
+  );
+  const previousProject =
+    projectIndex > 0 ? categoryProjects[projectIndex - 1] : null;
+  const nextProject =
+    projectIndex >= 0 && projectIndex < categoryProjects.length - 1
+      ? categoryProjects[projectIndex + 1]
+      : null;
+  const secondaryLinks = (project.links ?? []).filter(
+    (link) => link.url !== project.primaryAction?.url
+  );
 
-  const facts: { label: string; value: string }[] = [
+  const facts: { label: string; value: ReactNode }[] = [
     ...(project.dates
       ? [{ label: strings.project.factDates, value: project.dates }]
       : []),
     ...(project.venue
       ? [{ label: strings.project.factVenue, value: project.venue }]
       : []),
-    ...(project.artists?.length
+    ...(project.presentations?.length
       ? [
           {
-            label: strings.project.factArtists,
-            value: project.artists.join(" · "),
+            label: strings.project.factPresentations,
+            value: (
+              <ul className="space-y-2">
+                {project.presentations.map((presentation) => (
+                  <li key={`${presentation.venue}-${presentation.dates}`}>
+                    {presentation.venue}
+                    <span className="text-ink-secondary">
+                      {" "}
+                      · {presentation.dates}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            ),
           },
         ]
       : []),
@@ -66,13 +105,41 @@ export default async function ProjectPage({
 
   return (
     <article>
-      <header className="mb-12 space-y-3">
-        <h1 className="max-w-measure font-serif text-title-l font-medium text-ink">
+      <nav aria-label="Breadcrumb" className="mb-10">
+        <Link
+          href={archiveHref}
+          className="text-meta uppercase text-ink-muted underline decoration-1 underline-offset-[0.2em] transition-colors hover:text-accent"
+        >
+          ← {strings.project.backToArchive}
+        </Link>
+      </nav>
+
+      <header className="mb-12 max-w-measure">
+        <p className="mb-5 text-meta uppercase text-ink-muted">{archiveLabel}</p>
+        <h1 className="font-serif text-[clamp(2.25rem,5vw,4rem)] font-normal leading-[1.05] tracking-[-0.02em] text-ink text-balance">
           {project.title}
         </h1>
-        <p className="text-meta uppercase text-ink-muted">
+        <p className="mt-4 text-meta uppercase text-ink-muted">
           {[project.year, project.city].filter(Boolean).join(" · ")}
         </p>
+        {project.overviewText && (
+          <p className="mt-6 max-w-[60ch] text-body-l leading-relaxed text-ink-secondary">
+            {project.overviewText}
+          </p>
+        )}
+        {project.primaryAction && (
+          <a
+            href={project.primaryAction.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-7 inline-flex min-h-12 items-center border border-accent px-4 py-3 text-nav text-accent underline decoration-1 underline-offset-[0.18em] transition-colors duration-150 hover:bg-accent-tint hover:text-accent-hover hover:decoration-2"
+          >
+            {project.primaryAction.label}
+            <span aria-hidden="true" className="ml-2">
+              ↗
+            </span>
+          </a>
+        )}
       </header>
 
       {/* The catalogue spread: lead plate on the page's left axis with the
@@ -80,7 +147,13 @@ export default async function ProjectPage({
       {images.length > 0 ? (
         <>
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-            <div className={facts.length > 0 ? "lg:col-span-8" : "lg:col-span-12"}>
+            <div
+              className={
+                facts.length > 0
+                  ? "min-w-0 lg:col-span-8"
+                  : "min-w-0 lg:col-span-12"
+              }
+            >
               <GalleryCarousel images={images} title={project.title} />
             </div>
 
@@ -108,7 +181,88 @@ export default async function ProjectPage({
               <MDXRemote source={project.content} components={mdxComponents} />
             </div>
 
-            <LinksList links={project.links ?? []} />
+            {project.artistProfiles?.length ? (
+              <section aria-labelledby="artist-roster">
+                <h2
+                  id="artist-roster"
+                  className="mb-8 border-b border-line pb-3 font-serif text-title-s font-medium text-ink"
+                >
+                  {strings.project.factArtists}
+                </h2>
+                <ul className="space-y-12">
+                  {project.artistProfiles.map((artist) => (
+                    <li key={artist.name} className="grid gap-6 sm:grid-cols-12 sm:gap-8">
+                      <div
+                        className={
+                          artist.imagePresentation === "compact"
+                            ? "relative h-[200px] w-[200px] overflow-hidden border border-line bg-card sm:col-span-3"
+                            : "relative aspect-square overflow-hidden border border-line bg-card sm:col-span-5 lg:col-span-4"
+                        }
+                      >
+                        <Image
+                          src={artist.image}
+                          alt={artist.imageAlt}
+                          fill
+                          sizes={
+                            artist.imagePresentation === "compact"
+                              ? "200px"
+                              : "(min-width: 1024px) 33vw, (min-width: 640px) 42vw, 100vw"
+                          }
+                          className="object-cover"
+                        />
+                      </div>
+                      <div
+                        className={`flex flex-col justify-center ${
+                          artist.imagePresentation === "compact"
+                            ? "sm:col-span-8"
+                            : "sm:col-span-7 lg:col-span-6"
+                        }`}
+                      >
+                        <h3 className="font-serif text-title-m font-medium text-ink">
+                          {artist.name}
+                        </h3>
+                        <p className="mt-4 max-w-measure text-body text-ink-secondary">
+                          {artist.description}
+                        </p>
+                        <a
+                          href={artist.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-6 w-fit text-body text-accent underline decoration-1 underline-offset-[0.15em] transition-colors hover:text-accent-hover hover:decoration-2"
+                        >
+                          {artist.linkLabel} <span aria-hidden="true">↗</span>
+                        </a>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ) : project.artists?.length ? (
+              <section aria-labelledby="artist-roster" className="max-w-measure">
+                <h2
+                  id="artist-roster"
+                  className="mb-4 border-b border-line pb-3 font-serif text-title-s font-medium text-ink"
+                >
+                  {strings.project.factArtists}
+                </h2>
+                <ul className="columns-1 gap-x-8 text-body text-ink sm:columns-2">
+                  {project.artists.map((artist) => (
+                    <li
+                      key={artist}
+                      className="break-inside-avoid border-b border-line py-2"
+                    >
+                      {artist}
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ) : null}
+
+            {project.slug === "tezcon-2024-slothzine" && (
+              <SlothzineCatalogue lang={getLang()} />
+            )}
+
+            <LinksList links={secondaryLinks} />
           </div>
         </>
       ) : (
@@ -136,21 +290,56 @@ export default async function ProjectPage({
               <MDXRemote source={project.content} components={mdxComponents} />
             </div>
 
-            <LinksList links={project.links ?? []} />
+            <LinksList links={secondaryLinks} />
           </div>
         </div>
       )}
 
-      {project.artworkSections
-        ?.filter((section) => section.heading && section.items?.length)
-        .map((section) => (
-        <section key={section.heading} className="mt-16 space-y-6">
-          <h2 className="border-b border-line pb-3 font-serif text-title-m font-medium text-ink">
-            {section.heading}
-          </h2>
-          <ArtworkGrid items={section.items} heading={section.heading} />
-        </section>
-        ))}
+      {project.artworkSections?.some(
+        (section) => section.heading && section.items?.length
+      ) && (
+        <ArtworkCollections
+          sections={project.artworkSections.filter(
+            (section) => section.heading && section.items?.length
+          )}
+        />
+      )}
+
+      {(previousProject || nextProject) && (
+        <nav
+          aria-label="Project navigation"
+          className="mt-24 grid border-y border-line sm:grid-cols-2"
+        >
+          {previousProject ? (
+            <Link
+              href={`/projects/${previousProject.slug}`}
+              className="group py-6 sm:pr-8"
+            >
+              <span className="block text-meta uppercase text-ink-muted">
+                ← {strings.project.previousProject}
+              </span>
+              <span className="mt-2 block font-serif text-title-s font-medium text-ink group-hover:text-accent">
+                {previousProject.title}
+              </span>
+            </Link>
+          ) : (
+            <span />
+          )}
+          {nextProject && (
+            <Link
+              href={`/projects/${nextProject.slug}`}
+              className="group border-t border-line py-6 sm:border-l sm:border-t-0 sm:pl-8 sm:text-right"
+            >
+              <span className="block text-meta uppercase text-ink-muted">
+                {strings.project.nextProject} →
+              </span>
+              <span className="mt-2 block font-serif text-title-s font-medium text-ink group-hover:text-accent">
+                {nextProject.title}
+              </span>
+            </Link>
+          )}
+        </nav>
+      )}
     </article>
   );
 }

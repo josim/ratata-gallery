@@ -13,10 +13,20 @@ export type ProjectLink = {
   url: string;
 };
 
+export type ProjectMedia = {
+  src: string;
+  alt: string;
+  poster?: string;
+  caption?: string;
+  credit?: string;
+};
+
 export type Artwork = {
   title: string;
   artist: string;
   image: string;
+  video?: string;
+  curator?: string;
   url?: string;
 };
 
@@ -25,21 +35,41 @@ export type ArtworkSection = {
   items: Artwork[];
 };
 
+export type ArtistProfile = {
+  name: string;
+  image: string;
+  imageAlt: string;
+  imagePresentation?: "compact";
+  description: string;
+  url: string;
+  linkLabel: string;
+};
+
+export type ProjectPresentation = {
+  venue: string;
+  dates: string;
+};
+
 export type ProjectFrontmatter = {
   title: string;
   year: number;
   dates?: string;
   venue?: string;
+  presentations?: ProjectPresentation[];
   city?: string;
   category: ProjectCategory;
   role: ProjectRole;
   order?: number;
   featured?: boolean;
   artists?: string[];
+  artistProfiles?: ArtistProfile[];
   credits?: { label: string; value: string }[];
   images?: string[];
+  media?: ProjectMedia[];
+  primaryAction?: ProjectLink;
   artworkSections?: ArtworkSection[];
   links?: ProjectLink[];
+  overviewText?: string;
 };
 
 export type Project = ProjectFrontmatter & {

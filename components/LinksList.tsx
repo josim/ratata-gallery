@@ -57,13 +57,13 @@ function LinkRows({ links }: { links: ProjectLink[] }) {
       {links.map((link) => (
         <li
           key={link.url}
-          className="flex items-center justify-between gap-4 border-b border-line py-3"
+          className="flex flex-wrap items-start justify-between gap-x-4 gap-y-1 border-b border-line py-3"
         >
           <a
             href={link.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-body text-accent underline decoration-1 underline-offset-[0.15em] hover:text-accent-hover hover:decoration-2"
+            className="min-w-0 text-body text-accent underline decoration-1 underline-offset-[0.15em] hover:text-accent-hover hover:decoration-2"
           >
             {link.label} <span aria-hidden="true">↗</span>
           </a>
