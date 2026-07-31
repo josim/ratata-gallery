@@ -9,9 +9,9 @@ export const LANG_COOKIE = "lang";
 const en = {
   site: {
     name: "ratata gallery",
-    // PROVISIONAL COPY - used in the footer and as the site meta description.
+    // Used in the footer and as the site meta description.
     tagline:
-      "Gallery and artist collective for digital art in Frankfurt am Main.",
+      "Gallery for digital art in Frankfurt am Main. We curate, produce, and build the technology behind it.",
     wordmark: "ratata",
     wordmarkSuffix: ".gallery",
   },
@@ -37,7 +37,7 @@ const en = {
     eyebrow: "Frankfurt am Main",
     missionHeading: "Digital art, in real spaces.",
     missionBody:
-      "ratata is a gallery and artist collective from Frankfurt am Main. We curate digital art, present it in exhibitions and at international art fairs, and develop the technology that makes these presentations possible.",
+      "ratata is a gallery from Frankfurt am Main. We curate digital art, present it in exhibitions and at international art fairs, and develop the technology that makes these presentations possible.",
     leadEyebrow: "From the archive",
     leadLink: "View project",
     viewAll: "View all",
@@ -354,9 +354,9 @@ export type Strings = typeof en;
 const de: Strings = {
   site: {
     name: "ratata gallery",
-    // PROVISIONAL COPY - used in the footer and as the site meta description.
+    // Used in the footer and as the site meta description.
     tagline:
-      "Galerie und Künstlerkollektiv für digitale Kunst in Frankfurt am Main.",
+      "Galerie für digitale Kunst in Frankfurt am Main. Wir kuratieren, produzieren und bauen die Technik dahinter.",
     wordmark: "ratata",
     wordmarkSuffix: ".gallery",
   },
@@ -382,7 +382,7 @@ const de: Strings = {
     eyebrow: "Frankfurt am Main",
     missionHeading: "Digitale Kunst, in realen Räumen.",
     missionBody:
-      "ratata ist eine Galerie und ein Künstlerkollektiv aus Frankfurt am Main. Wir kuratieren digitale Kunst, bringen sie in Ausstellungen und auf internationale Kunstmessen und entwickeln die Technik, die diese Präsentationen möglich macht.",
+      "ratata ist eine Galerie aus Frankfurt am Main. Wir kuratieren digitale Kunst, bringen sie in Ausstellungen und auf internationale Kunstmessen und entwickeln die Technik, die diese Präsentationen möglich macht.",
     leadEyebrow: "Aus dem Archiv",
     leadLink: "Projekt ansehen",
     viewAll: "Alle ansehen",
