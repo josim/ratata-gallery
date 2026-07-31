@@ -234,7 +234,7 @@ export default async function HomePage() {
 
           <div
             className="reveal-rise lg:col-span-4"
-            style={{ "--reveal-delay": "120ms" } as React.CSSProperties}
+            style={{ "--reveal-delay": "200ms" } as React.CSSProperties}
           >
             <p className="text-meta uppercase text-ink-muted">
               {strings.home.leadEyebrow}
@@ -300,7 +300,7 @@ export default async function HomePage() {
                   className="reveal-rise grid gap-2 py-4 md:grid-cols-[minmax(15rem,0.85fr)_minmax(0,1.15fr)] md:items-baseline md:gap-8"
                   style={
                     {
-                      "--reveal-delay": `${100 + index * 70}ms`,
+                      "--reveal-delay": `${140 + index * 110}ms`,
                     } as React.CSSProperties
                   }
                 >
@@ -354,7 +354,7 @@ export default async function HomePage() {
             <div className="mt-8 grid gap-8 lg:grid-cols-12 lg:gap-12">
               {highlights[0] && (
                 <div className="lg:col-span-7">
-                  <HighlightProject project={highlights[0]} priority delay={80} />
+                  <HighlightProject project={highlights[0]} priority delay={140} />
                 </div>
               )}
               {highlights.length > 1 && (
@@ -363,7 +363,7 @@ export default async function HomePage() {
                     <HighlightProject
                       key={project.slug}
                       project={project}
-                      delay={160 + index * 70}
+                      delay={260 + index * 110}
                     />
                   ))}
                 </div>
@@ -427,7 +427,7 @@ export default async function HomePage() {
                       {
                         flexGrow: row.full ? artwork.ratio : 0,
                         flexBasis: `${artwork.ratio * SALON_ROW_HEIGHT}px`,
-                        "--reveal-delay": `${index * 60}ms`,
+                        "--reveal-delay": `${index * 110}ms`,
                       } as React.CSSProperties
                     }
                   >

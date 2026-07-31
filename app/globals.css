@@ -64,24 +64,30 @@ body {
   .reveal-rule,
   .reveal-wipe {
     --reveal-delay: 0ms;
-    --reveal-ease: cubic-bezier(0.16, 1, 0.3, 1);
+    /* Movement settles: most of the distance is covered early, then it eases
+       into place. Wrong curve for opacity — it would finish the fade in the
+       first fifth of the duration and read as a snap. */
+    --reveal-move: cubic-bezier(0.16, 1, 0.3, 1);
+    /* Fading and developing stay near-even across their whole duration, so
+       the change is visible the entire time it is happening. */
+    --reveal-fade: cubic-bezier(0.33, 0.1, 0.5, 1);
   }
 
   /* Type and plates rise into place. */
   .reveal-rise {
     transition:
-      opacity 600ms var(--reveal-ease) var(--reveal-delay),
-      transform 600ms var(--reveal-ease) var(--reveal-delay);
+      opacity 1100ms var(--reveal-fade) var(--reveal-delay),
+      transform 900ms var(--reveal-move) var(--reveal-delay);
   }
   [data-reveal="out"] .reveal-rise {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(16px);
   }
 
   /* Hairlines draw themselves left to right. */
   .reveal-rule {
     transform-origin: left center;
-    transition: transform 600ms var(--reveal-ease) var(--reveal-delay);
+    transition: transform 900ms var(--reveal-fade) var(--reveal-delay);
   }
   [data-reveal="out"] .reveal-rule {
     transform: scaleX(0);
@@ -89,7 +95,7 @@ body {
 
   /* Photographs develop upward into their frame. */
   .reveal-wipe {
-    transition: clip-path 700ms var(--reveal-ease) var(--reveal-delay);
+    transition: clip-path 1200ms var(--reveal-fade) var(--reveal-delay);
   }
   [data-reveal="out"] .reveal-wipe {
     clip-path: inset(100% 0 0 0);

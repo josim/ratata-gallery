@@ -52,7 +52,7 @@ export default function ArchiveEntry({
                 ? "text-[clamp(2rem,4vw,3.75rem)]"
                 : "text-[clamp(2.5rem,6vw,5rem)]"
             }`}
-            style={{ "--reveal-delay": "80ms" } as React.CSSProperties}
+            style={{ "--reveal-delay": "140ms" } as React.CSSProperties}
           >
             {project.title}
           </h2>
@@ -60,7 +60,7 @@ export default function ArchiveEntry({
           {image && project.overviewText && (
             <p
               className="reveal-rise mt-6 line-clamp-3 max-w-[42ch] text-body-s text-ink-secondary"
-              style={{ "--reveal-delay": "140ms" } as React.CSSProperties}
+              style={{ "--reveal-delay": "260ms" } as React.CSSProperties}
             >
               {project.overviewText}
             </p>
