@@ -273,7 +273,7 @@ export default async function HomePage() {
       <Reveal>
       <section
         aria-labelledby="evidence-heading"
-        className="border-t border-line pt-10 md:pt-12"
+        className="border-t border-line pt-12 md:pt-16"
       >
         <div className="grid gap-8 lg:grid-cols-12 lg:gap-12">
           <div className="reveal-rise lg:col-span-4">
