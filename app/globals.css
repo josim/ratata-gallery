@@ -54,3 +54,50 @@ body {
   outline: 2px solid var(--focus-ring);
   outline-offset: 2px;
 }
+
+/* Scroll reveal — see components/Reveal.tsx. Skipped entirely for readers who
+   ask for reduced motion, and handed straight over by the <noscript> block in
+   layout.tsx when there is no JS to move it. Each element may set
+   --reveal-delay to stagger within its group. */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-rise,
+  .reveal-rule,
+  .reveal-wipe {
+    --reveal-delay: 0ms;
+    /* Movement settles: most of the distance is covered early, then it eases
+       into place. Wrong curve for opacity — it would finish the fade in the
+       first fifth of the duration and read as a snap. */
+    --reveal-move: cubic-bezier(0.16, 1, 0.3, 1);
+    /* Fading and developing stay near-even across their whole duration, so
+       the change is visible the entire time it is happening. */
+    --reveal-fade: cubic-bezier(0.33, 0.1, 0.5, 1);
+  }
+
+  /* Type and plates rise into place. */
+  .reveal-rise {
+    transition:
+      opacity 1100ms var(--reveal-fade) var(--reveal-delay),
+      transform 900ms var(--reveal-move) var(--reveal-delay);
+  }
+  [data-reveal="out"] .reveal-rise {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  /* Hairlines draw themselves left to right. */
+  .reveal-rule {
+    transform-origin: left center;
+    transition: transform 900ms var(--reveal-fade) var(--reveal-delay);
+  }
+  [data-reveal="out"] .reveal-rule {
+    transform: scaleX(0);
+  }
+
+  /* Photographs develop upward into their frame. */
+  .reveal-wipe {
+    transition: clip-path 1200ms var(--reveal-fade) var(--reveal-delay);
+  }
+  [data-reveal="out"] .reveal-wipe {
+    clip-path: inset(100% 0 0 0);
+  }
+}

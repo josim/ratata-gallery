@@ -5,6 +5,8 @@ import type { Project } from "@/lib/projects";
 import { getLang, getStrings } from "@/lib/lang";
 import type { Strings } from "@/lib/strings";
 import { projectMeta } from "@/lib/format";
+import { withImageSizes } from "@/lib/images";
+import Reveal from "@/components/Reveal";
 
 // Editorial picks keep the homepage persuasive while the compact indexes below
 // retain access to the complete archive.
@@ -28,20 +30,36 @@ const EVIDENCE_SLUGS = [
   "nfc-summit-lisbon",
 ] as const;
 
-// Nine works form a deliberate three-row salon hanging on the homepage.
+// Nine works form a salon hanging on the homepage. Widths follow each work's
+// native aspect ratio (DESIGN.md §6) and a row closes once its works together
+// span roughly SALON_ROW_RATIO times their height — so how many hang in a row
+// depends on their proportions, and every row lands in the same height band.
+// A trailing row that never fills does not stretch; it hangs ragged, which is
+// what a real wall does.
 const SHEET_LIMIT = 9;
+const SALON_ROW_RATIO = 3.6;
+const SALON_ROW_HEIGHT = 200;
 
-const SALON_SPANS = [
-  "lg:col-span-5",
-  "lg:col-span-3",
-  "lg:col-span-4",
-  "lg:col-span-3",
-  "lg:col-span-5",
-  "lg:col-span-4",
-  "lg:col-span-4",
-  "lg:col-span-4",
-  "lg:col-span-4",
-] as const;
+type HungWork = { ratio: number };
+
+function salonRows<T extends HungWork>(works: T[]): { works: T[]; full: boolean }[] {
+  const rows: { works: T[]; full: boolean }[] = [];
+  let row: T[] = [];
+  let span = 0;
+
+  for (const work of works) {
+    row.push(work);
+    span += work.ratio;
+    if (span >= SALON_ROW_RATIO) {
+      rows.push({ works: row, full: true });
+      row = [];
+      span = 0;
+    }
+  }
+  if (row.length) rows.push({ works: row, full: false });
+
+  return rows;
+}
 
 // First sentence of a project body - used as the caption in the lead plate and
 // the contact sheet. Bodies are plain prose (no markdown syntax).
@@ -63,23 +81,26 @@ const LINK_CLASS =
 function HighlightProject({
   project,
   priority = false,
+  delay = 0,
 }: {
   project: Project;
   priority?: boolean;
+  delay?: number;
 }) {
   const image = project.images?.[0];
 
   return (
     <Link
       href={`/projects/${project.slug}`}
-      className={`group block ${
+      style={{ "--reveal-delay": `${delay}ms` } as React.CSSProperties}
+      className={`reveal-rise group block ${
         priority
           ? ""
           : "grid gap-5 py-6 sm:grid-cols-[minmax(10rem,0.8fr)_minmax(0,1fr)] sm:items-center lg:grid-cols-[minmax(8rem,0.9fr)_minmax(0,1.1fr)]"
       }`}
     >
       {image ? (
-        <div className="relative aspect-[4/3] border border-line bg-card transition-colors duration-150 ease-out group-hover:border-ink-muted">
+        <div className="relative aspect-[4/3] overflow-hidden border border-line bg-card transition-colors duration-150 ease-out group-hover:border-ink-muted">
           <Image
             src={image}
             alt={project.title}
@@ -90,7 +111,7 @@ function HighlightProject({
                 ? "(min-width: 1024px) 58vw, 100vw"
                 : "(min-width: 1024px) 18vw, (min-width: 640px) 40vw, 100vw"
             }
-            className="object-contain"
+            className="object-contain transition-transform duration-[600ms] ease-out group-hover:scale-[1.03] motion-reduce:transform-none motion-reduce:transition-none"
           />
         </div>
       ) : (
@@ -131,7 +152,7 @@ function HighlightProject({
   );
 }
 
-export default function HomePage() {
+export default async function HomePage() {
   const lang = getLang();
   const strings = getStrings();
   const projects = getAllProjects(lang);
@@ -153,6 +174,13 @@ export default function HomePage() {
   const showcaseWorks = (showcase?.artworkSections ?? []).flatMap(
     (section) => section.items
   );
+  // Intrinsic dimensions drive the hang, so each work keeps its own proportion.
+  const hung = showcaseWorks.slice(0, SHEET_LIMIT);
+  const hungSizes = await withImageSizes(hung.map((work) => work.image));
+  const sheet = hung.map((work, index) => {
+    const { width, height } = hungSizes[index] ?? {};
+    return { ...work, width, height, ratio: width && height ? width / height : 4 / 3 };
+  });
 
   return (
     <div className="space-y-16 md:space-y-24">
@@ -183,27 +211,31 @@ export default function HomePage() {
       </section>
 
       {lead && leadImage && (
+        <Reveal>
         <section
           aria-labelledby="lead-title"
           className="grid gap-8 border-t border-line pt-12 md:pt-16 lg:grid-cols-12 lg:items-start lg:gap-12"
         >
           <Link
             href={`/projects/${lead.slug}`}
-            className="block border border-line bg-paper-card transition-colors duration-150 ease-out hover:border-ink-muted lg:col-span-8"
+            className="group block border border-line bg-paper-card transition-colors duration-150 ease-out hover:border-ink-muted lg:col-span-8"
           >
-            <div className="relative aspect-[4/3] w-full overflow-hidden">
+            <div className="reveal-wipe relative aspect-[4/3] w-full overflow-hidden">
               <Image
                 src={leadImage}
                 alt={lead.title}
                 fill
                 priority
                 sizes="(min-width: 1024px) 66vw, 100vw"
-                className="object-cover"
+                className="object-cover transition-transform duration-[600ms] ease-out group-hover:scale-[1.03] motion-reduce:transform-none motion-reduce:transition-none"
               />
             </div>
           </Link>
 
-          <div className="lg:col-span-4">
+          <div
+            className="reveal-rise lg:col-span-4"
+            style={{ "--reveal-delay": "200ms" } as React.CSSProperties}
+          >
             <p className="text-meta uppercase text-ink-muted">
               {strings.home.leadEyebrow}
             </p>
@@ -235,14 +267,16 @@ export default function HomePage() {
             </Link>
           </div>
         </section>
+        </Reveal>
       )}
 
+      <Reveal>
       <section
         aria-labelledby="evidence-heading"
         className="border-y border-line py-10 md:py-12"
       >
         <div className="grid gap-8 lg:grid-cols-12 lg:gap-12">
-          <div className="lg:col-span-4">
+          <div className="reveal-rise lg:col-span-4">
             <p className="text-meta uppercase text-ink-muted">
               {strings.home.evidenceEyebrow}
             </p>
@@ -257,13 +291,18 @@ export default function HomePage() {
             </p>
           </div>
           <ol className="divide-y divide-line lg:col-span-8">
-            {EVIDENCE_SLUGS.map((slug) => {
+            {EVIDENCE_SLUGS.map((slug, index) => {
               const project = getProjectBySlug(slug, lang);
               if (!project) return null;
               return (
                 <li
                   key={project.slug}
-                  className="grid gap-2 py-4 md:grid-cols-[minmax(15rem,0.85fr)_minmax(0,1.15fr)] md:items-baseline md:gap-8"
+                  className="reveal-rise grid gap-2 py-4 md:grid-cols-[minmax(15rem,0.85fr)_minmax(0,1.15fr)] md:items-baseline md:gap-8"
+                  style={
+                    {
+                      "--reveal-delay": `${140 + index * 110}ms`,
+                    } as React.CSSProperties
+                  }
                 >
                   <Link
                     href={`/projects/${project.slug}`}
@@ -280,6 +319,7 @@ export default function HomePage() {
           </ol>
         </div>
       </section>
+      </Reveal>
 
       {categorySections.map(({ category, heading, href }) => {
         const items = projects.filter(
@@ -294,12 +334,12 @@ export default function HomePage() {
           );
         if (items.length === 0) return null;
         return (
+          <Reveal key={category}>
           <section
-            key={category}
             aria-labelledby={`section-${category}`}
             className="border-t border-line pt-12 md:pt-16"
           >
-            <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+            <div className="reveal-rise flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
               <h2
                 id={`section-${category}`}
                 className="font-serif text-title-m font-medium text-ink"
@@ -314,63 +354,39 @@ export default function HomePage() {
             <div className="mt-8 grid gap-8 lg:grid-cols-12 lg:gap-12">
               {highlights[0] && (
                 <div className="lg:col-span-7">
-                  <HighlightProject project={highlights[0]} priority />
+                  <HighlightProject project={highlights[0]} priority delay={140} />
                 </div>
               )}
               {highlights.length > 1 && (
                 <div className="divide-y divide-line border-y border-line lg:col-span-5 lg:self-start">
-                  {highlights.slice(1).map((project) => (
-                    <HighlightProject key={project.slug} project={project} />
+                  {highlights.slice(1).map((project, index) => (
+                    <HighlightProject
+                      key={project.slug}
+                      project={project}
+                      delay={260 + index * 110}
+                    />
                   ))}
                 </div>
               )}
             </div>
 
-            <div className="mt-8 border-y border-line">
-              <p className="border-b border-line py-3 text-meta uppercase text-ink-muted">
-                {strings.home.compactIndex}
-              </p>
-              <ul className="divide-y divide-line sm:grid sm:grid-cols-2 sm:divide-y-0">
-                {items.map((project) => (
-                  <li
-                    key={project.slug}
-                    className="border-line sm:border-b sm:odd:border-r"
-                  >
-                    <Link
-                      href={`/projects/${project.slug}`}
-                      className="group grid min-h-14 grid-cols-[minmax(0,1fr)_auto_auto] items-baseline gap-3 px-3 py-4 transition-colors duration-200 ease-out hover:bg-paper-sunk sm:px-4"
-                    >
-                      <span className="min-w-0 text-body text-ink transition-[color,transform] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1 group-hover:text-accent group-focus-visible:translate-x-1 group-focus-visible:text-accent motion-reduce:transform-none motion-reduce:transition-none">
-                        {project.title}
-                      </span>
-                      <span className="text-meta uppercase text-ink-muted [font-variant-numeric:tabular-nums]">
-                        {project.year}
-                      </span>
-                      <span
-                        aria-hidden="true"
-                        className="-translate-x-1 text-body text-accent opacity-0 transition-[opacity,transform] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100 motion-reduce:transform-none motion-reduce:transition-none"
-                      >
-                        →
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <Link href={href} className={`mt-6 inline-block ${LINK_CLASS}`}>
+            {/* No index here on purpose: the full list lives on the archive
+                page, and repeating it made the homepage a slower copy of it. */}
+            <Link href={href} className={`mt-8 inline-block ${LINK_CLASS}`}>
               {strings.home.openArchive} →
             </Link>
           </section>
+          </Reveal>
         );
       })}
 
       {showcase && showcaseWorks.length > 0 && (
+        <Reveal>
         <section
           aria-labelledby="works-heading"
           className="border-t border-line pt-12 md:pt-16"
         >
-          <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+          <div className="reveal-rise flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
             <div>
               <p className="text-meta uppercase text-ink-muted">
                 {strings.home.worksEyebrow}
@@ -390,23 +406,45 @@ export default function HomePage() {
             {firstSentence(showcase.content)}
           </p>
 
-          <ul className="mt-8 grid grid-cols-2 gap-px border border-line bg-line sm:grid-cols-3 lg:grid-cols-12">
-            {showcaseWorks.slice(0, SHEET_LIMIT).map((artwork, index) => (
-              <li
-                key={artwork.image}
-                className={`relative aspect-[4/3] bg-paper-card ${SALON_SPANS[index]}`}
+          {/* Below sm the rows collapse (`contents`) so every work joins one
+              flex container and hangs two to a line; from sm up each row is
+              its own justified line. */}
+          <div className="mt-8 flex flex-wrap items-start gap-4 max-sm:!space-y-0 sm:block sm:space-y-6">
+            {salonRows(sheet).map((row, rowIndex) => (
+              <div
+                key={rowIndex}
+                className="contents sm:flex sm:flex-wrap sm:items-start sm:gap-6"
               >
-                <Image
-                  src={artwork.image}
-                  alt={`${artwork.title} - ${artwork.artist}`}
-                  fill
-                  loading="lazy"
-                  sizes="(min-width: 1024px) 40vw, (min-width: 640px) 33vw, 50vw"
-                  className="object-contain"
-                />
-              </li>
+                {row.works.map((artwork, index) => (
+                  // flex-grow proportional to the aspect ratio justifies the
+                  // row: every work reaches the same height, none is cropped.
+                  // Below sm there is no room to hang a row, so the inline
+                  // basis is overridden and the works sit two to a line.
+                  <figure
+                    key={artwork.image}
+                    className="reveal-rise border border-line bg-paper-card max-sm:!grow-0 max-sm:!basis-[calc(50%-0.5rem)]"
+                    style={
+                      {
+                        flexGrow: row.full ? artwork.ratio : 0,
+                        flexBasis: `${artwork.ratio * SALON_ROW_HEIGHT}px`,
+                        "--reveal-delay": `${index * 110}ms`,
+                      } as React.CSSProperties
+                    }
+                  >
+                    <Image
+                      src={artwork.image}
+                      alt={`${artwork.title} - ${artwork.artist}`}
+                      width={artwork.width ?? 800}
+                      height={artwork.height ?? 600}
+                      loading="lazy"
+                      sizes="(min-width: 1024px) 40vw, (min-width: 640px) 33vw, 50vw"
+                      className="h-auto w-full"
+                    />
+                  </figure>
+                ))}
+              </div>
             ))}
-          </ul>
+          </div>
 
           <Link
             href={`/projects/${showcase.slug}`}
@@ -415,11 +453,13 @@ export default function HomePage() {
             {strings.home.worksLink} →
           </Link>
         </section>
+        </Reveal>
       )}
 
+      <Reveal>
       <section
         aria-labelledby="tezcon-heading"
-        className="border border-line bg-paper-sunk p-8 sm:p-12"
+        className="reveal-rise border border-line bg-paper-sunk p-8 sm:p-12"
       >
         <p className="text-meta uppercase text-ink-muted">
           {strings.home.tezconEyebrow}
@@ -437,6 +477,7 @@ export default function HomePage() {
           {strings.home.tezconLink} →
         </Link>
       </section>
+      </Reveal>
     </div>
   );
 }

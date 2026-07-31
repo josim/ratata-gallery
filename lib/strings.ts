@@ -46,7 +46,6 @@ const en = {
     evidenceHeading: "Work in institutions and public settings",
     evidenceBody:
       "Selected projects show how ratata brings together curatorial practice, production, and technical development.",
-    compactIndex: "index",
     openArchive: "Open archive with filters",
     worksEyebrow: "Works exhibited",
     worksCountSuffix: "Works",
@@ -398,7 +397,6 @@ const de: Strings = {
     evidenceHeading: "Arbeit in Institutionen und öffentlichen Räumen",
     evidenceBody:
       "Ausgewählte Projekte zeigen, wie wir kuratorische Arbeit, Produktion und technische Entwicklung zusammenführt.",
-    compactIndex: "Index",
     openArchive: "Archiv mit Filtern öffnen",
     worksEyebrow: "Gezeigte Arbeiten",
     worksCountSuffix: "Arbeiten",

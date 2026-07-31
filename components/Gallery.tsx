@@ -16,9 +16,11 @@ function isVideo(src: string) {
 function GalleryVideo({
   src,
   poster,
+  className = "mx-auto h-auto max-h-[70vh] w-auto max-w-full",
 }: {
   src: string;
   poster?: string;
+  className?: string;
 }) {
   const strings = useStrings();
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -45,7 +47,7 @@ function GalleryVideo({
         autoPlay={!reducedMotion}
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
-        className="mx-auto h-auto max-h-[70vh] w-auto max-w-full"
+        className={className}
       >
         <source src={src} type={src.toLowerCase().endsWith(".webm") ? "video/webm" : "video/mp4"} />
       </video>
@@ -309,12 +311,67 @@ export default function GalleryCarousel({
   const [current, setCurrent] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const openerRef = useRef<HTMLButtonElement>(null);
+  const stripRef = useRef<HTMLDivElement>(null);
   const mediaKey = images.map((image) => image.src).join("|");
 
   useEffect(() => {
     setCurrent(0);
     setLightboxOpen(false);
   }, [mediaKey]);
+
+  // The strip is a real scroll container, so the counter follows the scroll
+  // position rather than the other way round: whichever plate sits furthest
+  // left while still mostly on screen is the one being read.
+  useEffect(() => {
+    const strip = stripRef.current;
+    if (!strip || typeof IntersectionObserver === "undefined") return;
+
+    const plates = Array.from(strip.querySelectorAll<HTMLElement>("[data-plate]"));
+    if (!plates.length) return;
+
+    const onScreen = new Set<Element>();
+    const observer = new IntersectionObserver(
+      (records) => {
+        for (const record of records) {
+          if (record.isIntersecting) onScreen.add(record.target);
+          else onScreen.delete(record.target);
+        }
+        const leftmost = Array.from(onScreen).sort(
+          (a, b) => a.getBoundingClientRect().left - b.getBoundingClientRect().left
+        )[0];
+        if (leftmost) {
+          setCurrent(Number(leftmost.getAttribute("data-plate")));
+        }
+      },
+      { root: strip, threshold: 0.6 }
+    );
+
+    plates.forEach((plate) => observer.observe(plate));
+    return () => observer.disconnect();
+  }, [mediaKey]);
+
+  function scrollToPlate(index: number) {
+    const target = Math.max(0, Math.min(index, images.length - 1));
+    const strip = stripRef.current;
+    const plate = strip?.querySelector<HTMLElement>(`[data-plate="${target}"]`);
+    if (!strip || !plate) return;
+    const offset =
+      plate.getBoundingClientRect().left - strip.getBoundingClientRect().left;
+    // Move the counter now rather than waiting for the observer to report the
+    // settled scroll, so a quick second press steps on instead of repeating.
+    setCurrent(target);
+    strip.scrollBy({
+      left: offset,
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "auto"
+        : "smooth",
+    });
+  }
+
+  function openLightboxAt(index: number) {
+    setCurrent(index);
+    setLightboxOpen(true);
+  }
 
   function closeLightbox() {
     setLightboxOpen(false);
@@ -350,73 +407,81 @@ export default function GalleryCarousel({
 
   return (
     <figure className="min-w-0 space-y-3">
-      <div className="border border-line bg-card">
-        {isVideo(active.src) ? (
-          <GalleryVideo src={active.src} poster={active.poster} />
-        ) : (
-          <button
-            ref={openerRef}
-            type="button"
-            onClick={() => setLightboxOpen(true)}
-            aria-label={strings.project.openFullscreen}
-            className="relative block aspect-[3/2] max-h-[70vh] w-full cursor-zoom-in bg-transparent"
+      <div
+        ref={stripRef}
+        role="group"
+        aria-label={title}
+        className="flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain pb-3"
+      >
+        {images.map((image, i) => (
+          // Every plate shares the strip's height, but a work wider than the
+          // column is capped to fit rather than running past its edge — the
+          // whole picture is always visible, matted where it falls short.
+          <div
+            key={image.src}
+            data-plate={i}
+            className="flex h-[clamp(260px,44vh,520px)] max-w-full shrink-0 snap-start items-center justify-center border border-line bg-card"
           >
-            <Image
-              key={active.src}
-              src={active.src}
-              alt={
-                active.alt ??
-                `${title}, image ${current + 1} of ${images.length}`
-              }
-              fill
-              priority={current === 0}
-              sizes="(min-width: 1200px) 760px, 100vw"
-              className="object-contain"
-            />
-          </button>
-        )}
-      </div>
-
-      <div className="flex min-w-0 items-start justify-between gap-4">
-        <div
-          className="-mx-1 flex min-w-0 flex-1 gap-2 overflow-x-auto px-1 pb-2 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0"
-          role="group"
-          aria-label={title}
-        >
-          {images.map((image, i) => (
-            <button
-              key={image.src}
-              type="button"
-              onClick={() => setCurrent(i)}
-              aria-label={`${title}, image ${i + 1} of ${images.length}`}
-              aria-current={i === current}
-              className={`relative h-14 w-[4.667rem] shrink-0 border bg-card transition-colors duration-150 ${
-                i === current
-                  ? "border-ink"
-                  : "border-line hover:border-ink-muted"
-              }`}
-            >
-              {isVideo(image.src) ? (
-                <span className="flex h-full items-center justify-center text-meta uppercase text-ink-muted">
-                  {strings.project.playLabel}
-                </span>
-              ) : (
+            {isVideo(image.src) ? (
+              <GalleryVideo
+                src={image.src}
+                poster={image.poster}
+                className="h-full w-auto max-w-full object-contain"
+              />
+            ) : (
+              <button
+                ref={i === 0 ? openerRef : undefined}
+                type="button"
+                onClick={() => openLightboxAt(i)}
+                aria-label={`${title}, ${i + 1} / ${images.length} — ${
+                  strings.project.openFullscreen
+                }`}
+                className="flex h-full max-w-full cursor-zoom-in items-center bg-transparent"
+              >
                 <Image
                   src={image.src}
-                  alt=""
-                  fill
-                  loading="lazy"
-                  sizes="75px"
-                  className={`object-cover transition-opacity duration-150 ${
-                    i === current ? "opacity-100" : "opacity-70 hover:opacity-100"
-                  }`}
+                  alt={image.alt ?? `${title}, image ${i + 1} of ${images.length}`}
+                  width={image.width ?? 1200}
+                  height={image.height ?? 800}
+                  priority={i === 0}
+                  loading={i === 0 ? undefined : "lazy"}
+                  sizes="(min-width: 1024px) 700px, 92vw"
+                  // A definite height lets the width resolve from the aspect
+                  // ratio before the file loads, so lazy plates reserve their
+                  // real width instead of collapsing; object-contain keeps the
+                  // picture honest where max-width clamps an ultra-wide shot.
+                  className="h-full w-auto max-w-full object-contain"
                 />
-              )}
-            </button>
-          ))}
-        </div>
+              </button>
+            )}
+          </div>
+        ))}
+      </div>
 
-        <p className="whitespace-nowrap pt-1 text-meta uppercase tabular-nums text-ink-muted">
+      {/* Text controls rather than overlaid chrome, and they double as the
+          affordance that says the strip scrolls (DESIGN.md §5.6). */}
+      <div className="flex items-baseline justify-between gap-4 text-meta uppercase text-ink-muted">
+        <div className="flex items-center gap-4">
+          <button
+            type="button"
+            onClick={() => scrollToPlate(current - 1)}
+            disabled={current === 0}
+            aria-label={strings.project.previousImage}
+            className="border-0 bg-transparent p-0 text-body leading-none text-ink transition-colors duration-150 hover:text-accent disabled:text-line"
+          >
+            <span aria-hidden="true">←</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => scrollToPlate(current + 1)}
+            disabled={current === images.length - 1}
+            aria-label={strings.project.nextImage}
+            className="border-0 bg-transparent p-0 text-body leading-none text-ink transition-colors duration-150 hover:text-accent disabled:text-line"
+          >
+            <span aria-hidden="true">→</span>
+          </button>
+        </div>
+        <p className="whitespace-nowrap [font-variant-numeric:tabular-nums]">
           {current + 1} / {images.length}
         </p>
       </div>

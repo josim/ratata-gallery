@@ -159,7 +159,9 @@ export default async function ProjectPage({
 
             {facts.length > 0 && (
               <aside className="lg:col-span-4">
-                <dl className="border-t border-line">
+                {/* The wall label follows the plates instead of scrolling
+                    away and leaving the column empty. */}
+                <dl className="border-t border-line lg:sticky lg:top-24">
                   {facts.map((fact) => (
                     <div
                       key={fact.label}
@@ -269,7 +271,7 @@ export default async function ProjectPage({
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           {facts.length > 0 && (
             <aside className="lg:order-2 lg:col-span-4">
-              <dl className="border-t border-line">
+              <dl className="border-t border-line lg:sticky lg:top-24">
                 {facts.map((fact) => (
                   <div
                     key={fact.label}
