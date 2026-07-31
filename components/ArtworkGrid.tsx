@@ -53,21 +53,26 @@ export default function ArtworkGrid({
                 </span>
               )}
             </button>
+            {/* Tombstone order, as every art publication sets it: the artist
+                is credited first, then the work title in serif italic
+                (DESIGN.md §2.2). */}
+            <p className="mt-2 text-meta uppercase text-ink-muted">
+              {artwork.artist}
+            </p>
             {artwork.url ? (
               <a
                 href={artwork.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-2 inline-block text-body text-accent underline decoration-1 underline-offset-[0.15em] hover:text-accent-hover hover:decoration-2"
+                className="mt-0.5 inline-block font-serif italic text-title-s text-accent underline decoration-1 underline-offset-[0.15em] hover:text-accent-hover hover:decoration-2"
               >
                 {artwork.title} <span aria-hidden="true">↗</span>
               </a>
             ) : (
-              <p className="mt-2 text-body text-ink">{artwork.title}</p>
+              <p className="mt-0.5 font-serif italic text-title-s text-ink">
+                {artwork.title}
+              </p>
             )}
-            <p className="text-meta uppercase text-ink-muted">
-              {artwork.artist}
-            </p>
             {artwork.curator && (
               <p className="mt-1 text-body-s text-ink-secondary">
                 {artwork.curator}

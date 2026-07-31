@@ -100,7 +100,11 @@ Base font size `16px` (`1rem`). Fluid where marked, using `clamp()`. Line-height
   "catalogue" tell and unifies every card, badge, and eyebrow.
 - **Numbers/dates**: use `font-variant-numeric: tabular-nums` on the index table and any
   aligned figures (mint counts, years).
-- Italics: Newsreader italic only, for artwork/exhibition titles inside prose. Never italicize sans.
+- **Italics carry one meaning: this is a work.** Newsreader italic marks artwork and exhibition
+  titles — in prose, and in the artwork tombstone (§5.10). Never italicize sans, and never
+  italicize a *project* title: ratata's own exhibitions, fairs, and productions stay roman
+  (§5.3), so roman-vs-italic alone tells a reader whether they are looking at something ratata
+  did or something an artist made.
 
 ---
 
@@ -236,16 +240,20 @@ so it degrades gracefully regardless of item count (important — many sections 
 **No horizontal page scroll, ever.** Wide tables/galleries scroll inside their own
 `overflow-x: auto` container.
 
-### 4.4 Two archive presentations
+### 4.4 One archive presentation
 
-Every archive (Exhibitions, Fairs & Events, Tech Productions) offers the same content in two
-switchable views — default is chosen per section:
+Every archive (Exhibitions, Fairs & Events, Tech Productions) renders as a single sequence of
+full-width entries (§5.3) — one presentation, no view switcher.
 
-- **Grid view** — cards (§5.3). Default for image-rich sections.
-- **Index view** — a dense typographic table: `Year · Title · Venue/City · Role badge`, rows
-  separated by hairlines, tabular-nums, sortable by year. Default for text-heavy / image-poor
-  sections and the most "institutional" surface. The Index view is why the site looks complete
-  even before photos arrive.
+An alternate "Index view" (a sortable `Year · Title · Venue/City · Role` table) was specified
+and built, then removed: it shipped behind a disabled flag, was never reachable, and duplicated
+in a weaker form what the entry sequence already does. **Do not reintroduce a view toggle.** The
+site looks complete before photos arrive because of the text-only entry treatment (§5.4 / §6),
+not because a second view exists.
+
+The role filter chips (§5.6) remain in the code behind `SHOW_CONTROLS` in
+`components/ArchiveList.tsx`, still disabled, pending a decision on whether filtering earns its
+place at the current project count.
 
 ---
 
@@ -346,7 +354,11 @@ Core, reusable, quiet-but-distinct. Filterable.
   `@media (prefers-reduced-motion: reduce)` → do not autoplay; show poster + a play control.
 - Lightbox optional (v1 can omit): if built, plain overlay `--ink` at 92%, arrow keys + ESC,
   focus-trapped. No captions overlaid on art.
-- Captions sit **below** media in `body-s` `--ink-secondary`: `Artist — Title, year · credit`.
+- Captions sit **below** media in `body-s` `--ink-secondary`, composed as `caption · credit` from
+  the two optional frontmatter fields of the same name. Both are free prose describing the
+  photograph ("Installation view at Galerie Greulich"), **not** a tombstone — a gallery image is
+  usually a view of a space, not a reproduction of one work. When an image *is* a single work,
+  caption it with the tombstone of §5.10 and set the title in Newsreader italic.
 
 ### 5.8 Links & Press list
 
@@ -364,6 +376,26 @@ Core, reusable, quiet-but-distinct. Filterable.
 - No background image, no gradient, no full-bleed color. Whitespace + type only. `96px` bottom margin.
 - **Home** hero is the one exception permitted `display-xl` + a 3–4 project "highlight reel"
   directly beneath (reuses §5.3 cards). Mission statement in `body-l`, ≤2 sentences.
+
+### 5.10 Artwork tombstone
+
+Used wherever a work by a named artist is listed (`components/ArtworkGrid.tsx`). Field order
+follows the convention every art publication shares — Artforum, Frieze, Artsy and e-flux all
+credit the artist before the work:
+
+```
+ARTIST NAME          meta, UPPERCASE 0.08em, --ink-muted
+Title of the Work    title-s, Newsreader ITALIC
+Curator              body-s, --ink-secondary   (optional)
+```
+
+- **The artist comes first.** ratata shows other people's work; the credit leads.
+- **The title is the link.** Where an `url` exists (objkt, etc.) the italic title carries it in
+  `--accent` with the `↗` glyph; otherwise it renders as plain `--ink`.
+- Never set the title in sans, and never uppercase it. Italic serif is the tell that this line
+  names a work rather than a place, a person, or a project (§2.2).
+- `year`, `medium` and `dimensions` are not yet modelled in `Artwork`. When they are, they append
+  after the title as `, year` then a `body-s` `--ink-secondary` line, matching catalogue order.
 
 ---
 
