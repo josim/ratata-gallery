@@ -22,6 +22,7 @@ export default function ArchiveEntry({
     <article
       ref={ref}
       data-reveal={inView ? "in" : "out"}
+      data-year={project.year}
       className="last:border-b last:border-line"
     >
       <span aria-hidden="true" className="reveal-rule block h-px bg-line" />

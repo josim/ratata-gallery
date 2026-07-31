@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useStrings } from "@/components/LangProvider";
 import type { Project, ProjectRole } from "@/lib/projects";
@@ -35,6 +35,8 @@ export default function ArchiveList({
 
   const [activeRoles, setActiveRoles] = useState<ProjectRole[]>([]);
   const [view, setView] = useState<View>(defaultView);
+  const listRef = useRef<HTMLDivElement>(null);
+  const [activeYear, setActiveYear] = useState<number | null>(null);
   // null = keep the incoming order (curated via frontmatter `order`, or
   // newest-first); the year column header switches to explicit year sorting.
   const [sortAsc, setSortAsc] = useState<boolean | null>(null);
@@ -106,9 +108,50 @@ export default function ArchiveList({
     [filtered, sortAsc]
   );
 
+  // The spine reports the year of whichever entry currently sits across the
+  // reading band near the top of the viewport, so scrolling the archive reads
+  // like pulling a drawer through time.
+  useEffect(() => {
+    const root = listRef.current;
+    if (!root || typeof IntersectionObserver === "undefined") return;
+
+    const entries = Array.from(root.querySelectorAll<HTMLElement>("[data-year]"));
+    if (!entries.length) return;
+
+    const inBand = new Set<Element>();
+    const observer = new IntersectionObserver(
+      (records) => {
+        for (const record of records) {
+          if (record.isIntersecting) inBand.add(record.target);
+          else inBand.delete(record.target);
+        }
+        const topmost = Array.from(inBand).sort(
+          (a, b) => a.getBoundingClientRect().top - b.getBoundingClientRect().top
+        )[0];
+        if (topmost) {
+          setActiveYear(Number(topmost.getAttribute("data-year")));
+        }
+      },
+      { rootMargin: "-20% 0px -60% 0px" }
+    );
+
+    entries.forEach((entry) => observer.observe(entry));
+    return () => observer.disconnect();
+  }, [sorted]);
+
   if (projects.length === 0) {
     return <p className="text-body text-ink-secondary">{strings.archive.empty}</p>;
   }
+
+  const yearSpine = view === "grid" && (
+    // Decorative: every entry already carries its own date, so announcing a
+    // year that changes under the reader would only get in the way.
+    <div aria-hidden="true" className="hidden lg:block">
+      <p className="sticky top-24 font-serif text-title-m text-ink-muted [font-variant-numeric:tabular-nums]">
+        {activeYear ?? sorted[0]?.year}
+      </p>
+    </div>
+  );
 
   return (
     <div>
@@ -172,14 +215,17 @@ export default function ArchiveList({
           {strings.archive.noMatch}
         </p>
       ) : view === "grid" ? (
-        <div className="py-4 md:py-8">
-          {sorted.map((project, index) => (
-            <ArchiveEntry
-              key={project.slug}
-              project={project}
-              index={index}
-            />
-          ))}
+        <div className="py-4 md:py-8 lg:grid lg:grid-cols-[3.5rem_minmax(0,1fr)] lg:gap-6">
+          {yearSpine}
+          <div ref={listRef}>
+            {sorted.map((project, index) => (
+              <ArchiveEntry
+                key={project.slug}
+                project={project}
+                index={index}
+              />
+            ))}
+          </div>
         </div>
       ) : (
         <div className="overflow-x-auto py-8">
