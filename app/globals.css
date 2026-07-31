@@ -54,3 +54,44 @@ body {
   outline: 2px solid var(--focus-ring);
   outline-offset: 2px;
 }
+
+/* Scroll reveal — see components/Reveal.tsx. Skipped entirely for readers who
+   ask for reduced motion, and handed straight over by the <noscript> block in
+   layout.tsx when there is no JS to move it. Each element may set
+   --reveal-delay to stagger within its group. */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-rise,
+  .reveal-rule,
+  .reveal-wipe {
+    --reveal-delay: 0ms;
+    --reveal-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Type and plates rise into place. */
+  .reveal-rise {
+    transition:
+      opacity 600ms var(--reveal-ease) var(--reveal-delay),
+      transform 600ms var(--reveal-ease) var(--reveal-delay);
+  }
+  [data-reveal="out"] .reveal-rise {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  /* Hairlines draw themselves left to right. */
+  .reveal-rule {
+    transform-origin: left center;
+    transition: transform 600ms var(--reveal-ease) var(--reveal-delay);
+  }
+  [data-reveal="out"] .reveal-rule {
+    transform: scaleX(0);
+  }
+
+  /* Photographs develop upward into their frame. */
+  .reveal-wipe {
+    transition: clip-path 700ms var(--reveal-ease) var(--reveal-delay);
+  }
+  [data-reveal="out"] .reveal-wipe {
+    clip-path: inset(100% 0 0 0);
+  }
+}
