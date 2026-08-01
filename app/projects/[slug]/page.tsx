@@ -72,6 +72,23 @@ export default async function ProjectPage({
   const secondaryLinks = (project.links ?? []).filter(
     (link) => link.url !== project.primaryAction?.url
   );
+  const primaryActionButton = project.primaryAction ? (
+    <a
+      href={project.primaryAction.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex min-h-12 items-center border border-accent px-4 py-3 text-nav text-accent underline decoration-1 underline-offset-[0.18em] transition-colors duration-150 hover:bg-accent-tint hover:text-accent-hover hover:decoration-2"
+    >
+      {project.primaryAction.label}
+      <span aria-hidden="true" className="ml-2">
+        ↗
+      </span>
+    </a>
+  ) : null;
+  // The exhibition film plays as an epilogue to the roster, so it follows the
+  // artists instead of sitting in the header.
+  const primaryActionAfterArtists =
+    project.slug === "what-hot-shit" && images.length > 0;
 
   const facts: { label: string; value: ReactNode }[] = [
     ...(project.dates
@@ -127,18 +144,8 @@ export default async function ProjectPage({
             {project.overviewText}
           </p>
         )}
-        {project.primaryAction && (
-          <a
-            href={project.primaryAction.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-7 inline-flex min-h-12 items-center border border-accent px-4 py-3 text-nav text-accent underline decoration-1 underline-offset-[0.18em] transition-colors duration-150 hover:bg-accent-tint hover:text-accent-hover hover:decoration-2"
-          >
-            {project.primaryAction.label}
-            <span aria-hidden="true" className="ml-2">
-              ↗
-            </span>
-          </a>
+        {!primaryActionAfterArtists && primaryActionButton && (
+          <div className="mt-7">{primaryActionButton}</div>
         )}
       </header>
 
@@ -259,6 +266,10 @@ export default async function ProjectPage({
                 </ul>
               </section>
             ) : null}
+
+            {primaryActionAfterArtists && primaryActionButton && (
+              <div>{primaryActionButton}</div>
+            )}
 
             {project.slug === "tezcon-2024-slothzine" && (
               <SlothzineCatalogue lang={getLang()} />
