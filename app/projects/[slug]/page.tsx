@@ -88,10 +88,6 @@ export default async function ProjectPage({
       </span>
     </a>
   ) : null;
-  // The exhibition film plays as an epilogue to the roster, so it follows the
-  // artists instead of sitting in the header.
-  const primaryActionAfterArtists =
-    project.slug === "what-hot-shit" && images.length > 0;
 
   const facts: { label: string; value: ReactNode }[] = [
     ...(project.dates
@@ -147,7 +143,7 @@ export default async function ProjectPage({
             {project.overviewText}
           </p>
         )}
-        {!primaryActionAfterArtists && primaryActionButton && (
+        {primaryActionButton && (
           <div className="mt-7">{primaryActionButton}</div>
         )}
       </header>
@@ -269,10 +265,6 @@ export default async function ProjectPage({
                 </ul>
               </section>
             ) : null}
-
-            {primaryActionAfterArtists && primaryActionButton && (
-              <div>{primaryActionButton}</div>
-            )}
 
             {project.slug === "tezcon-2024-slothzine" && (
               <SlothzineCatalogue lang={getLang()} />
