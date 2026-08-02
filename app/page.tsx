@@ -170,10 +170,16 @@ export default async function HomePage() {
       image.endsWith("/2024-installation-view.jpg")
     ) ?? lead?.images?.[0];
 
-  const showcase = projects.find((p) => p.artworkSections?.length);
-  const showcaseWorks = (showcase?.artworkSections ?? []).flatMap(
-    (section) => section.items
+  // The sheet hangs images, so a project whose assets are still outstanding is
+  // not yet a candidate for it.
+  const showcase = projects.find((p) =>
+    p.artworkSections?.some((section) =>
+      section.items.some((item) => item.image)
+    )
   );
+  const showcaseWorks = (showcase?.artworkSections ?? [])
+    .flatMap((section) => section.items)
+    .flatMap((work) => (work.image ? [{ ...work, image: work.image }] : []));
   // Intrinsic dimensions drive the hang, so each work keeps its own proportion.
   const hung = showcaseWorks.slice(0, SHEET_LIMIT);
   const hungSizes = await withImageSizes(hung.map((work) => work.image));
@@ -252,9 +258,6 @@ export default async function HomePage() {
             </h2>
             <p className="mt-3 text-meta uppercase text-ink-muted">
               {projectMeta(lead)}
-            </p>
-            <p className="mt-3 text-meta uppercase text-ink-secondary">
-              {strings.home.roleLabel}: {strings.roles[lead.role] ?? lead.role}
             </p>
             <p className="mt-5 max-w-measure text-body text-ink-secondary">
               {firstSentence(lead.content)}

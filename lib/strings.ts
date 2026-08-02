@@ -19,7 +19,7 @@ const en = {
     home: "Home",
     exhibitions: "Exhibitions",
     production: "Production",
-    tezconEurope: "Tezcon Europe",
+    tezconEurope: "TezCon Europe",
     about: "About",
     langEn: "EN",
     langDe: "DE",
@@ -41,7 +41,6 @@ const en = {
     leadEyebrow: "From the archive",
     leadLink: "View project",
     viewAll: "View all",
-    roleLabel: "Role",
     evidenceEyebrow: "",
     evidenceHeading: "Work in institutions and public settings",
     evidenceBody:
@@ -51,9 +50,9 @@ const en = {
     worksCountSuffix: "Works",
     worksLink: "View all works",
     tezconEyebrow: "Upcoming",
-    tezconHeading: "Tezcon Europe",
+    tezconHeading: "TezCon Europe",
     tezconTeaser:
-      "Tezcon Europe: the community-run Tezos convention comes to Frankfurt.",
+      "TezCon Europe: the community-run Tezos convention comes to Frankfurt.",
     tezconLink: "Learn more",
   },
   archive: {
@@ -92,10 +91,10 @@ const en = {
   },
   tezcon: {
     eyebrow: "Upcoming",
-    heading: "Tezcon Europe",
+    heading: "TezCon Europe",
     // PROVISIONAL COPY - venue and program are placeholders until the
     // edition is confirmed; the Seattle background is factual.
-    body: "Tezcon, the community-run Tezos convention, comes to Europe: talks, exhibitions, live music, and minting in Frankfurt am Main.",
+    body: "TezCon, the community-run Tezos convention, comes to Europe: talks, exhibitions, live music, and minting in Frankfurt am Main.",
     heroImage: "/images/tezcon-europe/frankfurt-skyline-2022.jpg",
     heroImageAlt: "The Frankfurt am Main skyline seen across the river Main",
     heroImageCredit: "Photo: Jörg Braukmann",
@@ -105,7 +104,7 @@ const en = {
     heroImageSourceUrl:
       "https://commons.wikimedia.org/wiki/File:Frankfurt_Skyline_2022.jpg",
     facts: [
-      { label: "Dates", value: "24/25 October 2026" },
+      { label: "Dates", value: "2027" },
       { label: "Venue", value: "Frankfurt am Main, to be announced" },
       { label: "Format", value: "Talks · Exhibition · Live music · Minting" },
       { label: "Hosted by", value: "ratata gallery" },
@@ -113,7 +112,7 @@ const en = {
     seattleHeading: "From Seattle to Frankfurt",
     seattleBody: [
       "TezCon started in Seattle as a grassroots convention for the Tezos ecosystem: a community-run gathering of artists, collectors, builders, and thinkers, grown out of the TezTones collective and supported by Tezos Commons. Its editions at Kenyon Hall have mixed panel talks, curated exhibitions, live music, and on-site collaboration, keeping a deliberately non-corporate, community-first spirit.",
-      "Tezcon Europe brings that format across the Atlantic. Hosted by ratata gallery in Frankfurt am Main, the European edition follows the same idea: made by the community, for the community.",
+      "TezCon Europe brings that format across the Atlantic. Hosted by ratata gallery in Frankfurt am Main, the European edition follows the same idea: made by the community, for the community.",
     ],
     programHeading: "Program (provisional)",
     program: [
@@ -221,7 +220,7 @@ const en = {
       },
       {
         name: "HOXID",
-        relationship: "Concept & curation",
+        relationship: "Artist",
         url: "https://x.com/HOXID_",
         image: "/images/partners-and-friends/hoxid-logo.png",
         imageAlt: "HOXID monogram",
@@ -276,7 +275,7 @@ const en = {
       },
       {
         name: "Merzmensch",
-        relationship: "Artist & AI collaborator",
+        relationship: "Artist",
         url: "https://merzmensch.com/",
         image: "/images/partners-and-friends/merzmensch.png",
         imageAlt:
@@ -364,7 +363,7 @@ const de: Strings = {
     home: "Start",
     exhibitions: "Ausstellungen",
     production: "Produktion",
-    tezconEurope: "Tezcon Europe",
+    tezconEurope: "TezCon Europe",
     about: "Über uns",
     langEn: "EN",
     langDe: "DE",
@@ -386,7 +385,6 @@ const de: Strings = {
     leadEyebrow: "Aus dem Archiv",
     leadLink: "Projekt ansehen",
     viewAll: "Alle ansehen",
-    roleLabel: "Rolle",
     evidenceEyebrow: "",
     evidenceHeading: "Arbeit in Institutionen und öffentlichen Räumen",
     evidenceBody:
@@ -396,9 +394,9 @@ const de: Strings = {
     worksCountSuffix: "Arbeiten",
     worksLink: "Alle Arbeiten ansehen",
     tezconEyebrow: "Demnächst",
-    tezconHeading: "Tezcon Europe",
+    tezconHeading: "TezCon Europe",
     tezconTeaser:
-      "Tezcon Europe: die Community-Convention rund um Tezos kommt nach Frankfurt.",
+      "TezCon Europe: die Community-Convention rund um Tezos kommt nach Frankfurt.",
     tezconLink: "Mehr erfahren",
   },
   archive: {
@@ -437,10 +435,10 @@ const de: Strings = {
   },
   tezcon: {
     eyebrow: "Demnächst",
-    heading: "Tezcon Europe",
+    heading: "TezCon Europe",
     // PROVISIONAL COPY - venue and program are placeholders until the
     // edition is confirmed; the Seattle background is factual.
-    body: "Tezcon, die Community-Convention des Tezos-Ökosystems, kommt nach Europa: Talks, Ausstellungen, Livemusik und Minting in Frankfurt am Main.",
+    body: "TezCon, die Community-Convention des Tezos-Ökosystems, kommt nach Europa: Talks, Ausstellungen, Livemusik und Minting in Frankfurt am Main.",
     heroImage: "/images/tezcon-europe/frankfurt-skyline-2022.jpg",
     heroImageAlt: "Die Frankfurter Skyline, gesehen über den Main",
     heroImageCredit: "Foto: Jörg Braukmann",
@@ -450,7 +448,7 @@ const de: Strings = {
     heroImageSourceUrl:
       "https://commons.wikimedia.org/wiki/File:Frankfurt_Skyline_2022.jpg",
     facts: [
-      { label: "Termin", value: "24./25. Oktober 2026" },
+      { label: "Termin", value: "2027" },
       { label: "Ort", value: "Frankfurt am Main, wird noch bekannt gegeben" },
       { label: "Format", value: "Talks · Ausstellung · Livemusik · Minting" },
       { label: "Veranstaltet von", value: "ratata gallery" },
@@ -458,7 +456,7 @@ const de: Strings = {
     seattleHeading: "Von Seattle nach Frankfurt",
     seattleBody: [
       "TezCon begann in Seattle als Grassroots-Convention für das Tezos-Ökosystem: ein von der Community getragenes Treffen von Künstler:innen, Sammler:innen, Entwickler:innen und Denker:innen, entstanden aus dem TezTones-Kollektiv und unterstützt von Tezos Commons. Die Ausgaben in der Kenyon Hall verbanden Paneltalks, kuratierte Ausstellungen, Livemusik und gemeinsames Arbeiten vor Ort – getragen von einem bewusst unkommerziellen Selbstverständnis: Community zuerst.",
-      "Tezcon Europe bringt dieses Format über den Atlantik. Ausgerichtet von ratata gallery in Frankfurt am Main folgt die europäische Ausgabe derselben Idee: von der Community, für die Community.",
+      "TezCon Europe bringt dieses Format über den Atlantik. Ausgerichtet von ratata gallery in Frankfurt am Main folgt die europäische Ausgabe derselben Idee: von der Community, für die Community.",
     ],
     programHeading: "Programm (vorläufig)",
     program: [
@@ -566,7 +564,7 @@ const de: Strings = {
       },
       {
         name: "HOXID",
-        relationship: "Konzept & Kuration",
+        relationship: "Künstler",
         url: "https://x.com/HOXID_",
         image: "/images/partners-and-friends/hoxid-logo.png",
         imageAlt: "HOXID-Monogramm",
@@ -621,7 +619,7 @@ const de: Strings = {
       },
       {
         name: "Merzmensch",
-        relationship: "Künstler & KI-Kollaboration",
+        relationship: "Künstler",
         url: "https://merzmensch.com/",
         image: "/images/partners-and-friends/merzmensch.png",
         imageAlt:

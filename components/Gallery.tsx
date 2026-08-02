@@ -17,10 +17,20 @@ function GalleryVideo({
   src,
   poster,
   className = "mx-auto h-auto max-h-[70vh] w-auto max-w-full",
+  wrapperClassName = "",
+  onOpen,
+  openLabel,
 }: {
   src: string;
   poster?: string;
   className?: string;
+  // The wrapper is what a caller sizes: `h-full` on the video only resolves
+  // against a parent with a definite height.
+  wrapperClassName?: string;
+  // The video carries no controls of its own, so a caller that has a lightbox
+  // supplies the click target that opens it.
+  onOpen?: () => void;
+  openLabel?: string;
 }) {
   const strings = useStrings();
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -36,7 +46,7 @@ function GalleryVideo({
   }, []);
 
   return (
-    <div className="relative bg-card">
+    <div className={`relative bg-card ${wrapperClassName}`}>
       <video
         ref={videoRef}
         muted
@@ -51,7 +61,7 @@ function GalleryVideo({
       >
         <source src={src} type={src.toLowerCase().endsWith(".webm") ? "video/webm" : "video/mp4"} />
       </video>
-      {reducedMotion && !playing && (
+      {reducedMotion && !playing ? (
         <button
           type="button"
           onClick={() => videoRef.current?.play()}
@@ -59,6 +69,15 @@ function GalleryVideo({
         >
           {strings.project.playLabel}
         </button>
+      ) : (
+        onOpen && (
+          <button
+            type="button"
+            onClick={onOpen}
+            aria-label={openLabel}
+            className="absolute inset-0 cursor-zoom-in bg-transparent"
+          />
+        )
       )}
     </div>
   );
@@ -427,6 +446,11 @@ export default function GalleryCarousel({
                 src={image.src}
                 poster={image.poster}
                 className="h-full w-auto max-w-full object-contain"
+                wrapperClassName="h-full"
+                onOpen={() => openLightboxAt(i)}
+                openLabel={`${title}, ${i + 1} / ${images.length} — ${
+                  strings.project.openFullscreen
+                }`}
               />
             ) : (
               <button
@@ -488,17 +512,12 @@ export default function GalleryCarousel({
 
       <ImageCaption image={active} />
 
-      {lightboxOpen && !isVideo(active.src) && (
+      {lightboxOpen && (
         <GalleryLightbox
-          images={images.filter((image) => !isVideo(image.src))}
+          images={images}
           title={title}
-          current={images
-            .filter((image) => !isVideo(image.src))
-            .findIndex((image) => image.src === active.src)}
-          onChange={(index) => {
-            const selected = images.filter((image) => !isVideo(image.src))[index];
-            setCurrent(images.findIndex((image) => image.src === selected.src));
-          }}
+          current={current}
+          onChange={setCurrent}
           onClose={closeLightbox}
         />
       )}
