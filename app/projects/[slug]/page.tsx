@@ -72,6 +72,9 @@ export default async function ProjectPage({
   const secondaryLinks = (project.links ?? []).filter(
     (link) => link.url !== project.primaryAction?.url
   );
+  const artworkSections = (project.artworkSections ?? []).filter(
+    (section) => section.heading && section.items?.length
+  );
   const primaryActionButton = project.primaryAction ? (
     <a
       href={project.primaryAction.url}
@@ -274,8 +277,6 @@ export default async function ProjectPage({
             {project.slug === "tezcon-2024-slothzine" && (
               <SlothzineCatalogue lang={getLang()} />
             )}
-
-            <LinksList links={secondaryLinks} />
           </div>
         </>
       ) : (
@@ -302,20 +303,20 @@ export default async function ProjectPage({
             <div className="max-w-measure space-y-4 text-body text-ink [&_a]:text-accent [&_a]:underline [&_a]:decoration-1 [&_a]:underline-offset-[0.15em] [&_a:hover]:text-accent-hover [&_a:hover]:decoration-2 [&_h3]:pt-4 [&_h3]:font-serif [&_h3]:text-title-s [&_h3]:font-medium [&_h3]:text-ink">
               <MDXRemote source={project.content} components={mdxComponents} />
             </div>
-
-            <LinksList links={secondaryLinks} />
           </div>
         </div>
       )}
 
-      {project.artworkSections?.some(
-        (section) => section.heading && section.items?.length
-      ) && (
-        <ArtworkCollections
-          sections={project.artworkSections.filter(
-            (section) => section.heading && section.items?.length
-          )}
-        />
+      {/* The works come before the reading list: they are the exhibition,
+          the links are the paper trail. */}
+      {artworkSections.length > 0 && (
+        <ArtworkCollections sections={artworkSections} />
+      )}
+
+      {secondaryLinks.length > 0 && (
+        <div className={artworkSections.length > 0 ? "mt-24" : "mt-12"}>
+          <LinksList links={secondaryLinks} />
+        </div>
       )}
 
       {(previousProject || nextProject) && (
