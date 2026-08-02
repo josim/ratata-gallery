@@ -41,7 +41,6 @@ const en = {
     leadEyebrow: "From the archive",
     leadLink: "View project",
     viewAll: "View all",
-    roleLabel: "Role",
     evidenceEyebrow: "",
     evidenceHeading: "Work in institutions and public settings",
     evidenceBody:
@@ -221,7 +220,7 @@ const en = {
       },
       {
         name: "HOXID",
-        relationship: "Concept & curation",
+        relationship: "Artist",
         url: "https://x.com/HOXID_",
         image: "/images/partners-and-friends/hoxid-logo.png",
         imageAlt: "HOXID monogram",
@@ -276,7 +275,7 @@ const en = {
       },
       {
         name: "Merzmensch",
-        relationship: "Artist & AI collaborator",
+        relationship: "Artist",
         url: "https://merzmensch.com/",
         image: "/images/partners-and-friends/merzmensch.png",
         imageAlt:
@@ -386,7 +385,6 @@ const de: Strings = {
     leadEyebrow: "Aus dem Archiv",
     leadLink: "Projekt ansehen",
     viewAll: "Alle ansehen",
-    roleLabel: "Rolle",
     evidenceEyebrow: "",
     evidenceHeading: "Arbeit in Institutionen und öffentlichen Räumen",
     evidenceBody:
@@ -566,7 +564,7 @@ const de: Strings = {
       },
       {
         name: "HOXID",
-        relationship: "Konzept & Kuration",
+        relationship: "Künstler",
         url: "https://x.com/HOXID_",
         image: "/images/partners-and-friends/hoxid-logo.png",
         imageAlt: "HOXID-Monogramm",
@@ -621,7 +619,7 @@ const de: Strings = {
       },
       {
         name: "Merzmensch",
-        relationship: "Künstler & KI-Kollaboration",
+        relationship: "Künstler",
         url: "https://merzmensch.com/",
         image: "/images/partners-and-friends/merzmensch.png",
         imageAlt:

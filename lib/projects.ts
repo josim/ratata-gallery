@@ -24,7 +24,9 @@ export type ProjectMedia = {
 export type Artwork = {
   title: string;
   artist: string;
-  image: string;
+  // Optional: a work can be listed with its tombstone and link before the
+  // image asset has been sourced.
+  image?: string;
   video?: string;
   curator?: string;
   url?: string;
