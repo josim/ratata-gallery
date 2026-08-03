@@ -32,28 +32,88 @@ const en = {
     copyright: `© ${new Date().getFullYear()} ratata · Frankfurt am Main`,
   },
   home: {
-    // PROVISIONAL COPY - drafted from the archive, pending the client's own
-    // wording. Every claim below is backed by a project in content/projects.
-    eyebrow: "Frankfurt am Main",
-    missionHeading: "Digital art, in real spaces.",
-    missionBody:
-      "ratata is a gallery from Frankfurt am Main. We curate digital art, present it in exhibitions and at international art fairs, and develop the technology that makes these presentations possible.",
-    leadEyebrow: "From the archive",
-    leadLink: "View project",
-    viewAll: "View all",
-    evidenceEyebrow: "",
-    evidenceHeading: "Work in institutions and public settings",
-    evidenceBody:
-      "Selected projects show how ratata brings together curatorial practice, production, and technical development.",
-    openArchive: "Open archive with filters",
-    worksEyebrow: "Works exhibited",
-    worksCountSuffix: "Works",
-    worksLink: "View all works",
-    tezconEyebrow: "Upcoming",
-    tezconHeading: "TezCon Europe",
-    tezconTeaser:
-      "TezCon Europe: the community-run Tezos convention comes to Frankfurt.",
-    tezconLink: "Learn more",
+    // "Zwei Spuren / Invers" homepage (docs/Redesign_2a handoff). The handoff
+    // flags services, press, platforms, the stats, and the hero line as NEW
+    // copy that still needs sign-off from ratata before launch.
+    navServices: "Services",
+    kickerArt: "01 — Art",
+    kickerCode: "02 — Code",
+    heroLine1: "Digital art",
+    heroLine2: "needs real walls.",
+    lead: "ratata curates digital art, produces exhibitions at international fairs, and builds the technology that makes them run. Frankfurt am Main, since 2019.",
+    trackArt: "Art",
+    trackCode: "Code",
+    artBody: "Curation, artists, exhibitions, rooms.",
+    codeBody:
+      "Displays, LED, projection, interactive systems, smart contracts, minting.",
+    cta: "Start a project",
+    statLabels: ["Projects", "Exhibitions", "Productions", "Cities", "Artists"],
+    signalTitle: "Signal",
+    signalKicker: "Live from Instagram & X",
+    signalNote: "Sample data — feed loads at runtime",
+    signalOwn: "From ratata",
+    signalMentions: "Mentions",
+    projectsWord: "projects",
+    worksShown: "Works shown",
+    archiveLink: "Open the filtered archive",
+    servicesTitle: "What we deliver",
+    services: [
+      {
+        title: "Curation & programme",
+        body: "Concept, artist selection, texts and work descriptions — from a single evening to a fair booth.",
+      },
+      {
+        title: "Exhibition production",
+        body: "Build-up, displays, LED walls, projection, sound, logistics and on-site support.",
+      },
+      {
+        title: "Tech & platforms",
+        body: "Interactive installations, smart contracts, minting flows and custom web platforms.",
+      },
+    ],
+    platformsTitle: "Platforms we built",
+    platforms: [
+      {
+        name: "8scribo",
+        year: "2022",
+        body: "Write and publish haikus directly on Tezos.",
+      },
+      {
+        name: "Tesserart",
+        year: "2024",
+        body: "Digital art publishing tied to live events and physical shows.",
+      },
+      {
+        name: "InfiniteInk",
+        year: "2025",
+        body: "Artist-controlled editions on their own smart contracts.",
+      },
+      {
+        name: "Tezos AI Helper",
+        year: "2026",
+        body: "Browser-based assistant for the Tezos ecosystem, bring your own AI provider.",
+      },
+      {
+        name: "Collective Voice ID",
+        year: "2022–24",
+        body: "Installation turning visitors’ voices into animated portraits.",
+      },
+    ],
+    tezKicker: "Coming up · 2027",
+    tezBody:
+      "The Tezos community convention moves from Seattle to Frankfurt: talks, exhibition, live music, minting. By the community, for the community.",
+    pressKicker: "For editors",
+    pressTitle: "Press",
+    // File sizes are placeholders until the assets exist (handoff §7); the
+    // rows render without links until then.
+    press: [
+      { label: "Press kit (PDF)", note: "2.4 MB" },
+      { label: "Print-ready images", note: "ZIP" },
+      { label: "Logo & wordmark", note: "SVG" },
+      { label: "Press enquiries", note: "info@ratata.gallery" },
+    ],
+    partnersTitle: "Partners & friends",
+    tagline: "Gallery for digital art in Frankfurt am Main.",
   },
   archive: {
     filterLabel: "Filter by role",
@@ -376,28 +436,94 @@ const de: Strings = {
     copyright: `© ${new Date().getFullYear()} ratata · Frankfurt am Main`,
   },
   home: {
-    // PROVISIONAL COPY - drafted from the archive, pending the client's own
-    // wording. Every claim below is backed by a project in content/projects.
-    eyebrow: "Frankfurt am Main",
-    missionHeading: "Digitale Kunst, in realen Räumen.",
-    missionBody:
-      "ratata ist eine Galerie aus Frankfurt am Main. Wir kuratieren digitale Kunst, bringen sie in Ausstellungen und auf internationale Kunstmessen und entwickeln die Technik, die diese Präsentationen möglich macht.",
-    leadEyebrow: "Aus dem Archiv",
-    leadLink: "Projekt ansehen",
-    viewAll: "Alle ansehen",
-    evidenceEyebrow: "",
-    evidenceHeading: "Arbeit in Institutionen und öffentlichen Räumen",
-    evidenceBody:
-      "Ausgewählte Projekte zeigen, wie wir kuratorische Arbeit, Produktion und technische Entwicklung zusammenführt.",
-    openArchive: "Archiv mit Filtern öffnen",
-    worksEyebrow: "Gezeigte Arbeiten",
-    worksCountSuffix: "Arbeiten",
-    worksLink: "Alle Arbeiten ansehen",
-    tezconEyebrow: "Demnächst",
-    tezconHeading: "TezCon Europe",
-    tezconTeaser:
-      "TezCon Europe: die Community-Convention rund um Tezos kommt nach Frankfurt.",
-    tezconLink: "Mehr erfahren",
+    // "Zwei Spuren / Invers" homepage (docs/Redesign_2a handoff). The handoff
+    // flags services, press, platforms, the stats, and the hero line as NEW
+    // copy that still needs sign-off from ratata before launch.
+    navServices: "Leistungen",
+    kickerArt: "01 — Kunst",
+    kickerCode: "02 — Technik",
+    heroLine1: "Digitale Kunst",
+    heroLine2: "braucht echte Wände.",
+    lead: "ratata kuratiert digitale Kunst, produziert Ausstellungen auf internationalen Messen und baut die Technik, die sie zum Laufen bringt. Frankfurt am Main, seit 2019.",
+    trackArt: "Kunst",
+    trackCode: "Technik",
+    artBody: "Kuration, Künstler:innen, Ausstellungen, Räume.",
+    codeBody:
+      "Displays, LED, Projektion, interaktive Systeme, Smart Contracts, Minting.",
+    cta: "Projekt anfragen",
+    statLabels: [
+      "Projekte",
+      "Ausstellungen",
+      "Produktionen",
+      "Städte",
+      "Künstler:innen",
+    ],
+    signalTitle: "Signal",
+    signalKicker: "Live aus Instagram & X",
+    signalNote: "Beispieldaten — Feed wird zur Laufzeit geladen",
+    signalOwn: "Von ratata",
+    signalMentions: "Erwähnungen",
+    projectsWord: "Projekte",
+    worksShown: "Gezeigte Arbeiten",
+    archiveLink: "Archiv mit Filtern öffnen",
+    servicesTitle: "Was wir liefern",
+    services: [
+      {
+        title: "Kuration & Programm",
+        body: "Konzept, Künstlerauswahl, Texte und Werkbeschreibungen — vom Einzelabend bis zum Messestand.",
+      },
+      {
+        title: "Ausstellungsproduktion",
+        body: "Aufbau, Displays, LED-Wände, Projektion, Ton, Logistik und Betreuung vor Ort.",
+      },
+      {
+        title: "Technik & Plattformen",
+        body: "Interaktive Installationen, Smart Contracts, Minting-Flows und eigene Web-Plattformen.",
+      },
+    ],
+    platformsTitle: "Eigene Plattformen",
+    platforms: [
+      {
+        name: "8scribo",
+        year: "2022",
+        body: "Haikus schreiben und direkt auf Tezos veröffentlichen.",
+      },
+      {
+        name: "Tesserart",
+        year: "2024",
+        body: "Digitale Kunstpublikation, verbunden mit Live-Events und Ausstellungen.",
+      },
+      {
+        name: "InfiniteInk",
+        year: "2025",
+        body: "Von Künstler:innen kontrollierte Editionen mit eigenen Smart Contracts.",
+      },
+      {
+        name: "Tezos AI Helper",
+        year: "2026",
+        body: "Browserbasierter Assistent für das Tezos-Ökosystem, KI-Anbieter frei wählbar.",
+      },
+      {
+        name: "Collective Voice ID",
+        year: "2022–24",
+        body: "Installation, die Stimmen der Besucher in animierte Porträts verwandelt.",
+      },
+    ],
+    tezKicker: "Demnächst · 2027",
+    tezBody:
+      "Die Community-Convention des Tezos-Ökosystems kommt von Seattle nach Frankfurt: Talks, Ausstellung, Livemusik, Minting. Von der Community, für die Community.",
+    pressKicker: "Für Redaktionen",
+    pressTitle: "Presse",
+    // File sizes are placeholders until the assets exist (handoff §7); the
+    // rows render without links until then.
+    press: [
+      { label: "Pressemappe (PDF)", note: "2,4 MB" },
+      { label: "Bildmaterial, druckfähig", note: "ZIP" },
+      { label: "Logo & Wortmarke", note: "SVG" },
+      { label: "Presseanfragen", note: "info@ratata.gallery" },
+    ],
+    partnersTitle: "Partner & Freunde",
+    tagline: "Galerie für digitale Kunst in Frankfurt am Main.",
   },
   archive: {
     filterLabel: "Nach Rolle filtern",
