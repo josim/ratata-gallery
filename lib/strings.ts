@@ -53,7 +53,7 @@ const en = {
     services: [
       {
         title: "Curation & programme",
-        body: "Concept, artist selection, texts and work descriptions: from a single evening to a fair booth.",
+        body: "Shows grow out of the community: we develop the concepts together with the artists.",
       },
       {
         title: "Exhibition production",
@@ -470,7 +470,7 @@ const de: Strings = {
     services: [
       {
         title: "Kuration & Programm",
-        body: "Konzept, Künstlerauswahl, Texte und Werkbeschreibungen: vom Einzelabend bis zum Messestand.",
+        body: "Ausstellungen entstehen aus der Community: Konzepte entwickeln wir gemeinsam mit den Künstler:innen.",
       },
       {
         title: "Ausstellungsproduktion",

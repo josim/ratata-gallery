@@ -291,9 +291,11 @@ export default async function HomePage() {
         )}
 
         {/* 3 — Two tracks: exhibitions & works (white) / services,
-            production & platforms (black) */}
-        <section className="grid border-t border-spur-ink duo:grid-cols-2">
-          <div className="duo:border-r duo:border-spur-ink">
+            production & platforms (black). The seam against the hero runs in
+            ink over the white track and continues in white over the dark one,
+            so the line stays visible across the whole width. */}
+        <section className="grid duo:grid-cols-2">
+          <div className="border-t border-spur-ink duo:border-r">
             <div className={`pb-6 pt-14 duo:pt-[72px] ${GUTTER}`}>
               <h2 className="text-[28px] font-black uppercase tracking-[-0.03em] duo:text-[38px]">
                 {s.nav.exhibitions}
@@ -337,7 +339,38 @@ export default async function HomePage() {
               </Link>
             </div>
 
-            <div className={`border-t border-spur-ink pb-6 pt-14 duo:pt-[72px] ${GUTTER}`}>
+          </div>
+
+          <div className="spur-dark bg-spur-ink text-spur-paper duo:border-t duo:border-spur-paper">
+            {/* NEW content vs. the live site — copy needs sign-off (handoff). */}
+            <div id="leistungen" className={`scroll-mt-[76px] pb-6 pt-14 duo:pt-[72px] ${GUTTER}`}>
+              <h2 className="text-[28px] font-black uppercase tracking-[-0.03em] duo:text-[38px]">
+                {s.home.servicesTitle}
+              </h2>
+            </div>
+            {s.home.services.map((service) => (
+              <div
+                key={service.title}
+                className={`border-t border-spur-dark-line py-6 ${GUTTER}`}
+              >
+                <h3 className="text-[21px] font-semibold tracking-[-0.01em]">
+                  {service.title}
+                </h3>
+                <p className="mt-2 max-w-[52ch] text-[15px] leading-[1.55] text-spur-dark-body [text-wrap:pretty]">
+                  {service.body}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* 3b — Second row on the same spine: works (white) / production and
+            platforms (black). Its top seam runs in ink over the white half and
+            continues in white over the dark one, so Produktion starts on the
+            same line as the works. */}
+        <section className="grid duo:grid-cols-2">
+          <div className="border-t border-spur-ink duo:border-r">
+            <div className={`pb-6 pt-14 duo:pt-[72px] ${GUTTER}`}>
               <h2 className="text-[28px] font-black uppercase tracking-[-0.03em] duo:text-[38px]">
                 {s.home.worksShown}
               </h2>
@@ -365,28 +398,8 @@ export default async function HomePage() {
             </div>
           </div>
 
-          <div className="spur-dark bg-spur-ink text-spur-paper">
-            {/* NEW content vs. the live site — copy needs sign-off (handoff). */}
-            <div id="leistungen" className={`scroll-mt-[76px] pb-6 pt-14 duo:pt-[72px] ${GUTTER}`}>
-              <h2 className="text-[28px] font-black uppercase tracking-[-0.03em] duo:text-[38px]">
-                {s.home.servicesTitle}
-              </h2>
-            </div>
-            {s.home.services.map((service) => (
-              <div
-                key={service.title}
-                className={`border-t border-spur-dark-line py-6 ${GUTTER}`}
-              >
-                <h3 className="text-[21px] font-semibold tracking-[-0.01em]">
-                  {service.title}
-                </h3>
-                <p className="mt-2 max-w-[52ch] text-[15px] leading-[1.55] text-spur-dark-body [text-wrap:pretty]">
-                  {service.body}
-                </p>
-              </div>
-            ))}
-
-            <div className={`border-t border-spur-dark-line pb-6 pt-14 duo:pt-[72px] ${GUTTER}`}>
+          <div className="spur-dark bg-spur-ink text-spur-paper duo:border-t duo:border-spur-paper">
+            <div className={`pb-6 pt-14 duo:pt-[72px] ${GUTTER}`}>
               <h2 className="text-[28px] font-black uppercase tracking-[-0.03em] duo:text-[38px]">
                 {s.nav.production}
               </h2>
