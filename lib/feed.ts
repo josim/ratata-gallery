@@ -5,8 +5,9 @@
 //
 // Wiring plan from the handoff:
 // - Own posts: Instagram Graph API for @ratata.gallery, X API v2 user
-//   timeline for @ratata_artcode. Fetch server-side, cache/revalidate
-//   15–60 min; never expose a live token to the client.
+//   timeline for @ratata_nft (current handle as of Aug 2026 — may change).
+//   Fetch server-side, cache/revalidate 15–60 min; never expose a live
+//   token to the client.
 // - Mentions need a paid X tier or a moderated link table; if neither lands,
 //   drop the mentions column and run the section single-column.
 // - On failure or an empty feed the section hides entirely (app/page.tsx).
@@ -50,7 +51,7 @@ const SAMPLE_FEED: Feed = {
     },
     {
       platform: "X",
-      handle: "@ratata_artcode",
+      handle: "@ratata_nft",
       time: "1 d",
       text: "InfiniteInk 1.2 ist live — Editionen auf eigenen Contracts der Künstler:innen.",
       imageUrl: `${ART}/electric-sheep-5-poster.jpg`,
@@ -64,7 +65,7 @@ const SAMPLE_FEED: Feed = {
     },
     {
       platform: "X",
-      handle: "@ratata_artcode",
+      handle: "@ratata_nft",
       time: "5 d",
       text: "TezCon Europe 2027, Frankfurt am Main. Save the date, Ort folgt.",
       imageUrl: `${ART}/community.webp`,

@@ -19,7 +19,7 @@ export default function HomeFooter() {
       href: "https://www.instagram.com/ratata.gallery/",
       external: true,
     },
-    { label: "X", href: "https://x.com/ratata_artcode", external: true },
+    { label: "X", href: "https://x.com/ratata_nft", external: true },
     { label: "YouTube", href: s.footer.youtubeUrl, external: true },
   ];
 

@@ -227,7 +227,7 @@ export default async function HomePage() {
             <div className="grid duo:grid-cols-[1.4fr_1fr]">
               <div className={`pb-[34px] duo:border-r duo:border-spur-ink ${GUTTER}`}>
                 <h3 className="mb-[18px] border-b border-spur-line pb-[10px] font-mono text-[11px] tracking-[0.14em] text-spur-mut">
-                  {s.home.signalOwn} · @ratata.gallery · @ratata_artcode
+                  {s.home.signalOwn} · @ratata.gallery · @ratata_nft
                 </h3>
                 <div className="grid gap-[18px] sm:grid-cols-2">
                   {feed.posts.map((post) => (
