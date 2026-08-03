@@ -36,31 +36,24 @@ const en = {
     // flags services, press, platforms, the stats, and the hero line as NEW
     // copy that still needs sign-off from ratata before launch.
     navServices: "Services",
-    kickerArt: "01 — Art",
-    kickerCode: "02 — Code",
     heroLine1: "Digital art",
     heroLine2: "needs real walls.",
     lead: "ratata curates digital art, produces exhibitions at international fairs, and builds the technology that makes them run. Frankfurt am Main, since 2019.",
-    trackArt: "Art",
-    trackCode: "Code",
-    artBody: "Curation, artists, exhibitions, rooms.",
-    codeBody:
-      "Displays, LED, projection, interactive systems, smart contracts, minting.",
-    cta: "Start a project",
+    featuredKicker: "From the archive",
+    featuredLink: "View the exhibition",
     statLabels: ["Projects", "Exhibitions", "Productions", "Cities", "Artists"],
     signalTitle: "Signal",
     signalKicker: "Live from Instagram & X",
-    signalNote: "Sample data — feed loads at runtime",
+    signalNote: "Sample data · feed loads at runtime",
     signalOwn: "From ratata",
     signalMentions: "Mentions",
-    projectsWord: "projects",
     worksShown: "Works shown",
     archiveLink: "Open the filtered archive",
     servicesTitle: "What we deliver",
     services: [
       {
         title: "Curation & programme",
-        body: "Concept, artist selection, texts and work descriptions — from a single evening to a fair booth.",
+        body: "Concept, artist selection, texts and work descriptions: from a single evening to a fair booth.",
       },
       {
         title: "Exhibition production",
@@ -71,7 +64,7 @@ const en = {
         body: "Interactive installations, smart contracts, minting flows and custom web platforms.",
       },
     ],
-    platformsTitle: "Platforms we built",
+    platformsTitle: "Platforms & projects",
     platforms: [
       {
         name: "8scribo",
@@ -97,6 +90,11 @@ const en = {
         name: "Collective Voice ID",
         year: "2022–24",
         body: "Installation turning visitors’ voices into animated portraits.",
+      },
+      {
+        name: "Slothzine",
+        year: "since 2022",
+        body: "Monthly comic zine from the Tezos community, published as editions on objkt, 50 issues and counting.",
       },
     ],
     tezKicker: "Coming up · 2027",
@@ -388,6 +386,15 @@ const en = {
       eyebrow: "Exhibition Archive",
       heading: "Exhibitions",
       description: "ratata gallery – curated exhibitions.",
+      lead: "Since 2021 ratata has curated and produced exhibitions of digital art: in galleries, at art fairs, and in rooms.",
+      statShows: "Exhibitions",
+      statArtists: "Artists",
+      statCities: "Cities",
+      statSince: "Since",
+      artistsLabel: "Artists",
+      nextLabel: "Next archive",
+      nextBody:
+        "Fairs, live minting, installations, and the platforms behind them.",
     },
     production: {
       eyebrow: "Production Archive",
@@ -440,17 +447,11 @@ const de: Strings = {
     // flags services, press, platforms, the stats, and the hero line as NEW
     // copy that still needs sign-off from ratata before launch.
     navServices: "Leistungen",
-    kickerArt: "01 — Kunst",
-    kickerCode: "02 — Technik",
     heroLine1: "Digitale Kunst",
     heroLine2: "braucht echte Wände.",
     lead: "ratata kuratiert digitale Kunst, produziert Ausstellungen auf internationalen Messen und baut die Technik, die sie zum Laufen bringt. Frankfurt am Main, seit 2019.",
-    trackArt: "Kunst",
-    trackCode: "Technik",
-    artBody: "Kuration, Künstler:innen, Ausstellungen, Räume.",
-    codeBody:
-      "Displays, LED, Projektion, interaktive Systeme, Smart Contracts, Minting.",
-    cta: "Projekt anfragen",
+    featuredKicker: "Aus dem Archiv",
+    featuredLink: "Zur Ausstellung",
     statLabels: [
       "Projekte",
       "Ausstellungen",
@@ -460,17 +461,16 @@ const de: Strings = {
     ],
     signalTitle: "Signal",
     signalKicker: "Live aus Instagram & X",
-    signalNote: "Beispieldaten — Feed wird zur Laufzeit geladen",
+    signalNote: "Beispieldaten · Feed wird zur Laufzeit geladen",
     signalOwn: "Von ratata",
     signalMentions: "Erwähnungen",
-    projectsWord: "Projekte",
     worksShown: "Gezeigte Arbeiten",
     archiveLink: "Archiv mit Filtern öffnen",
     servicesTitle: "Was wir liefern",
     services: [
       {
         title: "Kuration & Programm",
-        body: "Konzept, Künstlerauswahl, Texte und Werkbeschreibungen — vom Einzelabend bis zum Messestand.",
+        body: "Konzept, Künstlerauswahl, Texte und Werkbeschreibungen: vom Einzelabend bis zum Messestand.",
       },
       {
         title: "Ausstellungsproduktion",
@@ -481,7 +481,7 @@ const de: Strings = {
         body: "Interaktive Installationen, Smart Contracts, Minting-Flows und eigene Web-Plattformen.",
       },
     ],
-    platformsTitle: "Eigene Plattformen",
+    platformsTitle: "Plattformen & Projekte",
     platforms: [
       {
         name: "8scribo",
@@ -507,6 +507,11 @@ const de: Strings = {
         name: "Collective Voice ID",
         year: "2022–24",
         body: "Installation, die Stimmen der Besucher in animierte Porträts verwandelt.",
+      },
+      {
+        name: "Slothzine",
+        year: "seit 2022",
+        body: "Monatliches Comic-Zine aus der Tezos-Community, als Editionen auf objkt erschienen, 50 Ausgaben und es werden mehr.",
       },
     ],
     tezKicker: "Demnächst · 2027",
@@ -798,6 +803,15 @@ const de: Strings = {
       eyebrow: "Ausstellungsarchiv",
       heading: "Ausstellungen",
       description: "ratata gallery – kuratierte Ausstellungen.",
+      lead: "Seit 2021 kuratiert und produziert ratata Ausstellungen digitaler Kunst: in Galerien, auf Kunstmessen und in Räumen.",
+      statShows: "Ausstellungen",
+      statArtists: "Künstler:innen",
+      statCities: "Städte",
+      statSince: "Seit",
+      artistsLabel: "Künstler:innen",
+      nextLabel: "Weiteres Archiv",
+      nextBody:
+        "Messen, Live-Minting, Installationen und die Plattformen dahinter.",
     },
     production: {
       eyebrow: "Produktionsarchiv",

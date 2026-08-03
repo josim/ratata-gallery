@@ -37,78 +37,15 @@ export type Feed = {
   sample: boolean;
 };
 
-const ART = "/images/what-hot-shit/artworks";
-
 const SAMPLE_FEED: Feed = {
   sample: true,
-  posts: [
-    {
-      platform: "IG",
-      handle: "@ratata.gallery",
-      time: "2 h",
-      text: "Aufbau Hangar 6: sechs Displays, ein Netzwerk, null Kabel im Bild.",
-      imageUrl: `${ART}/atlantis-poster.jpg`,
-    },
-    {
-      platform: "X",
-      handle: "@ratata_nft",
-      time: "1 d",
-      text: "InfiniteInk 1.2 ist live — Editionen auf eigenen Contracts der Künstler:innen.",
-      imageUrl: `${ART}/electric-sheep-5-poster.jpg`,
-    },
-    {
-      platform: "IG",
-      handle: "@ratata.gallery",
-      time: "3 d",
-      text: "Deposed 004 von Mario Klingemann, heute im Vorführraum.",
-      imageUrl: `${ART}/deposed-004-poster.jpg`,
-    },
-    {
-      platform: "X",
-      handle: "@ratata_nft",
-      time: "5 d",
-      text: "TezCon Europe 2027, Frankfurt am Main. Save the date, Ort folgt.",
-      imageUrl: `${ART}/community.webp`,
-    },
-  ],
-  mentions: [
-    {
-      platform: "X",
-      handle: "@collector_0x",
-      time: "4 h",
-      text: "Beispieltext — Erwähnung wird zur Laufzeit aus der API geladen.",
-    },
-    {
-      platform: "IG",
-      handle: "@kurator.ffm",
-      time: "1 d",
-      text: "Beispieltext — Erwähnung wird zur Laufzeit aus der API geladen.",
-    },
-    {
-      platform: "X",
-      handle: "@artist_berlin",
-      time: "2 d",
-      text: "Sample text — mention is loaded from the API at runtime.",
-    },
-    {
-      platform: "X",
-      handle: "@tezos_dev",
-      time: "3 d",
-      text: "Sample text — mention is loaded from the API at runtime.",
-    },
-    {
-      platform: "IG",
-      handle: "@venue.frankfurt",
-      time: "6 d",
-      text: "Beispieltext — Erwähnung wird zur Laufzeit aus der API geladen.",
-    },
-    {
-      platform: "X",
-      handle: "@press_desk",
-      time: "1 w",
-      text: "Sample text — mention is loaded from the API at runtime.",
-    },
-  ],
+  // Empty on purpose: the homepage hides the whole SIGNAL section while there
+  // are no posts. Fill this from the real APIs when the feed gets wired.
+  posts: [],
+  // Empty until the mentions source exists: placeholder mention texts are bad
+  // data on a public page. The homepage runs the section single-column while
+  // this is empty and picks the two-column layout back up on its own.
+  mentions: [],
 };
 
 export async function getFeed(): Promise<Feed> {

@@ -32,6 +32,9 @@ const EXHIBITION_SLUGS = [
 const WORKS_SOURCE_SLUG = "what-hot-shit";
 const WORKS_LIMIT = 9;
 
+// Marquee is hidden for now but kept intact — set to true to show it again.
+const SHOW_ARTIST_MARQUEE = false;
+
 const MARQUEE_ARTISTS = [
   "Mario Klingemann",
   "Ivona Tau",
@@ -68,19 +71,12 @@ function productionMeta(project: Project): string {
   return project.city ? `${project.city} ${span}` : span;
 }
 
-// "40+" rather than a precise artist count — the archive keeps growing and
-// the strip reads as an order of magnitude.
-function roundedCount(n: number): string {
-  return n >= 10 ? `${Math.floor(n / 10) * 10}+` : String(n);
-}
-
 export default async function HomePage() {
   const lang = getLang();
   const s = getStrings();
 
   const exhibitions = getProjectsByCategory("exhibition", lang);
   const productions = getProjectsByCategory("production", lang);
-  const allProjects = [...exhibitions, ...productions];
 
   const exhibitionPicks = EXHIBITION_SLUGS.map((slug) =>
     exhibitions.find((p) => p.slug === slug)
@@ -93,17 +89,8 @@ export default async function HomePage() {
     .slice(0, WORKS_LIMIT);
   const heroWork = works[0];
 
-  const cities = new Set(allProjects.map((p) => p.city).filter(Boolean));
-  const artists = new Set(allProjects.flatMap((p) => p.artists ?? []));
-  const stats = [
-    String(allProjects.length),
-    String(exhibitions.length),
-    String(productions.length),
-    String(cities.size),
-    roundedCount(artists.size),
-  ].map((n, i) => ({ n, label: s.home.statLabels[i] }));
-
   const feed = await getFeed();
+  const hasMentions = feed.mentions.length > 0;
 
   const marqueeLine = MARQUEE_ARTISTS.join(" · ") + " · ";
 
@@ -111,32 +98,36 @@ export default async function HomePage() {
     <div className="spur bg-spur-paper text-spur-ink">
       <HomeHeader />
       <main>
-        {/* 1 — Hero: white gallery wall left, black code column right */}
-        <section className="grid duo:grid-cols-[1.35fr_1fr]">
-          <div className={`py-10 duo:border-r duo:border-spur-ink md:py-12 ${GUTTER} duo:px-11`}>
-            <p className="mb-4 font-mono text-[11px] tracking-[0.16em] text-spur-accent">
-              {s.home.kickerArt}
-            </p>
-            <h1 className="text-[clamp(40px,8.5vw,64px)] font-black uppercase leading-[0.86] tracking-[-0.05em] duo:text-[104px]">
+        {/* 1 — Hero: white gallery wall left, a featured exhibition on the
+            dark track right. The seam sits on the page centre, the same line
+            every other two-track section below uses, so one spine runs the
+            whole page. The headline scales with the viewport so its longest
+            word always clears the narrower column. */}
+        <section className="grid duo:grid-cols-2">
+          <div className={`py-12 duo:border-r duo:border-spur-ink duo:py-16 ${GUTTER} duo:px-11`}>
+            <h1 className="text-[clamp(36px,7.5vw,56px)] font-black uppercase leading-[0.86] tracking-[-0.05em] duo:text-[clamp(56px,6.6vw,88px)]">
               {s.home.heroLine1}
               <br />
               {s.home.heroLine2}
             </h1>
+            <p className="mt-6 max-w-[46ch] text-[17px] leading-[1.5] text-spur-body [text-wrap:pretty]">
+              {s.home.lead}
+            </p>
             {heroWork && worksSource && (
-              <figure className="mt-9 bg-spur-card p-[22px] shadow-[0_1px_0_#e2dfd7]">
+              <figure className="mt-10 bg-spur-card p-[22px] shadow-[0_1px_0_#e2dfd7]">
                 <div className="relative aspect-[16/10] bg-spur-thumb">
                   <Image
                     src={heroWork.image}
-                    alt={`${heroWork.title} — ${heroWork.artist}`}
+                    alt={`${heroWork.title}, ${heroWork.artist}`}
                     fill
                     priority
-                    sizes="(min-width: 1100px) 52vw, 100vw"
+                    sizes="(min-width: 1100px) 48vw, 100vw"
                     className="object-cover"
                   />
                 </div>
                 <figcaption className="mt-3 flex justify-between gap-4 font-mono text-[11px] text-spur-mut">
                   <span className="text-spur-ink">
-                    {heroWork.title} — {heroWork.artist}
+                    {heroWork.title} · {heroWork.artist}
                   </span>
                   <span className="text-right">
                     {worksSource.title.toUpperCase()} · {worksSource.year}
@@ -146,63 +137,61 @@ export default async function HomePage() {
             )}
           </div>
 
-          <div className={`spur-dark flex flex-col justify-between gap-12 bg-spur-ink py-10 text-spur-paper md:py-12 ${GUTTER}`}>
-            <div>
-              <p className="mb-4 font-mono text-[11px] tracking-[0.16em] text-spur-accent-dark">
-                {s.home.kickerCode}
-              </p>
-              <p className="text-[20px] leading-[1.45] [text-wrap:pretty]">
-                {s.home.lead}
-              </p>
-            </div>
-            <div className="grid gap-[14px] font-mono text-[12px] leading-[1.7]">
-              <div className="border-t border-spur-dark-line-2 pt-3">
-                <p className="tracking-[0.1em] text-spur-dark-mut">
-                  {s.home.trackArt}
+          {/* The dark track features one exhibition from the archive as the
+              hero's counterweight: the show the works grid below draws
+              from. */}
+          <div className={`spur-dark flex flex-col bg-spur-ink py-12 text-spur-paper duo:py-16 ${GUTTER}`}>
+            {worksSource && (
+              <>
+                <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-spur-accent-dark">
+                  {s.home.featuredKicker}
                 </p>
-                <p>{s.home.artBody}</p>
-              </div>
-              <div className="border-t border-spur-dark-line-2 pt-3">
-                <p className="tracking-[0.1em] text-spur-dark-mut">
-                  {s.home.trackCode}
-                </p>
-                <p>{s.home.codeBody}</p>
-              </div>
-              <a
-                href="mailto:info@ratata.gallery"
-                className="mt-1 self-start bg-spur-accent-dark px-6 py-[15px] font-mono text-[12px] font-bold uppercase tracking-[0.14em] text-spur-ink transition-colors duration-150 hover:bg-spur-paper"
-              >
-                {s.home.cta} →
-              </a>
-            </div>
+                <Link
+                  href={`/projects/${worksSource.slug}`}
+                  className="group mt-8 flex grow flex-col"
+                >
+                  {/* The mat grows with the column, so the artwork absorbs
+                      whatever height the left track sets instead of leaving a
+                      void under the text. */}
+                  <div className="flex grow flex-col bg-spur-card p-[14px]">
+                    <div className="relative aspect-[4/3] grow overflow-hidden bg-spur-thumb">
+                      {worksSource.images?.[0] && (
+                        <Image
+                          src={worksSource.images[0]}
+                          alt={worksSource.title}
+                          fill
+                          priority
+                          sizes="(min-width: 1100px) 48vw, 100vw"
+                          className="object-cover transition-transform duration-500 group-hover:scale-[1.03] motion-reduce:transform-none motion-reduce:transition-none"
+                        />
+                      )}
+                    </div>
+                  </div>
+                  <h2 className="mt-8 text-[clamp(32px,3.2vw,44px)] font-black uppercase leading-[0.95] tracking-[-0.03em] transition-colors duration-150 group-hover:text-spur-accent-dark">
+                    {worksSource.title}
+                  </h2>
+                  <p className="mt-3 font-mono text-[12px] tracking-[0.06em] text-spur-dark-mut">
+                    {projectMeta(worksSource)}
+                  </p>
+                  {worksSource.overviewText && (
+                    <p className="mt-4 max-w-[52ch] text-[15px] leading-[1.55] text-spur-dark-body [text-wrap:pretty]">
+                      {worksSource.overviewText}
+                    </p>
+                  )}
+                  <p className="mt-8 font-mono text-[12px] font-bold uppercase tracking-[0.14em] text-spur-accent-dark">
+                    {s.home.featuredLink} →
+                  </p>
+                </Link>
+              </>
+            )}
           </div>
         </section>
 
-        {/* 2 — Stats strip, wired to the archive */}
-        <section
-          aria-label={s.home.statLabels[0]}
-          className="grid grid-cols-2 border-y border-spur-ink sm:grid-cols-3 duo:grid-cols-5"
-        >
-          {stats.map((stat) => (
-            <div
-              key={stat.label}
-              className="border-b border-r border-spur-line p-6 duo:border-b-0"
-            >
-              <p className="text-[40px] font-black leading-none tracking-[-0.04em] duo:text-[52px]">
-                {stat.n}
-              </p>
-              <p className="mt-[6px] font-mono text-[11px] uppercase tracking-[0.12em] text-spur-mut">
-                {stat.label}
-              </p>
-            </div>
-          ))}
-        </section>
-
-        {/* 3 — SIGNAL. Sample data until the feed is wired; hidden entirely
+        {/* 2 — SIGNAL. Sample data until the feed is wired; hidden entirely
             when the feed comes back empty (handoff §4). */}
         {feed.posts.length > 0 && (
-          <section aria-labelledby="signal-heading" className="border-b border-spur-ink">
-            <div className={`flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 pb-[18px] pt-[34px] ${GUTTER}`}>
+          <section aria-labelledby="signal-heading" className="border-t border-spur-ink">
+            <div className={`flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 pb-6 pt-14 duo:pt-[72px] ${GUTTER}`}>
               <div className="flex flex-wrap items-baseline gap-4">
                 <h2
                   id="signal-heading"
@@ -224,12 +213,23 @@ export default async function HomePage() {
               )}
             </div>
 
-            <div className="grid duo:grid-cols-[1.4fr_1fr]">
-              <div className={`pb-[34px] duo:border-r duo:border-spur-ink ${GUTTER}`}>
-                <h3 className="mb-[18px] border-b border-spur-line pb-[10px] font-mono text-[11px] tracking-[0.14em] text-spur-mut">
+            {/* Two-track only while there are mentions to show; the seam then
+                lands on the page centre like every other one. With the
+                mentions source not wired yet this runs full width. */}
+            <div className={hasMentions ? "grid duo:grid-cols-2" : undefined}>
+              <div
+                className={`pb-14 duo:pb-[72px] ${GUTTER} ${
+                  hasMentions ? "duo:border-r duo:border-spur-ink" : ""
+                }`}
+              >
+                <h3 className="mb-6 border-b border-spur-line pb-[10px] font-mono text-[11px] tracking-[0.14em] text-spur-mut">
                   {s.home.signalOwn} · @ratata.gallery · @ratata_nft
                 </h3>
-                <div className="grid gap-[18px] sm:grid-cols-2">
+                <div
+                  className={`grid gap-6 sm:grid-cols-2 ${
+                    hasMentions ? "" : "duo:grid-cols-4"
+                  }`}
+                >
                   {feed.posts.map((post) => (
                     <article
                       key={`${post.handle}-${post.time}`}
@@ -240,7 +240,7 @@ export default async function HomePage() {
                           src={post.imageUrl}
                           alt=""
                           fill
-                          sizes="(min-width: 1100px) 28vw, (min-width: 640px) 45vw, 100vw"
+                          sizes="(min-width: 1100px) 25vw, (min-width: 640px) 45vw, 100vw"
                           className="object-cover transition-transform duration-500 group-hover:scale-[1.04] motion-reduce:transform-none motion-reduce:transition-none"
                         />
                       </div>
@@ -260,8 +260,8 @@ export default async function HomePage() {
                 </div>
               </div>
 
-              {feed.mentions.length > 0 && (
-                <div className={`spur-dark bg-spur-ink pb-[34px] pt-[22px] text-spur-paper ${GUTTER}`}>
+              {hasMentions && (
+                <div className={`spur-dark bg-spur-ink pb-14 pt-8 text-spur-paper duo:pb-[72px] ${GUTTER}`}>
                   <h3 className="mb-[6px] border-b border-spur-dark-line-2 pb-[10px] font-mono text-[11px] tracking-[0.14em] text-spur-dark-head">
                     {s.home.signalMentions} · #ratata #tezcon ·{" "}
                     <span className="text-spur-accent-dark">
@@ -290,25 +290,21 @@ export default async function HomePage() {
           </section>
         )}
 
-        {/* 4 — Two tracks: exhibitions & works (white) / services,
+        {/* 3 — Two tracks: exhibitions & works (white) / services,
             production & platforms (black) */}
-        <section className="grid duo:grid-cols-2">
+        <section className="grid border-t border-spur-ink duo:grid-cols-2">
           <div className="duo:border-r duo:border-spur-ink">
-            <div className={`flex items-baseline justify-between gap-4 pb-4 pt-[34px] ${GUTTER}`}>
+            <div className={`pb-6 pt-14 duo:pt-[72px] ${GUTTER}`}>
               <h2 className="text-[28px] font-black uppercase tracking-[-0.03em] duo:text-[38px]">
                 {s.nav.exhibitions}
               </h2>
-              <p className="font-mono text-[11px] tracking-[0.12em] text-spur-mut">
-                {exhibitionPicks.length} / {exhibitions.length}{" "}
-                {s.home.projectsWord}
-              </p>
             </div>
 
             {exhibitionPicks.map((project) => (
               <Link
                 key={project.slug}
                 href={`/projects/${project.slug}`}
-                className={`grid grid-cols-[96px_1fr] items-center gap-4 border-t border-spur-line py-4 transition-colors duration-150 hover:bg-spur-card sm:grid-cols-[132px_1fr] sm:gap-5 ${GUTTER}`}
+                className={`grid grid-cols-[96px_1fr] items-center gap-4 border-t border-spur-line py-5 transition-colors duration-150 hover:bg-spur-card sm:grid-cols-[132px_1fr] sm:gap-5 ${GUTTER}`}
               >
                 <div className="relative h-[64px] overflow-hidden bg-spur-thumb sm:h-[88px]">
                   {project.images?.[0] && (
@@ -332,7 +328,7 @@ export default async function HomePage() {
               </Link>
             ))}
 
-            <div className={`border-t border-spur-line py-5 ${GUTTER}`}>
+            <div className={`border-t border-spur-line py-6 ${GUTTER}`}>
               <Link
                 href="/exhibitions"
                 className="font-mono text-[12px] tracking-[0.12em] text-spur-accent hover:underline"
@@ -341,12 +337,12 @@ export default async function HomePage() {
               </Link>
             </div>
 
-            <div className={`border-t border-spur-ink pb-[14px] pt-[30px] ${GUTTER}`}>
+            <div className={`border-t border-spur-ink pb-6 pt-14 duo:pt-[72px] ${GUTTER}`}>
               <h2 className="text-[28px] font-black uppercase tracking-[-0.03em] duo:text-[38px]">
                 {s.home.worksShown}
               </h2>
             </div>
-            <div className={`grid grid-cols-2 gap-[14px] pb-9 sm:grid-cols-3 ${GUTTER}`}>
+            <div className={`grid grid-cols-2 gap-4 pb-14 duo:pb-[72px] sm:grid-cols-3 ${GUTTER}`}>
               {works.map((work) => (
                 <figure
                   key={work.image}
@@ -355,7 +351,7 @@ export default async function HomePage() {
                   <div className="relative aspect-square overflow-hidden bg-spur-thumb">
                     <Image
                       src={work.image}
-                      alt={`${work.title} — ${work.artist}`}
+                      alt={`${work.title}, ${work.artist}`}
                       fill
                       sizes="(min-width: 1100px) 15vw, (min-width: 640px) 30vw, 45vw"
                       className="object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transform-none motion-reduce:transition-none"
@@ -371,47 +367,36 @@ export default async function HomePage() {
 
           <div className="spur-dark bg-spur-ink text-spur-paper">
             {/* NEW content vs. the live site — copy needs sign-off (handoff). */}
-            <div id="leistungen" className={`scroll-mt-[76px] pb-4 pt-[34px] ${GUTTER}`}>
+            <div id="leistungen" className={`scroll-mt-[76px] pb-6 pt-14 duo:pt-[72px] ${GUTTER}`}>
               <h2 className="text-[28px] font-black uppercase tracking-[-0.03em] duo:text-[38px]">
                 {s.home.servicesTitle}
               </h2>
             </div>
-            {s.home.services.map((service, index) => (
+            {s.home.services.map((service) => (
               <div
                 key={service.title}
-                className={`grid grid-cols-[28px_1fr] gap-[18px] border-t border-spur-dark-line py-[18px] ${GUTTER}`}
+                className={`border-t border-spur-dark-line py-6 ${GUTTER}`}
               >
-                <p className="font-mono text-[11px] text-spur-accent-dark">
-                  0{index + 1}
+                <h3 className="text-[21px] font-semibold tracking-[-0.01em]">
+                  {service.title}
+                </h3>
+                <p className="mt-2 max-w-[52ch] text-[15px] leading-[1.55] text-spur-dark-body [text-wrap:pretty]">
+                  {service.body}
                 </p>
-                <div>
-                  <h3 className="text-[21px] font-semibold tracking-[-0.01em]">
-                    {service.title}
-                  </h3>
-                  <p className="mt-[6px] text-[15px] leading-[1.5] text-spur-dark-body [text-wrap:pretty]">
-                    {service.body}
-                  </p>
-                </div>
               </div>
             ))}
 
-            <div className={`flex items-baseline justify-between gap-4 border-t border-spur-dark-line pb-3 pt-[30px] ${GUTTER}`}>
+            <div className={`border-t border-spur-dark-line pb-6 pt-14 duo:pt-[72px] ${GUTTER}`}>
               <h2 className="text-[28px] font-black uppercase tracking-[-0.03em] duo:text-[38px]">
                 {s.nav.production}
               </h2>
-              <p className="font-mono text-[11px] tracking-[0.12em] text-spur-dark-mut">
-                {productions.length} {s.home.projectsWord}
-              </p>
             </div>
-            {productions.map((project, index) => (
+            {productions.map((project) => (
               <Link
                 key={project.slug}
                 href={`/projects/${project.slug}`}
-                className={`grid grid-cols-[26px_1fr_auto] items-baseline gap-4 border-t border-spur-dark-line py-[11px] font-mono text-[12px] transition-colors duration-150 hover:bg-spur-paper hover:text-spur-ink ${GUTTER}`}
+                className={`grid grid-cols-[1fr_auto] items-baseline gap-5 border-t border-spur-dark-line py-4 font-mono text-[12px] transition-colors duration-150 hover:bg-spur-paper hover:text-spur-ink ${GUTTER}`}
               >
-                <span className="text-spur-dark-mut">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
                 <span className="min-w-0 font-sans text-[15px] font-medium tracking-[-0.01em] sm:text-[17px]">
                   {project.title}
                 </span>
@@ -420,14 +405,14 @@ export default async function HomePage() {
             ))}
 
             {/* NEW grouping vs. the live site (handoff). */}
-            <div className={`border-t border-spur-dark-line pb-[14px] pt-[30px] ${GUTTER}`}>
+            <div className={`border-t border-spur-dark-line pb-6 pt-14 duo:pt-[72px] ${GUTTER}`}>
               <h2 className="text-[28px] font-black uppercase tracking-[-0.03em] duo:text-[38px]">
                 {s.home.platformsTitle}
               </h2>
             </div>
-            <div className="mx-5 mb-9 grid gap-px bg-spur-dark-line sm:grid-cols-2 md:mx-10">
+            <div className="mx-5 mb-14 grid gap-px bg-spur-dark-line duo:mb-[72px] sm:grid-cols-2 md:mx-10">
               {s.home.platforms.map((platform) => (
-                <div key={platform.name} className="bg-spur-ink p-4">
+                <div key={platform.name} className="bg-spur-ink p-5">
                   <h3 className="text-[19px] font-bold tracking-[-0.01em]">
                     {platform.name}
                   </h3>
@@ -443,10 +428,12 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* 5 — Artist marquee */}
+        {/* 4 — Artist marquee. Hidden for now (SHOW_ARTIST_MARQUEE), not
+            removed: flip the flag to bring it back. */}
+        {SHOW_ARTIST_MARQUEE && (
         <section
           aria-label={s.home.statLabels[4]}
-          className="overflow-hidden border-y border-spur-ink bg-spur-paper py-4"
+          className="overflow-hidden border-y border-spur-ink bg-spur-paper py-6"
         >
           <div
             aria-hidden="true"
@@ -457,27 +444,28 @@ export default async function HomePage() {
           </div>
           <p className="sr-only">{MARQUEE_ARTISTS.join(", ")}</p>
         </section>
+        )}
 
-        {/* 6 — TezCon + Press */}
+        {/* 5 — TezCon + Press */}
         <section className="grid duo:grid-cols-2">
-          <div className={`border-b border-spur-ink py-9 duo:border-b-0 duo:border-r ${GUTTER}`}>
-            <p className="mb-3 font-mono text-[11px] tracking-[0.16em] text-spur-accent">
+          <div className={`spur-dark border-b border-spur-ink bg-spur-ink py-14 text-spur-paper duo:border-b-0 duo:border-r duo:py-[72px] ${GUTTER}`}>
+            <p className="mb-3 font-mono text-[11px] tracking-[0.16em] text-spur-accent-dark">
               {s.home.tezKicker}
             </p>
             <h2 className="text-[40px] font-black leading-[0.95] tracking-[-0.04em] duo:text-[56px]">
               <Link
                 href="/tezcon-europe"
-                className="transition-colors duration-150 hover:text-spur-accent"
+                className="transition-colors duration-150 hover:text-spur-accent-dark"
               >
                 TezCon
                 <br />
                 Europe
               </Link>
             </h2>
-            <p className="my-4 max-w-[44ch] text-[17px] leading-[1.5] text-spur-body [text-wrap:pretty]">
+            <p className="my-4 max-w-[44ch] text-[17px] leading-[1.5] text-spur-dark-body [text-wrap:pretty]">
               {s.home.tezBody}
             </p>
-            <p className="flex flex-wrap gap-x-6 gap-y-1 font-mono text-[11px] tracking-[0.1em] text-spur-mut">
+            <p className="flex flex-wrap gap-x-6 gap-y-1 font-mono text-[11px] tracking-[0.1em] text-spur-dark-mut">
               <span>2027</span>
               <span>FRANKFURT AM MAIN</span>
               <span>TALKS · SHOW · MUSIC</span>
@@ -486,7 +474,7 @@ export default async function HomePage() {
 
           {/* NEW block vs. the live site; the three asset rows stay unlinked
               until the files exist (handoff §7). */}
-          <div className={`py-9 ${GUTTER}`}>
+          <div className={`py-14 duo:py-[72px] ${GUTTER}`}>
             <p className="mb-3 font-mono text-[11px] tracking-[0.16em] text-spur-accent">
               {s.home.pressKicker}
             </p>
@@ -512,12 +500,12 @@ export default async function HomePage() {
                     {isContact ? (
                       <a
                         href="mailto:info@ratata.gallery"
-                        className="flex justify-between gap-4 py-[13px] transition-colors duration-150 hover:text-spur-accent"
+                        className="flex justify-between gap-4 py-4 transition-colors duration-150 hover:text-spur-accent"
                       >
                         {inner}
                       </a>
                     ) : (
-                      <p className="flex justify-between gap-4 py-[13px]">
+                      <p className="flex justify-between gap-4 py-4">
                         {inner}
                       </p>
                     )}
@@ -528,12 +516,12 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* 7 — Partners band */}
+        {/* 6 — Partners band */}
         <section
           aria-label={s.home.partnersTitle}
-          className={`border-t border-spur-ink py-[30px] ${GUTTER}`}
+          className={`border-t border-spur-ink py-12 duo:py-16 ${GUTTER}`}
         >
-          <p className="mb-[18px] font-mono text-[11px] tracking-[0.16em] text-spur-mut-soft">
+          <p className="mb-6 font-mono text-[11px] tracking-[0.16em] text-spur-mut-soft">
             {s.home.partnersTitle}
           </p>
           <div className="flex flex-wrap items-center gap-[34px]">
