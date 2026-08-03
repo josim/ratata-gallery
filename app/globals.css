@@ -55,6 +55,52 @@ body {
   outline-offset: 2px;
 }
 
+/* "Zwei Spuren" homepage (docs/Redesign_2a handoff). Exactly two animations:
+   the 38s artist marquee and the 1.4s blinking live dot — both paused for
+   readers who ask for reduced motion. The redesign's accent differs from the
+   archive pages', so the focus ring follows it inside .spur scopes. */
+@keyframes spur-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes spur-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.spur-marquee {
+  animation: spur-marquee 38s linear infinite;
+}
+
+.spur-blink {
+  animation: spur-blink 1.4s steps(1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spur-marquee,
+  .spur-blink {
+    animation-play-state: paused;
+  }
+}
+
+.spur :focus-visible {
+  outline-color: #c2410c;
+}
+
+.spur-dark :focus-visible {
+  outline-color: #ff7a2f;
+}
+
 /* Scroll reveal — see components/Reveal.tsx. Skipped entirely for readers who
    ask for reduced motion, and handed straight over by the <noscript> block in
    layout.tsx when there is no JS to move it. Each element may set

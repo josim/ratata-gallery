@@ -23,10 +23,40 @@ const config: Config = {
           "tech-tint": "#E5EAF1",
           "platform-tint": "#ECE6F0",
         },
+        // "Zwei Spuren / Invers" homepage tokens (docs/Redesign_2a handoff,
+        // Design Tokens table). Scoped under `spur-` so they never collide
+        // with the archive pages' paper/ink system above.
+        spur: {
+          paper: "#f6f5f2",
+          card: "#ffffff",
+          ink: "#111112",
+          line: "#dedbd3",
+          "line-soft": "#e6e3db",
+          mat: "#e2dfd7",
+          mut: "#6d6a63",
+          "mut-soft": "#9b978e",
+          ctrl: "#c9c6be",
+          thumb: "#e9e6de",
+          body: "#4a4844",
+          "dark-line": "#26262a",
+          "dark-line-2": "#35353a",
+          "dark-mut": "#8a8a86",
+          "dark-body": "#a9a7a1",
+          "dark-head": "#d4d2cc",
+          accent: "#c2410c",
+          "accent-dark": "#ff7a2f",
+          chip: "#ffd9c2",
+        },
       },
       fontFamily: {
         serif: ["var(--font-serif)", "Georgia", "serif"],
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
+      },
+      screens: {
+        // The handoff's intended reduction point: two-track grids collapse to
+        // stacked bands below 1100px (pending designer confirmation).
+        duo: "1100px",
       },
       fontSize: {
         "display-xl": [
