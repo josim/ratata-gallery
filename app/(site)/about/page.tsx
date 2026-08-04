@@ -7,6 +7,7 @@ const PARTNER_ORDER = [
   "Galerie Greulich",
   "Merzmensch",
   "Tezos Commons",
+  "thetezos.com",
   "AI Hub Frankfurt",
   "theVERSEverse",
   "teia.cafe",

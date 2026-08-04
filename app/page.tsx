@@ -35,6 +35,10 @@ const WORKS_LIMIT = 9;
 // Marquee is hidden for now but kept intact — set to true to show it again.
 const SHOW_ARTIST_MARQUEE = false;
 
+// Press block is hidden until the kit exists; the copy and rows stay in
+// strings.ts — set to true to bring it back.
+const SHOW_PRESS = false;
+
 const MARQUEE_ARTISTS = [
   "Mario Klingemann",
   "Ivona Tau",
@@ -105,17 +109,19 @@ export default async function HomePage() {
             word always clears the narrower column. */}
         <section className="grid duo:grid-cols-2">
           <div className={`py-12 duo:border-r duo:border-spur-ink duo:py-16 ${GUTTER} duo:px-11`}>
-            <h1 className="text-[clamp(36px,7.5vw,56px)] font-black uppercase leading-[0.86] tracking-[-0.05em] duo:text-[clamp(56px,6.6vw,88px)]">
+            {/* 0.93, not tighter: Archivo Black puts the umlaut of Ä at
+                0.89em above the baseline, so anything under ~0.9 drives
+                WÄNDE's dots into the line above. */}
+            <h1 className="text-[clamp(36px,7.5vw,56px)] font-black uppercase leading-[0.93] tracking-[-0.05em] duo:text-[clamp(56px,6.6vw,88px)]">
               {s.home.heroLine1}
               <br />
               {s.home.heroLine2}
             </h1>
-            <p className="mt-6 max-w-[46ch] text-[17px] leading-[1.5] text-spur-body [text-wrap:pretty]">
-              {s.home.lead}
-            </p>
+            {/* The lead moved to the ratata card on the dark track, so the
+                work gets the room it left behind and runs taller. */}
             {heroWork && worksSource && (
               <figure className="mt-10 bg-spur-card p-[22px] shadow-[0_1px_0_#e2dfd7]">
-                <div className="relative aspect-[16/10] bg-spur-thumb">
+                <div className="relative aspect-[4/3] bg-spur-thumb">
                   <Image
                     src={heroWork.image}
                     alt={`${heroWork.title}, ${heroWork.artist}`}
@@ -137,53 +143,48 @@ export default async function HomePage() {
             )}
           </div>
 
-          {/* The dark track features one exhibition from the archive as the
-              hero's counterweight: the show the works grid below draws
-              from. */}
-          <div className={`spur-dark flex flex-col bg-spur-ink py-12 text-spur-paper duo:py-16 ${GUTTER}`}>
-            {worksSource && (
-              <>
-                <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-spur-accent-dark">
-                  {s.home.featuredKicker}
+          {/* The dark track opens with ratata itself, then says what the
+              studio does. The archive plate that used to sit here now runs
+              below, where it gets a track of its own. */}
+          <div className="spur-dark flex flex-col bg-spur-ink text-spur-paper">
+            {/* A matted plate, the same device the dark track already uses to
+                hold the archive poster. Inverting it to carry type is what
+                "Zwei Spuren / Invers" is for. */}
+            <div className={`py-12 duo:py-16 ${GUTTER}`}>
+              <div className="bg-spur-card p-[22px] duo:p-[30px]">
+                <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-spur-accent">
+                  {s.site.wordmark}
+                  {s.site.wordmarkSuffix}
                 </p>
-                <Link
-                  href={`/projects/${worksSource.slug}`}
-                  className="group mt-8 flex grow flex-col"
-                >
-                  {/* The mat grows with the column, so the artwork absorbs
-                      whatever height the left track sets instead of leaving a
-                      void under the text. */}
-                  <div className="flex grow flex-col bg-spur-card p-[14px]">
-                    <div className="relative aspect-[4/3] grow overflow-hidden bg-spur-thumb">
-                      {worksSource.images?.[0] && (
-                        <Image
-                          src={worksSource.images[0]}
-                          alt={worksSource.title}
-                          fill
-                          priority
-                          sizes="(min-width: 1100px) 48vw, 100vw"
-                          className="object-cover transition-transform duration-500 group-hover:scale-[1.03] motion-reduce:transform-none motion-reduce:transition-none"
-                        />
-                      )}
-                    </div>
-                  </div>
-                  <h2 className="mt-8 text-[clamp(32px,3.2vw,44px)] font-black uppercase leading-[0.95] tracking-[-0.03em] transition-colors duration-150 group-hover:text-spur-accent-dark">
-                    {worksSource.title}
-                  </h2>
-                  <p className="mt-3 font-mono text-[12px] tracking-[0.06em] text-spur-dark-mut">
-                    {projectMeta(worksSource)}
-                  </p>
-                  {worksSource.overviewText && (
-                    <p className="mt-4 max-w-[52ch] text-[15px] leading-[1.55] text-spur-dark-body [text-wrap:pretty]">
-                      {worksSource.overviewText}
-                    </p>
-                  )}
-                  <p className="mt-8 font-mono text-[12px] font-bold uppercase tracking-[0.14em] text-spur-accent-dark">
-                    {s.home.featuredLink} →
-                  </p>
-                </Link>
-              </>
-            )}
+                <p className="mt-5 max-w-[42ch] text-[19px] leading-[1.45] text-spur-ink duo:text-[21px] [text-wrap:pretty]">
+                  {s.home.lead}
+                </p>
+              </div>
+            </div>
+
+            <div
+              id="leistungen"
+              className={`scroll-mt-[76px] border-t border-spur-dark-line pb-6 pt-10 ${GUTTER}`}
+            >
+              <h2 className="text-[28px] font-black uppercase tracking-[-0.03em] duo:text-[38px]">
+                {s.home.servicesTitle}
+              </h2>
+            </div>
+            {/* Definition blocks, per the handoff's dark-track spec: a hair
+                rule, a mono label, and the sentence carrying the weight. */}
+            {s.home.services.map((service) => (
+              <div
+                key={service.title}
+                className={`border-t border-spur-dark-line-2 py-6 ${GUTTER}`}
+              >
+                <h3 className="font-mono text-[11px] uppercase tracking-[0.14em] text-spur-dark-mut">
+                  {service.title}
+                </h3>
+                <p className="mt-3 max-w-[46ch] text-[17px] leading-[1.5] text-spur-paper [text-wrap:pretty]">
+                  {service.body}
+                </p>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -290,10 +291,10 @@ export default async function HomePage() {
           </section>
         )}
 
-        {/* 3 — Two tracks: exhibitions & works (white) / services,
-            production & platforms (black). The seam against the hero runs in
-            ink over the white track and continues in white over the dark one,
-            so the line stays visible across the whole width. */}
+        {/* 3 — Two tracks: exhibitions (white) / the featured archive show
+            (black). The seam against the hero runs in ink over the white
+            track and continues in white over the dark one, so the line stays
+            visible across the whole width. */}
         <section className="grid duo:grid-cols-2">
           <div className="border-t border-spur-ink duo:border-r">
             <div className={`pb-6 pt-14 duo:pt-[72px] ${GUTTER}`}>
@@ -341,26 +342,52 @@ export default async function HomePage() {
 
           </div>
 
-          <div className="spur-dark bg-spur-ink text-spur-paper duo:border-t duo:border-spur-paper">
-            {/* NEW content vs. the live site — copy needs sign-off (handoff). */}
-            <div id="leistungen" className={`scroll-mt-[76px] pb-6 pt-14 duo:pt-[72px] ${GUTTER}`}>
-              <h2 className="text-[28px] font-black uppercase tracking-[-0.03em] duo:text-[38px]">
-                {s.home.servicesTitle}
-              </h2>
-            </div>
-            {s.home.services.map((service) => (
-              <div
-                key={service.title}
-                className={`border-t border-spur-dark-line py-6 ${GUTTER}`}
-              >
-                <h3 className="text-[21px] font-semibold tracking-[-0.01em]">
-                  {service.title}
-                </h3>
-                <p className="mt-2 max-w-[52ch] text-[15px] leading-[1.55] text-spur-dark-body [text-wrap:pretty]">
-                  {service.body}
+          {/* The archive plate: the show the works grid below draws from. It
+              has the whole track to itself here, so the poster runs at full
+              column width. */}
+          <div className="spur-dark flex flex-col bg-spur-ink text-spur-paper duo:border-t duo:border-spur-paper">
+            {worksSource && (
+              <div className={`flex grow flex-col pb-12 pt-14 duo:pt-[72px] ${GUTTER}`}>
+                <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-spur-accent-dark">
+                  {s.home.featuredKicker}
                 </p>
+                <Link
+                  href={`/projects/${worksSource.slug}`}
+                  className="group mt-8 flex grow flex-col"
+                >
+                  {/* The mat grows with the column, so the artwork absorbs
+                      whatever height the left track sets instead of leaving a
+                      void under the text. */}
+                  <div className="flex grow flex-col bg-spur-card p-[14px]">
+                    <div className="relative aspect-[4/3] grow overflow-hidden bg-spur-thumb">
+                      {worksSource.images?.[0] && (
+                        <Image
+                          src={worksSource.images[0]}
+                          alt={worksSource.title}
+                          fill
+                          sizes="(min-width: 1100px) 48vw, 100vw"
+                          className="object-cover transition-transform duration-500 group-hover:scale-[1.03] motion-reduce:transform-none motion-reduce:transition-none"
+                        />
+                      )}
+                    </div>
+                  </div>
+                  <h2 className="mt-8 text-[clamp(32px,3.2vw,44px)] font-black uppercase leading-[0.95] tracking-[-0.03em] transition-colors duration-150 group-hover:text-spur-accent-dark">
+                    {worksSource.title}
+                  </h2>
+                  <p className="mt-3 font-mono text-[12px] tracking-[0.06em] text-spur-dark-mut">
+                    {projectMeta(worksSource)}
+                  </p>
+                  {worksSource.overviewText && (
+                    <p className="mt-4 max-w-[52ch] text-[15px] leading-[1.55] text-spur-dark-body [text-wrap:pretty]">
+                      {worksSource.overviewText}
+                    </p>
+                  )}
+                  <p className="mt-8 font-mono text-[12px] font-bold uppercase tracking-[0.14em] text-spur-accent-dark">
+                    {s.home.featuredLink} →
+                  </p>
+                </Link>
               </div>
-            ))}
+            )}
           </div>
         </section>
 
@@ -395,6 +422,33 @@ export default async function HomePage() {
                   </figcaption>
                 </figure>
               ))}
+            </div>
+
+            {/* TezCon closes the white track. The works grid ends well short
+                of the production and platforms column beside it, and this is
+                the announcement that earns the room. */}
+            <div className={`border-t border-spur-line pb-14 pt-12 duo:pb-[72px] duo:pt-16 ${GUTTER}`}>
+              <p className="mb-3 font-mono text-[11px] tracking-[0.16em] text-spur-accent">
+                {s.home.tezKicker}
+              </p>
+              <h2 className="text-[40px] font-black leading-[0.95] tracking-[-0.04em] duo:text-[56px]">
+                <Link
+                  href="/tezcon-europe"
+                  className="transition-colors duration-150 hover:text-spur-accent"
+                >
+                  TezCon
+                  <br />
+                  Europe
+                </Link>
+              </h2>
+              <p className="my-4 max-w-[44ch] text-[17px] leading-[1.5] text-spur-body [text-wrap:pretty]">
+                {s.home.tezBody}
+              </p>
+              <p className="flex flex-wrap gap-x-6 gap-y-1 font-mono text-[11px] tracking-[0.1em] text-spur-mut">
+                <span>2027</span>
+                <span>FRANKFURT AM MAIN</span>
+                <span>TALKS · SHOW · MUSIC</span>
+              </p>
             </div>
           </div>
 
@@ -459,35 +513,12 @@ export default async function HomePage() {
         </section>
         )}
 
-        {/* 5 — TezCon + Press */}
+        {/* 5 — Press. Hidden for now (SHOW_PRESS), not removed: the asset
+            rows stay unlinked until the files exist (handoff §7), and TezCon,
+            which used to share this row, now closes the white track above. */}
+        {SHOW_PRESS && (
         <section className="grid duo:grid-cols-2">
-          <div className={`spur-dark border-b border-spur-ink bg-spur-ink py-14 text-spur-paper duo:border-b-0 duo:border-r duo:py-[72px] ${GUTTER}`}>
-            <p className="mb-3 font-mono text-[11px] tracking-[0.16em] text-spur-accent-dark">
-              {s.home.tezKicker}
-            </p>
-            <h2 className="text-[40px] font-black leading-[0.95] tracking-[-0.04em] duo:text-[56px]">
-              <Link
-                href="/tezcon-europe"
-                className="transition-colors duration-150 hover:text-spur-accent-dark"
-              >
-                TezCon
-                <br />
-                Europe
-              </Link>
-            </h2>
-            <p className="my-4 max-w-[44ch] text-[17px] leading-[1.5] text-spur-dark-body [text-wrap:pretty]">
-              {s.home.tezBody}
-            </p>
-            <p className="flex flex-wrap gap-x-6 gap-y-1 font-mono text-[11px] tracking-[0.1em] text-spur-dark-mut">
-              <span>2027</span>
-              <span>FRANKFURT AM MAIN</span>
-              <span>TALKS · SHOW · MUSIC</span>
-            </p>
-          </div>
-
-          {/* NEW block vs. the live site; the three asset rows stay unlinked
-              until the files exist (handoff §7). */}
-          <div className={`py-14 duo:py-[72px] ${GUTTER}`}>
+          <div className={`py-14 duo:col-start-2 duo:py-[72px] ${GUTTER}`}>
             <p className="mb-3 font-mono text-[11px] tracking-[0.16em] text-spur-accent">
               {s.home.pressKicker}
             </p>
@@ -528,6 +559,7 @@ export default async function HomePage() {
             </ul>
           </div>
         </section>
+        )}
 
         {/* 6 — Partners band */}
         <section

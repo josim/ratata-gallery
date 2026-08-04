@@ -49,19 +49,19 @@ const en = {
     signalMentions: "Mentions",
     worksShown: "Works shown",
     archiveLink: "Open the filtered archive",
-    servicesTitle: "What we deliver",
+    servicesTitle: "What we do",
     services: [
       {
-        title: "Curation & programme",
-        body: "Shows grow out of the community: we develop the concepts together with the artists.",
+        title: "The selection",
+        body: "We decide with the artists which works can hold a room together.",
       },
       {
-        title: "Exhibition production",
-        body: "Build-up, displays, LED walls, projection, sound, logistics and on-site support.",
+        title: "The space",
+        body: "A display is not a wall. We plan the hang, the light, the sound and the technology so the work holds its own in the room.",
       },
       {
-        title: "Tech & platforms",
-        body: "Interactive installations, smart contracts, minting flows and custom web platforms.",
+        title: "The rest",
+        body: "Smart contracts, live mints, interactive installations, our own platforms: everything that stands between a file and an audience.",
       },
     ],
     platformsTitle: "Platforms & projects",
@@ -321,6 +321,19 @@ const en = {
         mark: "",
       },
       {
+        name: "thetezos.com",
+        relationship: "Media & ecosystem",
+        url: "https://thetezos.com/",
+        // The mark ships on its own black field, square. Cover fills the tile
+        // edge to edge so the surface never rings it in --ink.
+        image: "/images/partners-and-friends/ttc-logo.webp",
+        imageAlt: "thetezos.com logo",
+        imageFit: "cover",
+        imageInset: "compact",
+        imageSurface: "dark",
+        mark: "",
+      },
+      {
         name: "teia.cafe",
         relationship: "Art platform & community",
         url: "https://www.teia.cafe/?feed=latest",
@@ -466,19 +479,19 @@ const de: Strings = {
     signalMentions: "Erwähnungen",
     worksShown: "Gezeigte Arbeiten",
     archiveLink: "Archiv mit Filtern öffnen",
-    servicesTitle: "Was wir liefern",
+    servicesTitle: "Was wir machen",
     services: [
       {
-        title: "Kuration & Programm",
-        body: "Ausstellungen entstehen aus der Community: Konzepte entwickeln wir gemeinsam mit den Künstler:innen.",
+        title: "Die Auswahl",
+        body: "Welche Arbeiten zusammen einen Raum tragen, entscheiden wir mit den Künstler:innen.",
       },
       {
-        title: "Ausstellungsproduktion",
-        body: "Aufbau, Displays, LED-Wände, Projektion, Ton, Logistik und Betreuung vor Ort.",
+        title: "Der Raum",
+        body: "Ein Display ist keine Wand. Wir planen Hängung, Licht, Ton und Technik, damit die Arbeit im Raum besteht.",
       },
       {
-        title: "Technik & Plattformen",
-        body: "Interaktive Installationen, Smart Contracts, Minting-Flows und eigene Web-Plattformen.",
+        title: "Der Rest",
+        body: "Smart Contracts, Live-Mints, interaktive Installationen, eigene Plattformen: alles, was zwischen Datei und Publikum steht.",
       },
     ],
     platformsTitle: "Plattformen & Projekte",
@@ -735,6 +748,17 @@ const de: Strings = {
         imageFit: "contain",
         imageInset: "wide",
         imageSurface: "light",
+        mark: "",
+      },
+      {
+        name: "thetezos.com",
+        relationship: "Medien & Ökosystem",
+        url: "https://thetezos.com/",
+        image: "/images/partners-and-friends/ttc-logo.webp",
+        imageAlt: "Logo von thetezos.com",
+        imageFit: "cover",
+        imageInset: "compact",
+        imageSurface: "dark",
         mark: "",
       },
       {
