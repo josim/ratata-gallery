@@ -61,7 +61,9 @@ export default function HomeHeader() {
   ];
 
   return (
-    <header className="sticky top-0 z-40 border-b border-spur-ink bg-spur-paper">
+    // The `spur` class scopes the redesign focus ring to the header even on
+    // pages whose body is not wrapped in `.spur`.
+    <header className="spur sticky top-0 z-40 border-b border-spur-ink bg-spur-paper">
       <div className="flex h-[76px] items-center justify-between px-5 md:px-10">
         <Link href="/" onClick={() => setOpen(false)} className="flex items-center">
           <BrandWordmark
