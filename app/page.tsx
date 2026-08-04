@@ -117,7 +117,11 @@ export default async function HomePage() {
             <p className="mb-4 font-mono text-[11px] tracking-[0.16em] text-spur-accent">
               {s.home.kickerArt}
             </p>
-            <h1 className="text-[clamp(40px,8.5vw,64px)] font-black uppercase leading-[0.86] tracking-[-0.05em] duo:text-[104px]">
+            {/* Above the duo breakpoint the size is fluid (7.2vw ≈ 104px at
+                1440) rather than a fixed 104px: at 1100px the hero column is
+                ~540px and a fixed 104px would overflow it with single words
+                like "DIGITALE". */}
+            <h1 className="text-[clamp(40px,8.5vw,64px)] font-black uppercase leading-[0.86] tracking-[-0.05em] duo:text-[clamp(64px,7.2vw,104px)]">
               {s.home.heroLine1}
               <br />
               {s.home.heroLine2}
@@ -198,99 +202,7 @@ export default async function HomePage() {
           ))}
         </section>
 
-        {/* 3 — SIGNAL. Sample data until the feed is wired; hidden entirely
-            when the feed comes back empty (handoff §4). */}
-        {feed.posts.length > 0 && (
-          <section aria-labelledby="signal-heading" className="border-b border-spur-ink">
-            <div className={`flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 pb-[18px] pt-[34px] ${GUTTER}`}>
-              <div className="flex flex-wrap items-baseline gap-4">
-                <h2
-                  id="signal-heading"
-                  className="text-[32px] font-black uppercase tracking-[-0.04em] duo:text-[44px]"
-                >
-                  {s.home.signalTitle}
-                </h2>
-                <p className="font-mono text-[11px] tracking-[0.14em] text-spur-accent">
-                  <span aria-hidden="true" className="spur-blink">
-                    ●
-                  </span>{" "}
-                  {s.home.signalKicker}
-                </p>
-              </div>
-              {feed.sample && (
-                <p className="bg-spur-chip px-[9px] py-[5px] font-mono text-[11.5px] tracking-[0.08em] text-spur-ink">
-                  {s.home.signalNote}
-                </p>
-              )}
-            </div>
-
-            <div className="grid duo:grid-cols-[1.4fr_1fr]">
-              <div className={`pb-[34px] duo:border-r duo:border-spur-ink ${GUTTER}`}>
-                <h3 className="mb-[18px] border-b border-spur-line pb-[10px] font-mono text-[11px] tracking-[0.14em] text-spur-mut">
-                  {s.home.signalOwn} · @ratata.gallery · @ratata_nft
-                </h3>
-                <div className="grid gap-[18px] sm:grid-cols-2">
-                  {feed.posts.map((post) => (
-                    <article
-                      key={`${post.handle}-${post.time}`}
-                      className="group border border-spur-line-soft bg-spur-card transition-colors duration-150 hover:border-spur-ink"
-                    >
-                      <div className="relative aspect-[4/3] overflow-hidden bg-spur-thumb">
-                        <Image
-                          src={post.imageUrl}
-                          alt=""
-                          fill
-                          sizes="(min-width: 1100px) 28vw, (min-width: 640px) 45vw, 100vw"
-                          className="object-cover transition-transform duration-500 group-hover:scale-[1.04] motion-reduce:transform-none motion-reduce:transition-none"
-                        />
-                      </div>
-                      <div className="px-[14px] pb-[14px] pt-3">
-                        <p className="flex justify-between gap-3 font-mono text-[10.5px] tracking-[0.08em] text-spur-mut-soft">
-                          <span className="text-spur-accent">
-                            {post.platform} · {post.handle}
-                          </span>
-                          <span>{post.time}</span>
-                        </p>
-                        <p className="mt-2 text-[15px] leading-[1.4] [text-wrap:pretty]">
-                          {post.text}
-                        </p>
-                      </div>
-                    </article>
-                  ))}
-                </div>
-              </div>
-
-              {feed.mentions.length > 0 && (
-                <div className={`spur-dark bg-spur-ink pb-[34px] pt-[22px] text-spur-paper ${GUTTER}`}>
-                  <h3 className="mb-[6px] border-b border-spur-dark-line-2 pb-[10px] font-mono text-[11px] tracking-[0.14em] text-spur-dark-head">
-                    {s.home.signalMentions} · #ratata #tezcon ·{" "}
-                    <span className="text-spur-accent-dark">
-                      {s.home.signalNote}
-                    </span>
-                  </h3>
-                  {feed.mentions.map((mention) => (
-                    <article
-                      key={`${mention.handle}-${mention.time}`}
-                      className="border-b border-spur-dark-line py-[13px] transition-colors duration-150 hover:text-spur-accent-dark"
-                    >
-                      <p className="flex justify-between gap-3 font-mono text-[10.5px] tracking-[0.08em] text-spur-dark-mut">
-                        <span className="text-spur-accent-dark">
-                          {mention.platform} · {mention.handle}
-                        </span>
-                        <span>{mention.time}</span>
-                      </p>
-                      <p className="mt-[6px] text-[15px] leading-[1.4] [text-wrap:pretty]">
-                        {mention.text}
-                      </p>
-                    </article>
-                  ))}
-                </div>
-              )}
-            </div>
-          </section>
-        )}
-
-        {/* 4 — Two tracks: exhibitions & works (white) / services,
+        {/* 3 — Two tracks: exhibitions & works (white) / services,
             production & platforms (black) */}
         <section className="grid duo:grid-cols-2">
           <div className="duo:border-r duo:border-spur-ink">
@@ -443,6 +355,100 @@ export default async function HomePage() {
           </div>
         </section>
 
+        {/* 4 — SIGNAL, deliberately below the archive tracks: the archive is
+            the product, the feed is context. Sample data until the feed is
+            wired; hidden entirely when the feed comes back empty
+            (handoff §4). */}
+        {feed.posts.length > 0 && (
+          <section aria-labelledby="signal-heading" className="border-t border-spur-ink">
+            <div className={`flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 pb-[18px] pt-[34px] ${GUTTER}`}>
+              <div className="flex flex-wrap items-baseline gap-4">
+                <h2
+                  id="signal-heading"
+                  className="text-[28px] font-black uppercase tracking-[-0.03em] duo:text-[38px]"
+                >
+                  {s.home.signalTitle}
+                </h2>
+                <p className="font-mono text-[11px] tracking-[0.14em] text-spur-accent">
+                  <span aria-hidden="true" className="spur-blink">
+                    ●
+                  </span>{" "}
+                  {s.home.signalKicker}
+                </p>
+              </div>
+              {feed.sample && (
+                <p className="bg-spur-chip px-[9px] py-[5px] font-mono text-[11.5px] tracking-[0.08em] text-spur-ink">
+                  {s.home.signalNote}
+                </p>
+              )}
+            </div>
+
+            <div className="grid duo:grid-cols-[1.4fr_1fr]">
+              <div className={`pb-[34px] duo:border-r duo:border-spur-ink ${GUTTER}`}>
+                <h3 className="mb-[18px] border-b border-spur-line pb-[10px] font-mono text-[11px] tracking-[0.14em] text-spur-mut">
+                  {s.home.signalOwn} · @ratata.gallery · @ratata_nft
+                </h3>
+                <div className="grid gap-[18px] sm:grid-cols-2">
+                  {feed.posts.map((post) => (
+                    <article
+                      key={`${post.handle}-${post.time}`}
+                      className="group border border-spur-line-soft bg-spur-card transition-colors duration-150 hover:border-spur-ink"
+                    >
+                      <div className="relative aspect-[4/3] overflow-hidden bg-spur-thumb">
+                        <Image
+                          src={post.imageUrl}
+                          alt=""
+                          fill
+                          sizes="(min-width: 1100px) 28vw, (min-width: 640px) 45vw, 100vw"
+                          className="object-cover transition-transform duration-500 group-hover:scale-[1.04] motion-reduce:transform-none motion-reduce:transition-none"
+                        />
+                      </div>
+                      <div className="px-[14px] pb-[14px] pt-3">
+                        <p className="flex justify-between gap-3 font-mono text-[10.5px] tracking-[0.08em] text-spur-mut">
+                          <span className="text-spur-accent">
+                            {post.platform} · {post.handle}
+                          </span>
+                          <span>{post.time}</span>
+                        </p>
+                        <p className="mt-2 text-[15px] leading-[1.4] [text-wrap:pretty]">
+                          {post.text}
+                        </p>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </div>
+
+              {feed.mentions.length > 0 && (
+                <div className={`spur-dark bg-spur-ink pb-[34px] pt-[22px] text-spur-paper ${GUTTER}`}>
+                  <h3 className="mb-[6px] border-b border-spur-dark-line-2 pb-[10px] font-mono text-[11px] tracking-[0.14em] text-spur-dark-head">
+                    {s.home.signalMentions} · #ratata #tezcon ·{" "}
+                    <span className="text-spur-accent-dark">
+                      {s.home.signalNote}
+                    </span>
+                  </h3>
+                  {feed.mentions.map((mention) => (
+                    <article
+                      key={`${mention.handle}-${mention.time}`}
+                      className="border-b border-spur-dark-line py-[13px] transition-colors duration-150 hover:text-spur-accent-dark"
+                    >
+                      <p className="flex justify-between gap-3 font-mono text-[10.5px] tracking-[0.08em] text-spur-dark-mut">
+                        <span className="text-spur-accent-dark">
+                          {mention.platform} · {mention.handle}
+                        </span>
+                        <span>{mention.time}</span>
+                      </p>
+                      <p className="mt-[6px] text-[15px] leading-[1.4] [text-wrap:pretty]">
+                        {mention.text}
+                      </p>
+                    </article>
+                  ))}
+                </div>
+              )}
+            </div>
+          </section>
+        )}
+
         {/* 5 — Artist marquee */}
         <section
           aria-label={s.home.statLabels[4]}
@@ -484,8 +490,9 @@ export default async function HomePage() {
             </p>
           </div>
 
-          {/* NEW block vs. the live site; the three asset rows stay unlinked
-              until the files exist (handoff §7). */}
+          {/* NEW block vs. the live site. Only rows that actually work render:
+              the strings hold just the contact row until the press assets
+              exist (handoff §7); non-contact rows render unlinked. */}
           <div className={`py-9 ${GUTTER}`}>
             <p className="mb-3 font-mono text-[11px] tracking-[0.16em] text-spur-accent">
               {s.home.pressKicker}
@@ -499,7 +506,7 @@ export default async function HomePage() {
                 const inner = (
                   <>
                     <span>{row.label}</span>
-                    <span className="text-right text-spur-mut-soft">
+                    <span className="text-right text-spur-mut">
                       {row.note}
                     </span>
                   </>
@@ -533,7 +540,7 @@ export default async function HomePage() {
           aria-label={s.home.partnersTitle}
           className={`border-t border-spur-ink py-[30px] ${GUTTER}`}
         >
-          <p className="mb-[18px] font-mono text-[11px] tracking-[0.16em] text-spur-mut-soft">
+          <p className="mb-[18px] font-mono text-[11px] tracking-[0.16em] text-spur-mut">
             {s.home.partnersTitle}
           </p>
           <div className="flex flex-wrap items-center gap-[34px]">

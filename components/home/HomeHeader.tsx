@@ -36,7 +36,7 @@ function LangSwitch() {
           aria-pressed={lang === option.value}
           onClick={() => switchTo(option.value)}
           className={`border border-spur-ctrl bg-transparent px-[9px] py-[5px] uppercase text-spur-ink ${
-            lang === option.value ? "opacity-100" : "opacity-40"
+            lang === option.value ? "opacity-100" : "opacity-70"
           }`}
         >
           {option.label}

@@ -104,14 +104,10 @@ const en = {
       "The Tezos community convention moves from Seattle to Frankfurt: talks, exhibition, live music, minting. By the community, for the community.",
     pressKicker: "For editors",
     pressTitle: "Press",
-    // File sizes are placeholders until the assets exist (handoff §7); the
-    // rows render without links until then.
-    press: [
-      { label: "Press kit (PDF)", note: "2.4 MB" },
-      { label: "Print-ready images", note: "ZIP" },
-      { label: "Logo & wordmark", note: "SVG" },
-      { label: "Press enquiries", note: "info@ratata.gallery" },
-    ],
+    // Asset rows (press kit, print images, logo) return here once the files
+    // actually exist (handoff §7); until then only the working contact row
+    // renders — no unlinked rows, no invented file sizes.
+    press: [{ label: "Press enquiries", note: "info@ratata.gallery" }],
     partnersTitle: "Partners & friends",
     tagline: "Gallery for digital art in Frankfurt am Main.",
   },
@@ -514,14 +510,10 @@ const de: Strings = {
       "Die Community-Convention des Tezos-Ökosystems kommt von Seattle nach Frankfurt: Talks, Ausstellung, Livemusik, Minting. Von der Community, für die Community.",
     pressKicker: "Für Redaktionen",
     pressTitle: "Presse",
-    // File sizes are placeholders until the assets exist (handoff §7); the
-    // rows render without links until then.
-    press: [
-      { label: "Pressemappe (PDF)", note: "2,4 MB" },
-      { label: "Bildmaterial, druckfähig", note: "ZIP" },
-      { label: "Logo & Wortmarke", note: "SVG" },
-      { label: "Presseanfragen", note: "info@ratata.gallery" },
-    ],
+    // Asset rows (Pressemappe, Bildmaterial, Logo) return here once the files
+    // actually exist (handoff §7); until then only the working contact row
+    // renders — no unlinked rows, no invented file sizes.
+    press: [{ label: "Presseanfragen", note: "info@ratata.gallery" }],
     partnersTitle: "Partner & Freunde",
     tagline: "Galerie für digitale Kunst in Frankfurt am Main.",
   },

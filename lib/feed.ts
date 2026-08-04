@@ -112,5 +112,12 @@ const SAMPLE_FEED: Feed = {
 };
 
 export async function getFeed(): Promise<Feed> {
-  return SAMPLE_FEED;
+  // The real wiring hasn't landed yet, so the feed comes back empty and the
+  // homepage's hide-when-empty path drops the whole SIGNAL section — the page
+  // ships complete without it. Set FEED_PREVIEW_SAMPLE=1 to preview the
+  // section layout with the sample data (the disclosure chip still renders).
+  if (process.env.FEED_PREVIEW_SAMPLE === "1") {
+    return SAMPLE_FEED;
+  }
+  return { posts: [], mentions: [], sample: true };
 }
